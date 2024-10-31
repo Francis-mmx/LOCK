@@ -17,8 +17,9 @@
 u32 spin_lock_cnt[2] = {0};
 
 u32 uart_timer_handle[5] = {0};
-extern u8 device_status[5];
-
+extern u8 device_status[10];
+extern u8 auto_check_status[10];
+extern u8 auto_check_flag;
 u8 ani_flag = 0;//1--动画或进度条
 int upgrade_detect(const char *sdcard_name);
 
@@ -521,6 +522,7 @@ void animation_play()
     }
 }
 
+
 /*************************************串口接收数据*************************************/
 
 extern u8 tx_flag;
@@ -540,7 +542,6 @@ u8 recv_buffer[BUFFER_SIZE];  // 接收缓冲区
 u8 write_index = 0;  // 写指针
 u8 read_index = 0;   // 读指针
 u8 data_count = 0;     //缓冲区内数量
-
 
 /*************************************发送数据包和重发机制*************************************/
 static struct intent uart_buf;
@@ -587,7 +588,7 @@ int uart_recv_retransmit()
         tx_flag++;
         switch(com){
             case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,60);//定时    重发数据包       100ms后删除
                 break;
             case 0xA1:
                 uart_timer_handle[1] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
@@ -608,7 +609,7 @@ int uart_recv_retransmit()
         tx_flag = 0;
         switch(com){
             case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,100);
+                uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,60);
                 break;
             case 0xA1:
                 uart_timer_handle[1] = sys_timeout_add(0,transmit_overtime,100);
@@ -631,6 +632,7 @@ void ani_show()
 {
     ui_hide(ANI_UNLOCK_LAYER);
     ui_show(ENC_LAY_BACK);
+    ui_show(ENC_LAY_HOME_PAGE);
     lock_on = 1;
     ani_flag = 0;
 }
@@ -719,7 +721,9 @@ void uart_send_unlock(u8 *buf)
 
 void delay_hide_status()
 {
+    memset(device_status,0,sizeof(device_status));
     ui_hide(ENC_DEVICE_STATUS);
+    ui_show(ENC_LAY_HOME_PAGE);
 }
 
 void get_device_infor(u8 *buf)
@@ -727,44 +731,34 @@ void get_device_infor(u8 *buf)
     printf("get_device_infor\n");
     u8 status;
     status = buf[5];
-    put_buf(buf, 14);
-    if(!buf[5]){
-        ui_hide(SYS_CHECK_DETAIL_SYMBOL_1_N);
-        ui_show(SYS_CHECK_DETAIL_SYMBOL_1_Y);
-        ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_1,0);
+    if(auto_check_flag)
+    {
+        printf("auto check");
+        for(int i = 0; i < 8; i++)
+        {
+            auto_check_status[i] = buf[5+i];
+        }
+        put_buf(auto_check_status, 7);
     }
-    if(!buf[6]){
-        ui_hide(SYS_CHECK_DETAIL_SYMBOL_2_N);
-        ui_show(SYS_CHECK_DETAIL_SYMBOL_2_Y);
-        ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_2,0);
+    else
+    {
+        for(int i = 0; i < 8; i++)
+        {
+            device_status[i] = buf[5+i];
+        }
+        put_buf(device_status, 7);
     }
-    if(!buf[7]){
-        ui_hide(SYS_CHECK_DETAIL_SYMBOL_3_N);
-        ui_show(SYS_CHECK_DETAIL_SYMBOL_3_Y);
-        ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_3,0);
+
+    if(device_status[0] || device_status[1] || device_status[2] || device_status[3] || device_status[4] || device_status[5] || device_status[6] || device_status[7])
+    {
+        printf("get device error");
+
+        ui_show(ENC_DEVICE_STATUS);
+        sys_timeout_add(NULL, delay_hide_status, 5000);
+    }else{
+        ui_hide(ENC_DEVICE_STATUS);
+        ui_show(ENC_LAY_HOME_PAGE);
     }
-    if(!buf[8]){
-        ui_hide(SYS_CHECK_DETAIL_SYMBOL_4_N);
-        ui_show(SYS_CHECK_DETAIL_SYMBOL_4_Y);
-        ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_4,0);
-    }
-    if(!buf[9]){
-        ui_hide(SYS_CHECK_DETAIL_SYMBOL_5_N);
-        ui_show(SYS_CHECK_DETAIL_SYMBOL_5_Y);
-        ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_5,0);
-    }
-    
-    ui_show(ENC_DEVICE_STATUS);
-    sys_timeout_add(NULL, delay_hide_status, 3000);
-//    for(int i = 0; i < 7; i++){
-//        status = buf[5+ i];
-//        if(!status){
-//            device_status[i] = 1;
-//        } else {
-//            device_status[i] = 0;
-//        }
-//        printf("status %d device_status %d\n",status,device_status[i]);
-//    }
 }
 
 void cancel_retransmit(u8 *buf)
@@ -922,12 +916,17 @@ void uart_recv_handle()
         if(recv_data[0] == 0xAA && recv_data[1] == 0xBB){
             if(check == calculate_checksum(recv_data,recv_data[3],2)){  //校验成功
                 data = 0;
+
+//              command = answer_signal;                                    //给锁板的应答信号
+                const char *packet_buf = create_packet_uncertain_len(recv_data[4],&data,1);
+                spec_uart_send(packet_buf,8);//首次发送
+
                 switch(recv_data[4]){
                     case 0xA0:case 0xA1:case 0xA2:case 0xA3:case 0xA4:
                         cancel_retransmit(recv_data);//应答信号,取消重发
                         return;
                     case 0xA5:
-                        add_user_new_key(recv_data);//添加新的用户密钥
+                        add_user_new_key(recv_data);                                //添加新的用户密钥
                         break;
                     case 0xA6:
                         uart_send_unlock(recv_data);//解锁信号
@@ -941,15 +940,12 @@ void uart_recv_handle()
                     case 0xA9:
                         get_face_confirm(recv_data);//获取人脸确认信号,更改语音
                         break;
-                    case 0xAF:
-                        cancel_retransmit(recv_data);//应答信号,取消重发
+//                    case 0xAF:
+//                        cancel_retransmit(recv_data);//应答信号,取消重发
                         return ;
                     default:
                         return ;
                 }
-                command = answer_signal;                                    //给锁板的应答信号
-                const char *packet_buf = create_packet_uncertain_len(command,&data,1);
-                spec_uart_send(packet_buf,8);//首次发送
             } else {                                                    //校验失败
                     data = 1;
         }
@@ -969,6 +965,20 @@ int uart_receive_package(u8 *buf, int len)  //串口接收   最大接收长度5
     }
 }
 
+
+void touch_panel_check()
+{
+    u8 data = 3;
+    u8 check = 0;
+    u8 len = 0;
+    void *i2c;
+    i2c = dev_open("iic1",NULL);
+    len = dev_write(i2c,&data,1);
+    printf("dev_write %x",len);
+    
+    len = dev_read(i2c,&check,1);
+    printf("len %x check I2C %x",len,check);
+}
 
 
 /*************************************Changed by liumenghui*************************************/
@@ -1040,16 +1050,36 @@ void app_main()
      * 播放开机动画
      */
 #ifdef CONFIG_UI_ENABLE
-    animation_play();
+    struct ui_style style;
+
+    style.file = "mnt/spiflash/audlogo/ani.sty";
+    style.version = UI_VERSION;
+
+    struct server *ui = server_open("ui_server", &style);
+    if (ui)
+    {
+        union uireq req;
+
+        req.show.id = PAGE_0;
+        /* #if ((LCD_DEV_WIDTH > 480) && (__SDRAM_SIZE__ <= 8*1024*1024))  */
+        server_request(ui, UI_REQ_SHOW_SYNC, &req);
+        animation_play_end(ui);
+
+        /* #else */
+        /* server_request_async(ui, UI_REQ_SHOW_SYNC | REQ_COMPLETE_CALLBACK, &req, */
+        /* animation_play_end, ui); */
+        /* #endif */
+    }
+
 #else
     sys_key_event_enable();
     sys_touch_event_enable();
 #endif
 
 /*******************************************上电*******************************************/
-    u8 command_buf = voice;
-    u8 data_buf[] = {powered};
-    uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
+//    u8 command_buf = voice;
+//    u8 data_buf[] = {powered};
+//    uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
 /*******************************************上电*******************************************/
     sys_power_auto_shutdown_start(db_select("aff") * 60);
     sys_power_low_voltage_shutdown(320, PWR_DELAY_INFINITE);
@@ -1072,6 +1102,7 @@ void app_main()
         return;
     }
 #endif
+    touch_panel_check();
 
 
 

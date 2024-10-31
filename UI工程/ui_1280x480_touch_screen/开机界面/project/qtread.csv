@@ -70,7 +70,7 @@ mp1;双验证模式;Double verification mode
 mp2;密码;password
 mp3;人脸;face
 mv15;卡片;nfc
-mv16;001;001
+mv16;雷达;radar
 mv17;002;002
 mv18;003;003
 mv19;004;004
@@ -120,7 +120,7 @@ mst11;是否清除（请谨慎操作）;Clear ? (please caution)
 mst12;正在重置WiFi...;resetting wifi…
 mst13;检测详情;Check Details
 ms1;触摸;touch
-ms2;猫眼;cat eye
+ms2;电机;electrical machinery
 ms3;检测完成;check complete
 ms4;正常;normal
 ms5;异常;abnormal

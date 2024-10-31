@@ -152,7 +152,9 @@ extern u8 ani_flag;//1--动画播放
 
 static int tim_handle = 0;//桌面闪烁定时器
 static u8 net_page_flag = 0;//0--网络设置列表 1--启动配网
-
+u8 device_status[10] = {0};
+u8 aoto_check_page = 0;
+u8 auto_check_status[10] = {0};
 /************************************************************
 				    	录像模式设置
 ************************************************************/
@@ -1365,11 +1367,7 @@ REGISTER_UI_EVENT_HANDLER(ENC_LAY)
 .onchange = rec_layout_up_onchange,
 };
 
-void timer_show_back_lay()
-{
-    ui_hide(ENC_DEVICE_STATUS);
-    ui_show(ENC_LAY_BACK);
-}
+
 
 static int enc_onchange(void *ctr, enum element_change_event e, void *arg)
 {
@@ -1386,10 +1384,7 @@ static int enc_onchange(void *ctr, enum element_change_event e, void *arg)
             ui_show(ENC_LAY_USER_DETAILS);
             break;
         }
-        ui_show(ENC_DEVICE_STATUS);
-        sys_timeout_add(NULL, timer_show_back_lay, 3000);
-//        ui_show(ENC_LAY_BACK);
-//        ui_show(ENC_UP_LAY);
+        ui_show(ENC_LAY_BACK);
         break;
     default:
         return false;
@@ -1627,6 +1622,9 @@ static int rec_goto_back_page_ontouch(void *ctr, struct element_touch_event *e)
         ui_hide(ENC_PASSWORD_LAY);
         ui_show(ENC_LAY_BACK_PIC);
         ui_show(ENC_LAY_BACK);
+        
+        ui_show(ENC_LAY_HOME_PAGE);
+        
         ui_show(ENC_UP_LAY);
         u8 command_buf = voice;
         u8 data_buf[] = {exit_admin_mode};
@@ -2799,6 +2797,9 @@ REGISTER_UI_EVENT_HANDLER(PIC_BACK_REC)
 REGISTER_UI_EVENT_HANDLER(ENC_LAY_BACK_PIC)
 .onchange = rec_paper_set_pic_onchange,
 };
+REGISTER_UI_EVENT_HANDLER(ENC_DEVICE_STATUS_PIC)
+.onchange = rec_paper_set_pic_onchange,
+};
 
 /***************************** 密码界面 密码输入按钮 ************************************/
 #define  MAX_PAW_NUM  10           //密码最大个数
@@ -2858,7 +2859,7 @@ static int rec_password_in_ontouch(void *ctr, struct element_touch_event *e)
         u8 command_buf = voice;
         u8 data_buf[] = {key_sound};
         uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
-        
+
         break;
     }
     return false;
@@ -2935,6 +2936,7 @@ void hide_show_page()
 {
     ui_hide(ANI_UNLOCK_LAYER);
     ui_show(ENC_LAY_BACK);
+    ui_show(ENC_LAY_HOME_PAGE);
     ani_flag = 0;
 }
 
@@ -2993,6 +2995,7 @@ static int rec_password_ok_ontouch(void *ctr, struct element_touch_event *e)
             ui_hide(ENC_PASSWORD_LAY);
 //            ui_show(ENC_LAY_BACK_PIC);
             ui_show(ENC_LAY_BACK);
+            ui_show(ENC_LAY_HOME_PAGE);
         }
 
         put_buf(password_code,MAX_PAW_NUM);             //输出输入密码
@@ -3643,6 +3646,7 @@ static int rec_lay_page_btn_ontouch(void *ctr, struct element_touch_event *e)
         power_flag = UNLOCK;
         ui_hide(ENC_LAY_PAGE);
         ui_show(ENC_LAY_BACK);
+        ui_show(ENC_LAY_HOME_PAGE);
         ui_show(ENC_UP_LAY);
         lock_on = 1;
         u8 command_buf = voice;
@@ -7006,6 +7010,7 @@ void hide_show_lock()
 {
     ui_hide(ANI_LOCK_LAYER);
     ui_show(ENC_LAY_BACK);
+    ui_show(ENC_LAY_HOME_PAGE);
     ani_flag = 0;
 }
 
@@ -7080,6 +7085,13 @@ void time_blink()
     ui_show(ENC_UP_LAY);
 }
 
+void device_status_show_end()
+{
+    memset(device_status,0,sizeof(device_status));
+    ui_hide(ENC_DEVICE_STATUS);
+    ui_show(ENC_LAY_HOME_PAGE);
+}
+
 /***************************** 主页 ************************************/
 static int rec_enc_back_lay_onchange(void *ctr, enum element_change_event e, void *arg)
 {
@@ -7091,14 +7103,13 @@ static int rec_enc_back_lay_onchange(void *ctr, enum element_change_event e, voi
         enc_back_flag = 0;
         break;
     case ON_CHANGE_FIRST_SHOW:
-//        ui_pic_show_image_by_id(ENC_LAY_BACK_PIC,db_select("back"));
+
         if(tim_handle){
             sys_timer_del(tim_handle);
         }
         tim_handle = sys_timer_add(NULL, time_blink, 1000);
         break;
     case ON_CHANGE_SHOW:
-        ui_show(ENC_UP_LAY);
         break;
     default:
         return false;
@@ -7126,6 +7137,8 @@ static int rec_enc_up_lay_onchange(void *ctr, enum element_change_event e, void 
             //ui_hide(REC_POWER_UP_PIC);
         }
 
+        break;
+    case ON_CHANGE_FIRST_SHOW:
         break;
     default:
         return false;
@@ -7378,7 +7391,6 @@ REGISTER_UI_EVENT_HANDLER(SYS_GOTO_ABOUT_DEVICE_BTN)
 .ontouch = rec_goto_about_device_ontouch,
 };
 
-u8 device_status[5] = {0};
 
 /***************************** 自检页面 ************************************/
 static int rec_auto_check_onchange(void *ctr, enum element_change_event e, void *arg)
@@ -7496,9 +7508,10 @@ REGISTER_UI_EVENT_HANDLER(SYS_CHECK_START_BTN)
 .ontouch = sys_check_start_btn_ontouch,
 };
 
-/***************************** 自检详情界面 ************************************/
 
-static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e, void *arg)
+/***************************** 开机自检详情界面 ************************************/
+
+static int power_on_check_detail_onchange(void *ctr, enum element_change_event e, void *arg)
 {
     switch (e) {
     case ON_CHANGE_INIT:
@@ -7506,66 +7519,66 @@ static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e,
     case ON_CHANGE_RELEASE:
         break;
     case ON_CHANGE_FIRST_SHOW:
-        printf("rec_sys_check_detail_onchange");
-        ui_show(ENC_UP_LAY);
-        if(device_status[0]) {
-            printf("device_status[0]  = 111");
+        printf("power_on_check_detail_onchange");
+        put_buf(device_status, 7);
+        if(!device_status[0]) {
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_1_N);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_1_Y);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_1,0);
         } else {
-            printf("error");
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_1_Y);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_1_N);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_1,1);
         }
 
-        if(device_status[1]) {
-            printf("device_status[1]  = 111");
+        if(!device_status[1]) {
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_2_N);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_2_Y);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_2,0);
         } else {
-            printf("error");
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_2_Y);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_2_N);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_2,1);
         }
 
-        if(device_status[2]) {
-            printf("device_status[2]  = 111");
+        if(!device_status[2]) {
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_3_N);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_3_Y);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_3,0);
         } else {
-            printf("error");
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_3_Y);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_3_N);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_3,1);
         }
 
-        if(device_status[3]) {
-            printf("device_status[3]  = 111");
+        if(!device_status[3]) {
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_4_N);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_4_Y);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_4,0);
         } else {
-            printf("error");
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_4_Y);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_4_N);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_4,1);
         }
 
-        if(device_status[4]) {
-            printf("device_status[4]  = 111");
+        if(!device_status[4]) {
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_5_N);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_5_Y);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_5,0);
         } else {
-            printf("error");
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_5_Y);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_5_N);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_5,1);
+        }
+
+        if(!device_status[5]) {
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_11_N);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_11_Y);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_11,0);
+        } else {
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_11_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_11_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_11,1);
         }
 
         break;
@@ -7575,6 +7588,96 @@ static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e,
     return false;
 }
 REGISTER_UI_EVENT_HANDLER(ENC_DEVICE_STATUS)
+.onchange = power_on_check_detail_onchange,
+};
+
+
+
+/***************************** 系统信息 自检详情界面 ************************************/
+
+static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e, void *arg)
+{
+    switch (e) {
+    case ON_CHANGE_INIT:
+        break;
+    case ON_CHANGE_RELEASE:
+        break;
+    case ON_CHANGE_SHOW:
+        printf("rec_sys_check_detail_onchange");
+        ui_show(ENC_UP_LAY);
+        if(!auto_check_status[0]) {
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_6_N);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_6_Y);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_6,0);
+        } else {
+            printf("error");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_6_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_6_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_6,1);
+        }
+
+        if(!auto_check_status[1]) {
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_7_N);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_7_Y);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_7,0);
+        } else {
+            printf("error");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_7_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_7_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_7,1);
+        }
+
+        if(!auto_check_status[2]) {
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_8_N);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_8_Y);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_8,0);
+        } else {
+            printf("error");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_8_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_8_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_8,1);
+        }
+
+        if(!auto_check_status[3]) {
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_9_N);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_9_Y);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_9,0);
+        } else {
+            printf("error");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_9_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_9_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_9,1);
+        }
+
+        if(!auto_check_status[4]) {
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_10_N);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_10_Y);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_10,0);
+        } else {
+            printf("error");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_10_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_10_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_10,1);
+        }
+        
+        if(!auto_check_status[5]) {
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_12_N);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_12_Y);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_12,0);
+        } else {
+            printf("error");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_12_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_12_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_12,1);
+        }
+
+        break;
+    default:
+        return false;
+    }
+    return false;
+}
+REGISTER_UI_EVENT_HANDLER(SYS_CHECK_DETAIL_PAGE)
 .onchange = rec_sys_check_detail_onchange,
 };
 
