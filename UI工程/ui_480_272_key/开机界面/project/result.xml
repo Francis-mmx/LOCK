@@ -1,0 +1,25 @@
+﻿<?xml version="2.0" encoding="UTF-8"?>
+<Resbuilder>
+    <PageList>
+        <Page id="0">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">000000</Color>
+            </ColorList>
+            <PictureList>
+                <Picture fmt="YUV" id="1">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\开机界面\project\config\开机图片\1280x720.jpg</Picture>
+            </PictureList>
+            <CellList/>
+        </Page>
+        <Page id="1">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">000000</Color>
+            </ColorList>
+            <PictureList>
+                <Picture fmt="YUV" id="1">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\开机界面\project\config\开机图片\nn.jpg</Picture>
+            </PictureList>
+            <CellList/>
+        </Page>
+    </PageList>
+</Resbuilder>

@@ -1,0 +1,660 @@
+
+# make 编译并下载
+# make VERBOSE=1 显示编译详细过程
+# make clean 清除编译临时文件
+#
+# 注意： Linux 下编译方式：
+#     1. 从 http://pkgman.jieliapp.com/doc/all 处找到下载链接
+#     2. 下载后，解压到 /opt/jieli 目录下，保证
+#       /opt/jieli/common/bin/clang 存在（注意目录层次）
+#     3. 确认 ulimit -n 的结果足够大（建议大于8096），否则链接可能会因为打开文件太多而失败
+#       可以通过 ulimit -n 8096 来设置一个较大的值
+#
+
+# 工具路径设置
+ifeq ($(OS), Windows_NT)
+# Windows 下工具链位置
+TOOL_DIR := C:/JL/pi32/bin
+CC    := clang.exe
+CXX   := clang.exe
+LD    := pi32v2-lto-wrapper.exe
+AR    := llvm-ar.exe
+MKDIR := mkdir_win -p
+RM    := rm -rf
+
+SYS_LIB_DIR := C:/JL/pi32/pi32v2-lib
+SYS_INC_DIR := C:/JL/pi32/pi32v2-include
+EXT_CFLAGS  := # Windows 下不需要 -D__SHELL__
+export PATH:=$(TOOL_DIR);$(PATH)
+
+## 后处理脚本
+POST_SCRIPT     := cpu\AC521x\tools\download.bat
+RUN_POST_SCRIPT := $(POST_SCRIPT)
+else
+# Linux 下工具链位置
+TOOL_DIR := /opt/jieli/pi32v2/bin
+CC    := clang
+CXX   := clang
+LD    := lto-wrapper
+AR    := lto-ar
+MKDIR := mkdir -p
+RM    := rm -rf
+export OBJDUMP := $(TOOL_DIR)/objdump
+export OBJCOPY := $(TOOL_DIR)/objcopy
+export OBJSIZEDUMP := $(TOOL_DIR)/objsizedump
+
+SYS_LIB_DIR := $(TOOL_DIR)/../lib
+SYS_INC_DIR := $(TOOL_DIR)/../include
+EXT_CFLAGS  := -D__SHELL__ # Linux 下需要这个保证正确处理 download.c
+export PATH:=$(TOOL_DIR):$(PATH)
+
+## 后处理脚本
+POST_SCRIPT     := cpu/AC521x/tools/download.sh
+RUN_POST_SCRIPT := bash $(POST_SCRIPT)
+endif
+
+CC  := $(TOOL_DIR)/$(CC)
+CXX := $(TOOL_DIR)/$(CXX)
+LD  := $(TOOL_DIR)/$(LD)
+AR  := $(TOOL_DIR)/$(AR)
+# 输出文件设置
+OUT_ELF   := cpu/AC521x/tools/main.or32
+OBJ_FILE  := $(OUT_ELF).objs.txt
+# 编译路径设置
+BUILD_DIR := ac52n_ipc_doorbell_objs
+
+# 编译参数设置
+CFLAGS := \
+	-target pi32v2 \
+	-integrated-as \
+	-fno-builtin \
+	-mllvm -inline-threshold=5 \
+	-Oz \
+	-flto \
+	-Oz \
+	-flto \
+	-mllvm -pi32v2-large-program \
+	-Wuninitialized \
+	-Wno-invalid-noreturn \
+	-g2 \
+	-w \
+
+
+# C++额外的编译参数
+CXXFLAGS :=
+
+
+# 宏定义
+DEFINES := \
+	-DUSE_RTOS \
+	-D_POSIX_SOURCE \
+	-D_SYS_SELECT_H \
+	-DCONFIG_USE_RTOS \
+	-DCONFIG_CHRDEV \
+	-DCONFIG_VFS \
+	-DIOTC_UCOSII \
+	-DCONFIG_FREE_RTOS_ENABLE \
+	-DFS_VERSION=0x020001 \
+	-DFLASHFS_VERSION=0x020104 \
+	-DFATFS_VERSION=0x020101 \
+	-DSDFILE_VERSION=0x020000 \
+	-DDEVFS_VERSION=0x020000 \
+	-DRAMFS_VERSION=0x010000 \
+	-DAUDIO_SERVER_VERSION=0x020000 \
+	-DSERVER_CORE_VERSION=0x020000 \
+	-DLED_UI_SERVER_VERSION=0x010000 \
+	-DUI_SERVER_VERSION=0x020002 \
+	-DUSB_SERVER_VERSION=0x030200 \
+	-DVIDEO_DEC_SERVER_VERSION=0x020001 \
+	-DVIDEO_REC_SERVER_VERSION=0x020102 \
+	-DVIDEO_UNPKG_SERVER_VERSION=0x020000 \
+	-DVIDEO_ENGINE_SERVER_VERSION=0x020001 \
+	-DVIDEO_PKG_SERVER_VERSION=0x020000 \
+	-DCPU_VERSION=0x030200 \
+	-DDEV_ISP_VERSION=0x030000 \
+	-DDEV_AUDIO_VERSION=0x020000 \
+	-DDEV_VIDEO_ENGINE_VERSION=0x020000 \
+	-DDEV_SD0_VERSION=0x020000 \
+	-DDEV_SD1_VERSION=0x020000 \
+	-DDEV_SD2_VERSION=0x020000 \
+	-DDEV_USB_VERSION=0x040000 \
+	-DDEV_VIDEO_VERSION=0x020100 \
+	-DMALLOC_VERSION=0x020000 \
+	-DRTOS_VERSION=0x020000 \
+	-DSYS_VERSION=0x020001 \
+	-DUPGRADE_VERSION=0x030100 \
+	-DMP3_DEC_VERSION=0x010000 \
+	-DMP3_ENC_VERSION=0x010000 \
+	-DWMA_DEC_VERSION=0x010000 \
+	-DWMA_ENC_VERSION=0x010000 \
+	-DM4A_DEC_VERSION=0x010000 \
+	-DM4A_ENC_VERSION=0x010000 \
+	-DWAV_DEC_VERSION=0x010000 \
+	-DWAV_ENC_VERSION=0x010000 \
+	-DAAC_DEC_VERSION=0x010000 \
+	-DAAC_ENC_VERSION=0x010000 \
+	-DAPE_DEC_VERSION=0x010000 \
+	-DFLAC_DEC_VERSION=0x010000 \
+	-DSPEEX_ENC_VERSION=0x010000 \
+	-DOPUS_ENC_VERSION=0x010000 \
+	-DVIRTUAL_DEV_VERSION=0x010000 \
+	-DAMR_DEC_VERSION=0x010000 \
+	-DAMR_ENC_VERSION=0x010000 \
+	-DVAD_ENC_VERSION=0x010000 \
+	-DASR_SERVER_VERSION=0x010000 \
+	-DUPGRADE_SERVER_VERSION=0x010000 \
+	-DDLNA_SDK_VERSION=0x010000 \
+	-DWECHAT_SDK_VERSION=0x030000 \
+	-DWECHAT_SERVER_VERSION=0x30000 \
+	-DTURING_WECHAT_SDK_VERSION=0x030000 \
+	-DTURING_SDK_VERSION=0x30000 \
+	-DDEEPBRAIN_SDK_VERSION=0x30000 \
+	-DDUER_SDK_VERSION=0x030000 \
+	-DECHO_CLOUD_SDK_VERSION=0x030000 \
+
+
+DEFINES += $(EXT_CFLAGS) # 额外的一些定义
+
+# 头文件搜索路径
+INCLUDES := \
+	-Ilib/include \
+	-Iinclude_lib \
+	-Iinclude_lib/cpu/AC521x \
+	-Iinclude_lib/ui \
+	-Iinclude_lib/ui/res \
+	-Iinclude_lib/system \
+	-Iinclude_lib/system/cpu/AC521x \
+	-Iinclude_lib/system/generic \
+	-Iinclude_lib/system/device \
+	-Iinclude_lib/system/fs \
+	-Iapp/ipc_doorbell/include \
+	-Iapp \
+	-Iapp/ipc_doorbell \
+	-Iapp/ipc_doorbell/wifi/avsdk \
+	-Iapp/ipc_doorbell/wifi/cloud_interface \
+	-Iinclude_lib/net \
+	-Iinclude_lib/net/server \
+	-Iinclude_lib/net/wifi_module \
+	-Iinclude_lib/net/device \
+	-Iinclude_lib/net/device/eth \
+	-Iinclude_lib/net/hostapdandwpa_supplicant \
+	-Iinclude_lib/net/lwip/src/include \
+	-Iinclude_lib/net/lwip/port \
+	-Iinclude_lib/net/lwip/app \
+	-Iinclude_lib/net/lwip/app/ctp \
+	-Iinclude_lib/net/lwip/app/cdp \
+	-Iapp/ipc_doorbell/wifi/hi3861l \
+	-Iinclude_lib/net/avsdk \
+	-Iapp/net/top-p2p \
+	-Iapp/net/wifi-tools \
+	-I$(SYS_INC_DIR) \
+
+
+# 需要编译的 .c 文件
+c_SRC_FILES := \
+	app/debug.c \
+	app/flash_write_protect.c \
+	app/fontinit.c \
+	app/fs_test.c \
+	app/ipc_doorbell/aac_dec_test.c \
+	app/ipc_doorbell/aac_enc_test.c \
+	app/ipc_doorbell/app_database.c \
+	app/ipc_doorbell/app_main.c \
+	app/ipc_doorbell/auto_test.c \
+	app/ipc_doorbell/backlight.c \
+	app/ipc_doorbell/device_mount.c \
+	app/ipc_doorbell/face_detect_app.c \
+	app/ipc_doorbell/face_icon.c \
+	app/ipc_doorbell/gsensor/da380.c \
+	app/ipc_doorbell/gsensor/gSensor_manage.c \
+	app/ipc_doorbell/gsensor/gma301.c \
+	app/ipc_doorbell/gsensor/msa300.c \
+	app/ipc_doorbell/gsensor/stk8312.c \
+	app/ipc_doorbell/key_voice.c \
+	app/ipc_doorbell/parking_detect.c \
+	app/ipc_doorbell/play_usb_mic.c \
+	app/ipc_doorbell/play_usb_speaker.c \
+	app/ipc_doorbell/touch_panel/GT911.c \
+	app/ipc_doorbell/touch_panel/GT911_B.c \
+	app/ipc_doorbell/touch_panel/touch_panel_manager.c \
+	app/ipc_doorbell/ui/style_JL02/ui_action_dec.c \
+	app/ipc_doorbell/ui/style_JL02/ui_action_main.c \
+	app/ipc_doorbell/ui/style_JL02/ui_action_photo.c \
+	app/ipc_doorbell/ui/style_JL02/ui_action_rec.c \
+	app/ipc_doorbell/ui/style_JL02/ui_action_sys.c \
+	app/ipc_doorbell/ui/style_JL02/ui_action_usb.c \
+	app/ipc_doorbell/ui/style_LY/ui_action_dec.c \
+	app/ipc_doorbell/ui/style_LY/ui_action_photo.c \
+	app/ipc_doorbell/ui/style_LY/ui_action_rec.c \
+	app/ipc_doorbell/ui/style_LY/ui_action_sys.c \
+	app/ipc_doorbell/ui/style_LY/ui_action_upd.c \
+	app/ipc_doorbell/ui/style_LY/ui_action_usb.c \
+	app/ipc_doorbell/ui/ui_action_animation.c \
+	app/ipc_doorbell/upgrade.c \
+	app/ipc_doorbell/usb_app.c \
+	app/ipc_doorbell/usb_app_cfg.c \
+	app/ipc_doorbell/usb_host_user.c \
+	app/ipc_doorbell/user_isp_cfg.c \
+	app/ipc_doorbell/user_scr_cfg.c \
+	app/ipc_doorbell/user_scr_tool.c \
+	app/ipc_doorbell/uvc_h264_stream.c \
+	app/ipc_doorbell/video_dec.c \
+	app/ipc_doorbell/video_dec_cfg.c \
+	app/ipc_doorbell/video_photo.c \
+	app/ipc_doorbell/video_photo_cfg.c \
+	app/ipc_doorbell/video_rec.c \
+	app/ipc_doorbell/video_rec_cfg.c \
+	app/ipc_doorbell/video_system.c \
+	app/ipc_doorbell/video_system_cfg.c \
+	app/ipc_doorbell/wifi/avsdk/ut_dev_ipc_cmd.c \
+	app/ipc_doorbell/wifi/avsdk/ut_lowpower_cmd.c \
+	app/ipc_doorbell/wifi/avsdk/ut_xciot.c \
+	app/ipc_doorbell/wifi/cloud_interface/cloud_faststart.c \
+	app/ipc_doorbell/wifi/cloud_interface/cloud_net_config.c \
+	app/ipc_doorbell/wifi/cloud_interface/cloud_playback.c \
+	app/ipc_doorbell/wifi/cloud_interface/cloud_playback_list.c \
+	app/ipc_doorbell/wifi/cloud_interface/cloud_rt_talk.c \
+	app/ipc_doorbell/wifi/cloud_interface/cloud_sleep.c \
+	app/ipc_doorbell/wifi/cloud_interface/cloud_storage.c \
+	app/ipc_doorbell/wifi/cloud_interface/cloud_upgrade.c \
+	app/ipc_doorbell/wifi/cloud_interface/cloud_utc_time.c \
+	app/ipc_doorbell/wifi/doorbell/doorbell_app.c \
+	app/ipc_doorbell/wifi/doorbell/doorbell_event.c \
+	app/ipc_doorbell/wifi/doorbell/irled_ctrl.c \
+	app/ipc_doorbell/wifi/echo_cancell.c \
+	app/ipc_doorbell/wifi/eg_http_client.c \
+	app/ipc_doorbell/wifi/eg_http_server.c \
+	app/ipc_doorbell/wifi/ftpd_vfs_reg.c \
+	app/ipc_doorbell/wifi/get_image_data.c \
+	app/ipc_doorbell/wifi/hi3861L_task.c \
+	app/ipc_doorbell/wifi/hi3861l/hi3861L_demo.c \
+	app/ipc_doorbell/wifi/jl_flow.c \
+	app/ipc_doorbell/wifi/media_file_list.c \
+	app/ipc_doorbell/wifi/net_rtsp_api.c \
+	app/ipc_doorbell/wifi/net_scr_api.c \
+	app/ipc_doorbell/wifi/net_video_rec.c \
+	app/ipc_doorbell/wifi/network_mssdp.c \
+	app/ipc_doorbell/wifi/network_upgrade.c \
+	app/ipc_doorbell/wifi/packet.c \
+	app/ipc_doorbell/wifi/rt_stream/net_ctp_api.c \
+	app/ipc_doorbell/wifi/rt_stream/rx_stream.c \
+	app/ipc_doorbell/wifi/rt_stream/tx_stream.c \
+	app/ipc_doorbell/wifi/rt_talk_net.c \
+	app/ipc_doorbell/wifi/rt_talk_voice.c \
+	app/ipc_doorbell/wifi/simple_avi_unpkg.c \
+	app/ipc_doorbell/wifi/simple_mov_unpkg.c \
+	app/ipc_doorbell/wifi/stream/video_rt_tcp.c \
+	app/ipc_doorbell/wifi/stream/video_rt_udp.c \
+	app/ipc_doorbell/wifi/stream/video_rt_usr.c \
+	app/ipc_doorbell/wifi/strm_video_rec.c \
+	app/ipc_doorbell/wifi/video_bitrate_ctrl.c \
+	app/ipc_doorbell/wifi/video_fps_ctrl.c \
+	app/ipc_doorbell/wifi/video_playback.c \
+	app/ipc_doorbell/wifi/video_preview.c \
+	app/net/wifi-tools/RTL_PHY_REG_PG.c \
+	app/net/wifi-tools/ap_config.c \
+	app/net/wifi-tools/assign_macaddr.c \
+	app/net/wifi-tools/iperf_test.c \
+	app/net/wifi-tools/rtw_cache.c \
+	app/net/wifi-tools/uaputl_conf.c \
+	app/sd_speed_test.c \
+	app/version.c \
+	camera/ar0330_mipi/ar0330_mipi.c \
+	camera/ar0330_mipi/ar0330_mipi_ae.c \
+	camera/ar0330_mipi/ar0330_mipi_awb.c \
+	camera/ar0330_mipi/ar0330_mipi_iq.c \
+	camera/av10/av10.c \
+	camera/av10/av10_spi.c \
+	camera/bg0806_mipi/bg0806_mipi.c \
+	camera/bg0806_mipi/bg0806_mipi_ae.c \
+	camera/bg0806_mipi/bg0806_mipi_awb.c \
+	camera/bg0806_mipi/bg0806_mipi_iq.c \
+	camera/c2392_mipi/c2392_mipi.c \
+	camera/c2392_mipi/c2392_mipi_ae.c \
+	camera/c2392_mipi/c2392_mipi_awb.c \
+	camera/c2392_mipi/c2392_mipi_iq.c \
+	camera/f22_mipi/f22_mipi.c \
+	camera/f22_mipi/f22_mipi_ae.c \
+	camera/f22_mipi/f22_mipi_awb.c \
+	camera/f22_mipi/f22_mipi_iq.c \
+	camera/f23_mipi/f23_mipi.c \
+	camera/f23_mipi/f23_mipi_ae.c \
+	camera/f23_mipi/f23_mipi_awb.c \
+	camera/f23_mipi/f23_mipi_iq.c \
+	camera/gc0308_dvp/gc0308.c \
+	camera/gc1004/gc1004.c \
+	camera/gc1004/gc1004_ae.c \
+	camera/gc1004/gc1004_awb.c \
+	camera/gc1004/gc1004_iq.c \
+	camera/gc2023_mipi/gc2023_mipi.c \
+	camera/gc2023_mipi/gc2023_mipi_ae.c \
+	camera/gc2023_mipi/gc2023_mipi_awb.c \
+	camera/gc2023_mipi/gc2023_mipi_iq.c \
+	camera/gc2145_dvp/gc2145.c \
+	camera/gm7150/gm7150.c \
+	camera/h42/h42.c \
+	camera/h42/h42_ae.c \
+	camera/h42/h42_awb.c \
+	camera/h42/h42_iq.c \
+	camera/h62_dvp/h62_dvp.c \
+	camera/h62_dvp/h62_dvp_ae.c \
+	camera/h62_dvp/h62_dvp_awb.c \
+	camera/h62_dvp/h62_dvp_iq.c \
+	camera/hm2131_mipi/hm2131_mipi.c \
+	camera/hm2131_mipi/hm2131_mipi_ae.c \
+	camera/hm2131_mipi/hm2131_mipi_awb.c \
+	camera/hm2131_mipi/hm2131_mipi_iq.c \
+	camera/imx179_mipi/imx179_mipi.c \
+	camera/imx179_mipi/imx179_mipi_ae.c \
+	camera/imx179_mipi/imx179_mipi_awb.c \
+	camera/imx179_mipi/imx179_mipi_iq.c \
+	camera/mis2003_dvp/mis2003.c \
+	camera/mis2003_dvp/mis2003_ae.c \
+	camera/mis2003_dvp/mis2003_awb.c \
+	camera/mis2003_dvp/mis2003_iq.c \
+	camera/nvp6112/nvp6112.c \
+	camera/pr2000/pr2000.c \
+	camera/sc1243_dvp/sc1243.c \
+	camera/sc1243_dvp/sc1243_ae.c \
+	camera/sc1243_dvp/sc1243_awb.c \
+	camera/sc1243_dvp/sc1243_iq.c \
+	camera/sc1245_dvp/sc1245.c \
+	camera/sc1245_dvp/sc1245_ae.c \
+	camera/sc1245_dvp/sc1245_awb.c \
+	camera/sc1245_dvp/sc1245_iq.c \
+	camera/sc2143_mipi/sc2143_mipi.c \
+	camera/sc2143_mipi/sc2143_mipi_ae.c \
+	camera/sc2143_mipi/sc2143_mipi_awb.c \
+	camera/sc2143_mipi/sc2143_mipi_iq.c \
+	camera/sc2303/sc2303_dvp.c \
+	camera/sc2303/sc2303_dvp_ae.c \
+	camera/sc2303/sc2303_dvp_awb.c \
+	camera/sc2303/sc2303_dvp_iq.c \
+	camera/sc3033_mipi/sc3033_mipi.c \
+	camera/sc3033_mipi/sc3033_mipi_ae.c \
+	camera/sc3033_mipi/sc3033_mipi_awb.c \
+	camera/sc3033_mipi/sc3033_mipi_iq.c \
+	camera/xc7011_dvp/xc7011.c \
+	cpu/AC521x/adc.c \
+	cpu/AC521x/adkey.c \
+	cpu/AC521x/board/board_5211B_20180912.c \
+	cpu/AC521x/board/board_5211B_20190419.c \
+	cpu/AC521x/board/board_5211B_dev_20181116.c \
+	cpu/AC521x/board/board_5212B_20160902.c \
+	cpu/AC521x/board/board_5212B_dev_20181116.c \
+	cpu/AC521x/board/board_5212_dev_20181213.c \
+	cpu/AC521x/board/board_5212_socket_20181024.c \
+	cpu/AC521x/board/board_5213B_20170322.c \
+	cpu/AC521x/board/board_5213B_20180821.c \
+	cpu/AC521x/board/board_5213B_20210311_5213C4.c \
+	cpu/AC521x/board/board_5213B_DEV_20181207.c \
+	cpu/AC521x/board/board_5213B_socket_20180628.c \
+	cpu/AC521x/board/board_5213B_wifi_story.c \
+	cpu/AC521x/board/board_5213_20190429_2M.c \
+	cpu/AC521x/board/board_5214B_20180709.c \
+	cpu/AC521x/board/board_5214_dev_20181211.c \
+	cpu/AC521x/board/board_5214_socket_20181221.c \
+	cpu/AC521x/board/board_5218B_20181130.c \
+	cpu/AC521x/board/board_5218B_dev_20181130.c \
+	cpu/AC521x/board/board_5218B_dev_wifi_story.c \
+	cpu/AC521x/board/board_5218_dev_ipc_doorbell_20181130.c \
+	cpu/AC521x/board/board_5219C_dev_20230208.c \
+	cpu/AC521x/board/board_5219C_socket_20181121.c \
+	cpu/AC521x/board/board_5222B_dev_20181116.c \
+	cpu/AC521x/board/board_5222wifi_20190108.c \
+	cpu/AC521x/board/board_5229C_dev_20230523.c \
+	cpu/AC521x/board/board_GR202.c \
+	cpu/AC521x/board/board_GR202_2M.c \
+	cpu/AC521x/board/board_dvp_cam_mipi_lcd_v1.c \
+	cpu/AC521x/board/board_hhf_5213b.c \
+	cpu/AC521x/debug.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_480x272.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_480x272_8bits.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_HX8369A_MCU.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_HX8369A_SPI_RGB.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_ILI8960.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_ILI9806.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_LQ026B3UX01.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_LX50FWB4001_V2.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_LYWS030GQ.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_ST7789S.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_T15P00.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_avout.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_avout_hd.c \
+	cpu/AC521x/dvp_lcd_driver/lcd_ssd1963.c \
+	cpu/AC521x/iokey.c \
+	cpu/AC521x/ldo.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_dcs_1lane_16bit.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_dcs_1lane_24bit.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_vdo_2lane_24bit.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_vdo_2lane_ST7701S.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_vdo_4lane_1080p.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_vdo_4lane_720p.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_vdo_4lane_720p_rm68200ga1.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_vdo_4lane_EK79030.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_vdo_4lane_YZN101IBGG2001.c \
+	cpu/AC521x/mipi_lcd_driver/dsi_vdo_visual_lcd_for_pip.c \
+	cpu/AC521x/mipi_lcd_driver/lcd_mipi_4lane_s8500l0.c \
+	cpu/AC521x/mipi_lcd_driver/mipi_lcd_1280x400_wt.c \
+	cpu/AC521x/mipi_lcd_driver/mipi_lcd_1280x480.c \
+	cpu/AC521x/mipi_lcd_driver/mipi_lcd_1280x480_EK79030.c \
+	cpu/AC521x/mipi_lcd_driver/mipi_lcd_1280x480_ICN9706.c \
+	cpu/AC521x/mipi_lcd_driver/mipi_lcd_1600x400_wt1098802g01.c \
+	cpu/AC521x/mipi_lcd_driver/mipi_lcd_1600x400_wt1098802g01_1.c \
+	cpu/AC521x/mipi_lcd_driver/mipi_lcd_800x400_bst40_l5.c \
+	cpu/AC521x/power_inf.c \
+	cpu/AC521x/setup.c \
+	cpu/AC521x/static_memory_alloc.c \
+	cpu/AC521x/uart_key.c \
+
+
+# 需要编译的 .S 文件
+S_SRC_FILES :=
+
+
+# 需要编译的 .s 文件
+s_SRC_FILES :=
+
+
+# 需要编译的 .cpp 文件
+cpp_SRC_FILES :=
+
+
+# 需要编译的 .cc 文件
+cc_SRC_FILES :=
+
+
+# 需要编译的 .cxx 文件
+cxx_SRC_FILES :=
+
+
+# 链接参数
+LFLAGS := \
+	-Map=map.txt \
+	--plugin-opt=-inline-threshold=5 \
+	--plugin-opt=-enable-ipra=true \
+	--plugin-opt=-pi32v2-always-use-itblock \
+	--plugin-opt=-pi32v2-merge-max-offset=4096 \
+	--plugin-opt=-global-merge-on-const \
+	--plugin-opt=-pi32v2-large-program \
+	--plugin-opt=save-temps \
+	-Tcpu/AC521x/ram.ld \
+	--start-group \
+	include_lib/liba/AC521x/rtos.a \
+	include_lib/liba/AC521x/sd1.a \
+	include_lib/liba/AC521x/ascii.a \
+	include_lib/liba/AC521x/res.a \
+	include_lib/liba/AC521x/usb.a \
+	include_lib/liba/AC521x/spec_uart.a \
+	include_lib/liba/AC521x/usb_cam_dev.a \
+	include_lib/liba/AC521x/fs.a \
+	include_lib/liba/AC521x/upgrade.a \
+	include_lib/liba/AC521x/rs_ecc.a \
+	include_lib/liba/AC521x/font.a \
+	include_lib/liba/AC521x/server.a \
+	include_lib/liba/AC521x/ui_server.a \
+	include_lib/liba/AC521x/video_engine_server.a \
+	include_lib/liba/AC521x/video_dec_server.a \
+	include_lib/liba/AC521x/vm.a \
+	include_lib/liba/AC521x/cpu_vm_icache.a \
+	include_lib/liba/AC521x/libBtCalling.a \
+	--whole-archive \
+	include_lib/liba/AC521x/usb_server.a \
+	include_lib/liba/AC521x/audio_server.a \
+	include_lib/liba/AC521x/video_rec_server.a \
+	include_lib/liba/AC521x/dev.a \
+	include_lib/liba/AC521x/audio_dev.a \
+	include_lib/liba/AC521x/video_dev.a \
+	include_lib/liba/AC521x/ui.a \
+	include_lib/liba/AC521x/sys.a \
+	include_lib/liba/AC521x/cpu.a \
+	include_lib/liba/AC521x/cpu_disp.a \
+	include_lib/liba/AC521x/cpu_video.a \
+	include_lib/liba/AC521x/isp.a \
+	include_lib/liba/AC521x/mm.a \
+	include_lib/liba/AC521x/libdetect_face.a \
+	include_lib/liba/AC521x/aac_enc_lib.a \
+	include_lib/liba/AC521x/dv15_aac_dec_lib.a \
+	include_lib/liba/AC521x/net_server.a \
+	include_lib/liba/AC521x/json.a \
+	include_lib/liba/AC521x/wifi_dev.a \
+	include_lib/liba/AC521x/avsdk.a \
+	include_lib/liba/AC521x/libqrcode.a \
+	--no-whole-archive \
+	include_lib/liba/AC521x/printf.a \
+	include_lib/liba/AC521x/lbuf.a \
+	include_lib/liba/AC521x/cbuf.a \
+	include_lib/liba/AC521x/avsdk.a  \
+	include_lib/liba/AC521x/Hi3861L.a \
+	include_lib/liba/AC521x/lwip.a \
+	include_lib/liba/AC521x/ftpclient.a \
+	include_lib/liba/AC521x/ftpserver.a \
+	include_lib/liba/AC521x/mbedtls.a \
+	include_lib/liba/AC521x/rtsp_client.a \
+	include_lib/liba/AC521x/rtsp_server.a \
+	include_lib/liba/AC521x/iperf.a \
+	include_lib/liba/AC521x/common_lib.a \
+	include_lib/liba/AC521x/sdio_card.a \
+	include_lib/liba/AC521x/hostapd_and_wpasupplicant.a \
+	include_lib/liba/AC521x/hsm.a \
+	include_lib/liba/AC521x/libcoap.a \
+	include_lib/liba/AC521x/http_cli.a \
+	include_lib/liba/AC521x/http_server.a \
+	include_lib/liba/AC521x/kcp.a \
+	include_lib/liba/AC521x/pixel_flow.a \
+	include_lib/liba/AC521x/libm.a \
+	--end-group \
+	--plugin-opt=-inline-threshold=5 \
+
+
+LIBPATHS := \
+	-L$(SYS_LIB_DIR) \
+
+
+LIBS := \
+	$(SYS_LIB_DIR)/libm.a \
+	$(SYS_LIB_DIR)/libc.a \
+	$(SYS_LIB_DIR)/libm.a \
+	$(SYS_LIB_DIR)/libcompiler-rt.a \
+
+
+
+c_OBJS    := $(c_SRC_FILES:%.c=%.c.o)
+S_OBJS    := $(S_SRC_FILES:%.S=%.S.o)
+s_OBJS    := $(s_SRC_FILES:%.s=%.s.o)
+cpp_OBJS  := $(cpp_SRC_FILES:%.cpp=%.cpp.o)
+cxx_OBJS  := $(cxx_SRC_FILES:%.cxx=%.cxx.o)
+cc_OBJS   := $(cc_SRC_FILES:%.cc=%.cc.o)
+
+OBJS      := $(c_OBJS) $(S_OBJS) $(s_OBJS) $(cpp_OBJS) $(cxx_OBJS) $(cc_OBJS)
+DEP_FILES := $(OBJS:%.o=%.d)
+
+
+OBJS      := $(addprefix $(BUILD_DIR)/, $(OBJS))
+DEP_FILES := $(addprefix $(BUILD_DIR)/, $(DEP_FILES))
+
+
+VERBOSE ?= 0
+ifeq ($(VERBOSE), 1)
+QUITE :=
+else
+QUITE := @
+endif
+
+# 一些旧的 make 不支持 file 函数，需要 make 的时候指定 LINK_AT=0 make
+LINK_AT ?= 1
+
+# 表示下面的不是一个文件的名字，无论是否存在 all, clean, pre_build 这样的文件
+# 还是要执行命令
+# see: https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
+.PHONY: all clean pre_build
+
+# 不要使用 make 预设置的规则
+# see: https://www.gnu.org/software/make/manual/html_node/Suffix-Rules.html
+.SUFFIXES:
+
+all: pre_build $(OUT_ELF)
+	$(info +POST-BUILD)
+	$(QUITE) $(RUN_POST_SCRIPT) main
+
+pre_build:
+	$(info +PRE-BUILD)
+	$(QUITE) $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -D__LD__ -E -P cpu/AC521x/ram.c -o cpu/AC521x/ram.ld
+
+clean:
+	$(QUITE) $(RM) $(OUT_ELF)
+	$(QUITE) $(RM) $(BUILD_DIR)
+
+
+
+ifeq ($(LINK_AT), 1)
+$(OUT_ELF): $(OBJS)
+	$(info +LINK $@)
+	$(shell $(MKDIR) $(@D))
+	$(file >$(OBJ_FILE), $(OBJS))
+	$(QUITE) $(LD) -o $(OUT_ELF) @$(OBJ_FILE) $(LFLAGS) $(LIBPATHS) $(LIBS)
+else
+$(OUT_ELF): $(OBJS)
+	$(info +LINK $@)
+	$(shell $(MKDIR) $(@D))
+	$(QUITE) $(LD) -o $(OUT_ELF) $(OBJS) $(LFLAGS) $(LIBPATHS) $(LIBS)
+endif
+
+
+$(BUILD_DIR)/%.c.o : %.c
+	$(info +CC $<)
+	$(QUITE) $(MKDIR) $(@D)
+	$(QUITE) $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -MM -MT $@ $< -o $(@:.o=.d)
+	$(QUITE) $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+
+$(BUILD_DIR)/%.S.o : %.S
+	$(info +AS $<)
+	$(QUITE) $(MKDIR) $(@D)
+	$(QUITE) $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -MM -MT $@ $< -o $(@:.o=.d)
+	$(QUITE) $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+
+$(BUILD_DIR)/%.s.o : %.s
+	$(info +AS $<)
+	$(QUITE) $(MKDIR) $(@D)
+	$(QUITE) $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -MM -MT $@ $< -o $(@:.o=.d)
+	$(QUITE) $(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+
+$(BUILD_DIR)/%.cpp.o : %.cpp
+	$(info +CXX $<)
+	$(QUITE) $(MKDIR) $(@D)
+	$(QUITE) $(CXX) $(CXXFLAGS) $(CFLAGS) $(DEFINES) $(INCLUDES) -MM -MT $@ $< -o $(@:.o=.d)
+	$(QUITE) $(CXX) $(CXXFLAGS) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+
+$(BUILD_DIR)/%.cxx.o : %.cxx
+	$(info +CXX $<)
+	$(QUITE) $(MKDIR) $(@D)
+	$(QUITE) $(CXX) $(CXXFLAGS) $(CFLAGS) $(DEFINES) $(INCLUDES) -MM -MT $@ $< -o $(@:.o=.d)
+	$(QUITE) $(CXX) $(CXXFLAGS) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+
+$(BUILD_DIR)/%.cc.o : %.cc
+	$(info +CXX $<)
+	$(QUITE) $(MKDIR) $(@D)
+	$(QUITE) $(CXX) $(CXXFLAGS) $(CFLAGS) $(DEFINES) $(INCLUDES) -MM -MT $@ $< -o $(@:.o=.d)
+	$(QUITE) $(CXX) $(CXXFLAGS) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
+
+-include $(DEP_FILES)

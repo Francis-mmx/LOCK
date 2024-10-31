@@ -1,0 +1,14 @@
+*.o
+map.txt
+AC52N_CAR_CAMERA.depend
+AC52N_CAR_CAMERA.layout
+SGL_LOCK.si4project
+main.or32*
+UI工程/ui_1280x480_touch_screen/模式界面/project/debug.txt
+AC52N_CAR_CAMERA.cbp
+cpu/AC521x/tools/main.or32.resolution.txt
+cpu/AC521x/tools/sdram.apu
+cpu/AC521x/tools/data.bin
+cpu/AC521x/tools/jl_isd.bin
+cpu/AC521x/tools/sdram.bin
+cpu/AC521x/tools/sdram_text.bin

@@ -1,0 +1,23 @@
+﻿<?xml version="2.0" encoding="UTF-8"?>
+<Resbuilder>
+    <PageList>
+        <Page id="0">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">000000</Color>
+            </ColorList>
+            <PictureList/>
+            <CellList/>
+        </Page>
+        <Page id="1">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">000000</Color>
+            </ColorList>
+            <PictureList>
+                <Picture fmt="YUV" id="1">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\开机界面\project\config\开机图片\SJE.jpg</Picture>
+            </PictureList>
+            <CellList/>
+        </Page>
+    </PageList>
+</Resbuilder>

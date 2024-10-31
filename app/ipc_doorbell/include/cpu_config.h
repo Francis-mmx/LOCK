@@ -1,0 +1,153 @@
+#ifndef CPU_CONFIG_H
+#define CPU_CONFIG_H
+
+
+
+#ifdef __CPU_AC521x__
+
+#define FAT_CACHE_NUM   32
+
+#define VIDEO0_REC_FORMAT   VIDEO_FMT_AVI
+#define VIDEO1_REC_FORMAT   VIDEO_FMT_AVI
+#define VIDEO2_REC_FORMAT   VIDEO_FMT_AVI
+#ifdef CONFIG_PSRAM_ENABLE
+#define VREC0_FBUF_SIZE     (512*1024)
+#define VREC1_FBUF_SIZE     (256*1024)
+#define VREC2_FBUF_SIZE     (256 * 1024)
+#define AUDIO_BUF_SIZE      (256*1024)
+#else
+#if __SDRAM_SIZE__ <= (2 * 1024 * 1024)
+#define VREC0_FBUF_SIZE     (300*1024)
+#define VREC1_FBUF_SIZE     (0)
+#define VREC2_FBUF_SIZE     (0)
+#define AUDIO_BUF_SIZE      (32*1024)
+#elif defined( CONFIG_VIDEO5_ENABLE)
+#define VREC0_FBUF_SIZE     (800*1024)
+#define VREC1_FBUF_SIZE     (400*1024)
+#define VREC2_FBUF_SIZE     (400*1024)
+#define AUDIO_BUF_SIZE      (32*1024)
+#else
+#define VREC0_FBUF_SIZE     (2*1024*1024)
+#define VREC1_FBUF_SIZE     (1*1024*1024)
+#define VREC2_FBUF_SIZE     (1*1024*1024)
+#define AUDIO_BUF_SIZE      (64*1024)
+#endif
+#endif
+
+#define USB_CAMERA_BUF_SIZE (1 * 1024 * 1024) // + 512 * 1024)
+#define CAMERA_CAP_BUF_SIZE (1 * 1024 * 1024)
+
+
+#if __SDRAM_SIZE__ >= (8 * 1024 * 1024)
+#define NET_VREC0_FBUF_SIZE     (400*1024)
+#else
+#define NET_VREC0_FBUF_SIZE     (256*1024)
+#endif
+
+
+#ifdef CONFIG_VIDEO5_ENABLE
+#undef NET_VREC0_FBUF_SIZE
+#define NET_VREC0_FBUF_SIZE     (400*1024)
+#define NET_VREC1_FBUF_SIZE     (128*1024)
+#define NET_AUDIO_BUF_SIZE      (32*1024)
+#else
+#define NET_VREC1_FBUF_SIZE     (200*1024)
+#define NET_AUDIO_BUF_SIZE      (32*1024)
+#endif
+
+
+#elif defined __CPU_AC5401__
+
+#define FAT_CACHE_NUM   64
+
+#ifdef MP4_PACKAGE_ENABLE
+#define CONFIG_AAC_DEC_ENABLE
+#define CONFIG_AAC_ENC_ENABLE
+#define VIDEO0_REC_FORMAT   VIDEO_FMT_MP4
+#else
+#define VIDEO0_REC_FORMAT   VIDEO_FMT_MOV
+#endif
+#define VIDEO1_REC_FORMAT   VIDEO_FMT_MOV
+#if THREE_WAY_ENABLE
+#define VIDEO2_REC_FORMAT   VIDEO_FMT_AVI
+#define VREC0_FBUF_SIZE     (12*1024*1024)
+#define VREC1_FBUF_SIZE     (8*1024*1024)
+#define VREC2_FBUF_SIZE     (8*1024*1024)
+#else
+#define VIDEO2_REC_FORMAT   VIDEO_FMT_MOV
+#define VREC0_FBUF_SIZE     (6*1024*1024)
+#define VREC1_FBUF_SIZE     (2*1024*1024)
+#define VREC2_FBUF_SIZE     (4*1024*1024)
+#endif
+#define AUDIO_BUF_SIZE      (300*1024)
+#define USB_CAMERA_BUF_SIZE (3 * 1024 * 1024) // + 512 * 1024)
+#define CAMERA_CAP_BUF_SIZE (2 * 1024 * 1024)
+
+#define NET_VREC0_FBUF_SIZE     (4*1024*1024)
+#define NET_VREC1_FBUF_SIZE     (2*1024*1024)
+#define NET_AUDIO_BUF_SIZE      (256 * 1024)
+
+
+#elif defined __CPU_AC5601__
+
+#define FAT_CACHE_NUM   64
+
+#define VIDEO0_REC_FORMAT   VIDEO_FMT_MOV
+#define VIDEO1_REC_FORMAT   VIDEO_FMT_AVI
+#define VIDEO2_REC_FORMAT   VIDEO_FMT_AVI
+#define VREC0_FBUF_SIZE     (6*1024*1024)
+#define VREC1_FBUF_SIZE     (2*1024*1024)
+#define VREC2_FBUF_SIZE     (4*1024*1024)
+#define AUDIO_BUF_SIZE      (300*1024)
+#define CAMERA_CAP_BUF_SIZE (2 * 1024 * 1024)
+
+#define NET_VREC0_FBUF_SIZE     (4*1024*1024)
+#define NET_VREC1_FBUF_SIZE     (2*1024*1024)
+#define NET_AUDIO_BUF_SIZE      (256 * 1024)
+
+
+
+#else
+#error "undefined CPU"
+#endif
+
+#ifndef CONFIG_VIDEO1_ENABLE
+#undef VREC1_FBUF_SIZE
+#define VREC1_FBUF_SIZE (0)
+#endif
+
+#ifndef CONFIG_VIDEO2_ENABLE
+#undef VREC2_FBUF_SIZE
+#define VREC2_FBUF_SIZE (0)
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif

@@ -1,0 +1,8 @@
+back_1.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/UI_1280_480/new ui/back_1.pngbaskslash equal zero else
+config/UI_1280_480/new ui/back_1.png
+back_2.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/UI_1280_480/new ui/back_2.pngbaskslash equal zero else
+config/UI_1280_480/new ui/back_2.png
+back_3.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/UI_1280_480/new ui/back_3.pngbaskslash equal zero else
+config/UI_1280_480/new ui/back_3.png
+back_4.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/UI_1280_480/new ui/back_4.pngbaskslash equal zero else
+config/UI_1280_480/new ui/back_4.png

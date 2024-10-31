@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Workspace">
+		<Project filename="AC52N_IPC_DOORBELL.cbp" />
+		<Project filename="AC52N_WIFI_CAR_CAMERA.cbp" />
+		<Project filename="AC52N_CAR_CAMERA.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>

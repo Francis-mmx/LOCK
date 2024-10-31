@@ -1,0 +1,1892 @@
+﻿<?xml version="2.0" encoding="UTF-8"?>
+<Resbuilder>
+    <PageList>
+        <Page id="0">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">55AAFF</Color>
+                <Color id="2">0000FF</Color>
+                <Color id="3">FFFFFF</Color>
+                <Color id="4">55FF7F</Color>
+                <Color id="5">FF0000</Color>
+                <Color id="6">6B6B6B</Color>
+                <Color id="7">000000</Color>
+                <Color id="8">010509</Color>
+                <Color id="9">04080B</Color>
+                <Color id="10">0B0000</Color>
+                <Color id="11">0B0B0B</Color>
+                <Color id="12">010915</Color>
+                <Color id="13">04131B</Color>
+                <Color id="14">170000</Color>
+                <Color id="15">1D1209</Color>
+                <Color id="16">131313</Color>
+                <Color id="17">181717</Color>
+                <Color id="18">1B1B1B</Color>
+                <Color id="19">000A25</Color>
+                <Color id="20">051626</Color>
+                <Color id="21">051A31</Color>
+                <Color id="22">092339</Color>
+                <Color id="23">270000</Color>
+                <Color id="24">211E1E</Color>
+                <Color id="25">390000</Color>
+                <Color id="26">29221D</Color>
+                <Color id="27">232323</Color>
+                <Color id="28">2B2B2B</Color>
+                <Color id="29">2B3539</Color>
+                <Color id="30">382B22</Color>
+                <Color id="31">333333</Color>
+                <Color id="32">373C3C</Color>
+                <Color id="33">3B3A3A</Color>
+                <Color id="34">092945</Color>
+                <Color id="35">0A2F50</Color>
+                <Color id="36">0D304B</Color>
+                <Color id="37">0C3456</Color>
+                <Color id="38">163E5F</Color>
+                <Color id="39">093A65</Color>
+                <Color id="40">103D65</Color>
+                <Color id="41">0E416A</Color>
+                <Color id="42">0A4475</Color>
+                <Color id="43">11436A</Color>
+                <Color id="44">124B79</Color>
+                <Color id="45">19517B</Color>
+                <Color id="46">365959</Color>
+                <Color id="47">26567C</Color>
+                <Color id="48">3A5467</Color>
+                <Color id="49">480000</Color>
+                <Color id="50">560000</Color>
+                <Color id="51">422305</Color>
+                <Color id="52">403D3A</Color>
+                <Color id="53">660000</Color>
+                <Color id="54">790000</Color>
+                <Color id="55">444444</Color>
+                <Color id="56">4D4D4D</Color>
+                <Color id="57">504F4F</Color>
+                <Color id="58">535353</Color>
+                <Color id="59">5B5656</Color>
+                <Color id="60">5B5B5B</Color>
+                <Color id="61">4A5B66</Color>
+                <Color id="62">505A62</Color>
+                <Color id="63">556565</Color>
+                <Color id="64">635E5A</Color>
+                <Color id="65">6B6254</Color>
+                <Color id="66">676767</Color>
+                <Color id="67">747474</Color>
+                <Color id="68">787777</Color>
+                <Color id="69">7D7B75</Color>
+                <Color id="70">7A7A7A</Color>
+                <Color id="71">004181</Color>
+                <Color id="72">0C5896</Color>
+                <Color id="73">104E81</Color>
+                <Color id="74">135486</Color>
+                <Color id="75">155B96</Color>
+                <Color id="76">095BA0</Color>
+                <Color id="77">17698D</Color>
+                <Color id="78">16649D</Color>
+                <Color id="79">0975BC</Color>
+                <Color id="80">1665A7</Color>
+                <Color id="81">176BB3</Color>
+                <Color id="82">1972B9</Color>
+                <Color id="83">215880</Color>
+                <Color id="84">27669B</Color>
+                <Color id="85">3C6C94</Color>
+                <Color id="86">2A6CA4</Color>
+                <Color id="87">2F74AD</Color>
+                <Color id="88">2E7EBF</Color>
+                <Color id="89">005CFF</Color>
+                <Color id="90">1A79C6</Color>
+                <Color id="91">1B7DD4</Color>
+                <Color id="92">0079FF</Color>
+                <Color id="93">4D799E</Color>
+                <Color id="94">7D5792</Color>
+                <Color id="95">1C81CC</Color>
+                <Color id="96">1C82D8</Color>
+                <Color id="97">0088FF</Color>
+                <Color id="98">0D91FF</Color>
+                <Color id="99">1D8AE5</Color>
+                <Color id="100">1F90E2</Color>
+                <Color id="101">1897FC</Color>
+                <Color id="102">06A4FF</Color>
+                <Color id="103">00B9FF</Color>
+                <Color id="104">16A5FF</Color>
+                <Color id="105">1AB2FF</Color>
+                <Color id="106">2582C3</Color>
+                <Color id="107">2084D9</Color>
+                <Color id="108">3187CE</Color>
+                <Color id="109">3D93DC</Color>
+                <Color id="110">2199E9</Color>
+                <Color id="111">2094F3</Color>
+                <Color id="112">2095FE</Color>
+                <Color id="113">2199FE</Color>
+                <Color id="114">2C9FFF</Color>
+                <Color id="115">3F96E0</Color>
+                <Color id="116">23A3FE</Color>
+                <Color id="117">24AAFF</Color>
+                <Color id="118">2BA4FC</Color>
+                <Color id="119">27B5FE</Color>
+                <Color id="120">34A1FF</Color>
+                <Color id="121">32ACFB</Color>
+                <Color id="122">3FA5FF</Color>
+                <Color id="123">3CAAFF</Color>
+                <Color id="124">37B1FA</Color>
+                <Color id="125">3AB4FA</Color>
+                <Color id="126">3EB9F9</Color>
+                <Color id="127">2AC6FF</Color>
+                <Color id="128">2DD1FF</Color>
+                <Color id="129">758080</Color>
+                <Color id="130">728799</Color>
+                <Color id="131">4295DC</Color>
+                <Color id="132">469BE3</Color>
+                <Color id="133">4FA3EA</Color>
+                <Color id="134">42A9FF</Color>
+                <Color id="135">41BCF8</Color>
+                <Color id="136">4FB7F3</Color>
+                <Color id="137">53A6EE</Color>
+                <Color id="138">58ADF6</Color>
+                <Color id="139">5DB1F8</Color>
+                <Color id="140">74ABD9</Color>
+                <Color id="141">68ADE8</Color>
+                <Color id="142">61B3F9</Color>
+                <Color id="143">45C1F8</Color>
+                <Color id="144">49C5F6</Color>
+                <Color id="145">4DCAF6</Color>
+                <Color id="146">40D1FF</Color>
+                <Color id="147">51CEF5</Color>
+                <Color id="148">58CBFF</Color>
+                <Color id="149">55D3F4</Color>
+                <Color id="150">58D6F4</Color>
+                <Color id="151">5CDAF2</Color>
+                <Color id="152">61D2FF</Color>
+                <Color id="153">60DEF2</Color>
+                <Color id="154">6ED5FF</Color>
+                <Color id="155">77D9FF</Color>
+                <Color id="156">870000</Color>
+                <Color id="157">970000</Color>
+                <Color id="158">A70000</Color>
+                <Color id="159">B30000</Color>
+                <Color id="160">BC0000</Color>
+                <Color id="161">BA0E0E</Color>
+                <Color id="162">BE1E1E</Color>
+                <Color id="163">BC201F</Color>
+                <Color id="164">B92626</Color>
+                <Color id="165">B03A3A</Color>
+                <Color id="166">932B5E</Color>
+                <Color id="167">9C5656</Color>
+                <Color id="168">906B4A</Color>
+                <Color id="169">A16161</Color>
+                <Color id="170">C60000</Color>
+                <Color id="171">D40000</Color>
+                <Color id="172">DC0000</Color>
+                <Color id="173">DF0A0A</Color>
+                <Color id="174">DA1103</Color>
+                <Color id="175">D01010</Color>
+                <Color id="176">CA3232</Color>
+                <Color id="177">E70000</Color>
+                <Color id="178">EB1414</Color>
+                <Color id="179">FE0000</Color>
+                <Color id="180">F73131</Color>
+                <Color id="181">C8537D</Color>
+                <Color id="182">FF5148</Color>
+                <Color id="183">FC5454</Color>
+                <Color id="184">F06F6F</Color>
+                <Color id="185">FF6565</Color>
+                <Color id="186">FF6C6C</Color>
+                <Color id="187">FF7C7C</Color>
+                <Color id="188">85827C</Color>
+                <Color id="189">AC896A</Color>
+                <Color id="190">A78D76</Color>
+                <Color id="191">B18F70</Color>
+                <Color id="192">B9997B</Color>
+                <Color id="193">888888</Color>
+                <Color id="194">88949E</Color>
+                <Color id="195">998E85</Color>
+                <Color id="196">9D9086</Color>
+                <Color id="197">999999</Color>
+                <Color id="198">82A7A7</Color>
+                <Color id="199">9CA7A7</Color>
+                <Color id="200">9FB6B6</Color>
+                <Color id="201">A39384</Color>
+                <Color id="202">A59B91</Color>
+                <Color id="203">A2A2A2</Color>
+                <Color id="204">A3A8A8</Color>
+                <Color id="205">A8A5A3</Color>
+                <Color id="206">AAAAAA</Color>
+                <Color id="207">A8B9B9</Color>
+                <Color id="208">B7ADA8</Color>
+                <Color id="209">BBB1A9</Color>
+                <Color id="210">B3B3B3</Color>
+                <Color id="211">BABABA</Color>
+                <Color id="212">84BCFF</Color>
+                <Color id="213">9CD2D2</Color>
+                <Color id="214">86C7FF</Color>
+                <Color id="215">85DEFF</Color>
+                <Color id="216">92CDFF</Color>
+                <Color id="217">98D0FF</Color>
+                <Color id="218">8AE3FF</Color>
+                <Color id="219">91E3FF</Color>
+                <Color id="220">99FBFF</Color>
+                <Color id="221">AAC6C6</Color>
+                <Color id="222">B6D4D4</Color>
+                <Color id="223">A1D4FF</Color>
+                <Color id="224">A8EDFF</Color>
+                <Color id="225">BEFFFF</Color>
+                <Color id="226">C4A385</Color>
+                <Color id="227">D0AE8F</Color>
+                <Color id="228">D2B092</Color>
+                <Color id="229">C4B5A8</Color>
+                <Color id="230">C0B7B2</Color>
+                <Color id="231">FF8F8F</Color>
+                <Color id="232">FF9492</Color>
+                <Color id="233">FFABAB</Color>
+                <Color id="234">FFBEBE</Color>
+                <Color id="235">D3C2B6</Color>
+                <Color id="236">E4C2A4</Color>
+                <Color id="237">C7C7C7</Color>
+                <Color id="238">CBDDDD</Color>
+                <Color id="239">DBD2CB</Color>
+                <Color id="240">D7D7D7</Color>
+                <Color id="241">CBE3E3</Color>
+                <Color id="242">CBE7FF</Color>
+                <Color id="243">C3FFFF</Color>
+                <Color id="244">DCE0E3</Color>
+                <Color id="245">DAEEFF</Color>
+                <Color id="246">D8FAFC</Color>
+                <Color id="247">E8D7C9</Color>
+                <Color id="248">FEC6C6</Color>
+                <Color id="249">F0DACA</Color>
+                <Color id="250">F3DADA</Color>
+                <Color id="251">FFD3D3</Color>
+                <Color id="252">FFDEDE</Color>
+                <Color id="253">EBE1D8</Color>
+                <Color id="254">F9E9DB</Color>
+                <Color id="255">E2E2E2</Color>
+            </ColorList>
+            <PictureList>
+                <Picture fmt="OSD8" id="1">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\blue_bg.png</Picture>
+                <Picture fmt="OSD8" id="2">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\flig.png</Picture>
+                <Picture fmt="OSD8" id="3">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\flig_on.png</Picture>
+                <Picture fmt="OSD8" id="4">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_aud.png</Picture>
+                <Picture fmt="OSD8" id="5">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_aud_o.png</Picture>
+                <Picture fmt="OSD8" id="6">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_0.png</Picture>
+                <Picture fmt="OSD8" id="7">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_ful.png</Picture>
+                <Picture fmt="OSD8" id="8">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_h.png</Picture>
+                <Picture fmt="OSD8" id="9">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_half.png</Picture>
+                <Picture fmt="OSD8" id="10">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_l.png</Picture>
+                <Picture fmt="OSD8" id="11">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_card.png</Picture>
+                <Picture fmt="OSD8" id="12">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_card_o.png</Picture>
+                <Picture fmt="OSD8" id="13">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_char.png</Picture>
+                <Picture fmt="OSD8" id="14">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_cyc_3.png</Picture>
+                <Picture fmt="OSD8" id="15">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_cyc_5.png</Picture>
+                <Picture fmt="OSD8" id="16">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_cyc_10.png</Picture>
+                <Picture fmt="OSD8" id="17">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_down.png</Picture>
+                <Picture fmt="OSD8" id="18">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_a0.png</Picture>
+                <Picture fmt="OSD8" id="19">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_a1.png</Picture>
+                <Picture fmt="OSD8" id="20">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_a2.png</Picture>
+                <Picture fmt="OSD8" id="21">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_a3.png</Picture>
+                <Picture fmt="OSD8" id="22">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_d1.png</Picture>
+                <Picture fmt="OSD8" id="23">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_d2.png</Picture>
+                <Picture fmt="OSD8" id="24">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_d3.png</Picture>
+                <Picture fmt="OSD8" id="25">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_gra_h.png</Picture>
+                <Picture fmt="OSD8" id="26">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_gra_l.png</Picture>
+                <Picture fmt="OSD8" id="27">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_gra_m.png</Picture>
+                <Picture fmt="OSD8" id="28">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_hdr.png</Picture>
+                <Picture fmt="OSD8" id="29">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_left.png</Picture>
+                <Picture fmt="OSD8" id="30">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_mot.png</Picture>
+                <Picture fmt="OSD8" id="31">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_park.png</Picture>
+                <Picture fmt="OSD8" id="32">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_rec.png</Picture>
+                <Picture fmt="OSD8" id="33">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_rec.png</Picture>
+                <Picture fmt="OSD8" id="34">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_right.png</Picture>
+                <Picture fmt="OSD8" id="35">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_set.png</Picture>
+                <Picture fmt="OSD8" id="36">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_tear.png</Picture>
+                <Picture fmt="OSD8" id="37">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_up.png</Picture>
+                <Picture fmt="OSD8" id="38">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_wifi.png</Picture>
+                <Picture fmt="OSD8" id="39">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\key.png</Picture>
+                <Picture fmt="OSD8" id="40">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_bg_s.png</Picture>
+                <Picture fmt="OSD8" id="41">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sel.png</Picture>
+                <Picture fmt="OSD8" id="42">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sel_b.png</Picture>
+                <Picture fmt="OSD8" id="43">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sta.png</Picture>
+                <Picture fmt="OSD8" id="44">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_aud.png</Picture>
+                <Picture fmt="OSD8" id="45">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_cyc.png</Picture>
+                <Picture fmt="OSD8" id="46">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_dat.png</Picture>
+                <Picture fmt="OSD8" id="47">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_exp.png</Picture>
+                <Picture fmt="OSD8" id="48">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_flig.png</Picture>
+                <Picture fmt="OSD8" id="49">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_gra.png</Picture>
+                <Picture fmt="OSD8" id="50">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_hdr.png</Picture>
+                <Picture fmt="OSD8" id="51">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_mot.png</Picture>
+                <Picture fmt="OSD8" id="52">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_num.png</Picture>
+                <Picture fmt="OSD8" id="53">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_park.png</Picture>
+                <Picture fmt="OSD8" id="54">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_rec_nocyc.png</Picture>
+                <Picture fmt="OSD8" id="55">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_solu.png</Picture>
+                <Picture fmt="OSD8" id="56">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_two_rec.png</Picture>
+                <Picture fmt="OSD8" id="57">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM0.png</Picture>
+                <Picture fmt="OSD8" id="58">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM1.png</Picture>
+                <Picture fmt="OSD8" id="59">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM2.png</Picture>
+                <Picture fmt="OSD8" id="60">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM3.png</Picture>
+                <Picture fmt="OSD8" id="61">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM4.png</Picture>
+                <Picture fmt="OSD8" id="62">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM5.png</Picture>
+                <Picture fmt="OSD8" id="63">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM6.png</Picture>
+                <Picture fmt="OSD8" id="64">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM7.png</Picture>
+                <Picture fmt="OSD8" id="65">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM8.png</Picture>
+                <Picture fmt="OSD8" id="66">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM9.png</Picture>
+                <Picture fmt="OSD8" id="67">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr0.png</Picture>
+                <Picture fmt="OSD8" id="68">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr1.png</Picture>
+                <Picture fmt="OSD8" id="69">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr2.png</Picture>
+                <Picture fmt="OSD8" id="70">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr3.png</Picture>
+                <Picture fmt="OSD8" id="71">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr4.png</Picture>
+                <Picture fmt="OSD8" id="72">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr5.png</Picture>
+                <Picture fmt="OSD8" id="73">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr6.png</Picture>
+                <Picture fmt="OSD8" id="74">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr7.png</Picture>
+                <Picture fmt="OSD8" id="75">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr8.png</Picture>
+                <Picture fmt="OSD8" id="76">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr9.png</Picture>
+                <Picture fmt="OSD8" id="77">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr_d.png</Picture>
+                <Picture fmt="OSD8" id="78">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr_d2.png</Picture>
+                <Picture fmt="OSD8" id="79">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_b.png</Picture>
+                <Picture fmt="OSD8" id="80">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_d.png</Picture>
+                <Picture fmt="OSD8" id="81">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_dd.png</Picture>
+                <Picture fmt="OSD8" id="82">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_l.png</Picture>
+                <Picture fmt="OSD8" id="83">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_ll.png</Picture>
+                <Picture fmt="OSD8" id="84">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\red_circle.png</Picture>
+            </PictureList>
+            <CellList>
+                <Cell id="1">m5</Cell>
+                <Cell id="2">m7</Cell>
+                <Cell id="4">m13</Cell>
+                <Cell id="5">m15</Cell>
+                <Cell id="7">m21</Cell>
+                <Cell id="8">m25</Cell>
+                <Cell id="9">m26</Cell>
+                <Cell id="10">m34</Cell>
+                <Cell id="11">m35</Cell>
+                <Cell id="13">m38</Cell>
+                <Cell id="19">m45</Cell>
+                <Cell id="22">m48</Cell>
+                <Cell id="55">m106</Cell>
+                <Cell id="59">m111</Cell>
+                <Cell id="61">m113</Cell>
+                <Cell id="72">m130</Cell>
+                <Cell id="73">m131</Cell>
+                <Cell id="74">m132</Cell>
+                <Cell id="75">m133</Cell>
+                <Cell id="76">m134</Cell>
+                <Cell id="86">m151</Cell>
+                <Cell id="88">m153</Cell>
+                <Cell id="89">m157</Cell>
+                <Cell id="90">m158</Cell>
+                <Cell id="91">m159</Cell>
+                <Cell id="93">m167</Cell>
+                <Cell id="94">m168</Cell>
+                <Cell id="97">m174</Cell>
+                <Cell id="98">m175</Cell>
+                <Cell id="102">m186</Cell>
+                <Cell id="103">m187</Cell>
+                <Cell id="104">m198</Cell>
+                <Cell id="105">m199</Cell>
+                <Cell id="106">m200</Cell>
+                <Cell id="107">m201</Cell>
+                <Cell id="108">m202</Cell>
+                <Cell id="109">m205</Cell>
+                <Cell id="110">m208</Cell>
+                <Cell id="111">m211</Cell>
+                <Cell id="112">m214</Cell>
+                <Cell id="113">m215</Cell>
+                <Cell id="114">m216</Cell>
+                <Cell id="115">m217</Cell>
+                <Cell id="129">m232</Cell>
+                <Cell id="130">m233</Cell>
+                <Cell id="131">m234</Cell>
+                <Cell id="132">m235</Cell>
+                <Cell id="133">m236</Cell>
+                <Cell id="134">m237</Cell>
+                <Cell id="135">m238</Cell>
+                <Cell id="136">m239</Cell>
+                <Cell id="137">m240</Cell>
+                <Cell id="138">m241</Cell>
+                <Cell id="139">m242</Cell>
+                <Cell id="140">m243</Cell>
+                <Cell id="141">m244</Cell>
+                <Cell id="142">m245</Cell>
+                <Cell id="143">m246</Cell>
+                <Cell id="144">m247</Cell>
+                <Cell id="145">m248</Cell>
+                <Cell id="146">m249</Cell>
+                <Cell id="147">m250</Cell>
+                <Cell id="148">m251</Cell>
+                <Cell id="149">m252</Cell>
+                <Cell id="150">m253</Cell>
+                <Cell id="151">m254</Cell>
+                <Cell id="152">m255</Cell>
+                <Cell id="153">m256</Cell>
+                <Cell id="154">m257</Cell>
+                <Cell id="155">m258</Cell>
+                <Cell id="156">m259</Cell>
+                <Cell id="157">m260</Cell>
+                <Cell id="158">m261</Cell>
+                <Cell id="159">m262</Cell>
+                <Cell id="160">m263</Cell>
+                <Cell id="161">m264</Cell>
+                <Cell id="162">m265</Cell>
+                <Cell id="163">m266</Cell>
+                <Cell id="164">m267</Cell>
+                <Cell id="165">m268</Cell>
+                <Cell id="166">m269</Cell>
+                <Cell id="167">m270</Cell>
+                <Cell id="168">m271</Cell>
+                <Cell id="169">m272</Cell>
+                <Cell id="170">m273</Cell>
+                <Cell id="171">m274</Cell>
+                <Cell id="172">m275</Cell>
+                <Cell id="173">m276</Cell>
+                <Cell id="174">m277</Cell>
+                <Cell id="175">m278</Cell>
+                <Cell id="176">m279</Cell>
+                <Cell id="177">m280</Cell>
+                <Cell id="178">m281</Cell>
+                <Cell id="179">m282</Cell>
+                <Cell id="180">m283</Cell>
+                <Cell id="181">m284</Cell>
+                <Cell id="182">m285</Cell>
+                <Cell id="183">m286</Cell>
+                <Cell id="184">m287</Cell>
+                <Cell id="185">m288</Cell>
+                <Cell id="186">m289</Cell>
+                <Cell id="187">m290</Cell>
+                <Cell id="188">m291</Cell>
+                <Cell id="189">m292</Cell>
+                <Cell id="190">m293</Cell>
+                <Cell id="191">m294</Cell>
+                <Cell id="192">m295</Cell>
+                <Cell id="193">m296</Cell>
+                <Cell id="194">m297</Cell>
+                <Cell id="195">m298</Cell>
+                <Cell id="198">m301</Cell>
+                <Cell id="199">m304</Cell>
+                <Cell id="200">m305</Cell>
+                <Cell id="203">m308</Cell>
+            </CellList>
+        </Page>
+        <Page id="1">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">AA55FF</Color>
+                <Color id="2">0000FF</Color>
+                <Color id="3">FFFFFF</Color>
+                <Color id="4">6B6B6B</Color>
+                <Color id="5">000000</Color>
+                <Color id="6">020D0D</Color>
+                <Color id="7">080707</Color>
+                <Color id="8">0B0B0B</Color>
+                <Color id="9">181818</Color>
+                <Color id="10">012020</Color>
+                <Color id="11">201F1F</Color>
+                <Color id="12">242424</Color>
+                <Color id="13">2B2B2B</Color>
+                <Color id="14">373737</Color>
+                <Color id="15">353F61</Color>
+                <Color id="16">1C4A6F</Color>
+                <Color id="17">2E485A</Color>
+                <Color id="18">384264</Color>
+                <Color id="19">3A5D78</Color>
+                <Color id="20">403F3F</Color>
+                <Color id="21">54593D</Color>
+                <Color id="22">6B6F32</Color>
+                <Color id="23">444444</Color>
+                <Color id="24">4D4D4D</Color>
+                <Color id="25">4E555C</Color>
+                <Color id="26">504F4F</Color>
+                <Color id="27">5F5042</Color>
+                <Color id="28">535353</Color>
+                <Color id="29">585757</Color>
+                <Color id="30">5C5C51</Color>
+                <Color id="31">5B5B5B</Color>
+                <Color id="32">424B6B</Color>
+                <Color id="33">4A5370</Color>
+                <Color id="34">525370</Color>
+                <Color id="35">5C6565</Color>
+                <Color id="36">5F617B</Color>
+                <Color id="37">635746</Color>
+                <Color id="38">605F5F</Color>
+                <Color id="39">775656</Color>
+                <Color id="40">6C6253</Color>
+                <Color id="41">786856</Color>
+                <Color id="42">72774C</Color>
+                <Color id="43">636363</Color>
+                <Color id="44">676868</Color>
+                <Color id="45">6D6D6D</Color>
+                <Color id="46">777777</Color>
+                <Color id="47">0A508A</Color>
+                <Color id="48">1D588C</Color>
+                <Color id="49">1B5B91</Color>
+                <Color id="50">0057AE</Color>
+                <Color id="51">005CBB</Color>
+                <Color id="52">1561A0</Color>
+                <Color id="53">116ABB</Color>
+                <Color id="54">225A89</Color>
+                <Color id="55">206089</Color>
+                <Color id="56">23689E</Color>
+                <Color id="57">326289</Color>
+                <Color id="58">2769A2</Color>
+                <Color id="59">005CFF</Color>
+                <Color id="60">0C71C6</Color>
+                <Color id="61">047BDB</Color>
+                <Color id="62">007AFF</Color>
+                <Color id="63">4A5781</Color>
+                <Color id="64">515C87</Color>
+                <Color id="65">4D6E8B</Color>
+                <Color id="66">506F89</Color>
+                <Color id="67">517F9D</Color>
+                <Color id="68">4B7CA6</Color>
+                <Color id="69">7D5792</Color>
+                <Color id="70">666882</Color>
+                <Color id="71">6E718B</Color>
+                <Color id="72">657396</Color>
+                <Color id="73">74778A</Color>
+                <Color id="74">787997</Color>
+                <Color id="75">0389FE</Color>
+                <Color id="76">0D91FE</Color>
+                <Color id="77">138BE9</Color>
+                <Color id="78">118EFF</Color>
+                <Color id="79">1593FF</Color>
+                <Color id="80">00B9FF</Color>
+                <Color id="81">1AA7FF</Color>
+                <Color id="82">1BB3FF</Color>
+                <Color id="83">2395FF</Color>
+                <Color id="84">2199FE</Color>
+                <Color id="85">2D9DFF</Color>
+                <Color id="86">3F96E0</Color>
+                <Color id="87">329DFF</Color>
+                <Color id="88">22A6FF</Color>
+                <Color id="89">22A8FF</Color>
+                <Color id="90">2BA4FC</Color>
+                <Color id="91">34A1FF</Color>
+                <Color id="92">32ACFB</Color>
+                <Color id="93">3BA3FF</Color>
+                <Color id="94">37B1FA</Color>
+                <Color id="95">3AB4FA</Color>
+                <Color id="96">3EB9F9</Color>
+                <Color id="97">7B8899</Color>
+                <Color id="98">7F80A8</Color>
+                <Color id="99">71ACAC</Color>
+                <Color id="100">4498DE</Color>
+                <Color id="101">4096E0</Color>
+                <Color id="102">4AABFF</Color>
+                <Color id="103">41BCF8</Color>
+                <Color id="104">56A7EC</Color>
+                <Color id="105">58ADF5</Color>
+                <Color id="106">5BB0F9</Color>
+                <Color id="107">65B5FA</Color>
+                <Color id="108">74BDFF</Color>
+                <Color id="109">45C1F8</Color>
+                <Color id="110">49C5F6</Color>
+                <Color id="111">4DCAF6</Color>
+                <Color id="112">51CEF5</Color>
+                <Color id="113">55D3F4</Color>
+                <Color id="114">58D6F4</Color>
+                <Color id="115">5CDAF2</Color>
+                <Color id="116">60DEF2</Color>
+                <Color id="117">75C1FF</Color>
+                <Color id="118">77D9FF</Color>
+                <Color id="119">950000</Color>
+                <Color id="120">911515</Color>
+                <Color id="121">A50404</Color>
+                <Color id="122">AC1111</Color>
+                <Color id="123">BB0606</Color>
+                <Color id="124">BC201F</Color>
+                <Color id="125">B92626</Color>
+                <Color id="126">932B5E</Color>
+                <Color id="127">85745E</Color>
+                <Color id="128">857567</Color>
+                <Color id="129">817F7D</Color>
+                <Color id="130">AA5050</Color>
+                <Color id="131">CB0000</Color>
+                <Color id="132">DA1103</Color>
+                <Color id="133">CA3232</Color>
+                <Color id="134">FE0000</Color>
+                <Color id="135">FF2727</Color>
+                <Color id="136">FF3636</Color>
+                <Color id="137">DF5A5A</Color>
+                <Color id="138">C8537D</Color>
+                <Color id="139">E54D4D</Color>
+                <Color id="140">FF4848</Color>
+                <Color id="141">FF5148</Color>
+                <Color id="142">FF5858</Color>
+                <Color id="143">FF6B6B</Color>
+                <Color id="144">FF7C7C</Color>
+                <Color id="145">878A29</Color>
+                <Color id="146">86893A</Color>
+                <Color id="147">8D9037</Color>
+                <Color id="148">9DA036</Color>
+                <Color id="149">ACAE18</Color>
+                <Color id="150">B9BB1B</Color>
+                <Color id="151">B9BB36</Color>
+                <Color id="152">82884A</Color>
+                <Color id="153">898A5C</Color>
+                <Color id="154">9A9E41</Color>
+                <Color id="155">8C8277</Color>
+                <Color id="156">938475</Color>
+                <Color id="157">9D9D64</Color>
+                <Color id="158">A18C7A</Color>
+                <Color id="159">A2A243</Color>
+                <Color id="160">A6A65E</Color>
+                <Color id="161">C4C636</Color>
+                <Color id="162">DCDE2E</Color>
+                <Color id="163">DADA35</Color>
+                <Color id="164">FAFA3C</Color>
+                <Color id="165">DDDE67</Color>
+                <Color id="166">DFE064</Color>
+                <Color id="167">EAE944</Color>
+                <Color id="168">FEFE46</Color>
+                <Color id="169">FEFE57</Color>
+                <Color id="170">E0E164</Color>
+                <Color id="171">EBED7A</Color>
+                <Color id="172">EFF177</Color>
+                <Color id="173">F6F77B</Color>
+                <Color id="174">828282</Color>
+                <Color id="175">888787</Color>
+                <Color id="176">8B8B8B</Color>
+                <Color id="177">8E9093</Color>
+                <Color id="178">9B8E81</Color>
+                <Color id="179">969787</Color>
+                <Color id="180">949494</Color>
+                <Color id="181">989797</Color>
+                <Color id="182">9B9B9B</Color>
+                <Color id="183">8282AB</Color>
+                <Color id="184">8B90AF</Color>
+                <Color id="185">8B90B0</Color>
+                <Color id="186">9BACAC</Color>
+                <Color id="187">A88D8D</Color>
+                <Color id="188">B59981</Color>
+                <Color id="189">B1A291</Color>
+                <Color id="190">A3A3A3</Color>
+                <Color id="191">A3A8A8</Color>
+                <Color id="192">A8A5A3</Color>
+                <Color id="193">AAAAAA</Color>
+                <Color id="194">A1A0BB</Color>
+                <Color id="195">ABB7B8</Color>
+                <Color id="196">B8ADA7</Color>
+                <Color id="197">BBB1A9</Color>
+                <Color id="198">B3B3B3</Color>
+                <Color id="199">B8B7B6</Color>
+                <Color id="200">BABABA</Color>
+                <Color id="201">84BCFF</Color>
+                <Color id="202">B4B4CC</Color>
+                <Color id="203">9CD2D2</Color>
+                <Color id="204">86C7FF</Color>
+                <Color id="205">85DEFF</Color>
+                <Color id="206">93CDFF</Color>
+                <Color id="207">99D0FF</Color>
+                <Color id="208">8BE1FF</Color>
+                <Color id="209">91E4FF</Color>
+                <Color id="210">99FBFF</Color>
+                <Color id="211">AAC6C6</Color>
+                <Color id="212">A6D6FF</Color>
+                <Color id="213">BBDFFF</Color>
+                <Color id="214">A8EEFF</Color>
+                <Color id="215">B8E1E1</Color>
+                <Color id="216">C4B5A8</Color>
+                <Color id="217">FF8A8A</Color>
+                <Color id="218">FF9695</Color>
+                <Color id="219">FFA4A4</Color>
+                <Color id="220">FFBBBB</Color>
+                <Color id="221">D3C2B4</Color>
+                <Color id="222">F6F782</Color>
+                <Color id="223">FFFF93</Color>
+                <Color id="224">C7C7C7</Color>
+                <Color id="225">CBDDDD</Color>
+                <Color id="226">DBD2CB</Color>
+                <Color id="227">D3D3D3</Color>
+                <Color id="228">DAD6D2</Color>
+                <Color id="229">DBDBDB</Color>
+                <Color id="230">C9C9E4</Color>
+                <Color id="231">CAC9F4</Color>
+                <Color id="232">D9D9E8</Color>
+                <Color id="233">DDDDF6</Color>
+                <Color id="234">CBE3E3</Color>
+                <Color id="235">CAE6FF</Color>
+                <Color id="236">C3FFFF</Color>
+                <Color id="237">D9EDFF</Color>
+                <Color id="238">D9F8FF</Color>
+                <Color id="239">E5D5CA</Color>
+                <Color id="240">E0DFDE</Color>
+                <Color id="241">FFC7C7</Color>
+                <Color id="242">FFD8D8</Color>
+                <Color id="243">EEE3DA</Color>
+                <Color id="244">FFE2C9</Color>
+                <Color id="245">F4E5D8</Color>
+                <Color id="246">E2E2E2</Color>
+                <Color id="247">E4E7E8</Color>
+                <Color id="248">E8E7E7</Color>
+                <Color id="249">E9E8E5</Color>
+                <Color id="250">EBEBEB</Color>
+                <Color id="251">E5E5F9</Color>
+                <Color id="252">E5F6FF</Color>
+                <Color id="253">FCEEE3</Color>
+                <Color id="254">FFF5E8</Color>
+                <Color id="255">F3F3F3</Color>
+            </ColorList>
+            <PictureList>
+                <Picture fmt="OSD8" id="1">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\blue_bg.png</Picture>
+                <Picture fmt="OSD8" id="2">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl1.png</Picture>
+                <Picture fmt="OSD8" id="3">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\dl2.png</Picture>
+                <Picture fmt="OSD8" id="4">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl2.png</Picture>
+                <Picture fmt="OSD8" id="5">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl3.png</Picture>
+                <Picture fmt="OSD8" id="6">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl4.png</Picture>
+                <Picture fmt="OSD8" id="7">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl5.png</Picture>
+                <Picture fmt="OSD8" id="8">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\dl5.png</Picture>
+                <Picture fmt="OSD8" id="9">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl6.png</Picture>
+                <Picture fmt="OSD8" id="10">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl7.png</Picture>
+                <Picture fmt="OSD8" id="11">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl8.png</Picture>
+                <Picture fmt="OSD8" id="12">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl9.png</Picture>
+                <Picture fmt="OSD8" id="13">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\dl10.png</Picture>
+                <Picture fmt="OSD8" id="14">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\delaynum\dl10.png</Picture>
+                <Picture fmt="OSD8" id="15">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\flig.png</Picture>
+                <Picture fmt="OSD8" id="16">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\flig_on.png</Picture>
+                <Picture fmt="OSD8" id="17">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\iso_1.png</Picture>
+                <Picture fmt="OSD8" id="18">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\iso_2.png</Picture>
+                <Picture fmt="OSD8" id="19">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\iso_4.png</Picture>
+                <Picture fmt="OSD8" id="20">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\iso_auto.png</Picture>
+                <Picture fmt="OSD8" id="21">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_0.png</Picture>
+                <Picture fmt="OSD8" id="22">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_ful.png</Picture>
+                <Picture fmt="OSD8" id="23">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_h.png</Picture>
+                <Picture fmt="OSD8" id="24">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_half.png</Picture>
+                <Picture fmt="OSD8" id="25">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_l.png</Picture>
+                <Picture fmt="OSD8" id="26">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_card.png</Picture>
+                <Picture fmt="OSD8" id="27">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_card_o.png</Picture>
+                <Picture fmt="OSD8" id="28">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_char.png</Picture>
+                <Picture fmt="OSD8" id="29">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\photo_menu\i_color.png</Picture>
+                <Picture fmt="OSD8" id="30">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_down.png</Picture>
+                <Picture fmt="OSD8" id="31">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_a0.png</Picture>
+                <Picture fmt="OSD8" id="32">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_a1.png</Picture>
+                <Picture fmt="OSD8" id="33">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_a2.png</Picture>
+                <Picture fmt="OSD8" id="34">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_a3.png</Picture>
+                <Picture fmt="OSD8" id="35">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_d1.png</Picture>
+                <Picture fmt="OSD8" id="36">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_d2.png</Picture>
+                <Picture fmt="OSD8" id="37">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_exp_d3.png</Picture>
+                <Picture fmt="OSD8" id="38">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\photo_menu\i_img_q.png</Picture>
+                <Picture fmt="OSD8" id="39">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\photo_menu\i_iso.png</Picture>
+                <Picture fmt="OSD8" id="40">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_left.png</Picture>
+                <Picture fmt="OSD8" id="41">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\photo_menu\i_lianp.png</Picture>
+                <Picture fmt="OSD8" id="42">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\photo_menu\i_paiz.png</Picture>
+                <Picture fmt="OSD8" id="43">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_photo.png</Picture>
+                <Picture fmt="OSD8" id="44">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_p_shake.png</Picture>
+                <Picture fmt="OSD8" id="45">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_p_shake_o.png</Picture>
+                <Picture fmt="OSD8" id="46">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_q1.png</Picture>
+                <Picture fmt="OSD8" id="47">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_q2.png</Picture>
+                <Picture fmt="OSD8" id="48">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_q3.png</Picture>
+                <Picture fmt="OSD8" id="49">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_right.png</Picture>
+                <Picture fmt="OSD8" id="50">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\photo_menu\i_ruidu.png</Picture>
+                <Picture fmt="OSD8" id="51">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\photo_menu\i_scan.png</Picture>
+                <Picture fmt="OSD8" id="52">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_set.png</Picture>
+                <Picture fmt="OSD8" id="53">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\photo_menu\i_shake.png</Picture>
+                <Picture fmt="OSD8" id="54">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_tp.png</Picture>
+                <Picture fmt="OSD8" id="55">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_tp_3.png</Picture>
+                <Picture fmt="OSD8" id="56">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_up.png</Picture>
+                <Picture fmt="OSD8" id="57">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_wb.png</Picture>
+                <Picture fmt="OSD8" id="58">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_wb_riguang.png</Picture>
+                <Picture fmt="OSD8" id="59">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_wb_wusi.png</Picture>
+                <Picture fmt="OSD8" id="60">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_wb_yingguang.png</Picture>
+                <Picture fmt="OSD8" id="61">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\拍照界面\i_wb_yintian.png</Picture>
+                <Picture fmt="OSD8" id="62">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_bg_s.png</Picture>
+                <Picture fmt="OSD8" id="63">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sel.png</Picture>
+                <Picture fmt="OSD8" id="64">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sel_b.png</Picture>
+                <Picture fmt="OSD8" id="65">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sta.png</Picture>
+                <Picture fmt="OSD8" id="66">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_dat.png</Picture>
+                <Picture fmt="OSD8" id="67">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_exp.png</Picture>
+                <Picture fmt="OSD8" id="68">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\rec_menu\m_solu.png</Picture>
+                <Picture fmt="OSD8" id="69">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM0.png</Picture>
+                <Picture fmt="OSD8" id="70">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM1.png</Picture>
+                <Picture fmt="OSD8" id="71">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM2.png</Picture>
+                <Picture fmt="OSD8" id="72">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM3.png</Picture>
+                <Picture fmt="OSD8" id="73">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM4.png</Picture>
+                <Picture fmt="OSD8" id="74">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM5.png</Picture>
+                <Picture fmt="OSD8" id="75">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM6.png</Picture>
+                <Picture fmt="OSD8" id="76">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM7.png</Picture>
+                <Picture fmt="OSD8" id="77">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM8.png</Picture>
+                <Picture fmt="OSD8" id="78">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM9.png</Picture>
+                <Picture fmt="OSD8" id="79">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_b.png</Picture>
+                <Picture fmt="OSD8" id="80">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_d.png</Picture>
+                <Picture fmt="OSD8" id="81">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_dd.png</Picture>
+                <Picture fmt="OSD8" id="82">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_l.png</Picture>
+                <Picture fmt="OSD8" id="83">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_ll.png</Picture>
+            </PictureList>
+            <CellList>
+                <Cell id="7">m21</Cell>
+                <Cell id="10">m34</Cell>
+                <Cell id="12">m37</Cell>
+                <Cell id="13">m38</Cell>
+                <Cell id="14">m40</Cell>
+                <Cell id="15">m41</Cell>
+                <Cell id="16">m42</Cell>
+                <Cell id="17">m43</Cell>
+                <Cell id="18">m44</Cell>
+                <Cell id="19">m45</Cell>
+                <Cell id="20">m46</Cell>
+                <Cell id="21">m47</Cell>
+                <Cell id="22">m48</Cell>
+                <Cell id="24">m61</Cell>
+                <Cell id="25">m62</Cell>
+                <Cell id="26">m63</Cell>
+                <Cell id="27">m64</Cell>
+                <Cell id="28">m66</Cell>
+                <Cell id="29">m68</Cell>
+                <Cell id="30">m69</Cell>
+                <Cell id="31">m70</Cell>
+                <Cell id="32">m71</Cell>
+                <Cell id="33">m72</Cell>
+                <Cell id="34">m73</Cell>
+                <Cell id="35">m74</Cell>
+                <Cell id="36">m77</Cell>
+                <Cell id="37">m78</Cell>
+                <Cell id="38">m79</Cell>
+                <Cell id="39">m80</Cell>
+                <Cell id="59">m111</Cell>
+                <Cell id="71">m128</Cell>
+                <Cell id="86">m151</Cell>
+                <Cell id="88">m153</Cell>
+                <Cell id="90">m158</Cell>
+                <Cell id="91">m159</Cell>
+                <Cell id="93">m167</Cell>
+                <Cell id="94">m168</Cell>
+                <Cell id="97">m174</Cell>
+                <Cell id="101">m185</Cell>
+                <Cell id="108">m202</Cell>
+                <Cell id="109">m205</Cell>
+                <Cell id="110">m208</Cell>
+                <Cell id="111">m211</Cell>
+                <Cell id="112">m214</Cell>
+                <Cell id="116">m218</Cell>
+                <Cell id="117">m219</Cell>
+                <Cell id="118">m220</Cell>
+                <Cell id="119">m221</Cell>
+                <Cell id="120">m222</Cell>
+                <Cell id="121">m224</Cell>
+                <Cell id="122">m225</Cell>
+                <Cell id="123">m226</Cell>
+                <Cell id="124">m227</Cell>
+                <Cell id="125">m228</Cell>
+                <Cell id="126">m229</Cell>
+                <Cell id="127">m230</Cell>
+                <Cell id="128">m231</Cell>
+                <Cell id="198">m301</Cell>
+                <Cell id="200">m305</Cell>
+                <Cell id="203">m308</Cell>
+            </CellList>
+        </Page>
+        <Page id="2">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">FF8181</Color>
+                <Color id="2">0000FF</Color>
+                <Color id="3">FFFFFF</Color>
+                <Color id="4">FF0000</Color>
+                <Color id="5">6B6B6B</Color>
+                <Color id="6">676767</Color>
+                <Color id="7">000000</Color>
+                <Color id="8">FFE9D7</Color>
+                <Color id="9">170000</Color>
+                <Color id="10">141414</Color>
+                <Color id="11">181717</Color>
+                <Color id="12">1A1A1A</Color>
+                <Color id="13">270000</Color>
+                <Color id="14">201F1F</Color>
+                <Color id="15">3A0000</Color>
+                <Color id="16">242424</Color>
+                <Color id="17">2B2B2B</Color>
+                <Color id="18">2D343A</Color>
+                <Color id="19">383838</Color>
+                <Color id="20">1B3145</Color>
+                <Color id="21">003F7C</Color>
+                <Color id="22">154165</Color>
+                <Color id="23">1C527B</Color>
+                <Color id="24">3E4344</Color>
+                <Color id="25">2A4C6C</Color>
+                <Color id="26">354E72</Color>
+                <Color id="27">3B5972</Color>
+                <Color id="28">480000</Color>
+                <Color id="29">560000</Color>
+                <Color id="30">403F3F</Color>
+                <Color id="31">660000</Color>
+                <Color id="32">790000</Color>
+                <Color id="33">564A3E</Color>
+                <Color id="34">4D4D4D</Color>
+                <Color id="35">4B5356</Color>
+                <Color id="36">504F4F</Color>
+                <Color id="37">565656</Color>
+                <Color id="38">435766</Color>
+                <Color id="39">476075</Color>
+                <Color id="40">556066</Color>
+                <Color id="41">546776</Color>
+                <Color id="42">5C707E</Color>
+                <Color id="43">68594A</Color>
+                <Color id="44">726656</Color>
+                <Color id="45">706A65</Color>
+                <Color id="46">747474</Color>
+                <Color id="47">787777</Color>
+                <Color id="48">7B7B7B</Color>
+                <Color id="49">0F518C</Color>
+                <Color id="50">0E5A9B</Color>
+                <Color id="51">104D80</Color>
+                <Color id="52">185587</Color>
+                <Color id="53">165991</Color>
+                <Color id="54">0156AA</Color>
+                <Color id="55">0464AD</Color>
+                <Color id="56">046AB1</Color>
+                <Color id="57">0872BA</Color>
+                <Color id="58">255C8C</Color>
+                <Color id="59">305D85</Color>
+                <Color id="60">26699A</Color>
+                <Color id="61">3B6285</Color>
+                <Color id="62">32729D</Color>
+                <Color id="63">246AA5</Color>
+                <Color id="64">005DC2</Color>
+                <Color id="65">005CFF</Color>
+                <Color id="66">0069C8</Color>
+                <Color id="67">0066DD</Color>
+                <Color id="68">0A79CC</Color>
+                <Color id="69">037EE6</Color>
+                <Color id="70">0075FF</Color>
+                <Color id="71">007CFF</Color>
+                <Color id="72">4A6B86</Color>
+                <Color id="73">487698</Color>
+                <Color id="74">5F7282</Color>
+                <Color id="75">7D5792</Color>
+                <Color id="76">647785</Color>
+                <Color id="77">0E94DB</Color>
+                <Color id="78">0F98DA</Color>
+                <Color id="79">1195DA</Color>
+                <Color id="80">0580EB</Color>
+                <Color id="81">0082F6</Color>
+                <Color id="82">0086FF</Color>
+                <Color id="83">008AF5</Color>
+                <Color id="84">0088FF</Color>
+                <Color id="85">088EFF</Color>
+                <Color id="86">0D90FE</Color>
+                <Color id="87">1792FF</Color>
+                <Color id="88">08A4FF</Color>
+                <Color id="89">00B9FF</Color>
+                <Color id="90">19A7FF</Color>
+                <Color id="91">19B4FF</Color>
+                <Color id="92">3E95DF</Color>
+                <Color id="93">2196FF</Color>
+                <Color id="94">2199FE</Color>
+                <Color id="95">2C9FFF</Color>
+                <Color id="96">3F96E0</Color>
+                <Color id="97">23A0FF</Color>
+                <Color id="98">25AAFF</Color>
+                <Color id="99">2BA4FC</Color>
+                <Color id="100">23B0FF</Color>
+                <Color id="101">34A1FF</Color>
+                <Color id="102">32ACFB</Color>
+                <Color id="103">3FA5FF</Color>
+                <Color id="104">37B1FA</Color>
+                <Color id="105">3AB4FA</Color>
+                <Color id="106">3EB9F9</Color>
+                <Color id="107">6B8397</Color>
+                <Color id="108">74818C</Color>
+                <Color id="109">4295DD</Color>
+                <Color id="110">489CE3</Color>
+                <Color id="111">4DA1E9</Color>
+                <Color id="112">42A9FF</Color>
+                <Color id="113">41BCF8</Color>
+                <Color id="114">52A5ED</Color>
+                <Color id="115">57ACF5</Color>
+                <Color id="116">5CB0F8</Color>
+                <Color id="117">61B2F8</Color>
+                <Color id="118">45C1F8</Color>
+                <Color id="119">49C5F6</Color>
+                <Color id="120">4DCAF6</Color>
+                <Color id="121">51CEF5</Color>
+                <Color id="122">55D3F4</Color>
+                <Color id="123">58D6F4</Color>
+                <Color id="124">5CDAF2</Color>
+                <Color id="125">60DEF2</Color>
+                <Color id="126">72D9FF</Color>
+                <Color id="127">7AD9FF</Color>
+                <Color id="128">870000</Color>
+                <Color id="129">970000</Color>
+                <Color id="130">A70000</Color>
+                <Color id="131">B70000</Color>
+                <Color id="132">BC201F</Color>
+                <Color id="133">B92626</Color>
+                <Color id="134">932B5E</Color>
+                <Color id="135">806B5B</Color>
+                <Color id="136">81705E</Color>
+                <Color id="137">8A7B6B</Color>
+                <Color id="138">867E76</Color>
+                <Color id="139">C60000</Color>
+                <Color id="140">D90000</Color>
+                <Color id="141">DA1103</Color>
+                <Color id="142">CA3232</Color>
+                <Color id="143">E70000</Color>
+                <Color id="144">F40000</Color>
+                <Color id="145">FE0000</Color>
+                <Color id="146">C8537D</Color>
+                <Color id="147">FF5148</Color>
+                <Color id="148">FF5656</Color>
+                <Color id="149">FF6564</Color>
+                <Color id="150">FF6E6E</Color>
+                <Color id="151">FF7B7B</Color>
+                <Color id="152">82827E</Color>
+                <Color id="153">9B826E</Color>
+                <Color id="154">9A8B7D</Color>
+                <Color id="155">A58D79</Color>
+                <Color id="156">FFA93A</Color>
+                <Color id="157">828282</Color>
+                <Color id="158">848888</Color>
+                <Color id="159">888787</Color>
+                <Color id="160">888884</Color>
+                <Color id="161">8B8B8B</Color>
+                <Color id="162">8A8F91</Color>
+                <Color id="163">8F959B</Color>
+                <Color id="164">9B8D81</Color>
+                <Color id="165">9D9186</Color>
+                <Color id="166">949494</Color>
+                <Color id="167">969B9E</Color>
+                <Color id="168">989796</Color>
+                <Color id="169">9B9B9B</Color>
+                <Color id="170">9BA7A8</Color>
+                <Color id="171">A08F83</Color>
+                <Color id="172">A49588</Color>
+                <Color id="173">A79E97</Color>
+                <Color id="174">B59D89</Color>
+                <Color id="175">A8A09A</Color>
+                <Color id="176">BDA189</Color>
+                <Color id="177">B6A89B</Color>
+                <Color id="178">A3A2A2</Color>
+                <Color id="179">A3A8A8</Color>
+                <Color id="180">A8A6A4</Color>
+                <Color id="181">AAAAAA</Color>
+                <Color id="182">A9BABA</Color>
+                <Color id="183">B1A7A3</Color>
+                <Color id="184">B4AAA2</Color>
+                <Color id="185">B7ADA9</Color>
+                <Color id="186">BBAEA3</Color>
+                <Color id="187">BAAFA9</Color>
+                <Color id="188">BFB1A5</Color>
+                <Color id="189">BBB1A9</Color>
+                <Color id="190">B7B7B7</Color>
+                <Color id="191">84BCFF</Color>
+                <Color id="192">9CD2D2</Color>
+                <Color id="193">86C7FF</Color>
+                <Color id="194">85DEFF</Color>
+                <Color id="195">92CDFF</Color>
+                <Color id="196">98D0FF</Color>
+                <Color id="197">8BE1FF</Color>
+                <Color id="198">91E4FF</Color>
+                <Color id="199">99FBFF</Color>
+                <Color id="200">A3C2C2</Color>
+                <Color id="201">AAC6C6</Color>
+                <Color id="202">ADCBCB</Color>
+                <Color id="203">A1D4FF</Color>
+                <Color id="204">A3ECFF</Color>
+                <Color id="205">AAEFFF</Color>
+                <Color id="206">C0AFA1</Color>
+                <Color id="207">C6B3A3</Color>
+                <Color id="208">C2B5A9</Color>
+                <Color id="209">C6B8AB</Color>
+                <Color id="210">CAB4A3</Color>
+                <Color id="211">C9B9AB</Color>
+                <Color id="212">C8BEB5</Color>
+                <Color id="213">FF8F8F</Color>
+                <Color id="214">FF9492</Color>
+                <Color id="215">FFBEBE</Color>
+                <Color id="216">C9C1B9</Color>
+                <Color id="217">D6C7BA</Color>
+                <Color id="218">E3CEBD</Color>
+                <Color id="219">C3C2C3</Color>
+                <Color id="220">C7C8C8</Color>
+                <Color id="221">CACACA</Color>
+                <Color id="222">CBDDDD</Color>
+                <Color id="223">D8CCC2</Color>
+                <Color id="224">D5D0CC</Color>
+                <Color id="225">DFD1C5</Color>
+                <Color id="226">DAD2CA</Color>
+                <Color id="227">D3D3D3</Color>
+                <Color id="228">D9D6D3</Color>
+                <Color id="229">DCDCDC</Color>
+                <Color id="230">CBE3E3</Color>
+                <Color id="231">CBE7FF</Color>
+                <Color id="232">C3FFFF</Color>
+                <Color id="233">DEE0E1</Color>
+                <Color id="234">DAEEFF</Color>
+                <Color id="235">D6FFFF</Color>
+                <Color id="236">DDF0FF</Color>
+                <Color id="237">E2D5CB</Color>
+                <Color id="238">E7D8CD</Color>
+                <Color id="239">ECD6C5</Color>
+                <Color id="240">ECDECF</Color>
+                <Color id="241">E9DCD2</Color>
+                <Color id="242">FFC3C2</Color>
+                <Color id="243">F0DCCC</Color>
+                <Color id="244">FFD3D3</Color>
+                <Color id="245">E3E1DF</Color>
+                <Color id="246">F8E7DA</Color>
+                <Color id="247">E2E2E2</Color>
+                <Color id="248">E8E7E7</Color>
+                <Color id="249">ECE9E6</Color>
+                <Color id="250">EAEAEA</Color>
+                <Color id="251">E0F1FF</Color>
+                <Color id="252">EBFFFF</Color>
+                <Color id="253">F4EBE3</Color>
+                <Color id="254">F2EFED</Color>
+                <Color id="255">FDEEE2</Color>
+            </ColorList>
+            <PictureList>
+                <Picture fmt="OSD8" id="1">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\2X.png</Picture>
+                <Picture fmt="OSD8" id="2">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\4X.png</Picture>
+                <Picture fmt="OSD8" id="3">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\8X.png</Picture>
+                <Picture fmt="OSD8" id="4">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\blue_bg.png</Picture>
+                <Picture fmt="OSD8" id="5">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\file.png</Picture>
+                <Picture fmt="OSD8" id="6">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_0.png</Picture>
+                <Picture fmt="OSD8" id="7">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_ful.png</Picture>
+                <Picture fmt="OSD8" id="8">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_h.png</Picture>
+                <Picture fmt="OSD8" id="9">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_half.png</Picture>
+                <Picture fmt="OSD8" id="10">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_bat_l.png</Picture>
+                <Picture fmt="OSD8" id="11">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_card.png</Picture>
+                <Picture fmt="OSD8" id="12">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\录像界面\i_card_o.png</Picture>
+                <Picture fmt="OSD8" id="13">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\电量\i_char.png</Picture>
+                <Picture fmt="OSD8" id="14">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\play_menu\i_delet.png</Picture>
+                <Picture fmt="OSD8" id="15">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_down.png</Picture>
+                <Picture fmt="OSD8" id="16">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_left.png</Picture>
+                <Picture fmt="OSD8" id="17">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\i_pau.png</Picture>
+                <Picture fmt="OSD8" id="18">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\i_pause.png</Picture>
+                <Picture fmt="OSD8" id="19">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_play.png</Picture>
+                <Picture fmt="OSD8" id="20">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\i_play.png</Picture>
+                <Picture fmt="OSD8" id="21">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\play_menu\i_protect.png</Picture>
+                <Picture fmt="OSD8" id="22">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\i_p_photo.png</Picture>
+                <Picture fmt="OSD8" id="23">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\i_p_rec.png</Picture>
+                <Picture fmt="OSD8" id="24">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\i_q_n.png</Picture>
+                <Picture fmt="OSD8" id="25">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\i_q_n2.png</Picture>
+                <Picture fmt="OSD8" id="26">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\i_q_p.png</Picture>
+                <Picture fmt="OSD8" id="27">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\i_q_p2.png</Picture>
+                <Picture fmt="OSD8" id="28">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_right.png</Picture>
+                <Picture fmt="OSD8" id="29">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_set.png</Picture>
+                <Picture fmt="OSD8" id="30">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_up.png</Picture>
+                <Picture fmt="OSD8" id="31">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\key.png</Picture>
+                <Picture fmt="OSD8" id="32">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_bg_s.png</Picture>
+                <Picture fmt="OSD8" id="33">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sel.png</Picture>
+                <Picture fmt="OSD8" id="34">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sel_b.png</Picture>
+                <Picture fmt="OSD8" id="35">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sta.png</Picture>
+                <Picture fmt="OSD8" id="36">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\music.png</Picture>
+                <Picture fmt="OSD8" id="37">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM0.png</Picture>
+                <Picture fmt="OSD8" id="38">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM1.png</Picture>
+                <Picture fmt="OSD8" id="39">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM2.png</Picture>
+                <Picture fmt="OSD8" id="40">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM3.png</Picture>
+                <Picture fmt="OSD8" id="41">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM4.png</Picture>
+                <Picture fmt="OSD8" id="42">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM5.png</Picture>
+                <Picture fmt="OSD8" id="43">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM6.png</Picture>
+                <Picture fmt="OSD8" id="44">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM7.png</Picture>
+                <Picture fmt="OSD8" id="45">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM8.png</Picture>
+                <Picture fmt="OSD8" id="46">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM9.png</Picture>
+                <Picture fmt="OSD8" id="47">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr0.png</Picture>
+                <Picture fmt="OSD8" id="48">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr1.png</Picture>
+                <Picture fmt="OSD8" id="49">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr2.png</Picture>
+                <Picture fmt="OSD8" id="50">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr3.png</Picture>
+                <Picture fmt="OSD8" id="51">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr4.png</Picture>
+                <Picture fmt="OSD8" id="52">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr5.png</Picture>
+                <Picture fmt="OSD8" id="53">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr6.png</Picture>
+                <Picture fmt="OSD8" id="54">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr7.png</Picture>
+                <Picture fmt="OSD8" id="55">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr8.png</Picture>
+                <Picture fmt="OSD8" id="56">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr9.png</Picture>
+                <Picture fmt="OSD8" id="57">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr_d.png</Picture>
+                <Picture fmt="OSD8" id="58">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUMr_d2.png</Picture>
+                <Picture fmt="OSD8" id="59">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_d.png</Picture>
+                <Picture fmt="OSD8" id="60">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_dd.png</Picture>
+                <Picture fmt="OSD8" id="61">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\pic.png</Picture>
+                <Picture fmt="OSD8" id="62">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\回放界面\rec.png</Picture>
+            </PictureList>
+            <CellList>
+                <Cell id="3">m11</Cell>
+                <Cell id="4">m13</Cell>
+                <Cell id="5">m15</Cell>
+                <Cell id="38">m79</Cell>
+                <Cell id="39">m80</Cell>
+                <Cell id="41">m84</Cell>
+                <Cell id="42">m85</Cell>
+                <Cell id="43">m87</Cell>
+                <Cell id="44">m88</Cell>
+                <Cell id="45">m89</Cell>
+                <Cell id="46">m90</Cell>
+                <Cell id="47">m91</Cell>
+                <Cell id="48">m92</Cell>
+                <Cell id="49">m95</Cell>
+                <Cell id="79">m142</Cell>
+                <Cell id="80">m143</Cell>
+                <Cell id="84">m147</Cell>
+                <Cell id="85">m148</Cell>
+                <Cell id="86">m151</Cell>
+                <Cell id="87">m152</Cell>
+                <Cell id="88">m153</Cell>
+                <Cell id="91">m159</Cell>
+                <Cell id="92">m162</Cell>
+                <Cell id="93">m167</Cell>
+                <Cell id="94">m168</Cell>
+                <Cell id="95">m169</Cell>
+                <Cell id="100">m177</Cell>
+                <Cell id="121">m224</Cell>
+                <Cell id="122">m225</Cell>
+                <Cell id="123">m226</Cell>
+                <Cell id="124">m227</Cell>
+                <Cell id="125">m228</Cell>
+                <Cell id="126">m229</Cell>
+                <Cell id="127">m230</Cell>
+                <Cell id="128">m231</Cell>
+                <Cell id="197">m300</Cell>
+                <Cell id="200">m305</Cell>
+                <Cell id="203">m308</Cell>
+            </CellList>
+        </Page>
+        <Page id="3">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">000000</Color>
+                <Color id="2">FFFFFF</Color>
+                <Color id="3">09080B</Color>
+                <Color id="4">010101</Color>
+                <Color id="5">020202</Color>
+                <Color id="6">030303</Color>
+                <Color id="7">050505</Color>
+                <Color id="8">080808</Color>
+                <Color id="9">090909</Color>
+                <Color id="10">0B0B0B</Color>
+                <Color id="11">0F0F0F</Color>
+                <Color id="12">101010</Color>
+                <Color id="13">111111</Color>
+                <Color id="14">131313</Color>
+                <Color id="15">141414</Color>
+                <Color id="16">171717</Color>
+                <Color id="17">191919</Color>
+                <Color id="18">1A1A1A</Color>
+                <Color id="19">1B1B1B</Color>
+                <Color id="20">1C1C1C</Color>
+                <Color id="21">1D1D1D</Color>
+                <Color id="22">1E1E1E</Color>
+                <Color id="23">1F1F1F</Color>
+                <Color id="24">202020</Color>
+                <Color id="25">212121</Color>
+                <Color id="26">222222</Color>
+                <Color id="27">232323</Color>
+                <Color id="28">242424</Color>
+                <Color id="29">252525</Color>
+                <Color id="30">262626</Color>
+                <Color id="31">272727</Color>
+                <Color id="32">282828</Color>
+                <Color id="33">292929</Color>
+                <Color id="34">2C2C2C</Color>
+                <Color id="35">2D2D2D</Color>
+                <Color id="36">2E2E2E</Color>
+                <Color id="37">2F2F2F</Color>
+                <Color id="38">303030</Color>
+                <Color id="39">313131</Color>
+                <Color id="40">323232</Color>
+                <Color id="41">333333</Color>
+                <Color id="42">343434</Color>
+                <Color id="43">353535</Color>
+                <Color id="44">383838</Color>
+                <Color id="45">393939</Color>
+                <Color id="46">3A3A3A</Color>
+                <Color id="47">3B3B3B</Color>
+                <Color id="48">3C3C3C</Color>
+                <Color id="49">3D3D3D</Color>
+                <Color id="50">3E3E3E</Color>
+                <Color id="51">404040</Color>
+                <Color id="52">414141</Color>
+                <Color id="53">424242</Color>
+                <Color id="54">434343</Color>
+                <Color id="55">454545</Color>
+                <Color id="56">464646</Color>
+                <Color id="57">474747</Color>
+                <Color id="58">484848</Color>
+                <Color id="59">4A4A4A</Color>
+                <Color id="60">4D4D4D</Color>
+                <Color id="61">505050</Color>
+                <Color id="62">525252</Color>
+                <Color id="63">535353</Color>
+                <Color id="64">545454</Color>
+                <Color id="65">565656</Color>
+                <Color id="66">575757</Color>
+                <Color id="67">585858</Color>
+                <Color id="68">5A5A5A</Color>
+                <Color id="69">5B5B5B</Color>
+                <Color id="70">5C5C5C</Color>
+                <Color id="71">5D5D5D</Color>
+                <Color id="72">5E5E5E</Color>
+                <Color id="73">5F5F5F</Color>
+                <Color id="74">606060</Color>
+                <Color id="75">616161</Color>
+                <Color id="76">626262</Color>
+                <Color id="77">636363</Color>
+                <Color id="78">646464</Color>
+                <Color id="79">656565</Color>
+                <Color id="80">666666</Color>
+                <Color id="81">676767</Color>
+                <Color id="82">686868</Color>
+                <Color id="83">696969</Color>
+                <Color id="84">6A6A6A</Color>
+                <Color id="85">6B6B6B</Color>
+                <Color id="86">6C6C6C</Color>
+                <Color id="87">6D6D6D</Color>
+                <Color id="88">6E6E6E</Color>
+                <Color id="89">6F6F6F</Color>
+                <Color id="90">707070</Color>
+                <Color id="91">717171</Color>
+                <Color id="92">727272</Color>
+                <Color id="93">737373</Color>
+                <Color id="94">747474</Color>
+                <Color id="95">757575</Color>
+                <Color id="96">767676</Color>
+                <Color id="97">777777</Color>
+                <Color id="98">787878</Color>
+                <Color id="99">797979</Color>
+                <Color id="100">7A7A7A</Color>
+                <Color id="101">7B7B7B</Color>
+                <Color id="102">7C7C7C</Color>
+                <Color id="103">7D7D7D</Color>
+                <Color id="104">7E7E7E</Color>
+                <Color id="105">7F7F7F</Color>
+                <Color id="106">229AFF</Color>
+                <Color id="107">239BFF</Color>
+                <Color id="108">249CFE</Color>
+                <Color id="109">249DFE</Color>
+                <Color id="110">269EFE</Color>
+                <Color id="111">29A1FD</Color>
+                <Color id="112">2BA4FD</Color>
+                <Color id="113">2EA7FC</Color>
+                <Color id="114">31ABFC</Color>
+                <Color id="115">34AEFB</Color>
+                <Color id="116">37B1FA</Color>
+                <Color id="117">3BB5FA</Color>
+                <Color id="118">3EB9F9</Color>
+                <Color id="119">42BDF8</Color>
+                <Color id="120">45C1F8</Color>
+                <Color id="121">49C5F7</Color>
+                <Color id="122">4CC8F6</Color>
+                <Color id="123">4FCCF6</Color>
+                <Color id="124">52CFF5</Color>
+                <Color id="125">55D3F4</Color>
+                <Color id="126">58D6F4</Color>
+                <Color id="127">5AD8F3</Color>
+                <Color id="128">5DDBF3</Color>
+                <Color id="129">5FDDF2</Color>
+                <Color id="130">60DEF2</Color>
+                <Color id="131">61DFF2</Color>
+                <Color id="132">808080</Color>
+                <Color id="133">818181</Color>
+                <Color id="134">828282</Color>
+                <Color id="135">838383</Color>
+                <Color id="136">848484</Color>
+                <Color id="137">858585</Color>
+                <Color id="138">868686</Color>
+                <Color id="139">878787</Color>
+                <Color id="140">888888</Color>
+                <Color id="141">898989</Color>
+                <Color id="142">8A8A8A</Color>
+                <Color id="143">8B8B8B</Color>
+                <Color id="144">8C8C8C</Color>
+                <Color id="145">8D8D8D</Color>
+                <Color id="146">8E8E8E</Color>
+                <Color id="147">8F8F8F</Color>
+                <Color id="148">909090</Color>
+                <Color id="149">919191</Color>
+                <Color id="150">929292</Color>
+                <Color id="151">939393</Color>
+                <Color id="152">949494</Color>
+                <Color id="153">959595</Color>
+                <Color id="154">969696</Color>
+                <Color id="155">979797</Color>
+                <Color id="156">989898</Color>
+                <Color id="157">999999</Color>
+                <Color id="158">9A9A9A</Color>
+                <Color id="159">9B9B9B</Color>
+                <Color id="160">9C9C9C</Color>
+                <Color id="161">9D9D9D</Color>
+                <Color id="162">9E9E9E</Color>
+                <Color id="163">9F9F9F</Color>
+                <Color id="164">A0A0A0</Color>
+                <Color id="165">A1A1A1</Color>
+                <Color id="166">A2A2A2</Color>
+                <Color id="167">A3A3A3</Color>
+                <Color id="168">A5A5A5</Color>
+                <Color id="169">A6A6A6</Color>
+                <Color id="170">A7A7A7</Color>
+                <Color id="171">A8A8A8</Color>
+                <Color id="172">A9A9A9</Color>
+                <Color id="173">AAAAAA</Color>
+                <Color id="174">ABABAB</Color>
+                <Color id="175">ACACAC</Color>
+                <Color id="176">ADADAD</Color>
+                <Color id="177">AEAEAE</Color>
+                <Color id="178">AFAFAF</Color>
+                <Color id="179">B0B0B0</Color>
+                <Color id="180">B1B1B1</Color>
+                <Color id="181">B2B2B2</Color>
+                <Color id="182">B3B3B3</Color>
+                <Color id="183">B4B4B4</Color>
+                <Color id="184">B5B5B5</Color>
+                <Color id="185">B6B6B6</Color>
+                <Color id="186">B7B7B7</Color>
+                <Color id="187">B8B8B8</Color>
+                <Color id="188">B9B9B9</Color>
+                <Color id="189">BABABA</Color>
+                <Color id="190">BBBBBB</Color>
+                <Color id="191">BCBCBC</Color>
+                <Color id="192">BDBDBD</Color>
+                <Color id="193">BEBEBE</Color>
+                <Color id="194">BFBFBF</Color>
+                <Color id="195">C0C0C0</Color>
+                <Color id="196">C1C1C1</Color>
+                <Color id="197">C2C2C2</Color>
+                <Color id="198">C3C3C3</Color>
+                <Color id="199">C4C4C4</Color>
+                <Color id="200">C5C5C5</Color>
+                <Color id="201">C6C6C6</Color>
+                <Color id="202">C7C7C7</Color>
+                <Color id="203">C8C8C8</Color>
+                <Color id="204">C9C9C9</Color>
+                <Color id="205">CACACA</Color>
+                <Color id="206">CBCBCB</Color>
+                <Color id="207">CCCCCC</Color>
+                <Color id="208">CDCDCD</Color>
+                <Color id="209">CECECE</Color>
+                <Color id="210">CFCFCF</Color>
+                <Color id="211">D0D0D0</Color>
+                <Color id="212">D1D1D1</Color>
+                <Color id="213">D2D2D2</Color>
+                <Color id="214">D3D3D3</Color>
+                <Color id="215">D4D4D4</Color>
+                <Color id="216">D5D5D5</Color>
+                <Color id="217">D6D6D6</Color>
+                <Color id="218">D7D7D7</Color>
+                <Color id="219">D8D8D8</Color>
+                <Color id="220">D9D9D9</Color>
+                <Color id="221">DADADA</Color>
+                <Color id="222">DBDBDB</Color>
+                <Color id="223">DCDCDC</Color>
+                <Color id="224">DDDDDD</Color>
+                <Color id="225">DEDEDE</Color>
+                <Color id="226">DFDFDF</Color>
+                <Color id="227">E0E0E0</Color>
+                <Color id="228">E1E1E1</Color>
+                <Color id="229">E2E2E2</Color>
+                <Color id="230">E3E3E3</Color>
+                <Color id="231">E4E4E4</Color>
+                <Color id="232">E5E5E5</Color>
+                <Color id="233">E6E6E6</Color>
+                <Color id="234">E7E7E7</Color>
+                <Color id="235">E8E8E8</Color>
+                <Color id="236">E9E9E9</Color>
+                <Color id="237">EAEAEA</Color>
+                <Color id="238">EBEBEB</Color>
+                <Color id="239">ECECEC</Color>
+                <Color id="240">EDEDED</Color>
+                <Color id="241">EEEEEE</Color>
+                <Color id="242">EFEFEF</Color>
+                <Color id="243">F0F0F0</Color>
+                <Color id="244">F1F1F1</Color>
+                <Color id="245">F2F2F2</Color>
+                <Color id="246">F3F3F3</Color>
+                <Color id="247">F4F4F4</Color>
+                <Color id="248">F5F5F5</Color>
+                <Color id="249">F6F6F6</Color>
+                <Color id="250">F7F7F7</Color>
+                <Color id="251">F8F8F8</Color>
+                <Color id="252">F9F9F9</Color>
+                <Color id="253">FAFAFA</Color>
+                <Color id="254">FBFBFB</Color>
+                <Color id="255">FCFCFC</Color>
+            </ColorList>
+            <PictureList>
+                <Picture fmt="OSD8" id="1">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\bar.png</Picture>
+                <Picture fmt="OSD8" id="2">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\c_bar.png</Picture>
+                <Picture fmt="OSD8" id="3">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\pc_cam.png</Picture>
+                <Picture fmt="OSD8" id="4">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\usb_mod.png</Picture>
+            </PictureList>
+            <CellList>
+                <Cell id="77">m139</Cell>
+                <Cell id="78">m140</Cell>
+                <Cell id="99">m176</Cell>
+            </CellList>
+        </Page>
+        <Page id="4">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">0000FF</Color>
+                <Color id="2">FFFFFF</Color>
+                <Color id="3">6B6B6B</Color>
+                <Color id="4">55AAFF</Color>
+                <Color id="5">000000</Color>
+                <Color id="6">FFE9D7</Color>
+                <Color id="7">010000</Color>
+                <Color id="8">010101</Color>
+                <Color id="9">020202</Color>
+                <Color id="10">040404</Color>
+                <Color id="11">050505</Color>
+                <Color id="12">060606</Color>
+                <Color id="13">080707</Color>
+                <Color id="14">080808</Color>
+                <Color id="15">0A0909</Color>
+                <Color id="16">0A0A0A</Color>
+                <Color id="17">0C0B0B</Color>
+                <Color id="18">0C0C0C</Color>
+                <Color id="19">0F0E0E</Color>
+                <Color id="20">101010</Color>
+                <Color id="21">121212</Color>
+                <Color id="22">141414</Color>
+                <Color id="23">161515</Color>
+                <Color id="24">161616</Color>
+                <Color id="25">181717</Color>
+                <Color id="26">181818</Color>
+                <Color id="27">1A1A1A</Color>
+                <Color id="28">1B1B1B</Color>
+                <Color id="29">1C1C1C</Color>
+                <Color id="30">1E1E1E</Color>
+                <Color id="31">201F1F</Color>
+                <Color id="32">202020</Color>
+                <Color id="33">222222</Color>
+                <Color id="34">242424</Color>
+                <Color id="35">262525</Color>
+                <Color id="36">262626</Color>
+                <Color id="37">282828</Color>
+                <Color id="38">2A2929</Color>
+                <Color id="39">2A2A2A</Color>
+                <Color id="40">2C2B2B</Color>
+                <Color id="41">2C2C2C</Color>
+                <Color id="42">2D2D2D</Color>
+                <Color id="43">2F2F2F</Color>
+                <Color id="44">303030</Color>
+                <Color id="45">323232</Color>
+                <Color id="46">343434</Color>
+                <Color id="47">363636</Color>
+                <Color id="48">373737</Color>
+                <Color id="49">383838</Color>
+                <Color id="50">3A3939</Color>
+                <Color id="51">3A3A3A</Color>
+                <Color id="52">3C3C3C</Color>
+                <Color id="53">3E3E3E</Color>
+                <Color id="54">3F3E3E</Color>
+                <Color id="55">403F3F</Color>
+                <Color id="56">404040</Color>
+                <Color id="57">414141</Color>
+                <Color id="58">424141</Color>
+                <Color id="59">434343</Color>
+                <Color id="60">444444</Color>
+                <Color id="61">464646</Color>
+                <Color id="62">484848</Color>
+                <Color id="63">4A4A4A</Color>
+                <Color id="64">4C4C4C</Color>
+                <Color id="65">4E4E4E</Color>
+                <Color id="66">504F4F</Color>
+                <Color id="67">505050</Color>
+                <Color id="68">525151</Color>
+                <Color id="69">525252</Color>
+                <Color id="70">545454</Color>
+                <Color id="71">565555</Color>
+                <Color id="72">565656</Color>
+                <Color id="73">585757</Color>
+                <Color id="74">585858</Color>
+                <Color id="75">5A5959</Color>
+                <Color id="76">5A5B5B</Color>
+                <Color id="77">5C5B5B</Color>
+                <Color id="78">5C5C5C</Color>
+                <Color id="79">5E5E5E</Color>
+                <Color id="80">605F5F</Color>
+                <Color id="81">606060</Color>
+                <Color id="82">616060</Color>
+                <Color id="83">616161</Color>
+                <Color id="84">626161</Color>
+                <Color id="85">626262</Color>
+                <Color id="86">646464</Color>
+                <Color id="87">666666</Color>
+                <Color id="88">676868</Color>
+                <Color id="89">696969</Color>
+                <Color id="90">6A6969</Color>
+                <Color id="91">6A6A6A</Color>
+                <Color id="92">6C6B6B</Color>
+                <Color id="93">6C6C6C</Color>
+                <Color id="94">6E6D6D</Color>
+                <Color id="95">6E6E6E</Color>
+                <Color id="96">707070</Color>
+                <Color id="97">727171</Color>
+                <Color id="98">727272</Color>
+                <Color id="99">737373</Color>
+                <Color id="100">747474</Color>
+                <Color id="101">757575</Color>
+                <Color id="102">767676</Color>
+                <Color id="103">787777</Color>
+                <Color id="104">787878</Color>
+                <Color id="105">7A7A7A</Color>
+                <Color id="106">7C7B7B</Color>
+                <Color id="107">7C7C7C</Color>
+                <Color id="108">7E7D7D</Color>
+                <Color id="109">7E7E7E</Color>
+                <Color id="110">2199FF</Color>
+                <Color id="111">229AFF</Color>
+                <Color id="112">239BFF</Color>
+                <Color id="113">249CFE</Color>
+                <Color id="114">249DFE</Color>
+                <Color id="115">269EFE</Color>
+                <Color id="116">269FFE</Color>
+                <Color id="117">29A1FD</Color>
+                <Color id="118">28A1FE</Color>
+                <Color id="119">2AA3FD</Color>
+                <Color id="120">2BA4FD</Color>
+                <Color id="121">2CA5FD</Color>
+                <Color id="122">2EA7FC</Color>
+                <Color id="123">31AAFC</Color>
+                <Color id="124">31ABFC</Color>
+                <Color id="125">33ADFB</Color>
+                <Color id="126">34AEFB</Color>
+                <Color id="127">35AFFB</Color>
+                <Color id="128">37B1FA</Color>
+                <Color id="129">38B2FA</Color>
+                <Color id="130">3BB5FA</Color>
+                <Color id="131">3BB6FA</Color>
+                <Color id="132">3EB9F9</Color>
+                <Color id="133">40BBF9</Color>
+                <Color id="134">42BDF8</Color>
+                <Color id="135">43BEF8</Color>
+                <Color id="136">45C1F8</Color>
+                <Color id="137">46C2F8</Color>
+                <Color id="138">48C4F7</Color>
+                <Color id="139">49C5F7</Color>
+                <Color id="140">4BC7F6</Color>
+                <Color id="141">4CC8F6</Color>
+                <Color id="142">4ECAF6</Color>
+                <Color id="143">4FCCF6</Color>
+                <Color id="144">50CCF6</Color>
+                <Color id="145">52CFF5</Color>
+                <Color id="146">55D2F4</Color>
+                <Color id="147">55D3F4</Color>
+                <Color id="148">57D4F4</Color>
+                <Color id="149">58D6F4</Color>
+                <Color id="150">5AD8F3</Color>
+                <Color id="151">5BD8F3</Color>
+                <Color id="152">5CDAF3</Color>
+                <Color id="153">5DDBF3</Color>
+                <Color id="154">5EDCF3</Color>
+                <Color id="155">5FDDF2</Color>
+                <Color id="156">60DEF2</Color>
+                <Color id="157">60DFF2</Color>
+                <Color id="158">61DFF2</Color>
+                <Color id="159">808080</Color>
+                <Color id="160">828181</Color>
+                <Color id="161">828282</Color>
+                <Color id="162">848484</Color>
+                <Color id="163">868585</Color>
+                <Color id="164">868686</Color>
+                <Color id="165">888787</Color>
+                <Color id="166">898888</Color>
+                <Color id="167">8A8989</Color>
+                <Color id="168">8A8A8A</Color>
+                <Color id="169">8B8B8B</Color>
+                <Color id="170">8C8B8B</Color>
+                <Color id="171">8C8C8C</Color>
+                <Color id="172">8E8E8E</Color>
+                <Color id="173">909090</Color>
+                <Color id="174">929191</Color>
+                <Color id="175">929292</Color>
+                <Color id="176">949393</Color>
+                <Color id="177">959595</Color>
+                <Color id="178">979797</Color>
+                <Color id="179">989797</Color>
+                <Color id="180">989898</Color>
+                <Color id="181">9A9A9A</Color>
+                <Color id="182">9B9B9B</Color>
+                <Color id="183">9C9C9C</Color>
+                <Color id="184">9E9D9D</Color>
+                <Color id="185">9E9E9E</Color>
+                <Color id="186">A0A0A0</Color>
+                <Color id="187">A2A1A1</Color>
+                <Color id="188">A2A2A2</Color>
+                <Color id="189">A3A2A2</Color>
+                <Color id="190">A3A3A3</Color>
+                <Color id="191">A4A3A3</Color>
+                <Color id="192">A6A6A6</Color>
+                <Color id="193">A7A6A6</Color>
+                <Color id="194">A7A7A7</Color>
+                <Color id="195">A8A8A8</Color>
+                <Color id="196">AAA9A9</Color>
+                <Color id="197">AAAAAA</Color>
+                <Color id="198">ACACAC</Color>
+                <Color id="199">AEAEAE</Color>
+                <Color id="200">B0B0B0</Color>
+                <Color id="201">B2B1B1</Color>
+                <Color id="202">B2B2B2</Color>
+                <Color id="203">B4B4B4</Color>
+                <Color id="204">B5B4B4</Color>
+                <Color id="205">B5B5B5</Color>
+                <Color id="206">B6B5B5</Color>
+                <Color id="207">B6B6B6</Color>
+                <Color id="208">B8B8B8</Color>
+                <Color id="209">BABABA</Color>
+                <Color id="210">BCBBBB</Color>
+                <Color id="211">BDBDBD</Color>
+                <Color id="212">BFBFBF</Color>
+                <Color id="213">C0C0C0</Color>
+                <Color id="214">C2C2C2</Color>
+                <Color id="215">C4C4C4</Color>
+                <Color id="216">C6C5C5</Color>
+                <Color id="217">C6C6C6</Color>
+                <Color id="218">C7C6C6</Color>
+                <Color id="219">C7C7C7</Color>
+                <Color id="220">C8C8C8</Color>
+                <Color id="221">CBCBCB</Color>
+                <Color id="222">CCCCCC</Color>
+                <Color id="223">CECECE</Color>
+                <Color id="224">D0D0D0</Color>
+                <Color id="225">D2D1D1</Color>
+                <Color id="226">D2D2D2</Color>
+                <Color id="227">D4D3D3</Color>
+                <Color id="228">D4D4D4</Color>
+                <Color id="229">D6D6D6</Color>
+                <Color id="230">D9D9D9</Color>
+                <Color id="231">DAD9D9</Color>
+                <Color id="232">DADADA</Color>
+                <Color id="233">DBDADA</Color>
+                <Color id="234">DBDBDB</Color>
+                <Color id="235">DCDBDB</Color>
+                <Color id="236">DCDCDC</Color>
+                <Color id="237">DEDDDD</Color>
+                <Color id="238">DEDEDE</Color>
+                <Color id="239">E0E0E0</Color>
+                <Color id="240">E2E1E1</Color>
+                <Color id="241">E3E2E2</Color>
+                <Color id="242">E4E4E4</Color>
+                <Color id="243">E6E5E5</Color>
+                <Color id="244">E6E6E6</Color>
+                <Color id="245">E8E7E7</Color>
+                <Color id="246">E8E8E8</Color>
+                <Color id="247">EBEAEA</Color>
+                <Color id="248">ECECEC</Color>
+                <Color id="249">EEEEEE</Color>
+                <Color id="250">F2F1F1</Color>
+                <Color id="251">F2F2F2</Color>
+                <Color id="252">F5F4F4</Color>
+                <Color id="253">F6F5F5</Color>
+                <Color id="254">F6F6F6</Color>
+                <Color id="255">F8F7F7</Color>
+            </ColorList>
+            <PictureList>
+                <Picture fmt="OSD8" id="1">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\blue_bg.png</Picture>
+                <Picture fmt="OSD8" id="2">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_down.png</Picture>
+                <Picture fmt="OSD8" id="3">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_left.png</Picture>
+                <Picture fmt="OSD8" id="4">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_photo.png</Picture>
+                <Picture fmt="OSD8" id="5">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_play.png</Picture>
+                <Picture fmt="OSD8" id="6">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_rec.png</Picture>
+                <Picture fmt="OSD8" id="7">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_right.png</Picture>
+                <Picture fmt="OSD8" id="8">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\i_set.png</Picture>
+                <Picture fmt="OSD8" id="9">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\direc\i_up.png</Picture>
+                <Picture fmt="OSD8" id="10">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_bg_s.png</Picture>
+                <Picture fmt="OSD8" id="11">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sel.png</Picture>
+                <Picture fmt="OSD8" id="12">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sel_b.png</Picture>
+                <Picture fmt="OSD8" id="13">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\bianjie\menu_sta.png</Picture>
+                <Picture fmt="OSD8" id="14">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_auto_off.png</Picture>
+                <Picture fmt="OSD8" id="15">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_def_set.png</Picture>
+                <Picture fmt="OSD8" id="16">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_hz.png</Picture>
+                <Picture fmt="OSD8" id="17">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_key_v.png</Picture>
+                <Picture fmt="OSD8" id="18">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_language.png</Picture>
+                <Picture fmt="OSD8" id="19">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_lcd_au.png</Picture>
+                <Picture fmt="OSD8" id="20">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_mdk.png</Picture>
+                <Picture fmt="OSD8" id="21">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_time.png</Picture>
+                <Picture fmt="OSD8" id="22">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_tv.png</Picture>
+                <Picture fmt="OSD8" id="23">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\icon\set_menu\m_version.png</Picture>
+                <Picture fmt="OSD8" id="24">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM0.png</Picture>
+                <Picture fmt="OSD8" id="25">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM1.png</Picture>
+                <Picture fmt="OSD8" id="26">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM2.png</Picture>
+                <Picture fmt="OSD8" id="27">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM3.png</Picture>
+                <Picture fmt="OSD8" id="28">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM4.png</Picture>
+                <Picture fmt="OSD8" id="29">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM5.png</Picture>
+                <Picture fmt="OSD8" id="30">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM6.png</Picture>
+                <Picture fmt="OSD8" id="31">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM7.png</Picture>
+                <Picture fmt="OSD8" id="32">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM8.png</Picture>
+                <Picture fmt="OSD8" id="33">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM9.png</Picture>
+                <Picture fmt="OSD8" id="34">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_d.png</Picture>
+                <Picture fmt="OSD8" id="35">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_dd.png</Picture>
+                <Picture fmt="OSD8" id="36">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_l.png</Picture>
+                <Picture fmt="OSD8" id="37">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\num\NUM_ll.png</Picture>
+            </PictureList>
+            <CellList>
+                <Cell id="6">m19</Cell>
+                <Cell id="10">m34</Cell>
+                <Cell id="23">m50</Cell>
+                <Cell id="40">m82</Cell>
+                <Cell id="50">m98</Cell>
+                <Cell id="51">m99</Cell>
+                <Cell id="52">m100</Cell>
+                <Cell id="53">m102</Cell>
+                <Cell id="54">m105</Cell>
+                <Cell id="56">m108</Cell>
+                <Cell id="57">m109</Cell>
+                <Cell id="58">m110</Cell>
+                <Cell id="59">m111</Cell>
+                <Cell id="60">m112</Cell>
+                <Cell id="61">m113</Cell>
+                <Cell id="62">m114</Cell>
+                <Cell id="63">m116</Cell>
+                <Cell id="64">m117</Cell>
+                <Cell id="65">m121</Cell>
+                <Cell id="66">m122</Cell>
+                <Cell id="67">m123</Cell>
+                <Cell id="68">m124</Cell>
+                <Cell id="69">m125</Cell>
+                <Cell id="70">m126</Cell>
+                <Cell id="72">m130</Cell>
+                <Cell id="73">m131</Cell>
+                <Cell id="79">m142</Cell>
+                <Cell id="80">m143</Cell>
+                <Cell id="81">m144</Cell>
+                <Cell id="82">m145</Cell>
+                <Cell id="83">m146</Cell>
+                <Cell id="91">m159</Cell>
+                <Cell id="92">m162</Cell>
+                <Cell id="93">m167</Cell>
+                <Cell id="94">m168</Cell>
+                <Cell id="95">m169</Cell>
+                <Cell id="96">m172</Cell>
+                <Cell id="196">m299</Cell>
+                <Cell id="200">m305</Cell>
+                <Cell id="203">m308</Cell>
+            </CellList>
+        </Page>
+        <Page id="5">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">000000</Color>
+                <Color id="2">38C2BA</Color>
+                <Color id="3">4AC8B9</Color>
+                <Color id="4">4BC8B9</Color>
+                <Color id="5">52C9B8</Color>
+                <Color id="6">67CFB7</Color>
+                <Color id="7">D1144D</Color>
+                <Color id="8">D1144E</Color>
+                <Color id="9">D1154E</Color>
+                <Color id="10">D52A57</Color>
+                <Color id="11">D7345B</Color>
+                <Color id="12">D7365C</Color>
+                <Color id="13">B6E5B1</Color>
+                <Color id="14">B8E6B1</Color>
+                <Color id="15">C0E8B0</Color>
+                <Color id="16">FFFAAB</Color>
+                <Color id="17">FFF9AC</Color>
+                <Color id="18">FFFAAC</Color>
+                <Color id="19">FFFCAB</Color>
+                <Color id="20">FFFFAA</Color>
+            </ColorList>
+            <PictureList>
+                <Picture fmt="OSD8" id="1">H:\2021Work\work\XD_G1W5_MAIN_V03(5211+MIPI)\AC521X_release_sdk_V2.0.0\UI工程\ui_480_272_key\模式界面\project\config\pic_color_LY\480P\paisejiemian\return_line.png</Picture>
+            </PictureList>
+            <CellList/>
+        </Page>
+        <Page id="6">
+            <ColorList>
+                <Color id="0">55AAA5</Color>
+                <Color id="1">000000</Color>
+                <Color id="2">00C4FF</Color>
+                <Color id="3">FFF795</Color>
+            </ColorList>
+            <PictureList/>
+            <CellList>
+                <Cell id="201">m306</Cell>
+                <Cell id="202">m307</Cell>
+            </CellList>
+        </Page>
+    </PageList>
+</Resbuilder>

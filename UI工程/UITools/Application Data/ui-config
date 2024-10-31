@@ -1,0 +1,7 @@
+[Project]
+Size=128*128
+CustomTemplateDir=widgets
+Dir=.
+ImageDir=.
+LangugeFile=UI_TOUCH_1280_480.xls
+TemplateJson=.
