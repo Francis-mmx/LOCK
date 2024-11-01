@@ -588,7 +588,7 @@ int uart_recv_retransmit()
         tx_flag++;
         switch(com){
             case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,300);//定时    重发数据包       100ms后删除
+                uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,60);//定时    重发数据包       100ms后删除
                 break;
             case 0xA1:
                 uart_timer_handle[1] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
@@ -609,7 +609,7 @@ int uart_recv_retransmit()
         tx_flag = 0;
         switch(com){
             case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,300);
+                uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,60);
                 break;
             case 0xA1:
                 uart_timer_handle[1] = sys_timeout_add(0,transmit_overtime,100);
@@ -940,7 +940,7 @@ void uart_recv_handle()
                         break;
 //                    case 0xAF:
 //                        cancel_retransmit(recv_data);//应答信号,取消重发
-                        return ;
+//                        return ;
                     default:
                         return ;
                 }
@@ -964,6 +964,33 @@ int uart_receive_package(u8 *buf, int len)  //串口接收   最大接收长度5
 }
 
 
+#define GT911_WADDR 0xBA
+#define GT911_RADDR 0xBB
+
+#define GT911_ID_VERSION             0x8140
+#define GT911_CHIP_TYPE           0x8000
+
+extern u8 _touch_panel_read(u8 w_chip_id, u8 r_chip_id, u16 reg_addr, u8 *buf, u32 len);
+extern u8 _touch_panel_write(u8 w_chip_id, u16 reg_addr, u8 *buf, u32 len);
+
+u8 gt911_check_id(void)
+{
+    u8 id_data[4];
+
+    if (_touch_panel_read(GT911_WADDR, GT911_RADDR, GT911_CHIP_TYPE, id_data, 4) != 0) {
+        printf("GT911 ID check error");
+        return 0;
+    }
+
+    if (id_data[0] == '9' && id_data[1] == '1' && id_data[2] == '1') {
+        return 1;
+    }
+
+    return 0;
+}
+
+
+
 void touch_panel_check()
 {
     u8 data = 2;
@@ -973,7 +1000,7 @@ void touch_panel_check()
     touch = dev_open("iic1",NULL);
     len = dev_write(touch,&data,1);
     printf("dev_write %x",len);
-    
+    gt911_check_id();
     len = dev_read(touch,&check,1);
     printf("len %x check I2C %x",len,check);
 //    if(!GT911_iic_read_dbl_check()){
@@ -1078,9 +1105,9 @@ void app_main()
 #endif
 
 /*******************************************上电*******************************************/
-    u8 command_buf = voice;
-    u8 data_buf[] = {powered};
-    uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
+//    u8 command_buf = voice;
+//    u8 data_buf[] = {powered};
+//    uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
 /*******************************************上电*******************************************/
     sys_power_auto_shutdown_start(db_select("aff") * 60);
     sys_power_low_voltage_shutdown(320, PWR_DELAY_INFINITE);

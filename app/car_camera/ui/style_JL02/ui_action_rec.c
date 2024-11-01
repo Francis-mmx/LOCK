@@ -359,7 +359,7 @@ Data *create_packet_uncertain_len(u8 command,u8 *data,u8 com_len)
     u8 i;
 
     uart_msg.header = 0xCDCD;
-    uart_msg.tag = 0x01;
+    uart_msg.tag = 0x21;
     uart_msg.command = command;
 
     uart_msg.data = (u8 *)malloc(com_len);//分配 数组长度 x 类型长度的空间
@@ -3034,7 +3034,7 @@ static int rec_password_ok_ontouch(void *ctr, struct element_touch_event *e)
 //                ui_show(ENC_LAY_BACK_PIC);
                 ui_show(ANI_UNLOCK_LAYER);//动画
                 ui_show(ENC_UP_LAY);
-                sys_timeout_add(NULL,hide_show_page,2000);
+                sys_timeout_add(NULL,hide_show_page,3000);
             }
             if (pw_code->visit_count < MAX_RECORD_NUM) {
                 pw_code->visit_count++;
@@ -3793,11 +3793,11 @@ static int rec_lay_user_details_onchange(void *ctr, enum element_change_event e,
         {
             printf("details current chose user  name %s now_btn %d\n",user_data->name,now_btn_user + 5 * list_cur_page);
             current_user = user_data->user_num;
-            put_buf(user_data->key[0].key_buf,sizeof(user_data->key[0]));
-            put_buf(user_data->key[1].key_buf,sizeof(user_data->key[1]));
-            put_buf(user_data->key[2].key_buf,sizeof(user_data->key[2]));
-            put_buf(user_data->key[3].key_buf,sizeof(user_data->key[3]));
-            put_buf(user_data->key[4].key_buf,sizeof(user_data->key[4]));
+//            put_buf(user_data->key[0].key_buf,sizeof(user_data->key[0]));
+//            put_buf(user_data->key[1].key_buf,sizeof(user_data->key[1]));
+//            put_buf(user_data->key[2].key_buf,sizeof(user_data->key[2]));
+//            put_buf(user_data->key[3].key_buf,sizeof(user_data->key[3]));
+//            put_buf(user_data->key[4].key_buf,sizeof(user_data->key[4]));
             ui_text_set_str_by_id(ENC_NOW_USER_NAME, "ascii", user_data->name);
 
             ui_pic_show_image_by_id(ENC_USER_POWER_PIC,user_data->user_power);
@@ -7400,8 +7400,10 @@ static int rec_auto_check_onchange(void *ctr, enum element_change_event e, void 
     struct layout *layout = (struct layout *)ctr;
     switch (e) {
     case ON_CHANGE_INIT:
+        ui_ontouch_lock(layout);
         break;
     case ON_CHANGE_RELEASE:
+        ui_ontouch_unlock(layout);
         break;
     case ON_CHANGE_SHOW:
         ui_show(ENC_UP_LAY);
@@ -7534,6 +7536,9 @@ static int power_on_check_detail_onchange(void *ctr, enum element_change_event e
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_1,1);
         }else if(device_status[0] == 2){
             printf("fingerprint not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_1_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_1_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_1,2);
         }
 
         if(!device_status[1]) {
@@ -7547,6 +7552,9 @@ static int power_on_check_detail_onchange(void *ctr, enum element_change_event e
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_2,1);
         }else if(device_status[1] == 2){
             printf("nfc not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_2_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_2_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_2,2);
         }
 
         if(!device_status[2]) {
@@ -7560,6 +7568,9 @@ static int power_on_check_detail_onchange(void *ctr, enum element_change_event e
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_3,1);
         }else if(device_status[2] == 2){
             printf("face not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_3_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_3_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_3,2);
         }
 
         if(!device_status[3]) {
@@ -7573,6 +7584,9 @@ static int power_on_check_detail_onchange(void *ctr, enum element_change_event e
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_4,1);
         }else if(device_status[3] == 2){
             printf("radar not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_4_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_4_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_4,2);
         }
 
         if(!device_status[4]) {
@@ -7586,6 +7600,9 @@ static int power_on_check_detail_onchange(void *ctr, enum element_change_event e
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_5,1);
         }else if(device_status[4] == 2){
             printf("electrical machinery not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_5_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_5_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_5,2);
         }
 
         if(!device_status[5]) {
@@ -7599,6 +7616,9 @@ static int power_on_check_detail_onchange(void *ctr, enum element_change_event e
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_11,1);
         }else if(device_status[5] == 2){
             printf("touch not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_11_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_11_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_11,2);
         }
 
         break;
@@ -7636,6 +7656,9 @@ static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e,
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_6,1);
         } else if(auto_check_status[0] == 2){
             printf("fingerprint not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_6_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_6_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_6,2);
         }
 
         if(!auto_check_status[1]) {
@@ -7649,6 +7672,9 @@ static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e,
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_7,1);
         }else if(auto_check_status[1] == 2){
             printf("nfc not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_7_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_7_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_7,2);
         }
 
         if(!auto_check_status[2]) {
@@ -7662,6 +7688,9 @@ static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e,
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_8,1);
         }else if(auto_check_status[2] == 2){
             printf("face not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_8_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_8_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_8,2);
         }
 
         if(!auto_check_status[3]) {
@@ -7675,6 +7704,9 @@ static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e,
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_9,1);
         }else if(auto_check_status[3] == 2){
             printf("radar not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_9_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_9_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_9,2);
         }
 
         if(!auto_check_status[4]) {
@@ -7688,6 +7720,9 @@ static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e,
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_10,1);
         }else if(auto_check_status[4] == 2){
             printf("electrical machinery not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_10_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_10_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_10,2);
         }
         
         if(!auto_check_status[5]) {
@@ -7701,6 +7736,9 @@ static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e,
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_12,1);
         }else if(auto_check_status[5] == 2){
             printf("touch not suport");
+            ui_hide(SYS_CHECK_DETAIL_SYMBOL_12_Y);
+            ui_show(SYS_CHECK_DETAIL_SYMBOL_12_N);
+            ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_12,2);
         }
 
         break;

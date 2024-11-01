@@ -1,8 +1,60 @@
-back_1.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/UI_1280_480/new ui/back_1.pngbaskslash equal zero else
-config/UI_1280_480/new ui/back_1.png
-back_2.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/UI_1280_480/new ui/back_2.pngbaskslash equal zero else
-config/UI_1280_480/new ui/back_2.png
-back_3.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/UI_1280_480/new ui/back_3.pngbaskslash equal zero else
-config/UI_1280_480/new ui/back_3.png
-back_4.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/UI_1280_480/new ui/back_4.pngbaskslash equal zero else
-config/UI_1280_480/new ui/back_4.png
+31.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/31.pngbaskslash equal zero else
+config/关锁图片/31.png
+32.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/32.pngbaskslash equal zero else
+config/关锁图片/32.png
+33.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/33.pngbaskslash equal zero else
+config/关锁图片/33.png
+34.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/34.pngbaskslash equal zero else
+config/关锁图片/34.png
+35.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/35.pngbaskslash equal zero else
+config/关锁图片/35.png
+36.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/36.pngbaskslash equal zero else
+config/关锁图片/36.png
+37.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/37.pngbaskslash equal zero else
+config/关锁图片/37.png
+38.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/38.pngbaskslash equal zero else
+config/关锁图片/38.png
+39.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/39.pngbaskslash equal zero else
+config/关锁图片/39.png
+40.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/40.pngbaskslash equal zero else
+config/关锁图片/40.png
+41.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/41.pngbaskslash equal zero else
+config/关锁图片/41.png
+42.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/42.pngbaskslash equal zero else
+config/关锁图片/42.png
+43.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/43.pngbaskslash equal zero else
+config/关锁图片/43.png
+44.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/44.pngbaskslash equal zero else
+config/关锁图片/44.png
+45.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/45.pngbaskslash equal zero else
+config/关锁图片/45.png
+46.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/46.pngbaskslash equal zero else
+config/关锁图片/46.png
+47.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/47.pngbaskslash equal zero else
+config/关锁图片/47.png
+48.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/48.pngbaskslash equal zero else
+config/关锁图片/48.png
+49.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/49.pngbaskslash equal zero else
+config/关锁图片/49.png
+50.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/50.pngbaskslash equal zero else
+config/关锁图片/50.png
+51.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/51.pngbaskslash equal zero else
+config/关锁图片/51.png
+52.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/52.pngbaskslash equal zero else
+config/关锁图片/52.png
+53.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/53.pngbaskslash equal zero else
+config/关锁图片/53.png
+54.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/54.pngbaskslash equal zero else
+config/关锁图片/54.png
+55.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/55.pngbaskslash equal zero else
+config/关锁图片/55.png
+56.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/56.pngbaskslash equal zero else
+config/关锁图片/56.png
+57.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/57.pngbaskslash equal zero else
+config/关锁图片/57.png
+58.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/58.pngbaskslash equal zero else
+config/关锁图片/58.png
+59.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/59.pngbaskslash equal zero else
+config/关锁图片/59.png
+60.png|C:/Users/Administrator/Desktop/temp_lock/LOCK_NO_SLIDER/SGL-LOCK/UI工程/ui_1280x480_touch_screen/模式界面/project/config/关锁图片/60.pngbaskslash equal zero else
+config/关锁图片/60.png
