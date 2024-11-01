@@ -13,7 +13,7 @@ extern  u8 data_count;     //缓冲区内数量
 #define SECTOR_SIZE       0x1000          //4K
 #define BASE_ADDRESS      0x7EF000        //用户数据基地址
 #define MAX_USER_NUM            50        //最大用户数量
-#define MAX_PASSWORD_LEN        10        //最大密码长度
+#define MAX_PASSWORD_LEN        15        //最大密码长度
 #define MAX_NAME_LEN            20        //名字最长字符数
 #define MAX_KEY_NUM             5         //最大密钥数量
 

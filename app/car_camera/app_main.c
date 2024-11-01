@@ -588,7 +588,7 @@ int uart_recv_retransmit()
         tx_flag++;
         switch(com){
             case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,60);//定时    重发数据包       100ms后删除
+                uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,300);//定时    重发数据包       100ms后删除
                 break;
             case 0xA1:
                 uart_timer_handle[1] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
@@ -609,7 +609,7 @@ int uart_recv_retransmit()
         tx_flag = 0;
         switch(com){
             case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,60);
+                uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,300);
                 break;
             case 0xA1:
                 uart_timer_handle[1] = sys_timeout_add(0,transmit_overtime,100);
@@ -793,7 +793,6 @@ void cancel_retransmit(u8 *buf)
                 break;
         }
         tx_flag = 0;
-        put_buf(buf,10);//打印接收值
     }
 }
 
@@ -916,11 +915,10 @@ void uart_recv_handle()
         if(recv_data[0] == 0xAA && recv_data[1] == 0xBB){
             if(check == calculate_checksum(recv_data,recv_data[3],2)){  //校验成功
                 data = 0;
-
-//              command = answer_signal;                                    //给锁板的应答信号
-                const char *packet_buf = create_packet_uncertain_len(recv_data[4],&data,1);
-                spec_uart_send(packet_buf,8);//首次发送
-
+                if(recv_data[4] == 0xA5 || recv_data[4] == 0xA6 || recv_data[4] == 0xA7 || recv_data[4] == 0xA8 || recv_data[4] == 0xA9){
+                    const char *packet_buf = create_packet_uncertain_len(recv_data[4],&data,1);
+                    spec_uart_send(packet_buf,8);//首次发送
+                }
                 switch(recv_data[4]){
                     case 0xA0:case 0xA1:case 0xA2:case 0xA3:case 0xA4:
                         cancel_retransmit(recv_data);//应答信号,取消重发
@@ -968,16 +966,19 @@ int uart_receive_package(u8 *buf, int len)  //串口接收   最大接收长度5
 
 void touch_panel_check()
 {
-    u8 data = 3;
+    u8 data = 2;
     u8 check = 0;
     u8 len = 0;
-    void *i2c;
-    i2c = dev_open("iic1",NULL);
-    len = dev_write(i2c,&data,1);
+    void *touch;
+    touch = dev_open("iic1",NULL);
+    len = dev_write(touch,&data,1);
     printf("dev_write %x",len);
     
-    len = dev_read(i2c,&check,1);
+    len = dev_read(touch,&check,1);
     printf("len %x check I2C %x",len,check);
+//    if(!GT911_iic_read_dbl_check()){
+//        printf("sucess");
+//    }
 }
 
 
@@ -1077,9 +1078,9 @@ void app_main()
 #endif
 
 /*******************************************上电*******************************************/
-//    u8 command_buf = voice;
-//    u8 data_buf[] = {powered};
-//    uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
+    u8 command_buf = voice;
+    u8 data_buf[] = {powered};
+    uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
 /*******************************************上电*******************************************/
     sys_power_auto_shutdown_start(db_select("aff") * 60);
     sys_power_low_voltage_shutdown(320, PWR_DELAY_INFINITE);
