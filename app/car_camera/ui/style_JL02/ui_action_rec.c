@@ -5598,11 +5598,13 @@ static int rec_new_face_lay_onchange(void *ctr, enum element_change_event e, voi
     case ON_CHANGE_RELEASE:
         break;
     case ON_CHANGE_FIRST_SHOW:
+        /*
         num[0] = current_user >> 8;
         num[1] = current_user & 0xFF;
         command_buf = add_password;
         u8 data_buf[] = {num[0],num[1],face};
         uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
+        */
         break;
     case ON_CHANGE_SHOW:
         break;
