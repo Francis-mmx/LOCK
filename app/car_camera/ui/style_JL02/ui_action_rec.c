@@ -353,14 +353,18 @@ u16 calculate_checksum(void *buf,u16 data_length,u8 flag)//0--计算串口数据
 
 
 /*****************************创建数据包 ************************************/
-Data *create_packet_uncertain_len(u8 command,u8 *data,u8 com_len)
+Data *create_packet_uncertain_len(u8 tag,u8 command,u8 *data,u8 com_len)
 {
     Data uart_msg;
     Packet packet;
     u8 i;
 
     uart_msg.header = 0xCDCD;
-    uart_msg.tag = 0x21;
+    if(tag){
+        uart_msg.tag = tag;
+    }else{
+        uart_msg.tag = 0x01;
+    }
     uart_msg.command = command;
 
     uart_msg.data = (u8 *)malloc(com_len);//分配 数组长度 x 类型长度的空间
@@ -1386,7 +1390,7 @@ static int enc_onchange(void *ctr, enum element_change_event e, void *arg)
             break;
         }
         ui_show(ENC_LAY_BACK);
-        sys_timeout_add(NULL, delay_hide_status, 1000);
+        sys_timeout_add(NULL, delay_hide_status, 5000);
         break;
     default:
         return false;

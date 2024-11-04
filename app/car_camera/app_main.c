@@ -12,7 +12,7 @@
 #include "generic/log.h"
 
 
-
+#define ANSWER_TAG 0x21
 
 u32 spin_lock_cnt[2] = {0};
 
@@ -549,7 +549,7 @@ int uart_send_package(u8 command,u8 *data,u8 com_len)
 {
     u8 wake_command[15] = {0};
     u8 total_length = com_len + PACKET_OTHER_LEN;
-    const char *packet_buf = create_packet_uncertain_len(command,data,com_len);
+    const char *packet_buf = create_packet_uncertain_len(0,command,data,com_len);
     spec_uart_send(wake_command,15);
     spec_uart_send(packet_buf,total_length);//首次发送
 
@@ -738,6 +738,7 @@ void get_device_infor(u8 *buf)
         {
             auto_check_status[i] = buf[5+i];
         }
+        auto_check_status[5] = !get_tp_init_state_func();
         put_buf(auto_check_status, 7);
     }
     else
@@ -746,6 +747,7 @@ void get_device_infor(u8 *buf)
         {
             device_status[i] = buf[5+i];
         }
+        device_status[5] = !get_tp_init_state_func();
         put_buf(device_status, 7);
     }
 
@@ -757,12 +759,12 @@ void get_device_infor(u8 *buf)
         sys_timeout_add(NULL, delay_hide_status, 5000);
     } else {
         delay_hide_status();
-    } 
+    }
 }
 
 void cancel_retransmit(u8 *buf)
 {
-    if(buf[5] == 0){
+    if(buf[2] == 0x11 && buf[5] == 0){              //取消重发时，锁->屏的标识符为0x11
         /*取消重发*/
         switch(buf[4]){
             case 0xA0:
@@ -903,7 +905,7 @@ void uart_recv_handle()
     u16 len = recv_buffer[(read_index + 3) % BUFFER_SIZE];
 
     if(data_count >= (len + 2)){
-        for (uint16_t i = 0; i < len + 6; i++) {
+        for (i = 0; i < len + 6; i++) {
             recv_data[i] = recv_buffer[read_index];
             read_index = (read_index + 1) % BUFFER_SIZE;
             data_count--;
@@ -911,11 +913,11 @@ void uart_recv_handle()
         idx = 4 + recv_data[3];
         u16 check = (recv_data[idx] << 8) + recv_data[idx + 1];
 
-        if(recv_data[0] == 0xAA && recv_data[1] == 0xBB){
+        if(recv_data[0] == 0xAA && recv_data[1] == 0xBB ){
             if(check == calculate_checksum(recv_data,recv_data[3],2)){  //校验成功
                 data = 0;
-                if(recv_data[4] == 0xA5 || recv_data[4] == 0xA6 || recv_data[4] == 0xA7 || recv_data[4] == 0xA8 || recv_data[4] == 0xA9){
-                    const char *packet_buf = create_packet_uncertain_len(recv_data[4],&data,1);
+                if((recv_data[4] == 0xA5 || recv_data[4] == 0xA6 || recv_data[4] == 0xA7 || recv_data[4] == 0xA8 || recv_data[4] == 0xA9) && recv_data[2] == 0x00){
+                    const char *packet_buf = create_packet_uncertain_len(ANSWER_TAG,recv_data[4],&data,1);
                     spec_uart_send(packet_buf,8);//首次发送
                 }
                 switch(recv_data[4]){
@@ -926,24 +928,21 @@ void uart_recv_handle()
                         add_user_new_key(recv_data);                                //添加新的用户密钥
                         break;
                     case 0xA6:
-                        uart_send_unlock(recv_data);//解锁信号
+                        uart_send_unlock(recv_data);                                //解锁信号
                         break;
                     case 0xA7:
-                        get_device_infor(recv_data);//获取自检设备信息
+                        get_device_infor(recv_data);                                //获取自检设备信息
                         break;
                     case 0xA8:
-                        get_fingerprint_confirm(recv_data);//获取指纹确认信号,更改文字和语音
+                        get_fingerprint_confirm(recv_data);                         //获取指纹确认信号,更改文字和语音
                         break;
                     case 0xA9:
-                        get_face_confirm(recv_data);//获取人脸确认信号,更改语音
+                        get_face_confirm(recv_data);                                //获取人脸确认信号,更改语音
                         break;
-//                    case 0xAF:
-//                        cancel_retransmit(recv_data);//应答信号,取消重发
-//                        return ;
                     default:
                         return ;
                 }
-            } else {                                                    //校验失败
+            } else {                           //校验失败
                     data = 1;
         }
 
@@ -953,7 +952,7 @@ void uart_recv_handle()
 
 int uart_receive_package(u8 *buf, int len)  //串口接收   最大接收长度512字节  接收时间580ms左右
 {
-    if((len == (buf[3] + 6)) && buf[0] == 0xAA && buf[1] == 0xBB && buf[2] == 0x00){
+    if((len == (buf[3] + 6)) && buf[0] == 0xAA && buf[1] == 0xBB){
         for (u8 i = 0; i < len; i++) {
             recv_buffer[write_index] = buf[i];
             write_index = (write_index + 1) % BUFFER_SIZE;
@@ -963,48 +962,12 @@ int uart_receive_package(u8 *buf, int len)  //串口接收   最大接收长度5
 }
 
 
-#define GT911_WADDR 0xBA
-#define GT911_RADDR 0xBB
-
-#define GT911_ID_VERSION             0x8140
-#define GT911_CHIP_TYPE           0x8000
-
-extern u8 _touch_panel_read(u8 w_chip_id, u8 r_chip_id, u16 reg_addr, u8 *buf, u32 len);
-extern u8 _touch_panel_write(u8 w_chip_id, u16 reg_addr, u8 *buf, u32 len);
-
-u8 gt911_check_id(void)
-{
-    u8 id_data[4];
-
-    if (_touch_panel_read(GT911_WADDR, GT911_RADDR, GT911_CHIP_TYPE, id_data, 4) != 0) {
-        printf("GT911 ID check error");
-        return 0;
-    }
-
-    if (id_data[0] == '9' && id_data[1] == '1' && id_data[2] == '1') {
-        return 1;
-    }
-
-    return 0;
-}
 
 
 
 void touch_panel_check()
 {
-    u8 data = 2;
-    u8 check = 0;
-    u8 len = 0;
-    void *touch;
-    touch = dev_open("iic1",NULL);
-    len = dev_write(touch,&data,1);
-    printf("dev_write %x",len);
-    gt911_check_id();
-    len = dev_read(touch,&check,1);
-    printf("len %x check I2C %x",len,check);
-//    if(!GT911_iic_read_dbl_check()){
-//        printf("sucess");
-//    }
+    printf("touch panel status is : %d",get_tp_init_state_func());
 }
 
 
@@ -1129,7 +1092,6 @@ void app_main()
         return;
     }
 #endif
-    touch_panel_check();
 
 
 
