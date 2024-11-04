@@ -1628,9 +1628,9 @@ static int rec_goto_back_page_ontouch(void *ctr, struct element_touch_event *e)
         ui_hide(ENC_PASSWORD_LAY);
         ui_show(ENC_LAY_BACK_PIC);
         ui_show(ENC_LAY_BACK);
-        
+
         ui_show(ENC_LAY_HOME_PAGE);
-        
+
         ui_show(ENC_UP_LAY);
         u8 command_buf = voice;
         u8 data_buf[] = {exit_admin_mode};
@@ -4999,12 +4999,12 @@ static int rec_lay_user_scanf_ontouch(void *ctr, struct element_touch_event *e)
 
             return false;
         }
-        
+
         if(user_name_num == (MAX_NAME_LEN )){
             printf("======================= user name num max\n");
             break;
         }
-        
+
         user_name[user_name_num+1] = '\0';
         printf("============= user name:");
         puts(user_name);
@@ -7081,6 +7081,58 @@ REGISTER_UI_EVENT_HANDLER(RES_LING_BTN)
 .ontouch = rec_rec_ling_up_ontouch,
 };
 
+
+extern u8 sys_lock_time;
+/***************************** 系统锁定页面 ************************************/
+static int rec_enc_system_lock_onchange(void *ctr, enum element_change_event e, void *arg)
+{
+    struct layout *layout = (struct layout *)ctr;
+    switch (e) {
+    case ON_CHANGE_INIT:
+//        ui_ontouch_lock(layout);
+        break;
+    case ON_CHANGE_RELEASE:
+//        ui_ontouch_unlock(layout);
+        break;
+    case ON_CHANGE_FIRST_SHOW:
+        break;
+    case ON_CHANGE_SHOW:
+        
+        break;
+    default:
+        return false;
+    }
+    return false;
+}
+REGISTER_UI_EVENT_HANDLER(ENC_SYSTEM_LOCK)
+.onchange = rec_enc_system_lock_onchange,
+};
+
+/***************************** 系统锁定按键 ************************************/
+static int rec_system_lock_ontouch(void *ctr, struct element_touch_event *e)
+{
+    UI_ONTOUCH_DEBUG("**rec_system_lock_ontouch**");
+    u8 command_buf,data_buf;
+    switch (e->event) {
+    case ELM_EVENT_TOUCH_DOWN:
+        break;
+    case ELM_EVENT_TOUCH_HOLD:
+        break;
+    case ELM_EVENT_TOUCH_MOVE:
+        break;
+    case ELM_EVENT_TOUCH_UP:
+
+        command_buf = voice;
+        data_buf = system_locked;
+        uart_send_package(command_buf,&data_buf,1);
+        break;
+    }
+    return false;
+}
+REGISTER_UI_EVENT_HANDLER(SYSTEM_LOCK_BTN)
+.ontouch = rec_system_lock_ontouch,
+};
+
 void time_blink()
 {
     static u8 ti = 0;
@@ -7093,13 +7145,6 @@ void time_blink()
     ui_show(ENC_UP_LAY);
 }
 
-void device_status_show_end()
-{
-    memset(device_status,0,sizeof(device_status));
-    ui_hide(ENC_DEVICE_STATUS);
-    ui_show(ENC_LAY_HOME_PAGE);
-}
-
 /***************************** 主页 ************************************/
 static int rec_enc_back_lay_onchange(void *ctr, enum element_change_event e, void *arg)
 {
@@ -7109,6 +7154,9 @@ static int rec_enc_back_lay_onchange(void *ctr, enum element_change_event e, voi
         break;
     case ON_CHANGE_RELEASE:
         enc_back_flag = 0;
+        if(tim_handle){
+            sys_timer_del(tim_handle);
+        }
         break;
     case ON_CHANGE_FIRST_SHOW:
 
@@ -7730,7 +7778,7 @@ static int rec_sys_check_detail_onchange(void *ctr, enum element_change_event e,
             ui_show(SYS_CHECK_DETAIL_SYMBOL_10_N);
             ui_text_show_index_by_id(SYS_CHECK_DETAIL_TXT_10,2);
         }
-        
+
         if(!auto_check_status[5]) {
             ui_hide(SYS_CHECK_DETAIL_SYMBOL_12_N);
             ui_show(SYS_CHECK_DETAIL_SYMBOL_12_Y);

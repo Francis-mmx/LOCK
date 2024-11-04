@@ -211,7 +211,7 @@ typedef enum {
     input_key_again,          //请再次输入密码
     set_face,                 //进入人脸识别模式
     turn_left,                //人脸识别 向左转
-    turn_right = 0x10,               //人脸识别 向右转
+    turn_right = 0x10,        //人脸识别 向右转
     lower_head,               //人脸识别 低头
     raise_head,               //人脸识别 抬头
     input_user_name,          //请输入用户名
@@ -219,6 +219,7 @@ typedef enum {
     press_finger,             //请按指纹
     put_card,                 //请放卡片
     duplicate_card,           //重复卡
+    system_locked,            //系统锁定
 };
 
 

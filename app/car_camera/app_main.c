@@ -21,6 +21,8 @@ extern u8 device_status[10];
 extern u8 auto_check_status[10];
 extern u8 auto_check_flag;
 u8 ani_flag = 0;//1--动画或进度条
+u8 sys_lock_time;
+
 int upgrade_detect(const char *sdcard_name);
 
 
@@ -877,6 +879,42 @@ void get_fingerprint_confirm(u8 *buf)
     uart_send_package(command_buf,&data_buf,1);
 }
 
+void exit_system_lock()
+{
+    ui_hide(ENC_SYSTEM_LOCK);
+    ui_show(ENC_LAY_BACK);
+    ui_show(ENC_LAY_HOME_PAGE);
+}
+
+void system_locktime_cal(u8 time)
+{
+    static u8 cal_time;
+    cal_time = sys_lock_time - time;
+    if(cal_time == 0){
+        exit_system_lock();
+    }
+    ui_pic_show_image_by_id(SYSTEM_LOCK_TIME_1,cal_time/100);
+    ui_pic_show_image_by_id(SYSTEM_LOCK_TIME_2,cal_time/10%10);
+    ui_pic_show_image_by_id(SYSTEM_LOCK_TIME_3,cal_time%10);
+}
+
+void get_system_lock_status(u8 *buf)
+{
+    printf("get_system_lock_status");
+    if(buf[5] == 0x01){
+        ui_hide(ENC_PASSWORD_LAY);
+        ui_hide(ENC_LAY_BACK);
+        ui_show(ENC_SYSTEM_LOCK);
+    }
+    sys_lock_time = buf[6];
+    for(u8 i = 0; i < sys_lock_time + 1; i++)
+    {
+        sys_timeout_add(i, system_locktime_cal, i*1000);
+    }
+
+}
+
+
 void get_face_confirm(u8 *buf)
 {
     static u8 idx = 0;
@@ -934,7 +972,7 @@ void uart_recv_handle()
                         get_device_infor(recv_data);                                //获取自检设备信息
                         break;
                     case 0xA8:
-                        get_fingerprint_confirm(recv_data);                         //获取指纹确认信号,更改文字和语音
+                        get_system_lock_status(recv_data);                          //获取系统锁定事件
                         break;
                     case 0xA9:
                         get_face_confirm(recv_data);                                //获取人脸确认信号,更改语音
@@ -962,13 +1000,6 @@ int uart_receive_package(u8 *buf, int len)  //串口接收   最大接收长度5
 }
 
 
-
-
-
-void touch_panel_check()
-{
-    printf("touch panel status is : %d",get_tp_init_state_func());
-}
 
 
 /*************************************Changed by liumenghui*************************************/
