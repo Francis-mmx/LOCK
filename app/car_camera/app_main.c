@@ -886,12 +886,19 @@ void exit_system_lock()
     ui_show(ENC_LAY_HOME_PAGE);
 }
 
+
+ 
+extern int tim_handle;
+extern void time_blink();
 void system_locktime_cal(u8 time)
 {
     static u8 cal_time;
     cal_time = sys_lock_time - time;
     if(cal_time == 0){
         exit_system_lock();
+        if(!tim_handle){
+            tim_handle = sys_timer_add(NULL, time_blink, 1000);
+        }
     }
     ui_pic_show_image_by_id(SYSTEM_LOCK_TIME_1,cal_time/100);
     ui_pic_show_image_by_id(SYSTEM_LOCK_TIME_2,cal_time/10%10);
@@ -902,8 +909,11 @@ void get_system_lock_status(u8 *buf)
 {
     printf("get_system_lock_status");
     if(buf[5] == 0x01){
+        if(tim_handle){
+            sys_timer_del(tim_handle);
+            tim_handle = 0;
+        }
         ui_hide(ENC_PASSWORD_LAY);
-        ui_hide(ENC_LAY_BACK);
         ui_show(ENC_SYSTEM_LOCK);
     }
     sys_lock_time = buf[6];

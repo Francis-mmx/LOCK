@@ -151,7 +151,7 @@ u16 current_user = 0;
 extern u8 lock_on;//0--未解锁 1--解锁
 extern u8 ani_flag;//1--动画播放
 
-static int tim_handle = 0;//桌面闪烁定时器
+int tim_handle = 0;//桌面闪烁定时器
 static u8 net_page_flag = 0;//0--网络设置列表 1--启动配网
 u8 device_status[10] = {0};
 u8 aoto_check_page = 0;
@@ -7154,9 +7154,6 @@ static int rec_enc_back_lay_onchange(void *ctr, enum element_change_event e, voi
         break;
     case ON_CHANGE_RELEASE:
         enc_back_flag = 0;
-        if(tim_handle){
-            sys_timer_del(tim_handle);
-        }
         break;
     case ON_CHANGE_FIRST_SHOW:
 
