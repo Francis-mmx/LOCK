@@ -911,7 +911,30 @@ void get_system_lock_status(u8 *buf)
     {
         sys_timeout_add(i, system_locktime_cal, i*1000);
     }
+}
 
+
+extern u8 goto_facial_page_flag;
+void goto_face_identification(u8 *buf)
+{
+    printf("goto_face_identification");
+    struct intent it;
+    if(buf[5]){
+        //退出人脸控件
+        init_intent(&it);
+        it.name = "video_rec";
+        it.action = ACTION_VIDEO_REC_SWITCH_WIN_OFF;
+        start_app(&it);
+        goto_facial_page_flag = 1;
+        ui_hide(ENC_FACIAL_LAY);
+    }else{
+        //进入人脸控件
+        init_intent(&it);
+        it.name = "video_rec";
+        it.action = ACTION_VIDEO_REC_SWITCH_WIN;
+        start_app(&it);
+        ui_show(ENC_FACIAL_LAY);
+    }
 }
 
 
@@ -975,7 +998,7 @@ void uart_recv_handle()
                         get_system_lock_status(recv_data);                          //获取系统锁定事件
                         break;
                     case 0xA9:
-                        get_face_confirm(recv_data);                                //获取人脸确认信号,更改语音
+                        goto_face_identification(recv_data);                                //获取人脸确认信号,更改语音
                         break;
                     default:
                         return ;
