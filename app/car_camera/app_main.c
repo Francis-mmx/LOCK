@@ -755,10 +755,9 @@ void get_device_infor(u8 *buf)
 
         ui_show(ENC_DEVICE_STATUS);
         sys_timeout_add(NULL, delay_hide_status, 5000);
-    }else{
-        ui_hide(ENC_DEVICE_STATUS);
-        ui_show(ENC_LAY_HOME_PAGE);
-    }
+    } else {
+        delay_hide_status();
+    } 
 }
 
 void cancel_retransmit(u8 *buf)

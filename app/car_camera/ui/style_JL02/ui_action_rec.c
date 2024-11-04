@@ -94,6 +94,7 @@ extern int spec_uart_recv(char *buf, u32 len);
 
 extern int uart_send_package(u8 *mode,u8 *data,u8 com_len);
 extern int uart_recv_retransmit();
+extern void delay_hide_status();
 
 
 extern int storage_device_ready();
@@ -1385,6 +1386,7 @@ static int enc_onchange(void *ctr, enum element_change_event e, void *arg)
             break;
         }
         ui_show(ENC_LAY_BACK);
+        sys_timeout_add(NULL, delay_hide_status, 1000);
         break;
     default:
         return false;
@@ -7430,7 +7432,7 @@ static int rec_goto_auto_check_ontouch(void *ctr, struct element_touch_event *e)
     case ELM_EVENT_TOUCH_MOVE:
         break;
     case ELM_EVENT_TOUCH_UP:
-        memset(device_status,0,sizeof(device_status));
+        memset(auto_check_status,0,sizeof(auto_check_status));
         sys_info_flag = 2;
         auto_check_flag = 0;
         ui_text_show_index_by_id(SYS_INFO_TXT,sys_info_flag);
