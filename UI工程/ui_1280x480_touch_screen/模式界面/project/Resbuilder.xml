@@ -67,6 +67,7 @@
                                         <Color>54AAA4</Color>
                                         <Color>E9E9E9</Color>
                                         <Color>00FF00</Color>
+                                        <Color>535353</Color>
                                         <Color>2EE79B</Color>
                                         <Color>DFDFDF</Color>
                                         <Color>00AAFF</Color>
@@ -75,7 +76,6 @@
                                         <Color>FF0000</Color>
                                         <Color>949494</Color>
                                         <Color>55AAA5</Color>
-                                        <Color>323232</Color>
                                 </ColorList>
                                 <PictureList>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_4.png</Picture>

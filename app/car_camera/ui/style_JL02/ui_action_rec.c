@@ -1390,7 +1390,7 @@ static int enc_onchange(void *ctr, enum element_change_event e, void *arg)
             break;
         }
         ui_show(ENC_LAY_BACK);
-        sys_timeout_add(NULL, delay_hide_status, 5000);
+        sys_timeout_add(NULL, delay_hide_status, 3000);
         break;
     default:
         return false;
@@ -5651,8 +5651,8 @@ static int rec_user_facial_btn_ontouch(void *ctr, struct element_touch_event *e)
         it.action = ACTION_VIDEO_REC_SWITCH_WIN;
         start_app(&it);
 
-        command = voice;
-        data = set_face;
+        command = face_identification;
+        data = 0;
         uart_send_package(command,&data,1);
 
         sys_timeout_add(NULL, time_delay_show, 300);
@@ -7097,6 +7097,7 @@ static int rec_enc_system_lock_onchange(void *ctr, enum element_change_event e, 
 //        ui_ontouch_unlock(layout);
         break;
     case ON_CHANGE_FIRST_SHOW:
+        ui_show(ENC_UP_LAY);
         break;
     case ON_CHANGE_SHOW:
         
@@ -7158,7 +7159,6 @@ static int rec_enc_back_lay_onchange(void *ctr, enum element_change_event e, voi
         enc_back_flag = 0;
         break;
     case ON_CHANGE_FIRST_SHOW:
-
         if(tim_handle){
             sys_timer_del(tim_handle);
         }
@@ -7174,6 +7174,8 @@ static int rec_enc_back_lay_onchange(void *ctr, enum element_change_event e, voi
 REGISTER_UI_EVENT_HANDLER(ENC_LAY_BACK)
 .onchange = rec_enc_back_lay_onchange,
 };
+
+
 
 /***************************** 顶部UI界面 ************************************/
 static int rec_enc_up_lay_onchange(void *ctr, enum element_change_event e, void *arg)

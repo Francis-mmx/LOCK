@@ -16,6 +16,7 @@ extern u8 page_pic_flag;           //设置主界面页面标志位 0--第一页
 extern u8 ani_flag;                //1--动画或进度条
 extern u8 lock_on;
 extern u8 power_flag;
+extern int uart_send_package(u8 command,u8 *data,u8 com_len);
 
 void ui_lcd_light_on(void)
 {
@@ -56,6 +57,11 @@ static void lcd_pro_kick(void *priv)
             it.name = "video_rec";
             it.action = ACTION_BACK;
             start_app(&it);
+            
+            u8 command_buf = exit_sleep;
+            u8 data_buf = 1;                    //进入休眠，通知锁控
+            uart_send_package(command_buf,&data_buf,1);
+            
             lcd_pro_cnt = 0;
             lcd_pro_flag = 1;
             ui_lcd_light_off();
@@ -82,6 +88,7 @@ void ui_lcd_light_time_set(int sec)
 
 static void backlight_event_handler(struct sys_event *event)
 {
+    static u8 once_flag = 0;
     struct intent it;
     init_intent(&it);
     lcd_pro_cnt = 0;
@@ -91,16 +98,25 @@ static void backlight_event_handler(struct sys_event *event)
             lcd_pro_flag = 0;
             sys_key_event_consume(&(event->u.key)); /* 背光关闭时，按键只是打开背光 */
         } else if (event->type == SYS_TOUCH_EVENT) {
+            once_flag++;
             //背光关闭后，UI退回到主页
             lock_on = 1;
             power_flag = 0;
             it.name = "video_rec";
             it.action = ACTION_VIDEO_REC_MAIN;
             start_app(&it);
+            
             sys_touch_event_consume(&(event->u.touch)); /* 背光关闭时，触摸只是打开背光 */
             if (event->u.touch.event == ELM_EVENT_TOUCH_UP) {
                 ui_lcd_light_on();
                 lcd_pro_flag = 0;
+            }
+            if(once_flag == 2)
+            {
+                once_flag = 0;
+                u8 command_buf = exit_sleep;
+                u8 data_buf = 0;                    //退出休眠，通知锁控
+                uart_send_package(command_buf,&data_buf,1);
             }
         }
     } else if (event->type == SYS_KEY_EVENT

@@ -16,7 +16,7 @@
 
 u32 spin_lock_cnt[2] = {0};
 
-u32 uart_timer_handle[5] = {0};
+u32 uart_timer_handle[10] = {0};
 extern u8 device_status[10];
 extern u8 auto_check_status[10];
 extern u8 auto_check_flag;
@@ -604,6 +604,12 @@ int uart_recv_retransmit()
             case 0xA4:
                 uart_timer_handle[4] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
                 break;
+            case 0x10:
+                uart_timer_handle[5] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                break;
+            case 0x11:
+                uart_timer_handle[6] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                break;
         }
     }
     else
@@ -624,6 +630,12 @@ int uart_recv_retransmit()
                 break;
             case 0xA4:
                 uart_timer_handle[4] = sys_timeout_add(0,transmit_overtime,100);
+                break;
+            case 0x10:
+                uart_timer_handle[5] = sys_timeout_add(0,transmit_overtime,100);
+                break;
+            case 0x11:
+                uart_timer_handle[6] = sys_timeout_add(0,transmit_overtime,100);
                 break;
         }
     }
@@ -794,6 +806,16 @@ void cancel_retransmit(u8 *buf)
                     sys_timeout_del(uart_timer_handle[4]);//删除添加的 设备查询指令 超时回调
                 }
                 break;
+            case 0x10:
+                for(int i=0;i<(tx_flag+1);i++){
+                    sys_timeout_del(uart_timer_handle[5]);//删除添加的 休眠指令 超时回调
+                }
+                break;
+            case 0x11:
+                for(int i=0;i<(tx_flag+1);i++){
+                    sys_timeout_del(uart_timer_handle[6]);//删除添加的 启动人脸控件指令 超时回调
+                }
+                break;
         }
         tx_flag = 0;
     }
@@ -893,18 +915,18 @@ void exit_system_lock()
     }
 }
 
- 
+
 void system_locktime_cal(u8 time)
 {
     u8 cal_time;
     cal_time = sys_lock_time - time;
-    printf("cal_time %d",cal_time);
     if(cal_time == 0){
         exit_system_lock();
     }
     ui_pic_show_image_by_id(SYSTEM_LOCK_TIME_1,cal_time/100);
     ui_pic_show_image_by_id(SYSTEM_LOCK_TIME_2,cal_time/10%10);
     ui_pic_show_image_by_id(SYSTEM_LOCK_TIME_3,cal_time%10);
+    ui_show(ENC_UP_LAY);
 }
 
 void get_system_lock_status(u8 *buf)
@@ -918,8 +940,9 @@ void get_system_lock_status(u8 *buf)
             tim_handle = 0;
         }
         ui_hide(ENC_PASSWORD_LAY);
+        ui_hide(ENC_LAY_BACK);
         ui_show(ENC_SYSTEM_LOCK);
-        
+
         sys_lock_time = buf[6];
         for(u8 i = 0; i < sys_lock_time + 1; i++)
         {
@@ -1007,8 +1030,8 @@ void uart_recv_handle()
                     spec_uart_send(packet_buf,8);//首次发送
                 }
                 switch(recv_data[4]){
-                    case 0xA0:case 0xA1:case 0xA2:case 0xA3:case 0xA4:
-                        cancel_retransmit(recv_data);//应答信号,取消重发
+                    case 0xA0:case 0xA1:case 0xA2:case 0xA3:case 0xA4:case 0x10:case 0x11:
+                        cancel_retransmit(recv_data);                               //应答信号,取消重发
                         return;
                     case 0xA5:
                         add_user_new_key(recv_data);                                //添加新的用户密钥
@@ -1023,7 +1046,7 @@ void uart_recv_handle()
                         get_system_lock_status(recv_data);                          //获取系统锁定事件
                         break;
                     case 0xA9:
-                        goto_face_identification(recv_data);                                //获取人脸确认信号,更改语音
+                        goto_face_identification(recv_data);                        //进入人脸识别控件
                         break;
                     default:
                         return ;
@@ -1172,7 +1195,7 @@ void app_main()
     }
 #endif
 
-
+    printf("touch panel : %d",get_tp_init_state_func());
 
 #ifdef PHOTO_STICKER_ENABLE
     it.name	= "video_photo";

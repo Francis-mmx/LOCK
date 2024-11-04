@@ -63,7 +63,7 @@
 #define LOCK_FILE_PERCENT	40    //0~100
 #define NAME_FILE_BY_DATE   1
 
-extern u32 uart_timer_handle[5];
+extern u32 uart_timer_handle[10];
 extern int uart_recv_retransmit();
 extern void transmit_callback(struct intent *it);
 
