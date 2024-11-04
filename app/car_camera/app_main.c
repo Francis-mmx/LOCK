@@ -590,7 +590,7 @@ int uart_recv_retransmit()
         tx_flag++;
         switch(com){
             case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,60);//定时    重发数据包       100ms后删除
+                uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,80);//定时    重发数据包       100ms后删除
                 break;
             case 0xA1:
                 uart_timer_handle[1] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
@@ -617,7 +617,7 @@ int uart_recv_retransmit()
         tx_flag = 0;
         switch(com){
             case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,60);
+                uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,80);
                 break;
             case 0xA1:
                 uart_timer_handle[1] = sys_timeout_add(0,transmit_overtime,100);
@@ -735,7 +735,7 @@ void uart_send_unlock(u8 *buf)
 
 void delay_hide_status()
 {
-    memset(device_status,0,sizeof(device_status));
+    device_status[0] = 0x0F;
     ui_hide(ENC_DEVICE_STATUS);
     ui_show(ENC_LAY_HOME_PAGE);
 }

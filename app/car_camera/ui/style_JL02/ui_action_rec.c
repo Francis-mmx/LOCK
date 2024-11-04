@@ -1372,7 +1372,20 @@ REGISTER_UI_EVENT_HANDLER(ENC_LAY)
 .onchange = rec_layout_up_onchange,
 };
 
-
+void last_show_device()
+{
+    if((device_status[0]+device_status[1]+device_status[2]+device_status[3]+device_status[4]+device_status[5]+
+            device_status[6]+device_status[7]+device_status[8]+device_status[9]) <= 10){
+            
+        printf("device sum = %d",device_status[0]+device_status[1]+device_status[2]+device_status[3]+device_status[4]+device_status[5]+
+        device_status[6]+device_status[7]+device_status[8]+device_status[9]);
+        memset(device_status,1,sizeof(device_status));
+        device_status[5] = !get_tp_init_state_func();
+        ui_hide(ENC_LAY_HOME_PAGE);
+        ui_show(ENC_DEVICE_STATUS);
+        sys_timeout_add(NULL, delay_hide_status, 5000);
+    }
+}
 
 static int enc_onchange(void *ctr, enum element_change_event e, void *arg)
 {
@@ -1390,7 +1403,9 @@ static int enc_onchange(void *ctr, enum element_change_event e, void *arg)
             break;
         }
         ui_show(ENC_LAY_BACK);
-        sys_timeout_add(NULL, delay_hide_status, 3000);
+//        ui_show(ENC_LAY_HOME_PAGE);
+        sys_timeout_add(NULL, last_show_device, 35000);
+        
         break;
     default:
         return false;
@@ -2808,12 +2823,12 @@ REGISTER_UI_EVENT_HANDLER(ENC_DEVICE_STATUS_PIC)
 };
 
 /***************************** 密码界面 密码输入按钮 ************************************/
-#define  MAX_PAW_NUM  15           //密码最大个数
+#define  MAX_PAW_NUM  25           //密码最大个数
 #define  MIN_PAW_NUM  6            //密码最小个数
 
 u8 password_num = 0;        //输入的密码个数
 u8 password_code[MAX_PAW_NUM] = {0};       //保存输入的密码
-u8 asterisk_number[MAX_PAW_NUM] = {'*','*','*','*','*','*','*','*','*','*','*','*','*','*','*'};      //显示*号
+u8 asterisk_number[MAX_PAW_NUM] = {'*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*'};      //显示*号
 static u8 input_key_flag = 0;
 static int rec_password_in_ontouch(void *ctr, struct element_touch_event *e)
 {

@@ -30,7 +30,7 @@
  #define CONFIG_VIDEO2_ENABLE 		            [> usb后摄像头使能 <]
 // #define CONFIG_PSRAM_ENABLE                     [>外挂psram存放vidoebuf<]
 // #define CONFIG_CAMERA_EFFECT_ENABLE				// 屏显分辨率最大320*240
-#define SCREEN_PROTECTION                       /*屏保开关*/
+//#define SCREEN_PROTECTION                       /*屏保开关*/
 #endif
 
 
