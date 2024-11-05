@@ -22,7 +22,7 @@ extern u8 auto_check_status[10];
 extern u8 auto_check_flag;
 u8 ani_flag = 0;//1--动画或进度条
 u8 sys_lock_time;
-
+extern u8 on_homepage;
 int upgrade_detect(const char *sdcard_name);
 
 
@@ -649,6 +649,7 @@ void ani_show()
     ui_show(ENC_LAY_HOME_PAGE);
     lock_on = 1;
     ani_flag = 0;
+    on_homepage = 1;
 }
 void uart_send_unlock(u8 *buf)
 {
@@ -711,6 +712,7 @@ void uart_send_unlock(u8 *buf)
                 printf("unlock\n");
                 ani_flag = 1;
                 lock_on = 0;
+                on_homepage = 0;
                 now_user.unlock.unlock_power = UNLOCK;
                 ui_hide(ENC_LAY_BACK);
                 ui_hide(ENC_PASSWORD_LAY);
@@ -735,6 +737,7 @@ void uart_send_unlock(u8 *buf)
 
 void delay_hide_status()
 {
+    on_homepage = 1;
     device_status[0] = 0x0F;
     ui_hide(ENC_DEVICE_STATUS);
     ui_show(ENC_LAY_HOME_PAGE);
@@ -778,44 +781,60 @@ void get_device_infor(u8 *buf)
 
 void cancel_retransmit(u8 *buf)
 {
-    if(buf[2] == 0x11 && buf[5] == 0){              //取消重发时，锁->屏的标识符为0x11
+    if(buf[2] == 0x11){              //取消重发时，锁->屏的标识符为0x11
         /*取消重发*/
-        switch(buf[4]){
-            case 0xA0:
-                for(int i=0;i<(tx_flag+1);i++){//在重发第三次的时候同样可以取消，否则进入超时处理
-                    sys_timeout_del(uart_timer_handle[0]);//删除添加的 语音指令 超时回调
-                }
-                break;
-            case 0xA1:
-                for(int i=0;i<(tx_flag+1);i++){
-                    sys_timeout_del(uart_timer_handle[1]);//删除添加的 添加用户指令 超时回调
-                }
-                break;
-            case 0xA2:
-                for(int i=0;i<(tx_flag+1);i++){
-                    sys_timeout_del(uart_timer_handle[2]);//删除添加的 删除用户指令 超时回调
-                }
-                break;
-            case 0xA3:
-                for(int i=0;i<(tx_flag+1);i++){
-                    sys_timeout_del(uart_timer_handle[3]);//删除添加的 添加密钥指令 超时回调
-                }
-                break;
-            case 0xA4:
-                for(int i=0;i<(tx_flag+1);i++){
-                    sys_timeout_del(uart_timer_handle[4]);//删除添加的 设备查询指令 超时回调
-                }
-                break;
-            case 0x10:
-                for(int i=0;i<(tx_flag+1);i++){
-                    sys_timeout_del(uart_timer_handle[5]);//删除添加的 休眠指令 超时回调
-                }
-                break;
-            case 0x11:
-                for(int i=0;i<(tx_flag+1);i++){
-                    sys_timeout_del(uart_timer_handle[6]);//删除添加的 启动人脸控件指令 超时回调
-                }
-                break;
+        if(buf[5] == 0){
+            switch(buf[4]){
+                case 0xA0:
+                    for(int i=0;i<(tx_flag+1);i++){//在重发第三次的时候同样可以取消，否则进入超时处理
+                        sys_timeout_del(uart_timer_handle[0]);//删除添加的 语音指令 超时回调
+                    }
+                    break;
+                case 0xA1:
+                    for(int i=0;i<(tx_flag+1);i++){
+                        sys_timeout_del(uart_timer_handle[1]);//删除添加的 添加用户指令 超时回调
+                    }
+                    break;
+                case 0xA2:
+                    for(int i=0;i<(tx_flag+1);i++){
+                        sys_timeout_del(uart_timer_handle[2]);//删除添加的 删除用户指令 超时回调
+                    }
+                    break;
+                case 0xA3:
+                    for(int i=0;i<(tx_flag+1);i++){
+                        sys_timeout_del(uart_timer_handle[3]);//删除添加的 添加密钥指令 超时回调
+                    }
+                    break;
+                case 0xA4:
+                    for(int i=0;i<(tx_flag+1);i++){
+                        sys_timeout_del(uart_timer_handle[4]);//删除添加的 设备查询指令 超时回调
+                    }
+                    break;
+                case 0x10:
+                    for(int i=0;i<(tx_flag+1);i++){
+                        sys_timeout_del(uart_timer_handle[5]);//删除添加的 休眠指令 超时回调
+                    }
+                    break;
+                case 0x11:
+                    for(int i=0;i<(tx_flag+1);i++){
+                        sys_timeout_del(uart_timer_handle[6]);//删除添加的 启动人脸控件指令 超时回调
+                    }
+                    break;
+            }
+        }else{
+            switch(buf[4]){
+                case 0xA0:case 0xA1:case 0xA2:case 0xA4:case 0x10:case 0x11:
+                    break;
+                case 0xA3:
+                    if(buf[5] == 0x01){                         //指纹模块响应，跳转指纹界面
+                        ui_hide(ENC_USER_NEW_KEY);
+                        ui_show(ENC_ADD_NEW_FINGERPRINT);
+                    }else if(buf[5] == 0x02){                   //卡片模块响应，跳转卡片界面
+                        ui_hide(ENC_USER_NEW_KEY);
+                        ui_show(ENC_ADD_NEW_NFC);
+                    }
+                    break;
+            }
         }
         tx_flag = 0;
     }
@@ -848,13 +867,15 @@ void add_user_new_key(u8 *buf)
                     goto_facial_page_flag = 1;
                     ui_hide(ENC_FACIAL_LAY);
                     ui_show(ENC_WIN);
-                }else if(buf[7] == 2){
+                }
+                else if(buf[7] == 2){
                     ui_hide(ENC_ADD_NEW_FINGERPRINT);
                     ui_show(ENC_LAY_USER_DETAILS);
                 }else if(buf[7] == 3){
                     ui_hide(ENC_ADD_NEW_NFC);
                     ui_show(ENC_LAY_USER_DETAILS);
                 }
+                
             } else {
                 printf("current user key is full\n");
                 return;
@@ -967,21 +988,23 @@ void goto_face_identification(u8 *buf)
 {
     printf("goto_face_identification");
     struct intent it;
-    if(buf[5]){
-        //退出人脸控件
-        init_intent(&it);
-        it.name = "video_rec";
-        it.action = ACTION_VIDEO_REC_SWITCH_WIN_OFF;
-        start_app(&it);
-        goto_facial_page_flag = 1;
-        ui_hide(ENC_FACIAL_LAY);
-    }else{
-        //进入人脸控件
-        init_intent(&it);
-        it.name = "video_rec";
-        it.action = ACTION_VIDEO_REC_SWITCH_WIN;
-        start_app(&it);
-        ui_show(ENC_FACIAL_LAY);
+    if(on_homepage){
+        if(buf[5]){
+            //退出人脸控件
+            init_intent(&it);
+            it.name = "video_rec";
+            it.action = ACTION_VIDEO_REC_SWITCH_WIN_OFF;
+            start_app(&it);
+            goto_facial_page_flag = 1;
+            ui_hide(ENC_FACIAL_LAY);
+        }else{
+            //进入人脸控件
+            init_intent(&it);
+            it.name = "video_rec";
+            it.action = ACTION_VIDEO_REC_SWITCH_WIN;
+            start_app(&it);
+            ui_show(ENC_FACIAL_LAY);
+        }
     }
 }
 
@@ -1027,7 +1050,7 @@ void uart_recv_handle()
                 data = 0;
                 if((recv_data[4] == 0xA5 || recv_data[4] == 0xA6 || recv_data[4] == 0xA7 || recv_data[4] == 0xA8 || recv_data[4] == 0xA9) && recv_data[2] == 0x00){
                     const char *packet_buf = create_packet_uncertain_len(ANSWER_TAG,recv_data[4],&data,1);
-                    spec_uart_send(packet_buf,8);//首次发送
+                    spec_uart_send(packet_buf,8);//回复信号
                 }
                 switch(recv_data[4]){
                     case 0xA0:case 0xA1:case 0xA2:case 0xA3:case 0xA4:case 0x10:case 0x11:

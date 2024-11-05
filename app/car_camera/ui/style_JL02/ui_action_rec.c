@@ -156,6 +156,7 @@ static u8 net_page_flag = 0;//0--网络设置列表 1--启动配网
 u8 device_status[10] = {0};
 u8 aoto_check_page = 0;
 u8 auto_check_status[10] = {0};
+u8 on_homepage = 0;//在主页标识
 /************************************************************
 				    	录像模式设置
 ************************************************************/
@@ -1605,6 +1606,7 @@ static int rec_goto_password_page_ontouch(void *ctr, struct element_touch_event 
         printf("visit size %d",sizeof(user_visit));
         power_flag = UNLOCK;
         lock_on = 1;
+        on_homepage = 0;
         sys_timer_del(tim_handle);
         enc_back_flag = 0;
         ui_hide(ENC_LAY_BACK);
@@ -1640,6 +1642,7 @@ static int rec_goto_back_page_ontouch(void *ctr, struct element_touch_event *e)
     case ELM_EVENT_TOUCH_UP:
         power_flag = UNLOCK;
         lock_on = 1;
+        on_homepage = 1;
         ui_hide(ENC_PASSWORD_LAY);
         ui_show(ENC_LAY_BACK_PIC);
         ui_show(ENC_LAY_BACK);
@@ -3670,6 +3673,7 @@ static int rec_lay_page_btn_ontouch(void *ctr, struct element_touch_event *e)
         ui_show(ENC_LAY_HOME_PAGE);
         ui_show(ENC_UP_LAY);
         lock_on = 1;
+        on_homepage = 1;
         u8 command_buf = voice;
         u8 data_buf[] = {exit_admin_mode};
         uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
@@ -5362,7 +5366,7 @@ static int rec_new_key_lay_onchange(void *ctr, enum element_change_event e, void
         num[1] = current_user & 0xFF;
 
         u8 command_buf = add_password;
-        u8 data_buf[] = {num[0],num[1],other_key};
+        u8 data_buf[] = {num[0],num[1]};
         uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
 
         break;

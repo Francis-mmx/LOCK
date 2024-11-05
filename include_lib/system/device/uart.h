@@ -182,13 +182,14 @@ typedef struct {
 
 //指令码
 typedef enum {
+    exit_sleep = 0x10,        //退出休眠          屏幕--->锁
+    face_identification,      //启动人脸识别        屏幕--->锁
+    
     voice = 0xA0,             //声音            屏幕--->锁
     add_user,                 //添加用户          屏幕--->锁
     delete_user,              //删除用户          屏幕--->锁
     add_password,             //添加密钥请求        屏幕--->锁
     device_request,           //设备请求          屏幕--->锁
-    exit_sleep = 0x10,        //退出休眠          屏幕--->锁
-    face_identification,      //启动人脸识别        屏幕--->锁
     
     store_key,                //存储密钥          锁--->屏幕
     unlock_user,              //开锁用户          锁--->屏幕
