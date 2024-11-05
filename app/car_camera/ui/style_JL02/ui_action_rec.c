@@ -1608,7 +1608,7 @@ static int rec_goto_password_page_ontouch(void *ctr, struct element_touch_event 
         sys_timer_del(tim_handle);
         enc_back_flag = 0;
         ui_hide(ENC_LAY_BACK);
-//        ui_hide(ENC_LAY_BACK_PIC);
+        ui_hide(ENC_LAY_BACK_PIC);
         ui_show(ENC_PASSWORD_LAY);
         ui_show(ENC_UP_LAY);
         u8 command_buf = voice;
@@ -1677,7 +1677,7 @@ static int rec_goto_set_page_ontouch(void *ctr, struct element_touch_event *e)
             ui_text_show_index_by_id(NEC_UNLOCK_POWER_TXT,1);
         }else{
             ui_hide(ENC_PASSWORD_LAY);
-//            ui_show(ENC_LAY_BACK_PIC);
+            ui_show(ENC_LAY_BACK_PIC);
             ui_show(ENC_LAY_PAGE);
         }
 #else
@@ -2774,7 +2774,7 @@ static int rec_set_paper_ui_ontouch(void *ctr, struct element_touch_event *e)
         printf("================= paper num:%d\n",db_select("back"));
         ui_pic_show_image_by_id(REC_SET_PAPER_PIC[db_select("back")],1);        //显示选中选项
         ui_pic_show_image_by_id(ENC_PAPER_SET_PIC,sel_item);
-        ui_pic_show_image_by_id(ENC_LAY_BACK_PIC,sel_item);
+//        ui_pic_show_image_by_id(ENC_LAY_BACK_PIC,sel_item);
         u8 command_buf = voice;
         u8 data_buf[] = {operate_success};
         uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
@@ -3014,7 +3014,7 @@ static int rec_password_ok_ontouch(void *ctr, struct element_touch_event *e)
             password_num = 0;
             ui_text_set_str_by_id(ENC_PASSWORD_TXT, "ascii", " ");
             ui_hide(ENC_PASSWORD_LAY);
-//            ui_show(ENC_LAY_BACK_PIC);
+            ui_show(ENC_LAY_BACK_PIC);
             ui_show(ENC_LAY_BACK);
             ui_show(ENC_LAY_HOME_PAGE);
         }
@@ -3046,13 +3046,13 @@ static int rec_password_ok_ontouch(void *ctr, struct element_touch_event *e)
                 //power_set_flag = 1;//进入权限设置界面
                 page_pic_flag = 0;
                 ui_hide(ENC_PASSWORD_LAY);
-//                ui_show(ENC_LAY_BACK_PIC);
+                ui_show(ENC_LAY_BACK_PIC);
                 ui_show(ENC_LAY_PAGE);
             }else{
                 ani_flag = 1;
                 data_buf = unlocked;
                 ui_hide(ENC_PASSWORD_LAY);
-//                ui_show(ENC_LAY_BACK_PIC);
+                ui_show(ENC_LAY_BACK_PIC);
                 ui_show(ANI_UNLOCK_LAYER);//动画
                 ui_show(ENC_UP_LAY);
                 sys_timeout_add(NULL,hide_show_page,3000);
@@ -7052,6 +7052,7 @@ static int rec_rec_lock_off_ontouch(void *ctr, struct element_touch_event *e)
     case ELM_EVENT_TOUCH_MOVE:
         break;
     case ELM_EVENT_TOUCH_UP:
+        
         ani_flag = 1;
         ui_hide(ENC_LAY_BACK);
         ui_show(ANI_LOCK_LAYER);
@@ -7059,6 +7060,7 @@ static int rec_rec_lock_off_ontouch(void *ctr, struct element_touch_event *e)
         command_buf = voice;
         data_buf = locked;
         uart_send_package(command_buf,&data_buf,1);
+        
         break;
     }
     return false;

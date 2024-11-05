@@ -700,7 +700,7 @@ void uart_send_unlock(u8 *buf)
                     now_user.unlock.unlock_power = ADMIN;
                     ui_hide(ENC_LAY_BACK);
                     ui_hide(ENC_PASSWORD_LAY);
-//                    ui_show(ENC_LAY_BACK_PIC);
+                    ui_show(ENC_LAY_BACK_PIC);
                     ui_show(ENC_LAY_PAGE);
                 } else {
                     printf("not power user \n");
@@ -714,7 +714,7 @@ void uart_send_unlock(u8 *buf)
                 now_user.unlock.unlock_power = UNLOCK;
                 ui_hide(ENC_LAY_BACK);
                 ui_hide(ENC_PASSWORD_LAY);
-//                ui_show(ENC_LAY_BACK_PIC);
+                ui_show(ENC_LAY_BACK_PIC);
                 ui_show(ANI_UNLOCK_LAYER);
                 ui_show(ENC_UP_LAY);
                 sys_timeout_add(NULL, ani_show, 3000);
