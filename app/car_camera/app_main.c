@@ -746,27 +746,13 @@ void delay_hide_status()
 void get_device_infor(u8 *buf)
 {
     printf("get_device_infor\n");
-    u8 status;
-    status = buf[5];
-    if(auto_check_flag)
+  
+    for(int i = 0; i < 8; i++)
     {
-        printf("auto check");
-        for(int i = 0; i < 8; i++)
-        {
-            auto_check_status[i] = buf[5+i];
-        }
-        auto_check_status[5] = !get_tp_init_state_func();
-        put_buf(auto_check_status, 7);
+        device_status[i] = buf[5+i];
     }
-    else
-    {
-        for(int i = 0; i < 8; i++)
-        {
-            device_status[i] = buf[5+i];
-        }
-        device_status[5] = !get_tp_init_state_func();
-        put_buf(device_status, 7);
-    }
+    device_status[5] = !get_tp_init_state_func();
+    put_buf(device_status, 7);
 
     if(device_status[0] || device_status[1] || device_status[2] || device_status[3] || device_status[4] || device_status[5] || device_status[6] || device_status[7])
     {
@@ -782,6 +768,29 @@ void get_device_infor(u8 *buf)
 void cancel_retransmit(u8 *buf)
 {
     if(buf[2] == 0x11){              //取消重发时，锁->屏的标识符为0x11
+        if(buf[4] == 0xA3){
+            if(buf[5] == 0x01){                         //指纹模块响应，跳转指纹界面
+                ui_hide(ENC_USER_NEW_KEY);
+                ui_show(ENC_ADD_NEW_FINGERPRINT);
+            }else if(buf[5] == 0x02){                   //卡片模块响应，跳转卡片界面
+                ui_hide(ENC_USER_NEW_KEY);
+                ui_show(ENC_ADD_NEW_NFC);
+            }
+        }else if(buf[4] == 0xA4){
+            if(auto_check_flag)
+            {
+                printf("auto check");
+                for(int i = 0; i < 8; i++)
+                {
+                    auto_check_status[i] = buf[5+i];
+                }
+                auto_check_status[5] = !get_tp_init_state_func();
+                put_buf(auto_check_status, 7);
+            }
+            for(int i=0;i<(tx_flag+1);i++){
+                sys_timeout_del(uart_timer_handle[4]);//删除添加的 设备查询指令 超时回调
+            }
+        }
         /*取消重发*/
         if(buf[5] == 0){
             switch(buf[4]){
@@ -806,9 +815,9 @@ void cancel_retransmit(u8 *buf)
                     }
                     break;
                 case 0xA4:
-                    for(int i=0;i<(tx_flag+1);i++){
-                        sys_timeout_del(uart_timer_handle[4]);//删除添加的 设备查询指令 超时回调
-                    }
+//                    for(int i=0;i<(tx_flag+1);i++){
+//                        sys_timeout_del(uart_timer_handle[4]);//删除添加的 设备查询指令 超时回调
+//                    }
                     break;
                 case 0x10:
                     for(int i=0;i<(tx_flag+1);i++){
@@ -818,20 +827,6 @@ void cancel_retransmit(u8 *buf)
                 case 0x11:
                     for(int i=0;i<(tx_flag+1);i++){
                         sys_timeout_del(uart_timer_handle[6]);//删除添加的 启动人脸控件指令 超时回调
-                    }
-                    break;
-            }
-        }else{
-            switch(buf[4]){
-                case 0xA0:case 0xA1:case 0xA2:case 0xA4:case 0x10:case 0x11:
-                    break;
-                case 0xA3:
-                    if(buf[5] == 0x01){                         //指纹模块响应，跳转指纹界面
-                        ui_hide(ENC_USER_NEW_KEY);
-                        ui_show(ENC_ADD_NEW_FINGERPRINT);
-                    }else if(buf[5] == 0x02){                   //卡片模块响应，跳转卡片界面
-                        ui_hide(ENC_USER_NEW_KEY);
-                        ui_show(ENC_ADD_NEW_NFC);
                     }
                     break;
             }
@@ -965,7 +960,7 @@ void get_system_lock_status(u8 *buf)
         ui_show(ENC_SYSTEM_LOCK);
 
         sys_lock_time = buf[6];
-        for(u8 i = 0; i < sys_lock_time + 1; i++)
+        for(u16 i = 0; i < sys_lock_time + 1; i++)
         {
             locktime_handle[i] = sys_timeout_add(i, system_locktime_cal, i*1000);
         }
@@ -974,7 +969,7 @@ void get_system_lock_status(u8 *buf)
         data_buf = system_locked;
         uart_send_package(command_buf,&data_buf,1);
     }else if(buf[5] == 0){
-        for(u8 i = 0; i < sys_lock_time + 1; i++)
+        for(u16 i = 0; i < sys_lock_time + 1; i++)
         {
             sys_timeout_del(locktime_handle[i]);
         }
