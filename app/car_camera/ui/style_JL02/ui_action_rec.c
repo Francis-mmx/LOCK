@@ -758,6 +758,7 @@ u8 erase_flash(u8 num)
         db_update("spt",0);                 //存起始指针
         db_flush();
         time_idx_count = 0;
+//        list_num_increase = 1;
         memset(time_idx,0,sizeof(time_idx));
         offset = BASE_ADDRESS - ((MAX_USER_NUM + 5) * 4 * 1024);
         for(int i = 0; i < (MAX_USER_NUM+5+1); i++)
@@ -2780,7 +2781,7 @@ static int rec_set_paper_ui_ontouch(void *ctr, struct element_touch_event *e)
         printf("================= paper num:%d\n",db_select("back"));
         ui_pic_show_image_by_id(REC_SET_PAPER_PIC[db_select("back")],1);        //显示选中选项
         ui_pic_show_image_by_id(ENC_PAPER_SET_PIC,sel_item);
-//        ui_pic_show_image_by_id(ENC_LAY_BACK_PIC,sel_item);
+        ui_pic_show_image_by_id(ENC_LAY_BACK_PIC,sel_item);
         u8 command_buf = voice;
         u8 data_buf[] = {operate_success};
         uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
