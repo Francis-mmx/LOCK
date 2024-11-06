@@ -24,7 +24,7 @@ u8 ani_flag = 0;//1--动画或进度条
 u8 sys_lock_time;
 extern u8 on_homepage;
 int upgrade_detect(const char *sdcard_name);
-
+u8 answer_flag = 0;//0--未收到回复 1--收到回复
 
 /*任务列表 */
 const struct task_info task_info_table[] = {
@@ -585,58 +585,60 @@ void transmit_overtime(void)//超时处理函数，后续可新增功能
 int uart_recv_retransmit()
 {
     u8 com = (u8)uart_buf.data[4];
-    if(tx_flag < MAX_TRANSMIT)
-    {
-        tx_flag++;
-        switch(com){
-            case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,80);//定时    重发数据包       100ms后删除
-                break;
-            case 0xA1:
-                uart_timer_handle[1] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
-                break;
-            case 0xA2:
-                uart_timer_handle[2] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
-                break;
-            case 0xA3:
-                uart_timer_handle[3] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
-                break;
-            case 0xA4:
-                uart_timer_handle[4] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
-                break;
-            case 0x10:
-                uart_timer_handle[5] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
-                break;
-            case 0x11:
-                uart_timer_handle[6] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
-                break;
+    if(!answer_flag){
+        if(tx_flag < MAX_TRANSMIT)
+        {
+            tx_flag++;
+            switch(com){
+                case 0xA0:
+                    uart_timer_handle[0] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                    break;
+                case 0xA1:
+                    uart_timer_handle[1] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                    break;
+                case 0xA2:
+                    uart_timer_handle[2] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                    break;
+                case 0xA3:
+                    uart_timer_handle[3] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                    break;
+                case 0xA4:
+                    uart_timer_handle[4] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                    break;
+                case 0x10:
+                    uart_timer_handle[5] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                    break;
+                case 0x11:
+                    uart_timer_handle[6] = sys_timeout_add(&uart_buf,transmit_callback,100);//定时    重发数据包       100ms后删除
+                    break;
+            }
         }
-    }
-    else
-    {
-        tx_flag = 0;
-        switch(com){
-            case 0xA0:
-                uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,80);
-                break;
-            case 0xA1:
-                uart_timer_handle[1] = sys_timeout_add(0,transmit_overtime,100);
-                break;
-            case 0xA2:
-                uart_timer_handle[2] = sys_timeout_add(0,transmit_overtime,100);
-                break;
-            case 0xA3:
-                uart_timer_handle[3] = sys_timeout_add(0,transmit_overtime,100);
-                break;
-            case 0xA4:
-                uart_timer_handle[4] = sys_timeout_add(0,transmit_overtime,100);
-                break;
-            case 0x10:
-                uart_timer_handle[5] = sys_timeout_add(0,transmit_overtime,100);
-                break;
-            case 0x11:
-                uart_timer_handle[6] = sys_timeout_add(0,transmit_overtime,100);
-                break;
+        else
+        {
+            tx_flag = 0;
+            switch(com){
+                case 0xA0:
+                    uart_timer_handle[0] = sys_timeout_add(0,transmit_overtime,100);
+                    break;
+                case 0xA1:
+                    uart_timer_handle[1] = sys_timeout_add(0,transmit_overtime,100);
+                    break;
+                case 0xA2:
+                    uart_timer_handle[2] = sys_timeout_add(0,transmit_overtime,100);
+                    break;
+                case 0xA3:
+                    uart_timer_handle[3] = sys_timeout_add(0,transmit_overtime,100);
+                    break;
+                case 0xA4:
+                    uart_timer_handle[4] = sys_timeout_add(0,transmit_overtime,100);
+                    break;
+                case 0x10:
+                    uart_timer_handle[5] = sys_timeout_add(0,transmit_overtime,100);
+                    break;
+                case 0x11:
+                    uart_timer_handle[6] = sys_timeout_add(0,transmit_overtime,100);
+                    break;
+            }
         }
     }
 }
@@ -746,7 +748,7 @@ void delay_hide_status()
 void get_device_infor(u8 *buf)
 {
     printf("get_device_infor\n");
-  
+
     for(int i = 0; i < 8; i++)
     {
         device_status[i] = buf[5+i];
@@ -870,7 +872,7 @@ void add_user_new_key(u8 *buf)
                     ui_hide(ENC_ADD_NEW_NFC);
                     ui_show(ENC_LAY_USER_DETAILS);
                 }
-                
+
             } else {
                 printf("current user key is full\n");
                 return;
@@ -1049,6 +1051,7 @@ void uart_recv_handle()
                 }
                 switch(recv_data[4]){
                     case 0xA0:case 0xA1:case 0xA2:case 0xA3:case 0xA4:case 0x10:case 0x11:
+                        answer_flag = 1;
                         cancel_retransmit(recv_data);                               //应答信号,取消重发
                         return;
                     case 0xA5:

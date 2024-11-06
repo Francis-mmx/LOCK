@@ -1377,7 +1377,7 @@ void last_show_device()
 {
     if((device_status[0]+device_status[1]+device_status[2]+device_status[3]+device_status[4]+device_status[5]+
             device_status[6]+device_status[7]+device_status[8]+device_status[9]) <= 10){
-            
+
         printf("device sum = %d",device_status[0]+device_status[1]+device_status[2]+device_status[3]+device_status[4]+device_status[5]+
         device_status[6]+device_status[7]+device_status[8]+device_status[9]);
         memset(device_status,1,sizeof(device_status));
@@ -1406,7 +1406,7 @@ static int enc_onchange(void *ctr, enum element_change_event e, void *arg)
         ui_show(ENC_LAY_BACK);
 //        ui_show(ENC_LAY_HOME_PAGE);
         sys_timeout_add(NULL, last_show_device, 35000);
-        
+
         break;
     default:
         return false;
@@ -1595,6 +1595,7 @@ REGISTER_UI_EVENT_HANDLER(REC_TIM_DATE)
 static int rec_goto_password_page_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**rec_goto_password_page_ontouch**");
+    u8 command_buf,data_buf;
     switch (e->event) {
     case ELM_EVENT_TOUCH_DOWN:
         break;
@@ -1613,10 +1614,9 @@ static int rec_goto_password_page_ontouch(void *ctr, struct element_touch_event 
         ui_hide(ENC_LAY_BACK_PIC);
         ui_show(ENC_PASSWORD_LAY);
         ui_show(ENC_UP_LAY);
-        u8 command_buf = voice;
-        u8 data_buf[] = {key_sound};
-        uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
-
+        command_buf = voice;
+        data_buf = key_sound;
+        uart_send_package(command_buf,&data_buf,1);
         //uart_recv_retransmit(flag);
         break;
     }
@@ -1651,7 +1651,7 @@ static int rec_goto_back_page_ontouch(void *ctr, struct element_touch_event *e)
 
         ui_show(ENC_UP_LAY);
         u8 command_buf = voice;
-        u8 data_buf[] = {exit_admin_mode};
+        u8 data_buf[] = {key_sound};
         uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
         break;
     }
@@ -3589,20 +3589,14 @@ static int rec_LAY_BTN_3_ontouch(void *ctr, struct element_touch_event *e)
     case ELM_EVENT_TOUCH_HOLD:
         break;
     case ELM_EVENT_TOUCH_MOVE:
-        icon_page_turning(move_posx(x, e->pos.x));
 
         break;
     case ELM_EVENT_TOUCH_UP:
-        if(move_flag <= 2)
-        {
-            ui_hide(ENC_LAY_PAGE);
-            ui_show(ENC_SET_LAY);
-            u8 command_buf = voice;
-            u8 data_buf[] = {key_sound};
-            uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
-        }else {
-            move_flag = 0;
-        }
+        ui_hide(ENC_LAY_PAGE);
+        ui_show(ENC_SET_LAY);
+        u8 command_buf = voice;
+        u8 data_buf[] = {key_sound};
+        uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
         break;
     }
     return false;
@@ -7056,7 +7050,7 @@ static int rec_rec_lock_off_ontouch(void *ctr, struct element_touch_event *e)
     case ELM_EVENT_TOUCH_MOVE:
         break;
     case ELM_EVENT_TOUCH_UP:
-        
+
         ani_flag = 1;
         ui_hide(ENC_LAY_BACK);
         ui_show(ANI_LOCK_LAYER);
@@ -7064,7 +7058,7 @@ static int rec_rec_lock_off_ontouch(void *ctr, struct element_touch_event *e)
         command_buf = voice;
         data_buf = locked;
         uart_send_package(command_buf,&data_buf,1);
-        
+
         break;
     }
     return false;
@@ -7121,7 +7115,7 @@ static int rec_enc_system_lock_onchange(void *ctr, enum element_change_event e, 
         ui_show(ENC_UP_LAY);
         break;
     case ON_CHANGE_SHOW:
-        
+
         break;
     default:
         return false;
