@@ -95,6 +95,8 @@ extern int spec_uart_recv(char *buf, u32 len);
 extern int uart_send_package(u8 *mode,u8 *data,u8 com_len);
 extern int uart_recv_retransmit();
 extern void delay_hide_status();
+extern void system_locktime_cal(u8 time);
+extern void exit_system_lock();
 
 
 extern int storage_device_ready();
@@ -135,7 +137,6 @@ u16 list_num_increase = 1;//用户编号，一直递增
 
 static u8 record_now_page = 0;
 
-static u8 erase_password_array[10] = {9,6,5,7,5,6,6,0,4,5};
 u32 write_pointer = 0;  // 当前写入指针
 u32 start_pointer = 0;  // 指向最早记录的指针，以便在超过500条数据后，替代最早的记录
 
@@ -157,6 +158,8 @@ u8 device_status[10] = {0};
 u8 aoto_check_page = 0;
 u8 auto_check_status[10] = {0};
 u8 on_homepage = 0;//在主页标识
+extern u8 sys_lock_time;
+
 /************************************************************
 				    	录像模式设置
 ************************************************************/
@@ -2984,6 +2987,8 @@ REGISTER_UI_EVENT_HANDLER(ANI_UNLOCK_PLAY)
 /***************************** 密码界面 密码确认按钮 ************************************/
 static int rec_password_ok_ontouch(void *ctr, struct element_touch_event *e)
 {
+    static u8 input_error_num = 0;
+    static int locktime_handle[256];
     u8 pw[MAX_PAW_NUM+1] = {0};
     u8 i,j;
     user_infor *pw_code = malloc(sizeof(user_infor));
@@ -3008,18 +3013,6 @@ static int rec_password_ok_ontouch(void *ctr, struct element_touch_event *e)
         if(password_num < MIN_PAW_NUM){
             printf("======================= pwd num min\n");
             break;
-        }
-
-        if(memcmp(erase_password_array,password_code,10) == 0)//清除全部flash密码
-        {
-            erase_flash(0xAA);
-            memset(password_code,'a',MAX_PAW_NUM);          //显示时赋值为a，表示为空
-            password_num = 0;
-            ui_text_set_str_by_id(ENC_PASSWORD_TXT, "ascii", " ");
-            ui_hide(ENC_PASSWORD_LAY);
-            ui_show(ENC_LAY_BACK_PIC);
-            ui_show(ENC_LAY_BACK);
-            ui_show(ENC_LAY_HOME_PAGE);
         }
 
         put_buf(password_code,MAX_PAW_NUM);             //输出输入密码
@@ -3069,10 +3062,24 @@ static int rec_password_ok_ontouch(void *ctr, struct element_touch_event *e)
 
             write_data_to_flash(&visit_record,1);//写记录
             put_buf(&visit_record, sizeof(visit_record));
-
+            
+            input_error_num = 0;
         }
         else
         {
+            input_error_num++;
+            if(input_error_num == 5){
+                input_error_num = 0;
+                ui_hide(ENC_PASSWORD_LAY);
+                ui_hide(ENC_LAY_BACK);
+                ui_show(ENC_LAY_BACK_PIC);
+                ui_show(ENC_SYSTEM_LOCK);
+                sys_lock_time = 30;
+                for(u16 i = 0; i < sys_lock_time + 1; i++)
+                {
+                    locktime_handle[i] = sys_timeout_add(i, system_locktime_cal, i*1000);
+                }
+            }
             printf("password error\n");
         }
         memset(password_code,'a',MAX_PAW_NUM);          //显示时赋值为a，表示为空

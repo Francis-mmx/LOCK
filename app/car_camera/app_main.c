@@ -24,7 +24,7 @@ u8 ani_flag = 0;//1--动画或进度条
 u8 sys_lock_time;
 extern u8 on_homepage;
 int upgrade_detect(const char *sdcard_name);
-u8 answer_flag = 0;//0--未收到回复 1--收到回复
+u8 answer_flag = 1;//0--未收到回复 1--收到回复
 
 /*任务列表 */
 const struct task_info task_info_table[] = {
@@ -928,9 +928,9 @@ void exit_system_lock()
     ui_hide(ENC_SYSTEM_LOCK);
     ui_show(ENC_LAY_BACK);
     ui_show(ENC_LAY_HOME_PAGE);
-    if(!tim_handle){
-        tim_handle = sys_timer_add(NULL, time_blink, 1000);
-    }
+//    if(!tim_handle){
+//        tim_handle = sys_timer_add(NULL, time_blink, 1000);
+//    }
 }
 
 
