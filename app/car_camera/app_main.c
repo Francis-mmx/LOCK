@@ -544,7 +544,7 @@ u8 recv_buffer[BUFFER_SIZE];  // 接收缓冲区
 u8 write_index = 0;  // 写指针
 u8 read_index = 0;   // 读指针
 u8 data_count = 0;     //缓冲区内数量
-
+extern u8 answer_flag;
 /*************************************发送数据包和重发机制*************************************/
 static struct intent uart_buf;
 int uart_send_package(u8 command,u8 *data,u8 com_len)
@@ -552,6 +552,7 @@ int uart_send_package(u8 command,u8 *data,u8 com_len)
     u8 wake_command[15] = {0};
     u8 total_length = com_len + PACKET_OTHER_LEN;
     const char *packet_buf = create_packet_uncertain_len(0,command,data,com_len);
+    answer_flag = 0;
     spec_uart_send(wake_command,15);
     spec_uart_send(packet_buf,total_length);//首次发送
 
@@ -561,8 +562,8 @@ int uart_send_package(u8 command,u8 *data,u8 com_len)
     uart_buf.action = ACTION_VIDEO_REC_UART_RETRANSMIT;
     uart_buf.data = packet_buf;
     uart_buf.exdata = total_length;
-    start_app(&uart_buf);
-
+    //start_app(&uart_buf);
+    sys_timeout_add(&uart_buf, start_app, 100);    
     return 0;
 }
 
@@ -585,7 +586,8 @@ void transmit_overtime(void)//超时处理函数，后续可新增功能
 int uart_recv_retransmit()
 {
     u8 com = (u8)uart_buf.data[4];
-    if(!answer_flag){
+    if(!answer_flag)
+    {
         if(tx_flag < MAX_TRANSMIT)
         {
             tx_flag++;

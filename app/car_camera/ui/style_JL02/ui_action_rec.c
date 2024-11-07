@@ -7549,10 +7549,19 @@ void auto_check_progressbar()
     }
 }
 
+void delay_start_probar()
+{
+    for(int i = 0; i < 100; i++)
+    {
+        sys_timeout_add(NULL,auto_check_progressbar,10);
+    }
+}
+  
 /***************************** 开始自检按钮 ************************************/
 static int sys_check_start_btn_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**sys_check_start_btn_ontouch**");
+    u8 command_buf,data_buf;
     struct intent it;
     switch (e->event) {
     case ELM_EVENT_TOUCH_DOWN:
@@ -7564,12 +7573,11 @@ static int sys_check_start_btn_ontouch(void *ctr, struct element_touch_event *e)
     case ELM_EVENT_TOUCH_UP:
         ani_flag = 1;
         auto_check_flag = !auto_check_flag;
-        if(auto_check_flag)
-        {
-            for(int i = 0; i < 100; i++)
-            {
-                sys_timeout_add(NULL,auto_check_progressbar,10);
-            }
+        if(auto_check_flag){
+            command_buf = device_request;
+            data_buf = 0x01;
+            uart_send_package(command_buf,&data_buf,1);
+            sys_timeout_add(NULL, delay_start_probar, 300);
         }
         else
         {
@@ -7579,9 +7587,6 @@ static int sys_check_start_btn_ontouch(void *ctr, struct element_touch_event *e)
             ui_hide(SYS_AUTO_CHECK_PAGE);
             ui_show(SYS_CHECK_DETAIL_PAGE);
         }
-        u8 command_buf = device_request;
-        u8 data_buf[] = {0x01};
-        uart_send_package(command_buf,data_buf,ARRAY_SIZE(data_buf));
         break;
     }
     return false;
