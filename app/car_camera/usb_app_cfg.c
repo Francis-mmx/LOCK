@@ -13,11 +13,16 @@ int usb_app_set_config(struct intent *it)
 {
     puts("usb_app_set_config.\n");
     printf("it data : %s.\n", it->data);
-    if (!strcmp(it->data, "usb:msd")) {
+    if(!strcmp(it->data, "usb:msd"))
+    {
         set_usb_mass_storage();
-    } else if (!strcmp(it->data, "usb:uvc")) {
+    }
+    else if(!strcmp(it->data, "usb:uvc"))
+    {
         set_usb_camera();
-    } else if (!strcmp(it->data, "usb:rec")) {
+    }
+    else if(!strcmp(it->data, "usb:rec"))
+    {
         back_to_video_rec();
     }
     return 0;

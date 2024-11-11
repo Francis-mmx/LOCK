@@ -19,41 +19,41 @@
 
 extern struct video_rec_hdl rec_handler;
 
-#define __this 	(&rec_handler)
+#define __this  (&rec_handler)
 
 #if defined __CPU_AC5401__ || defined __CPU_AC5601__
-u16 AVIN_WIDTH = 1280;
-u16 AVIN_HEIGH = 720;
+    u16 AVIN_WIDTH = 1280;
+    u16 AVIN_HEIGH = 720;
 #elif defined __CPU_AC521x__
 
-#if (DOUBLE_720 == 1)
-u16 AVIN_WIDTH = 1280;
-u16 AVIN_HEIGH = 720;
-#elif (DOUBLE_720_SMALL_SCR == 1)
-u16 AVIN_WIDTH = 1280;
-u16 AVIN_HEIGH = 720;
-#else
-u16 AVIN_WIDTH = 720;
-u16 AVIN_HEIGH = 480;
-#endif
+    #if (DOUBLE_720 == 1)
+        u16 AVIN_WIDTH = 1280;
+        u16 AVIN_HEIGH = 720;
+    #elif (DOUBLE_720_SMALL_SCR == 1)
+        u16 AVIN_WIDTH = 1280;
+        u16 AVIN_HEIGH = 720;
+    #else
+        u16 AVIN_WIDTH = 720;
+        u16 AVIN_HEIGH = 480;
+    #endif
 #endif
 
 #if THREE_WAY_ENABLE
 
-u16 UVC_ENC_WIDTH = 640;//1280;
-u16 UVC_ENC_HEIGH = 480;//720;
+    u16 UVC_ENC_WIDTH = 640;//1280;
+    u16 UVC_ENC_HEIGH = 480;//720;
 
-u16 VIRTUAL_ENC_WIDTH = 1280;
-u16 VIRTUAL_ENC_HEIGH = 720;
+    u16 VIRTUAL_ENC_WIDTH = 1280;
+    u16 VIRTUAL_ENC_HEIGH = 720;
 #else
 
-#if defined __CPU_AC5401__ || defined __CPU_AC5601__
-u16 UVC_ENC_WIDTH = 1280;
-u16 UVC_ENC_HEIGH = 720;
-#else
-u16 UVC_ENC_WIDTH = 640;
-u16 UVC_ENC_HEIGH = 480;
-#endif
+    #if defined __CPU_AC5401__ || defined __CPU_AC5601__
+        u16 UVC_ENC_WIDTH = 1280;
+        u16 UVC_ENC_HEIGH = 720;
+    #else
+        u16 UVC_ENC_WIDTH = 640;
+        u16 UVC_ENC_HEIGH = 480;
+    #endif
 #endif
 
 static int res_set_function(u32 parm)
@@ -77,19 +77,20 @@ void mic_set_toggle()
 static int gra_set_function(u32 parm)
 {
 #ifdef CONFIG_GSENSOR_ENABLE
-    switch (parm) {
-    case GRA_SEN_OFF:
-        parm = G_SENSOR_CLOSE;
-        break;
-    case GRA_SEN_LO:
-        parm = G_SENSOR_LOW;
-        break;
-    case GRA_SEN_MD:
-        parm = G_SENSOR_MEDIUM;
-        break;
-    case GRA_SEN_HI:
-        parm = G_SENSOR_HIGH;
-        break;
+    switch(parm)
+    {
+        case GRA_SEN_OFF:
+            parm = G_SENSOR_CLOSE;
+            break;
+        case GRA_SEN_LO:
+            parm = G_SENSOR_LOW;
+            break;
+        case GRA_SEN_MD:
+            parm = G_SENSOR_MEDIUM;
+            break;
+        case GRA_SEN_HI:
+            parm = G_SENSOR_HIGH;
+            break;
     }
     set_gse_sensity(parm);
 #endif
@@ -144,10 +145,13 @@ static int num_set_function(u32 parm)
 {
     //注：OSD数组必须以最大可能申请（可能的最大行数*列数），备用区域用空格填充
     //不按上述规则申请可能会导致中途切换OSD格式时死机！！！
-    if (!parm) {
+    if(!parm)
+    {
         memset(video_rec_osd_buf, ' ', 8);
         video_rec_osd_buf[8] = '\\';
-    } else {
+    }
+    else
+    {
 //        set_car_num_part_a(db_select("cna"));
 //        set_car_num_part_b(db_select("cnb"));
     }
@@ -167,9 +171,12 @@ static int lab_set_function(u32 parm)
 {
     //注：OSD数组必须以最大可能申请（可能的最大行数*列数），备用区域用空格填充
     //不按上述规则申请可能会导致中途切换OSD格式时死机！！！
-    if (!parm) {
+    if(!parm)
+    {
         memset(video_rec_osd_buf + 9, ' ', strlen(osd_str_buf));
-    } else {
+    }
+    else
+    {
         memcpy(video_rec_osd_buf + 9, osd_str_buf, strlen(osd_str_buf));
     }
 
@@ -199,7 +206,8 @@ static int lane_det_set_function(u32 parm)
 
 void video_rec_fun_restore(u32 parm)
 {
-    if (get_default_setting_st()) {
+    if(get_default_setting_st())
+    {
         clear_default_setting_st();
 
         gra_set_function(db_select("gra"));
@@ -211,7 +219,8 @@ extern int kvo_set_function(u32 parm);
 /*
  * 在此处添加所需配置即可
  */
-static const struct app_cfg cfg_table[] = {
+static const struct app_cfg cfg_table[] =
+{
     {"res", res_set_function },
     {"mic", mic_set_function },
     {"gra", gra_set_function },

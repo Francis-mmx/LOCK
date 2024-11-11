@@ -53,7 +53,8 @@ void usb_upgrade_progress_percent(u32 percent)
 int uvc_frame_not_find(void)
 {
     printf("uvc frame not find\n");
-    if (enter_upgrade) {
+    if(enter_upgrade)
+    {
         uvc_enter_upgrade_mode();
     }
     return 1;
@@ -84,7 +85,8 @@ u8 get_uvc_upgrade_state(void)
 
 static void uboot_dev_event_handler(struct sys_event *event)
 {
-    char *const udisk_list[] = {
+    char *const udisk_list[] =
+    {
         "uboot0",
         "uboot1",
     };
@@ -96,35 +98,38 @@ static void uboot_dev_event_handler(struct sys_event *event)
     int bfu_len = 0;
     u8 usb_burn_state = 0;
 
-    switch (event->u.dev.event) {
-    case DEVICE_EVENT_IN:
-        fp = fopen(AC53X_BFU_FILE_PATH, "r");
-        if (!fp) {
-            printf("open bfu faild!!!\n");
-            enter_upgrade = 0;
-            break;
-        }
+    switch(event->u.dev.event)
+    {
+        case DEVICE_EVENT_IN:
+            fp = fopen(AC53X_BFU_FILE_PATH, "r");
+            if(!fp)
+            {
+                printf("open bfu faild!!!\n");
+                enter_upgrade = 0;
+                break;
+            }
 
-        printf("\n %s %s: in\n", __func__, dev);
-        bfu_len = flen(fp);
-        printf("bfu_len=%d\n", bfu_len);
-        bfu_stream = malloc(bfu_len);
-        if (!bfu_stream) {
+            printf("\n %s %s: in\n", __func__, dev);
+            bfu_len = flen(fp);
+            printf("bfu_len=%d\n", bfu_len);
+            bfu_stream = malloc(bfu_len);
+            if(!bfu_stream)
+            {
+                fclose(fp);
+                enter_upgrade = 0;
+                break;
+            }
+            fread(fp, bfu_stream, bfu_len);
+            //升级进程主函数
+            u32 usb_burn_process(unsigned char *bfu_stream, int bfu_len);
+            usb_burn_state = usb_burn_process(bfu_stream, bfu_len);
+            enter_upgrade = 0;
+
             fclose(fp);
-            enter_upgrade = 0;
             break;
-        }
-        fread(fp, bfu_stream, bfu_len);
-        //升级进程主函数
-        u32 usb_burn_process(unsigned char *bfu_stream, int bfu_len);
-        usb_burn_state = usb_burn_process(bfu_stream, bfu_len);
-        enter_upgrade = 0;
-
-        fclose(fp);
-        break;
-    case DEVICE_EVENT_OUT:
-        /* printf("\n %s %s: out\n", __func__, dev); */
-        break;
+        case DEVICE_EVENT_OUT:
+            /* printf("\n %s %s: out\n", __func__, dev); */
+            break;
     }
 }
 
@@ -132,41 +137,52 @@ static void uvc_upgrade_event_handler(struct sys_event *event)
 {
     FILE *fp = NULL;
 
-    if (!ASCII_StrCmp(event->arg, "sd*", 4)) {
-        switch (event->u.dev.event) {
-        case DEVICE_EVENT_IN:
+    if(!ASCII_StrCmp(event->arg, "sd*", 4))
+    {
+        switch(event->u.dev.event)
+        {
+            case DEVICE_EVENT_IN:
 #if 1
-            //for test
-            fp = fopen(AC53X_BFU_FILE_PATH, "r");
-            if (fp) {
-                fclose(fp);
-                //根目录下有AC53升级文件，进入升级模式
-                //用户也可设计其他方式触发进入升级
-                uvc_enter_upgrade_mode(); //测试进入升级模式
-                event->consumed = 1;
+                //for test
+                fp = fopen(AC53X_BFU_FILE_PATH, "r");
+                if(fp)
+                {
+                    fclose(fp);
+                    //根目录下有AC53升级文件，进入升级模式
+                    //用户也可设计其他方式触发进入升级
+                    uvc_enter_upgrade_mode(); //测试进入升级模式
+                    event->consumed = 1;
 #endif
-            }
+                }
 
-            break;
-        case DEVICE_EVENT_OUT:
-            break;
+                break;
+            case DEVICE_EVENT_OUT:
+                break;
         }
     }
 
-    if (!ASCII_StrCmp(event->arg, "udisk*", 7)) {
-        if (enter_upgrade) {
+    if(!ASCII_StrCmp(event->arg, "udisk*", 7))
+    {
+        if(enter_upgrade)
+        {
             uboot_dev_event_handler(event);
         }
     }
 
 #ifdef CONFIG_USB_UVC_AND_UAC_ENABLE
-    if (!strcmp((char *)event->arg, "usb mic") || !strcmp((char *)event->arg, "usb speaker")) {
-        if (event->u.dev.event == DEVICE_EVENT_OUT) {
-            if (enter_upgrade) {
-                if (!strcmp((char *)event->arg, "usb mic")) {
+    if(!strcmp((char *)event->arg, "usb mic") || !strcmp((char *)event->arg, "usb speaker"))
+    {
+        if(event->u.dev.event == DEVICE_EVENT_OUT)
+        {
+            if(enter_upgrade)
+            {
+                if(!strcmp((char *)event->arg, "usb mic"))
+                {
                     extern int play_usb_mic_stop();
                     play_usb_mic_stop();
-                } else if (!strcmp((char *)event->arg, "usb speaker")) {
+                }
+                else if(!strcmp((char *)event->arg, "usb speaker"))
+                {
                     extern int play_usb_speaker_stop();
                     play_usb_speaker_stop();
                 }

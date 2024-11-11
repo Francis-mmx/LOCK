@@ -7,7 +7,8 @@
 void avdd18_ctrl(AVDD18_LEV lev, u8 avdd18en)
 {
     avdd18en = (avdd18en ? 1 : 0);
-    if (lev > 7) {
+    if(lev > 7)
+    {
         lev = 7;
     }
     SFR(LDO_CON, 9, 1, avdd18en);
@@ -17,7 +18,8 @@ void avdd18_ctrl(AVDD18_LEV lev, u8 avdd18en)
 void avdd28_ctrl(AVDD28_LEV lev, u8 avdd28en)
 {
     avdd28en = (avdd28en ? 1 : 0);
-    if (lev > 7) {
+    if(lev > 7)
+    {
         lev = 7;
     }
     SFR(LDO_CON, 10, 1, avdd28en);
@@ -26,7 +28,8 @@ void avdd28_ctrl(AVDD28_LEV lev, u8 avdd28en)
 
 void dvdd_ctrl(DVDD_LEV lev)
 {
-    if (lev > 7) {
+    if(lev > 7)
+    {
         lev = 7;
     }
     SFR(LDO_CON, 0, 3, lev);

@@ -4,10 +4,10 @@
 #include "system/timer.h"
 
 #define FIRST_CHANNEL() \
-	adc_scan_begin
+    adc_scan_begin
 
 #define NEXT_CHANNEL(ch) \
-	++ch >= adc_scan_end? adc_scan_begin:ch
+    ++ch >= adc_scan_end? adc_scan_begin:ch
 
 static struct adc_scan *channel = FIRST_CHANNEL();
 
@@ -19,42 +19,57 @@ static void adc_scan_process(void *p)
 #if 0
     adc_spin_lck();
     channel = NEXT_CHANNEL(channel);
-    if (channel->channel == AD_CH14_RTC_V50) {
+    if(channel->channel == AD_CH14_RTC_V50)
+    {
         rtc_adc_enable(0);
         adc_channel = 14;
-    } else if (channel->channel == AD_CH14_RTC_PR1) {
+    }
+    else if(channel->channel == AD_CH14_RTC_PR1)
+    {
         rtc_adc_enable(1);
         adc_channel = 14;
-    } else if (channel->channel == AD_CH14_RTC_PR2) {
+    }
+    else if(channel->channel == AD_CH14_RTC_PR2)
+    {
         rtc_adc_enable(2);
         adc_channel = 14;
-    } else {
+    }
+    else
+    {
         adc_channel = channel->channel;
     }
     ADCSEL(channel->channel);
     KITSTART();
-    while (!ADC_PND());
+    while(!ADC_PND());
     channel->value = GPADC_RES;
     /* printf(">>>>>>>>>>>>>>>>> ch: %d val:0x%x\n",channel->channel,channel->value); */
     adc_spin_unlck();
 #else
-    while (!ADC_PND());
+    while(!ADC_PND());
     channel->value = GPADC_RES;
-    if (channel->updata) {
+    if(channel->updata)
+    {
         channel->updata();
     }
 
     channel = NEXT_CHANNEL(channel);
-    if (channel->channel == AD_CH14_RTC_V50) {
+    if(channel->channel == AD_CH14_RTC_V50)
+    {
         rtc_adc_enable(0);
         adc_channel = 14;
-    } else if (channel->channel == AD_CH14_RTC_PR1) {
+    }
+    else if(channel->channel == AD_CH14_RTC_PR1)
+    {
         rtc_adc_enable(1);
         adc_channel = 14;
-    } else if (channel->channel == AD_CH14_RTC_PR2) {
+    }
+    else if(channel->channel == AD_CH14_RTC_PR2)
+    {
         rtc_adc_enable(2);
         adc_channel = 14;
-    } else {
+    }
+    else
+    {
         adc_channel = channel->channel;
     }
     /* printf(">>>>>>>>>>>>>>>>> ch: %d val:0x%x\n",channel->channel,channel->value); */
@@ -67,16 +82,23 @@ static void adc_scan_process(void *p)
 static int adc_scan_init()
 {
     u8 adc_channel = 0;
-    if (channel->channel == AD_CH14_RTC_V50) {
+    if(channel->channel == AD_CH14_RTC_V50)
+    {
         rtc_adc_enable(0);
         adc_channel = 14;
-    } else if (channel->channel == AD_CH14_RTC_PR1) {
+    }
+    else if(channel->channel == AD_CH14_RTC_PR1)
+    {
         rtc_adc_enable(1);
         adc_channel = 14;
-    } else if (channel->channel == AD_CH14_RTC_PR2) {
+    }
+    else if(channel->channel == AD_CH14_RTC_PR2)
+    {
         rtc_adc_enable(2);
         adc_channel = 14;
-    } else {
+    }
+    else
+    {
         adc_channel = channel->channel;
     }
     ADCSEL(adc_channel);

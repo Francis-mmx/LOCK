@@ -26,7 +26,8 @@ struct photo_icon_t *wear_one_hat(const char *name, BBox *box_face, Point_t *ali
     int i = 0;
     struct photo_icon_t *icon = NULL;
     icon = get_photo_icon(name);
-    if (!icon) {
+    if(!icon)
+    {
         return NULL;
     }
     //1.计算脸框坐标
@@ -45,8 +46,9 @@ struct photo_icon_t *wear_one_hat(const char *name, BBox *box_face, Point_t *ali
     icon->left = left - icon->height + 4;
     icon->top = top;
     icon->wear_sucess = 1;
-    if (icon->top < 0 || icon->top + border_width > LCD_WIDTH || \
-        icon->left < 0 || icon->left + border_height > LCD_HEIGHT) {
+    if(icon->top < 0 || icon->top + border_width > LCD_WIDTH || \
+            icon->left < 0 || icon->left + border_height > LCD_HEIGHT)
+    {
         icon->width = 0;
         icon->height = 0;
         icon->left = 0;
@@ -69,8 +71,9 @@ struct photo_icon_t *wear_one_hat(const char *name, BBox *box_face, Point_t *ali
     icon->left = left + icon->height - 4;
     icon->top = top;
     icon->wear_sucess = 1;
-    if (icon->top < 0 || icon->top + border_width > LCD_WIDTH || \
-        icon->left < 0 || icon->left + border_height > LCD_HEIGHT) {
+    if(icon->top < 0 || icon->top + border_width > LCD_WIDTH || \
+            icon->left < 0 || icon->left + border_height > LCD_HEIGHT)
+    {
         icon->width = 0;
         icon->height = 0;
         icon->left = 0;
@@ -93,7 +96,8 @@ struct photo_icon_t *wear_one_glass(const char *name, BBox *box_face, Point_t *a
     struct photo_icon_t *icon_maozi = NULL;
     struct photo_icon_t *icon = NULL;
     icon = get_photo_icon(name);
-    if (!icon) {
+    if(!icon)
+    {
         return NULL;
     }
 
@@ -143,7 +147,8 @@ struct photo_icon_t *wear_one_glass(const char *name, BBox *box_face, Point_t *a
 #endif
 
     icon_maozi = get_photo_icon("maozi");
-    if (!icon_maozi->wear_sucess) {
+    if(!icon_maozi->wear_sucess)
+    {
         icon->wear_sucess = 0;
     }
 
@@ -160,7 +165,8 @@ struct photo_icon_t *wear_one_nose(const char *name, BBox *box_face, Point_t *al
     struct photo_icon_t *icon_glass = NULL;
     struct photo_icon_t *icon = NULL;
     icon = get_photo_icon(name);
-    if (!icon) {
+    if(!icon)
+    {
         return NULL;
     }
 
@@ -198,7 +204,8 @@ struct photo_icon_t *wear_one_nose(const char *name, BBox *box_face, Point_t *al
 #endif
 
     icon_glass = get_photo_icon("glass");
-    if (!icon_glass->wear_sucess) {
+    if(!icon_glass->wear_sucess)
+    {
         icon->wear_sucess = 0;
     }
 
@@ -217,7 +224,8 @@ struct photo_icon_t *wear_one_mouth(const char *name, BBox *box_face, Point_t *a
     struct photo_icon_t *icon_nose = NULL;
     struct photo_icon_t *icon = NULL;
     icon = get_photo_icon(name);
-    if (!icon) {
+    if(!icon)
+    {
         return NULL;
     }
 
@@ -265,7 +273,8 @@ struct photo_icon_t *wear_one_mouth(const char *name, BBox *box_face, Point_t *a
     icon->wear_sucess = 1;
 #endif
     icon_nose = get_photo_icon("nose");
-    if (!icon_nose->wear_sucess) {
+    if(!icon_nose->wear_sucess)
+    {
         icon->wear_sucess = 0;
     }
 
@@ -281,26 +290,26 @@ struct photo_icon_t *wear_one_mouth(const char *name, BBox *box_face, Point_t *a
 /**************************************************************/
 REGISTER_FACE_ICON(FACE_HAT)
 .name = "maozi",
- .sticker_path = "mnt/spiflash/audlogo/sdmaozi.jpg",
-  .id = TPH_FACE_HAT,
-   .put_image = wear_one_hat,
+.sticker_path = "mnt/spiflash/audlogo/sdmaozi.jpg",
+.id = TPH_FACE_HAT,
+.put_image = wear_one_hat,
 };
 REGISTER_FACE_ICON(FACE_GLASS)
 .name = "glass",
- .sticker_path = "mnt/spiflash/audlogo/yanjing.jpg",
-  .id = TPH_FACE_EYE,
-   .put_image = wear_one_glass,
+.sticker_path = "mnt/spiflash/audlogo/yanjing.jpg",
+.id = TPH_FACE_EYE,
+.put_image = wear_one_glass,
 };
 REGISTER_FACE_ICON(FACE_NOSE)
 .name = "nose",
- .sticker_path = "mnt/spiflash/audlogo/nose.jpg",
-  .id = TPH_FACE_NOSE,
-   .put_image = wear_one_nose,
+.sticker_path = "mnt/spiflash/audlogo/nose.jpg",
+.id = TPH_FACE_NOSE,
+.put_image = wear_one_nose,
 };
 REGISTER_FACE_ICON(FACE_MOUTH)
 .name = "mouth",
- .sticker_path = "mnt/spiflash/audlogo/mouth.jpg",
-  .id = TPH_FACE_MOUTH,
-   .put_image = wear_one_mouth,
+.sticker_path = "mnt/spiflash/audlogo/mouth.jpg",
+.id = TPH_FACE_MOUTH,
+.put_image = wear_one_mouth,
 };
 #endif

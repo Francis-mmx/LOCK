@@ -26,28 +26,28 @@
                         <language_name LANG="Arabic">阿拉伯语</language_name>
                 </LanguageList>
                 <Fonts>
-                        <font00 lfWidth="0" lfHeight="-32" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="Cambria" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font01 lfWidth="0" lfHeight="-32" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font02 lfWidth="0" lfHeight="-32" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font03 lfWidth="0" lfHeight="-32" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font04 lfWidth="0" lfHeight="-32" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font05 lfWidth="0" lfHeight="-32" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font06 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font07 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font08 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font09 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font10 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font11 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font12 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font13 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font14 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font15 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font16 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font17 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font18 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font19 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font20 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
-                        <font21 lfWidth="0" lfHeight="-16" lfClipPrecision="0" lfItalic="0" lfWeight="400" lfOrientation="0" lfEscapement="0" lfOutPrecision="0" lfFaceName="宋体" lfCharSet="134" lfUnderline="0" lfStrikeOut="0" lfPitchAndFamily="2" lfQuality="0"/>
+                        <font00 lfCharSet="134" lfHeight="-32" lfOutPrecision="0" lfFaceName="Cambria" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font01 lfCharSet="134" lfHeight="-32" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font02 lfCharSet="134" lfHeight="-32" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font03 lfCharSet="134" lfHeight="-32" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font04 lfCharSet="134" lfHeight="-32" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font05 lfCharSet="134" lfHeight="-32" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font06 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font07 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font08 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font09 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font10 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font11 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font12 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font13 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font14 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font15 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font16 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font17 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font18 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font19 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font20 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
+                        <font21 lfCharSet="134" lfHeight="-16" lfOutPrecision="0" lfFaceName="宋体" lfPitchAndFamily="2" lfQuality="0" lfClipPrecision="0" lfOrientation="0" lfStrikeOut="0" lfItalic="0" lfUnderline="0" lfEscapement="0" lfWidth="0" lfWeight="400"/>
                 </Fonts>
                 <endian>LITTLEENDIAN</endian>
                 <paneltype>TFTPANEL</paneltype>
@@ -64,152 +64,257 @@
                         </Page>
                         <Page id="1">
                                 <ColorList>
+                                        <Color>00FF00</Color>
+                                        <Color>535353</Color>
+                                        <Color>2EE79B</Color>
+                                        <Color>DFDFDF</Color>
+                                        <Color>00AAFF</Color>
+                                        <Color>000000</Color>
+                                        <Color>FFFFFF</Color>
+                                        <Color>FF0000</Color>
                                         <Color>949494</Color>
                                         <Color>55AAA5</Color>
                                         <Color>54AAA4</Color>
-                                        <Color>DFDFDF</Color>
-                                        <Color>00FF00</Color>
-                                        <Color>FFFFFF</Color>
-                                        <Color>FF0000</Color>
-                                        <Color>535353</Color>
-                                        <Color>2EE79B</Color>
-                                        <Color>00AAFF</Color>
-                                        <Color>000000</Color>
                                         <Color>E9E9E9</Color>
                                 </ColorList>
                                 <PictureList>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num0.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\door_lock\lock_up.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\43.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set2.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_4.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\38.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_4.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\y_ling.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\upward.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\page1\set_page2.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num6.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\back_3.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\wifi_off.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\33.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num2.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_0u.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\57.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\goto.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\door_lock\lock_down.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_setd.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\53.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_on_3.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_2.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_2u.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\48.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_1d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\nfc.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\face.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\back.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_4u.png</Picture>
-                                        <Picture fmt="OSD8A">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\return.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\face_recognition.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\downward.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\frame_back.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set5.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\upward.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_off.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\37.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_start.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\kong.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\33.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\back_4.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\57.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_1u.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_setu.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_4.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\OK.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_0d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num7.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\53.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\goto.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_3u.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\logo.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num3.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\48.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_2d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\wifi_on.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_5u.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\44.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set3.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\password.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_3.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_4d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\wifi_off.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\page1\set_left.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_7u.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\nfc_big.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_6.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_6d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\return.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_9u.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_2.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\kuang.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\on_bottom.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_8d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\38.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_setd.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set2.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\page1\set_page1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\34.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\58.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\y_suo.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_5.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_3d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\back_1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num8.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_6u.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\54.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_5d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num4.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\49.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\50.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_8u.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\page1\set_right.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num0.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\45.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_7d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\new_finger.png</Picture>
+                                        <Picture fmt="OSD8A">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\facial.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_on_1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_9d.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_3.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\39.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\40.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\fingerprint.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\numm.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set3.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\page1\set_page2.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\shurufa.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\35.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\59.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\60.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\new_finger.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_1.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_1u.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_0d.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num7.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\back_4.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_3u.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\logo.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\34.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num3.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\face_recognition.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\door_lock\slider.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\58.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_2d.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\OK.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\wifi_on.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_on_1.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_5u.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\54.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_4d.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_set_error.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\49.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\50.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_7u.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\on_bottom.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\user_pic.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_6d.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\45.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\return.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set4.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_9u.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\41.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\nfc_big.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\shurufa.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_6.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_2.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\kuang_H.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\36.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_2.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\off_bottom.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_3d.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\add.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num8.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_6u.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_oku.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_5d.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num4.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\back_1.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_8u.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\frame_back.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_on_2.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\31.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\finger.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_7d.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\55.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_start.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\back.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\51.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_9d.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\46.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\page1\set_left.png</Picture>
-                                        <Picture fmt="OSD8A">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\facial.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set5.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\42.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set1.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_3.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\kong.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\37.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\numm.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_3.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_okd.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\back-1.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\delete.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num9.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\door_lock\lock_up.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_8d.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\page1\set_page1.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\kuang.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num5.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\nfc.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\31.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\back_2.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\password.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_on_3.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\32.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num9.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\55.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\kuang_H.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\password.png</Picture>
+                                        <Picture fmt="OSD8A">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\return.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num5.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\51.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\fingerprint.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\46.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_oku.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\42.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\add.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_on_2.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\off_bottom.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\up_ui\dat_1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\sys_info\sys_info_4.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\door_lock\slider.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\y_ling.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\back-1.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\41.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set4.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\finger.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\36.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\32.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\back_3.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_set_error.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\56.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\network_off.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\downward.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\user_pic.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\door_lock\lock_down.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num6.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\52.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\y_suo.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\page1\set_right.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_setu.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_okd.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\time\big\num2.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\关锁图片\47.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\key_0u.png</Picture>
                                 </PictureList>
                                 <CellList>
+                                        <Cell>ms30</Cell>
+                                        <Cell>ms31</Cell>
+                                        <Cell>ms32</Cell>
+                                        <Cell>ms33</Cell>
+                                        <Cell>ms34</Cell>
+                                        <Cell>ms35</Cell>
+                                        <Cell>mp1</Cell>
+                                        <Cell>mp2</Cell>
+                                        <Cell>mp3</Cell>
+                                        <Cell>mp4</Cell>
+                                        <Cell>mp5</Cell>
+                                        <Cell>mp6</Cell>
+                                        <Cell>mp7</Cell>
+                                        <Cell>mp8</Cell>
+                                        <Cell>mp9</Cell>
+                                        <Cell>mst10</Cell>
+                                        <Cell>mst11</Cell>
+                                        <Cell>mst12</Cell>
+                                        <Cell>mst13</Cell>
+                                        <Cell>ms1</Cell>
+                                        <Cell>ms2</Cell>
+                                        <Cell>ms3</Cell>
+                                        <Cell>ms4</Cell>
+                                        <Cell>ms5</Cell>
+                                        <Cell>ms6</Cell>
+                                        <Cell>ms7</Cell>
+                                        <Cell>ms8</Cell>
+                                        <Cell>ms9</Cell>
+                                        <Cell>m10</Cell>
+                                        <Cell>m11</Cell>
+                                        <Cell>m12</Cell>
+                                        <Cell>m17</Cell>
+                                        <Cell>m18</Cell>
+                                        <Cell>m19</Cell>
+                                        <Cell>m20</Cell>
+                                        <Cell>m21</Cell>
+                                        <Cell>m22</Cell>
+                                        <Cell>m23</Cell>
+                                        <Cell>mp12</Cell>
+                                        <Cell>m24</Cell>
+                                        <Cell>mp13</Cell>
+                                        <Cell>m25</Cell>
+                                        <Cell>mp14</Cell>
+                                        <Cell>m26</Cell>
+                                        <Cell>mp15</Cell>
+                                        <Cell>m27</Cell>
+                                        <Cell>mp16</Cell>
+                                        <Cell>m28</Cell>
+                                        <Cell>mp17</Cell>
+                                        <Cell>m29</Cell>
+                                        <Cell>mp18</Cell>
+                                        <Cell>mp19</Cell>
+                                        <Cell>mv1</Cell>
+                                        <Cell>mv2</Cell>
+                                        <Cell>mv4</Cell>
+                                        <Cell>mv5</Cell>
+                                        <Cell>mv6</Cell>
+                                        <Cell>m30</Cell>
+                                        <Cell>mv7</Cell>
+                                        <Cell>m31</Cell>
+                                        <Cell>mp20</Cell>
+                                        <Cell>mv8</Cell>
+                                        <Cell>m32</Cell>
+                                        <Cell>mp21</Cell>
+                                        <Cell>mv9</Cell>
+                                        <Cell>m33</Cell>
+                                        <Cell>mp22</Cell>
+                                        <Cell>m34</Cell>
+                                        <Cell>mp23</Cell>
+                                        <Cell>m35</Cell>
+                                        <Cell>mp24</Cell>
+                                        <Cell>mv10</Cell>
+                                        <Cell>m36</Cell>
+                                        <Cell>mp25</Cell>
+                                        <Cell>mv11</Cell>
+                                        <Cell>m37</Cell>
+                                        <Cell>mp26</Cell>
+                                        <Cell>mv12</Cell>
+                                        <Cell>m38</Cell>
+                                        <Cell>mp27</Cell>
+                                        <Cell>mv13</Cell>
+                                        <Cell>m39</Cell>
+                                        <Cell>mv14</Cell>
+                                        <Cell>mp28</Cell>
+                                        <Cell>mv15</Cell>
+                                        <Cell>mv16</Cell>
+                                        <Cell>mf1</Cell>
+                                        <Cell>mf2</Cell>
+                                        <Cell>mf3</Cell>
+                                        <Cell>m40</Cell>
+                                        <Cell>m41</Cell>
+                                        <Cell>mp30</Cell>
+                                        <Cell>m42</Cell>
+                                        <Cell>mp32</Cell>
+                                        <Cell>m44</Cell>
+                                        <Cell>mp33</Cell>
+                                        <Cell>m45</Cell>
+                                        <Cell>m46</Cell>
+                                        <Cell>m47</Cell>
+                                        <Cell>m48</Cell>
+                                        <Cell>m49</Cell>
+                                        <Cell>m50</Cell>
+                                        <Cell>m51</Cell>
+                                        <Cell>m52</Cell>
+                                        <Cell>m53</Cell>
                                         <Cell>mst1</Cell>
                                         <Cell>mst2</Cell>
                                         <Cell>mst3</Cell>
@@ -228,6 +333,13 @@
                                         <Cell>ms17</Cell>
                                         <Cell>ms18</Cell>
                                         <Cell>ms19</Cell>
+                                        <Cell>m1</Cell>
+                                        <Cell>m2</Cell>
+                                        <Cell>m3</Cell>
+                                        <Cell>m4</Cell>
+                                        <Cell>m5</Cell>
+                                        <Cell>m6</Cell>
+                                        <Cell>m7</Cell>
                                         <Cell>ms20</Cell>
                                         <Cell>ms21</Cell>
                                         <Cell>ms22</Cell>
@@ -238,130 +350,45 @@
                                         <Cell>ms27</Cell>
                                         <Cell>ms28</Cell>
                                         <Cell>ms29</Cell>
-                                        <Cell>ms30</Cell>
-                                        <Cell>ms31</Cell>
-                                        <Cell>ms32</Cell>
-                                        <Cell>ms33</Cell>
-                                        <Cell>ms34</Cell>
-                                        <Cell>ms35</Cell>
-                                        <Cell>mp1</Cell>
-                                        <Cell>mp2</Cell>
-                                        <Cell>mp3</Cell>
-                                        <Cell>mp4</Cell>
-                                        <Cell>mp5</Cell>
-                                        <Cell>mp6</Cell>
-                                        <Cell>mp7</Cell>
-                                        <Cell>mp8</Cell>
-                                        <Cell>m1</Cell>
-                                        <Cell>mp9</Cell>
-                                        <Cell>m2</Cell>
-                                        <Cell>m3</Cell>
-                                        <Cell>m4</Cell>
-                                        <Cell>m5</Cell>
-                                        <Cell>m6</Cell>
-                                        <Cell>m7</Cell>
-                                        <Cell>mst10</Cell>
-                                        <Cell>mst11</Cell>
-                                        <Cell>mst12</Cell>
-                                        <Cell>mst13</Cell>
-                                        <Cell>mp12</Cell>
-                                        <Cell>mp13</Cell>
-                                        <Cell>mp14</Cell>
-                                        <Cell>mp15</Cell>
-                                        <Cell>mp16</Cell>
-                                        <Cell>mp17</Cell>
-                                        <Cell>mp18</Cell>
-                                        <Cell>mp19</Cell>
-                                        <Cell>ms1</Cell>
-                                        <Cell>ms2</Cell>
-                                        <Cell>ms3</Cell>
-                                        <Cell>ms4</Cell>
-                                        <Cell>ms5</Cell>
-                                        <Cell>ms6</Cell>
-                                        <Cell>ms7</Cell>
-                                        <Cell>ms8</Cell>
-                                        <Cell>ms9</Cell>
-                                        <Cell>mp20</Cell>
-                                        <Cell>mp21</Cell>
-                                        <Cell>mp22</Cell>
-                                        <Cell>mp23</Cell>
-                                        <Cell>mp24</Cell>
-                                        <Cell>mv10</Cell>
-                                        <Cell>mp25</Cell>
-                                        <Cell>mv11</Cell>
-                                        <Cell>mp26</Cell>
-                                        <Cell>mv12</Cell>
-                                        <Cell>mp27</Cell>
-                                        <Cell>mv13</Cell>
-                                        <Cell>mv14</Cell>
-                                        <Cell>mp28</Cell>
-                                        <Cell>mv15</Cell>
-                                        <Cell>mv16</Cell>
-                                        <Cell>m10</Cell>
-                                        <Cell>m11</Cell>
-                                        <Cell>m12</Cell>
-                                        <Cell>mp30</Cell>
-                                        <Cell>m17</Cell>
-                                        <Cell>m18</Cell>
-                                        <Cell>mp32</Cell>
-                                        <Cell>m19</Cell>
-                                        <Cell>mp33</Cell>
-                                        <Cell>m20</Cell>
-                                        <Cell>m21</Cell>
-                                        <Cell>m22</Cell>
-                                        <Cell>m23</Cell>
-                                        <Cell>m24</Cell>
-                                        <Cell>m25</Cell>
-                                        <Cell>m26</Cell>
-                                        <Cell>m27</Cell>
-                                        <Cell>m28</Cell>
-                                        <Cell>m29</Cell>
-                                        <Cell>mv1</Cell>
-                                        <Cell>mv2</Cell>
-                                        <Cell>mv4</Cell>
-                                        <Cell>mv5</Cell>
-                                        <Cell>mv6</Cell>
-                                        <Cell>m30</Cell>
-                                        <Cell>mv7</Cell>
-                                        <Cell>m31</Cell>
-                                        <Cell>mv8</Cell>
-                                        <Cell>m32</Cell>
-                                        <Cell>mv9</Cell>
-                                        <Cell>m33</Cell>
-                                        <Cell>m34</Cell>
-                                        <Cell>m35</Cell>
-                                        <Cell>m36</Cell>
-                                        <Cell>m37</Cell>
-                                        <Cell>m38</Cell>
-                                        <Cell>m39</Cell>
-                                        <Cell>mf1</Cell>
-                                        <Cell>mf2</Cell>
-                                        <Cell>mf3</Cell>
-                                        <Cell>m40</Cell>
-                                        <Cell>m41</Cell>
-                                        <Cell>m42</Cell>
-                                        <Cell>m44</Cell>
-                                        <Cell>m45</Cell>
-                                        <Cell>m46</Cell>
-                                        <Cell>m47</Cell>
-                                        <Cell>m48</Cell>
-                                        <Cell>m49</Cell>
-                                        <Cell>m50</Cell>
-                                        <Cell>m51</Cell>
-                                        <Cell>m52</Cell>
-                                        <Cell>m53</Cell>
                                 </CellList>
                         </Page>
                         <Page id="2">
                                 <ColorList>
-                                        <Color>55AAA5</Color>
-                                        <Color>FFC046</Color>
+                                        <Color>FFFFFF</Color>
                                         <Color>000000</Color>
                                         <Color>353535</Color>
-                                        <Color>FFFFFF</Color>
+                                        <Color>FFC046</Color>
+                                        <Color>55AAA5</Color>
                                 </ColorList>
                                 <PictureList/>
                                 <CellList>
+                                        <Cell>m22</Cell>
+                                        <Cell>m26</Cell>
+                                        <Cell>mp12</Cell>
+                                        <Cell>m27</Cell>
+                                        <Cell>mp13</Cell>
+                                        <Cell>m28</Cell>
+                                        <Cell>mp14</Cell>
+                                        <Cell>m29</Cell>
+                                        <Cell>mp15</Cell>
+                                        <Cell>mp16</Cell>
+                                        <Cell>mp17</Cell>
+                                        <Cell>mp19</Cell>
+                                        <Cell>m30</Cell>
+                                        <Cell>m31</Cell>
+                                        <Cell>m32</Cell>
+                                        <Cell>m33</Cell>
+                                        <Cell>mp20</Cell>
+                                        <Cell>m35</Cell>
+                                        <Cell>mp21</Cell>
+                                        <Cell>m36</Cell>
+                                        <Cell>mp22</Cell>
+                                        <Cell>mp23</Cell>
+                                        <Cell>mp24</Cell>
+                                        <Cell>mp25</Cell>
+                                        <Cell>mp26</Cell>
+                                        <Cell>mp27</Cell>
+                                        <Cell>mp29</Cell>
                                         <Cell>tip1</Cell>
                                         <Cell>tip2</Cell>
                                         <Cell>tip4</Cell>
@@ -376,34 +403,7 @@
                                         <Cell>mp3</Cell>
                                         <Cell>mp4</Cell>
                                         <Cell>m19</Cell>
-                                        <Cell>m22</Cell>
                                         <Cell>tip16</Cell>
-                                        <Cell>m26</Cell>
-                                        <Cell>m27</Cell>
-                                        <Cell>m28</Cell>
-                                        <Cell>m29</Cell>
-                                        <Cell>mp12</Cell>
-                                        <Cell>mp13</Cell>
-                                        <Cell>mp14</Cell>
-                                        <Cell>mp15</Cell>
-                                        <Cell>mp16</Cell>
-                                        <Cell>mp17</Cell>
-                                        <Cell>m30</Cell>
-                                        <Cell>mp19</Cell>
-                                        <Cell>m31</Cell>
-                                        <Cell>m32</Cell>
-                                        <Cell>m33</Cell>
-                                        <Cell>m35</Cell>
-                                        <Cell>m36</Cell>
-                                        <Cell>mp20</Cell>
-                                        <Cell>mp21</Cell>
-                                        <Cell>mp22</Cell>
-                                        <Cell>mp23</Cell>
-                                        <Cell>mp24</Cell>
-                                        <Cell>mp25</Cell>
-                                        <Cell>mp26</Cell>
-                                        <Cell>mp27</Cell>
-                                        <Cell>mp29</Cell>
                                 </CellList>
                         </Page>
                         <Page id="3">
@@ -425,28 +425,28 @@
                                         <Cell>tip14</Cell>
                                         <Cell>tip15</Cell>
                                         <Cell>tip16</Cell>
+                                        <Cell>mf1</Cell>
+                                        <Cell>mf2</Cell>
                                         <Cell>tip19</Cell>
+                                        <Cell>mf3</Cell>
                                         <Cell>tip2</Cell>
                                         <Cell>tip3</Cell>
                                         <Cell>tip5</Cell>
                                         <Cell>tip6</Cell>
                                         <Cell>tip9</Cell>
-                                        <Cell>mf1</Cell>
-                                        <Cell>mf2</Cell>
-                                        <Cell>mf3</Cell>
                                 </CellList>
                         </Page>
                         <Page id="4">
                                 <ColorList>
+                                        <Color>FFFFFF</Color>
                                         <Color>212121</Color>
                                         <Color>000000</Color>
-                                        <Color>FFFFFF</Color>
                                 </ColorList>
                                 <PictureList>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\USB\usb_mod.png</Picture>
-                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\USB\c_bar.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\USB\pc_cam.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\USB\usb_mod.png</Picture>
                                         <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\USB\bar.png</Picture>
+                                        <Picture fmt="OSD8">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\USB\c_bar.png</Picture>
                                 </PictureList>
                                 <CellList>
                                         <Cell>m14</Cell>
@@ -456,20 +456,66 @@
                         </Page>
                         <Page id="5">
                                 <ColorList>
-                                        <Color>353535</Color>
-                                        <Color>FFC046</Color>
-                                        <Color>AAAAAA</Color>
-                                        <Color>000000</Color>
                                         <Color>B3B3B3</Color>
                                         <Color>FFFFFF</Color>
                                         <Color>AEAEAE</Color>
+                                        <Color>000000</Color>
+                                        <Color>FFC046</Color>
+                                        <Color>AAAAAA</Color>
+                                        <Color>353535</Color>
                                 </ColorList>
                                 <PictureList/>
                                 <CellList>
+                                        <Cell>mst2</Cell>
+                                        <Cell>mst3</Cell>
+                                        <Cell>mst4</Cell>
+                                        <Cell>mst5</Cell>
+                                        <Cell>mst6</Cell>
+                                        <Cell>mst7</Cell>
+                                        <Cell>mst8</Cell>
+                                        <Cell>mst9</Cell>
+                                        <Cell>ms10</Cell>
+                                        <Cell>m25</Cell>
+                                        <Cell>ms11</Cell>
+                                        <Cell>ms12</Cell>
+                                        <Cell>ms14</Cell>
+                                        <Cell>ms15</Cell>
+                                        <Cell>ms16</Cell>
+                                        <Cell>ms17</Cell>
+                                        <Cell>ms18</Cell>
+                                        <Cell>ms19</Cell>
+                                        <Cell>ms21</Cell>
+                                        <Cell>ms22</Cell>
+                                        <Cell>ms23</Cell>
+                                        <Cell>m38</Cell>
+                                        <Cell>ms24</Cell>
+                                        <Cell>m39</Cell>
+                                        <Cell>ms25</Cell>
+                                        <Cell>ms26</Cell>
+                                        <Cell>ms27</Cell>
+                                        <Cell>ms28</Cell>
+                                        <Cell>ms29</Cell>
+                                        <Cell>ms1</Cell>
+                                        <Cell>ms2</Cell>
+                                        <Cell>ms3</Cell>
+                                        <Cell>ms4</Cell>
+                                        <Cell>ms5</Cell>
+                                        <Cell>ms6</Cell>
+                                        <Cell>ms7</Cell>
+                                        <Cell>ms8</Cell>
+                                        <Cell>ms9</Cell>
+                                        <Cell>m40</Cell>
+                                        <Cell>m41</Cell>
+                                        <Cell>m42</Cell>
                                         <Cell>tip2</Cell>
+                                        <Cell>m43</Cell>
+                                        <Cell>m44</Cell>
                                         <Cell>ms30</Cell>
+                                        <Cell>m45</Cell>
                                         <Cell>ms31</Cell>
+                                        <Cell>m46</Cell>
                                         <Cell>ms32</Cell>
+                                        <Cell>m47</Cell>
                                         <Cell>ms33</Cell>
                                         <Cell>ms34</Cell>
                                         <Cell>ms35</Cell>
@@ -480,52 +526,6 @@
                                         <Cell>mst13</Cell>
                                         <Cell>tip16</Cell>
                                         <Cell>mst1</Cell>
-                                        <Cell>m25</Cell>
-                                        <Cell>mst2</Cell>
-                                        <Cell>mst3</Cell>
-                                        <Cell>mst4</Cell>
-                                        <Cell>mst5</Cell>
-                                        <Cell>mst6</Cell>
-                                        <Cell>mst7</Cell>
-                                        <Cell>mst8</Cell>
-                                        <Cell>mst9</Cell>
-                                        <Cell>ms10</Cell>
-                                        <Cell>ms11</Cell>
-                                        <Cell>ms12</Cell>
-                                        <Cell>ms14</Cell>
-                                        <Cell>ms15</Cell>
-                                        <Cell>ms16</Cell>
-                                        <Cell>ms17</Cell>
-                                        <Cell>ms18</Cell>
-                                        <Cell>ms19</Cell>
-                                        <Cell>m38</Cell>
-                                        <Cell>m39</Cell>
-                                        <Cell>ms1</Cell>
-                                        <Cell>ms2</Cell>
-                                        <Cell>ms3</Cell>
-                                        <Cell>ms4</Cell>
-                                        <Cell>ms21</Cell>
-                                        <Cell>ms5</Cell>
-                                        <Cell>ms22</Cell>
-                                        <Cell>ms6</Cell>
-                                        <Cell>ms23</Cell>
-                                        <Cell>ms7</Cell>
-                                        <Cell>ms24</Cell>
-                                        <Cell>ms8</Cell>
-                                        <Cell>ms25</Cell>
-                                        <Cell>ms9</Cell>
-                                        <Cell>ms26</Cell>
-                                        <Cell>ms27</Cell>
-                                        <Cell>ms28</Cell>
-                                        <Cell>m40</Cell>
-                                        <Cell>ms29</Cell>
-                                        <Cell>m41</Cell>
-                                        <Cell>m42</Cell>
-                                        <Cell>m43</Cell>
-                                        <Cell>m44</Cell>
-                                        <Cell>m45</Cell>
-                                        <Cell>m46</Cell>
-                                        <Cell>m47</Cell>
                                 </CellList>
                         </Page>
                         <Page id="6">
@@ -537,16 +537,16 @@
                         </Page>
                         <Page id="7">
                                 <ColorList>
-                                        <Color>FFF795</Color>
+                                        <Color>353535</Color>
                                         <Color>000000</Color>
                                         <Color>00C4FF</Color>
                                         <Color>55AAA5</Color>
-                                        <Color>353535</Color>
+                                        <Color>FFF795</Color>
                                 </ColorList>
                                 <PictureList/>
                                 <CellList>
-                                        <Cell>tip18</Cell>
                                         <Cell>tip17</Cell>
+                                        <Cell>tip18</Cell>
                                 </CellList>
                         </Page>
                 </PageList>

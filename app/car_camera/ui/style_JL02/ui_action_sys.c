@@ -14,11 +14,12 @@
 
 #ifdef CONFIG_UI_STYLE_JL02_ENABLE
 
-#define TOUCH_R90 				1  //触摸屏旋转90度
+#define TOUCH_R90               1  //触摸屏旋转90度
 
 #define STYLE_NAME  JL02
 
-struct sys_menu_info {
+struct sys_menu_info
+{
     u8 lcd_protect;
     u8 auto_off;
     u8 led_fre_hz;
@@ -42,7 +43,7 @@ struct sys_menu_info {
 
 
 static struct sys_menu_info handler = {0};
-#define __this 	(&handler)
+#define __this  (&handler)
 
 extern int sys_cur_mod;  /* 1:rec, 2:tph, 3:dec 4:sys*/
 
@@ -51,42 +52,50 @@ static u8 btn_warning_show_f = 0;//confirm框5秒结束后置1
 static u8 confirm_f = 0;//车牌是否定位到确认 1:是 0:否
 static u8 cur_sel_item = 0;//当前列表选项框位置
 
-const static int onkey_sel_item[3] = {
+const static int onkey_sel_item[3] =
+{
     SYS_BTN_REC,
     SYS_BTN_FILES,
     SYS_BTN_HOME,
 };
-const int sel_pic2[2] = {
+const int sel_pic2[2] =
+{
     SYS_PIC_C2_1,
     SYS_PIC_C2_2,
 };
-const int sel_pic3[3] = {
+const int sel_pic3[3] =
+{
     SYS_PIC_C3_1,
     SYS_PIC_C3_2,
     SYS_PIC_C3_3,
 };
-const int sel_pic4[4] = {
+const int sel_pic4[4] =
+{
     SYS_PIC_C4_1,
     SYS_PIC_C4_2,
     SYS_PIC_C4_3,
     SYS_PIC_C4_4,
 };
-const int sel_layout2[2] = {
+const int sel_layout2[2] =
+{
     SYS_LAY_C2_1,
     SYS_LAY_C2_2,
 };
-const int sel_layout3[3] = {
+const int sel_layout3[3] =
+{
     SYS_LAY_C3_1,
     SYS_LAY_C3_2,
     SYS_LAY_C3_3,
 };
-const int sel_layout4[4] = {
+const int sel_layout4[4] =
+{
     SYS_LAY_C4_1,
     SYS_LAY_C4_2,
     SYS_LAY_C4_3,
     SYS_LAY_C4_4,
 };
-const int sel_timePic[6] = {
+const int sel_timePic[6] =
+{
     0,
     SYS_PIC_SEL_YEAR,
     SYS_PIC_SEL_MONTH,
@@ -94,7 +103,8 @@ const int sel_timePic[6] = {
     SYS_PIC_SEL_HOUR,
     SYS_PIC_SEL_MIN,
 };
-const int language_txt[13] = {
+const int language_txt[13] =
+{
     SYS_FORM_TXT_01,
     SYS_FORM_TXT_02,
     SYS_FORM_TXT_03,
@@ -109,7 +119,8 @@ const int language_txt[13] = {
     SYS_FORM_TXT_12,
     /* SYS_FORM_TXT_13, */
 };
-const int cid_btn_id0[31] = {
+const int cid_btn_id0[31] =
+{
     SYS_BTN_CID_PRO_01,
     SYS_BTN_CID_PRO_02,
     SYS_BTN_CID_PRO_03,
@@ -142,7 +153,8 @@ const int cid_btn_id0[31] = {
     SYS_BTN_CID_PRO_30,
     SYS_BTN_CID_PRO_31
 };
-const int cid_btn_id1[36] = {
+const int cid_btn_id1[36] =
+{
     SYS_BTN_CID_KB_1,
     SYS_BTN_CID_KB_2,
     SYS_BTN_CID_KB_3,
@@ -187,7 +199,8 @@ static void set_cid_onkey(u8 key_value);
 /*
  * system光源频率设置
  */
-static const u8 table_system_led_fre[] = {
+static const u8 table_system_led_fre[] =
+{
     50,
     60,
 };
@@ -195,7 +208,8 @@ static const u8 table_system_led_fre[] = {
 /*
  * system自动关机设置
  */
-static const u8 table_system_auto_close[] = {
+static const u8 table_system_auto_close[] =
+{
     0,
     3,
     5,
@@ -205,7 +219,8 @@ static const u8 table_system_auto_close[] = {
 /*
  * system屏幕保护设置
  */
-static const u16 table_system_lcd_protect[] = {
+static const u16 table_system_lcd_protect[] =
+{
     0,
     30,
     60,
@@ -215,7 +230,8 @@ static const u16 table_system_lcd_protect[] = {
 /*
  * system语言设置
  */
-static const u8 table_system_language[] = {
+static const u8 table_system_language[] =
+{
     Chinese_Simplified,  /* 简体中文 */
     Chinese_Traditional, /* 繁体中文 */
     English,             /* 英文 */
@@ -224,19 +240,22 @@ static const u8 table_system_language[] = {
 /*
  * system光源频率设置
  */
-static const u8 table_system_tv_mod[] = {
+static const u8 table_system_tv_mod[] =
+{
     TVM_PAL,
     TVM_NTSC,
 };
 
-enum {
+enum
+{
     PAGE_SHOW = 0,
     MODE_SW_EXIT,
     HOME_SW_EXIT,
 };
 
 
-enum SYS_MENU {
+enum SYS_MENU
+{
     SYS_MENU_LCDOFF = 0,
     SYS_MENU_AUTOOFF,
     SYS_MENU_FREQUENCY,
@@ -256,7 +275,8 @@ enum SYS_MENU {
 /*******************************************************************/
 /*                           时间设置
 *******************************************************************/
-enum SYS_MENU_TIME {
+enum SYS_MENU_TIME
+{
     SYS_MENU_TIME_NONE = 0,
     SYS_MENU_TIME_YEAR,
     SYS_MENU_TIME_MONTH,
@@ -274,7 +294,8 @@ static void sys_menu_tim_show()
 {
 
     void *fd = dev_open("rtc", NULL);
-    if (!fd) {
+    if(!fd)
+    {
         /* memset(t,0,sizeof(struct sys_time)); */
         t.year = 2000;
         t.month = 1;
@@ -282,7 +303,9 @@ static void sys_menu_tim_show()
         t.hour = 0;
         t.min = 0;
         t.sec = 0;
-    } else {
+    }
+    else
+    {
         dev_ioctl(fd, IOCTL_GET_SYS_TIME, (u32)&t);
         UI_ONTOUCH_DEBUG("get_sys_time: %d-%d-%d %d:%d:%d\n",
                          t.year,
@@ -301,16 +324,26 @@ static void sys_menu_tim_show()
     ts.min = t.min;
     ts.sec = 0;
 
-    if (t.month == 1 || t.month == 3 || t.month == 5 || t.month == 7 || t.month == 8 || t.month == 10 || t.month == 12) {
+    if(t.month == 1 || t.month == 3 || t.month == 5 || t.month == 7 || t.month == 8 || t.month == 10 || t.month == 12)
+    {
         day_max = 31;
-    } else if (t.month == 4 || t.month == 6 || t.month == 9 || t.month == 11) {
+    }
+    else if(t.month == 4 || t.month == 6 || t.month == 9 || t.month == 11)
+    {
         day_max = 30;
-    } else if (t.month == 2) {
-        if (t.year % 4 == 0 && t.year % 100 != 0) {
+    }
+    else if(t.month == 2)
+    {
+        if(t.year % 4 == 0 && t.year % 100 != 0)
+        {
             day_max = 29;
-        } else if (t.year % 400 == 0) {
+        }
+        else if(t.year % 400 == 0)
+        {
             day_max = 29;
-        } else {
+        }
+        else
+        {
             day_max = 28;
         }
     }
@@ -353,130 +386,155 @@ static void sys_menu_tim_change(enum SYS_MENU_TIME ymdhm, s16 value)
 {
     s32 tmp;
 
-    switch (ymdhm) {
-    case SYS_MENU_TIME_YEAR:
-        tmp = t.year + value;
-        ts.year = tmp % 100 + 2000;
-        if (ts.year == t.year) {
+    switch(ymdhm)
+    {
+        case SYS_MENU_TIME_YEAR:
+            tmp = t.year + value;
+            ts.year = tmp % 100 + 2000;
+            if(ts.year == t.year)
+            {
+                break;
+            }
+            tu.year = (ts.year - 1) >= 2000 ? (ts.year - 1) : 2099;
+            td.year = (ts.year + 1) <= 2099 ? (ts.year + 1) : 2000;
+            ui_time_update_by_id(SYS_TIM_SET_YEAR, &ts);
+            ui_time_update_by_id(SYS_TIM_UP_YEAR, &tu);
+            ui_time_update_by_id(SYS_TIM_DOWN_YEAR, &td);
             break;
-        }
-        tu.year = (ts.year - 1) >= 2000 ? (ts.year - 1) : 2099;
-        td.year = (ts.year + 1) <= 2099 ? (ts.year + 1) : 2000;
-        ui_time_update_by_id(SYS_TIM_SET_YEAR, &ts);
-        ui_time_update_by_id(SYS_TIM_UP_YEAR, &tu);
-        ui_time_update_by_id(SYS_TIM_DOWN_YEAR, &td);
-        break;
-    case SYS_MENU_TIME_MONTH:
-        tmp = t.month + value;
-        ts.month = (tmp + 119) % 12 + 1;
-        if (ts.month == t.month) {
+        case SYS_MENU_TIME_MONTH:
+            tmp = t.month + value;
+            ts.month = (tmp + 119) % 12 + 1;
+            if(ts.month == t.month)
+            {
+                break;
+            }
+            tu.month = (ts.month - 1) >= 1 ? (ts.month - 1) : 12;
+            td.month = (ts.month + 1) <= 12 ? (ts.month + 1) : 1;
+            ui_time_update_by_id(SYS_TIM_SET_MONTH, &ts);
+            ui_time_update_by_id(SYS_TIM_UP_MONTH, &tu);
+            ui_time_update_by_id(SYS_TIM_DOWN_MONTH, &td);
             break;
-        }
-        tu.month = (ts.month - 1) >= 1 ? (ts.month - 1) : 12;
-        td.month = (ts.month + 1) <= 12 ? (ts.month + 1) : 1;
-        ui_time_update_by_id(SYS_TIM_SET_MONTH, &ts);
-        ui_time_update_by_id(SYS_TIM_UP_MONTH, &tu);
-        ui_time_update_by_id(SYS_TIM_DOWN_MONTH, &td);
-        break;
-    case SYS_MENU_TIME_DAY:
-        tmp = t.day + value;
-        ts.day = (tmp + day_max * 10 - 1) % day_max + 1;
-        if (ts.day == t.day) {
+        case SYS_MENU_TIME_DAY:
+            tmp = t.day + value;
+            ts.day = (tmp + day_max * 10 - 1) % day_max + 1;
+            if(ts.day == t.day)
+            {
+                break;
+            }
+            tu.day = (ts.day - 1) >= 1 ? (ts.day - 1) : day_max;
+            td.day = (ts.day + 1) <= day_max ? (ts.day + 1) : 1;
+            ui_time_update_by_id(SYS_TIM_SET_DAY, &ts);
+            ui_time_update_by_id(SYS_TIM_UP_DAY, &tu);
+            ui_time_update_by_id(SYS_TIM_DOWN_DAY, &td);
             break;
-        }
-        tu.day = (ts.day - 1) >= 1 ? (ts.day - 1) : day_max;
-        td.day = (ts.day + 1) <= day_max ? (ts.day + 1) : 1;
-        ui_time_update_by_id(SYS_TIM_SET_DAY, &ts);
-        ui_time_update_by_id(SYS_TIM_UP_DAY, &tu);
-        ui_time_update_by_id(SYS_TIM_DOWN_DAY, &td);
-        break;
-    case SYS_MENU_TIME_HOUR:
-        tmp = t.hour + value;
-        ts.hour = (tmp + 240) % 24;
-        if (ts.hour == t.hour) {
+        case SYS_MENU_TIME_HOUR:
+            tmp = t.hour + value;
+            ts.hour = (tmp + 240) % 24;
+            if(ts.hour == t.hour)
+            {
+                break;
+            }
+            tu.hour = (ts.hour - 1) >= 0 ? (ts.hour - 1) : 23;
+            td.hour = (ts.hour + 1) <= 23 ? (ts.hour + 1) : 0;
+            ui_time_update_by_id(SYS_TIM_SET_HOUR, &ts);
+            ui_time_update_by_id(SYS_TIM_UP_HOUR, &tu);
+            ui_time_update_by_id(SYS_TIM_DOWN_HOUR, &td);
             break;
-        }
-        tu.hour = (ts.hour - 1) >= 0 ? (ts.hour - 1) : 23;
-        td.hour = (ts.hour + 1) <= 23 ? (ts.hour + 1) : 0;
-        ui_time_update_by_id(SYS_TIM_SET_HOUR, &ts);
-        ui_time_update_by_id(SYS_TIM_UP_HOUR, &tu);
-        ui_time_update_by_id(SYS_TIM_DOWN_HOUR, &td);
-        break;
-    case SYS_MENU_TIME_MIN:
-        tmp = t.min + value;
-        ts.min = (tmp + 600) % 60;
-        if (ts.min == t.min) {
+        case SYS_MENU_TIME_MIN:
+            tmp = t.min + value;
+            ts.min = (tmp + 600) % 60;
+            if(ts.min == t.min)
+            {
+                break;
+            }
+            tu.min = (ts.min - 1) >= 0 ? (ts.min - 1) : 59;
+            td.min = (ts.min + 1) <= 59 ? (ts.min + 1) : 0;
+            ui_time_update_by_id(SYS_TIM_SET_MIN, &ts);
+            ui_time_update_by_id(SYS_TIM_UP_MIN, &tu);
+            ui_time_update_by_id(SYS_TIM_DOWN_MIN, &td);
             break;
-        }
-        tu.min = (ts.min - 1) >= 0 ? (ts.min - 1) : 59;
-        td.min = (ts.min + 1) <= 59 ? (ts.min + 1) : 0;
-        ui_time_update_by_id(SYS_TIM_SET_MIN, &ts);
-        ui_time_update_by_id(SYS_TIM_UP_MIN, &tu);
-        ui_time_update_by_id(SYS_TIM_DOWN_MIN, &td);
-        break;
-    case SYS_MENU_TIME_SET:
-        //如果修改了年月，则判断最大日数
-        if (ts.year != t.year || ts.month != t.month) {
-            if (ts.month == 1 || ts.month == 3 || ts.month == 5 || ts.month == 7 || ts.month == 8 || ts.month == 10 || ts.month == 12) {
-                day_max = 31;
-            } else if (ts.month == 4 || ts.month == 6 || ts.month == 9 || ts.month == 11) {
-                day_max = 30;
-            } else if (ts.month == 2) {
-                if (ts.year % 4 == 0 && ts.year % 100 != 0) {
-                    day_max = 29;
-                } else if (ts.year % 400 == 0) {
-                    day_max = 29;
-                } else {
-                    day_max = 28;
+        case SYS_MENU_TIME_SET:
+            //如果修改了年月，则判断最大日数
+            if(ts.year != t.year || ts.month != t.month)
+            {
+                if(ts.month == 1 || ts.month == 3 || ts.month == 5 || ts.month == 7 || ts.month == 8 || ts.month == 10 || ts.month == 12)
+                {
+                    day_max = 31;
+                }
+                else if(ts.month == 4 || ts.month == 6 || ts.month == 9 || ts.month == 11)
+                {
+                    day_max = 30;
+                }
+                else if(ts.month == 2)
+                {
+                    if(ts.year % 4 == 0 && ts.year % 100 != 0)
+                    {
+                        day_max = 29;
+                    }
+                    else if(ts.year % 400 == 0)
+                    {
+                        day_max = 29;
+                    }
+                    else
+                    {
+                        day_max = 28;
+                    }
                 }
             }
-        }
 
-        //如果修改了日，则保存，否则还原
-        if (ts.day != t.day) {
-            day_set = ts.day;
-        } else {
-            ts.day = day_set;
-            if (ts.day > day_max) {
-                ts.day = day_max;
+            //如果修改了日，则保存，否则还原
+            if(ts.day != t.day)
+            {
+                day_set = ts.day;
             }
-            ui_time_update_by_id(SYS_TIM_SET_DAY, &ts);
-        }
+            else
+            {
+                ts.day = day_set;
+                if(ts.day > day_max)
+                {
+                    ts.day = day_max;
+                }
+                ui_time_update_by_id(SYS_TIM_SET_DAY, &ts);
+            }
 
-        //更新日显示
-        if (ts.day > day_max) {
-            ts.day = day_max;
-            ui_time_update_by_id(SYS_TIM_SET_DAY, &ts);
-        }
-        tmp = (ts.day - 1) >= 1 ? (ts.day - 1) : day_max;
-        if (tmp != tu.day) {
-            tu.day = tmp;
-            ui_time_update_by_id(SYS_TIM_UP_DAY, &tu);
-        }
-        tmp = (ts.day + 1) <= day_max ? (ts.day + 1) : 1;
-        if (tmp != td.day) {
-            td.day = tmp;
-            ui_time_update_by_id(SYS_TIM_DOWN_DAY, &td);
-        }
+            //更新日显示
+            if(ts.day > day_max)
+            {
+                ts.day = day_max;
+                ui_time_update_by_id(SYS_TIM_SET_DAY, &ts);
+            }
+            tmp = (ts.day - 1) >= 1 ? (ts.day - 1) : day_max;
+            if(tmp != tu.day)
+            {
+                tu.day = tmp;
+                ui_time_update_by_id(SYS_TIM_UP_DAY, &tu);
+            }
+            tmp = (ts.day + 1) <= day_max ? (ts.day + 1) : 1;
+            if(tmp != td.day)
+            {
+                td.day = tmp;
+                ui_time_update_by_id(SYS_TIM_DOWN_DAY, &td);
+            }
 
-        //保存时间到t
-        t.year = ts.year;
-        t.month = ts.month;
-        t.day = ts.day;
-        t.hour = ts.hour;
-        t.min = ts.min;
-        t.sec = 0;
+            //保存时间到t
+            t.year = ts.year;
+            t.month = ts.month;
+            t.day = ts.day;
+            t.hour = ts.hour;
+            t.min = ts.min;
+            t.sec = 0;
 
-        break;
-    default:
-        break;
+            break;
+        default:
+            break;
     }
 }
 
 /*******************************************************************/
 /*                           车牌设置
 *******************************************************************/
-enum SYS_MENU_CID {
+enum SYS_MENU_CID
+{
     SYS_MENU_CID_NONE = 0,
     SYS_MENU_CID_PRO,
     SYS_MENU_CID_1,
@@ -488,7 +546,8 @@ enum SYS_MENU_CID {
     SYS_MENU_CID_PREV,
     SYS_MENU_CID_NEXT,
 };
-static const u16 province_gb2312[] = {
+static const u16 province_gb2312[] =
+{
     0xA9BE, 0xFEC4, 0xA8B4, 0xA6BB, 0xF2BD, //京，宁，川，沪，津
     0xE3D5, 0xE5D3, 0xE6CF, 0xC1D4, 0xA5D4, //浙，渝，湘，粤，豫
     0xF3B9, 0xD3B8, 0xC9C1, 0xB3C2, 0xDABA, //贵，赣，辽，鲁，黑
@@ -497,7 +556,8 @@ static const u16 province_gb2312[] = {
     0xEECD, 0xC9C3, 0xF5B6, 0xC2C9, 0xE0C7, //皖，蒙，鄂，陕，青，
     0xC6D4                                  //云
 };
-static const u8 num_table[] = {
+static const u8 num_table[] =
+{
     'A', 'B', 'C', 'D', 'E',
     'F', 'G', 'H', 'I', 'J',
     'K', 'L', 'M', 'N', 'O',
@@ -559,35 +619,68 @@ static void sys_menu_cid_toggle(void *p)
 {
     static u8 flag = 0;
     static u8 last = SYS_MENU_CID_NONE;
-    if (flag) {
-        switch (sys_menu_cid_setting) {
-        case SYS_MENU_CID_NONE:
-            break;
-        case SYS_MENU_CID_PRO:
-            ui_pic_show_image_by_id(SYS_PIC_CID_0, 0);
-            break;
-        case SYS_MENU_CID_1:
-            ui_pic_show_image_by_id(SYS_PIC_CID_1, 0);
-            break;
-        case SYS_MENU_CID_2:
-            ui_pic_show_image_by_id(SYS_PIC_CID_2, 0);
-            break;
-        case SYS_MENU_CID_3:
-            ui_pic_show_image_by_id(SYS_PIC_CID_3, 0);
-            break;
-        case SYS_MENU_CID_4:
-            ui_pic_show_image_by_id(SYS_PIC_CID_4, 0);
-            break;
-        case SYS_MENU_CID_5:
-            ui_pic_show_image_by_id(SYS_PIC_CID_5, 0);
-            break;
-        case SYS_MENU_CID_6:
-            ui_pic_show_image_by_id(SYS_PIC_CID_6, 0);
-            break;
+    if(flag)
+    {
+        switch(sys_menu_cid_setting)
+        {
+            case SYS_MENU_CID_NONE:
+                break;
+            case SYS_MENU_CID_PRO:
+                ui_pic_show_image_by_id(SYS_PIC_CID_0, 0);
+                break;
+            case SYS_MENU_CID_1:
+                ui_pic_show_image_by_id(SYS_PIC_CID_1, 0);
+                break;
+            case SYS_MENU_CID_2:
+                ui_pic_show_image_by_id(SYS_PIC_CID_2, 0);
+                break;
+            case SYS_MENU_CID_3:
+                ui_pic_show_image_by_id(SYS_PIC_CID_3, 0);
+                break;
+            case SYS_MENU_CID_4:
+                ui_pic_show_image_by_id(SYS_PIC_CID_4, 0);
+                break;
+            case SYS_MENU_CID_5:
+                ui_pic_show_image_by_id(SYS_PIC_CID_5, 0);
+                break;
+            case SYS_MENU_CID_6:
+                ui_pic_show_image_by_id(SYS_PIC_CID_6, 0);
+                break;
         }
-    } else {
-        if (last != sys_menu_cid_setting) {
-            switch (last) {
+    }
+    else
+    {
+        if(last != sys_menu_cid_setting)
+        {
+            switch(last)
+            {
+                case SYS_MENU_CID_NONE:
+                    break;
+                case SYS_MENU_CID_PRO:
+                    ui_pic_show_image_by_id(SYS_PIC_CID_0, sys_menu_cid_status[0] + 1);
+                    break;
+                case SYS_MENU_CID_1:
+                    ui_pic_show_image_by_id(SYS_PIC_CID_1, sys_menu_cid_status[1] + 1);
+                    break;
+                case SYS_MENU_CID_2:
+                    ui_pic_show_image_by_id(SYS_PIC_CID_2, sys_menu_cid_status[2] + 1);
+                    break;
+                case SYS_MENU_CID_3:
+                    ui_pic_show_image_by_id(SYS_PIC_CID_3, sys_menu_cid_status[3] + 1);
+                    break;
+                case SYS_MENU_CID_4:
+                    ui_pic_show_image_by_id(SYS_PIC_CID_4, sys_menu_cid_status[4] + 1);
+                    break;
+                case SYS_MENU_CID_5:
+                    ui_pic_show_image_by_id(SYS_PIC_CID_5, sys_menu_cid_status[5] + 1);
+                    break;
+                case SYS_MENU_CID_6:
+                    ui_pic_show_image_by_id(SYS_PIC_CID_6, sys_menu_cid_status[6] + 1);
+                    break;
+            }
+        }
+        switch(sys_menu_cid_setting)
+        {
             case SYS_MENU_CID_NONE:
                 break;
             case SYS_MENU_CID_PRO:
@@ -611,32 +704,6 @@ static void sys_menu_cid_toggle(void *p)
             case SYS_MENU_CID_6:
                 ui_pic_show_image_by_id(SYS_PIC_CID_6, sys_menu_cid_status[6] + 1);
                 break;
-            }
-        }
-        switch (sys_menu_cid_setting) {
-        case SYS_MENU_CID_NONE:
-            break;
-        case SYS_MENU_CID_PRO:
-            ui_pic_show_image_by_id(SYS_PIC_CID_0, sys_menu_cid_status[0] + 1);
-            break;
-        case SYS_MENU_CID_1:
-            ui_pic_show_image_by_id(SYS_PIC_CID_1, sys_menu_cid_status[1] + 1);
-            break;
-        case SYS_MENU_CID_2:
-            ui_pic_show_image_by_id(SYS_PIC_CID_2, sys_menu_cid_status[2] + 1);
-            break;
-        case SYS_MENU_CID_3:
-            ui_pic_show_image_by_id(SYS_PIC_CID_3, sys_menu_cid_status[3] + 1);
-            break;
-        case SYS_MENU_CID_4:
-            ui_pic_show_image_by_id(SYS_PIC_CID_4, sys_menu_cid_status[4] + 1);
-            break;
-        case SYS_MENU_CID_5:
-            ui_pic_show_image_by_id(SYS_PIC_CID_5, sys_menu_cid_status[5] + 1);
-            break;
-        case SYS_MENU_CID_6:
-            ui_pic_show_image_by_id(SYS_PIC_CID_6, sys_menu_cid_status[6] + 1);
-            break;
         }
     }
     last = sys_menu_cid_setting;
@@ -644,77 +711,88 @@ static void sys_menu_cid_toggle(void *p)
 }
 static void sys_menu_cid_set(u8 value)
 {
-    switch (sys_menu_cid_setting) {
-    case SYS_MENU_CID_PRO:
-        sys_menu_cid_status[0] = value;
-        break;
-    case SYS_MENU_CID_1:
-        sys_menu_cid_status[1] = value;
-        break;
-    case SYS_MENU_CID_2:
-        sys_menu_cid_status[2] = value;
-        break;
-    case SYS_MENU_CID_3:
-        sys_menu_cid_status[3] = value;
-        break;
-    case SYS_MENU_CID_4:
-        sys_menu_cid_status[4] = value;
-        break;
-    case SYS_MENU_CID_5:
-        sys_menu_cid_status[5] = value;
-        break;
-    case SYS_MENU_CID_6:
-        sys_menu_cid_status[6] = value;
-        break;
+    switch(sys_menu_cid_setting)
+    {
+        case SYS_MENU_CID_PRO:
+            sys_menu_cid_status[0] = value;
+            break;
+        case SYS_MENU_CID_1:
+            sys_menu_cid_status[1] = value;
+            break;
+        case SYS_MENU_CID_2:
+            sys_menu_cid_status[2] = value;
+            break;
+        case SYS_MENU_CID_3:
+            sys_menu_cid_status[3] = value;
+            break;
+        case SYS_MENU_CID_4:
+            sys_menu_cid_status[4] = value;
+            break;
+        case SYS_MENU_CID_5:
+            sys_menu_cid_status[5] = value;
+            break;
+        case SYS_MENU_CID_6:
+            sys_menu_cid_status[6] = value;
+            break;
     }
 }
 static void sys_menu_cid_selete(u8 item)
 {
-    if (item == sys_menu_cid_setting) {
+    if(item == sys_menu_cid_setting)
+    {
         return;
     }
-    switch (item) {
-    case SYS_MENU_CID_PRO:
-        ui_hide(SYS_LAY_CID_KB);
-        ui_show(SYS_LAY_CID_PRO);
-        sys_menu_cid_setting = item;
-        break;
-    case SYS_MENU_CID_1:
-    case SYS_MENU_CID_2:
-    case SYS_MENU_CID_3:
-    case SYS_MENU_CID_4:
-    case SYS_MENU_CID_5:
-    case SYS_MENU_CID_6:
-        ui_hide(SYS_LAY_CID_PRO);
-        ui_show(SYS_LAY_CID_KB);
-        sys_menu_cid_setting = item;
-        break;
-    case SYS_MENU_CID_PREV:
-        sys_menu_cid_setting--;
-        if (sys_menu_cid_setting < SYS_MENU_CID_PRO) {
-            sys_menu_cid_setting = SYS_MENU_CID_6;
-        }
-        if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
+    switch(item)
+    {
+        case SYS_MENU_CID_PRO:
             ui_hide(SYS_LAY_CID_KB);
             ui_show(SYS_LAY_CID_PRO);
-        } else {
+            sys_menu_cid_setting = item;
+            break;
+        case SYS_MENU_CID_1:
+        case SYS_MENU_CID_2:
+        case SYS_MENU_CID_3:
+        case SYS_MENU_CID_4:
+        case SYS_MENU_CID_5:
+        case SYS_MENU_CID_6:
             ui_hide(SYS_LAY_CID_PRO);
             ui_show(SYS_LAY_CID_KB);
-        }
-        break;
-    case SYS_MENU_CID_NEXT:
-        sys_menu_cid_setting++;
-        if (sys_menu_cid_setting > SYS_MENU_CID_6) {
-            sys_menu_cid_setting = SYS_MENU_CID_PRO;
-        }
-        if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
-            ui_hide(SYS_LAY_CID_KB);
-            ui_show(SYS_LAY_CID_PRO);
-        } else {
-            ui_hide(SYS_LAY_CID_PRO);
-            ui_show(SYS_LAY_CID_KB);
-        }
-        break;
+            sys_menu_cid_setting = item;
+            break;
+        case SYS_MENU_CID_PREV:
+            sys_menu_cid_setting--;
+            if(sys_menu_cid_setting < SYS_MENU_CID_PRO)
+            {
+                sys_menu_cid_setting = SYS_MENU_CID_6;
+            }
+            if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+            {
+                ui_hide(SYS_LAY_CID_KB);
+                ui_show(SYS_LAY_CID_PRO);
+            }
+            else
+            {
+                ui_hide(SYS_LAY_CID_PRO);
+                ui_show(SYS_LAY_CID_KB);
+            }
+            break;
+        case SYS_MENU_CID_NEXT:
+            sys_menu_cid_setting++;
+            if(sys_menu_cid_setting > SYS_MENU_CID_6)
+            {
+                sys_menu_cid_setting = SYS_MENU_CID_PRO;
+            }
+            if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+            {
+                ui_hide(SYS_LAY_CID_KB);
+                ui_show(SYS_LAY_CID_PRO);
+            }
+            else
+            {
+                ui_hide(SYS_LAY_CID_PRO);
+                ui_show(SYS_LAY_CID_KB);
+            }
+            break;
     }
 }
 
@@ -726,8 +804,10 @@ static void sys_warning_tick(void *_p)
     int *p = (int *)_p;
     int item = *p;
 
-    if (__this->sys_menu_status == SYS_MENU_FORMAT && !dev_online(SDX_DEV)) {
-        if (item < 0) {
+    if(__this->sys_menu_status == SYS_MENU_FORMAT && !dev_online(SDX_DEV))
+    {
+        if(item < 0)
+        {
             ui_hide(SYS_BTN_WARNING_CONFIRM);
             btn_warning_show_f = 0;
             ui_show(SYS_PIC_WARNING_CONFIRM);
@@ -736,15 +816,19 @@ static void sys_warning_tick(void *_p)
         ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 2);
         ui_text_show_index_by_id(SYS_TXT_WARNING_CONFIRM, 0);
         return;
-    } else if (item == 5) {
+    }
+    else if(item == 5)
+    {
         ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 0);
     }
 
-    if (!item) {
+    if(!item)
+    {
         ui_hide(SYS_PIC_WARNING_CONFIRM);
         ui_show(SYS_BTN_WARNING_CONFIRM);
         btn_warning_show_f = 1;
-        if (__this->sys_menu_status == SYS_MENU_RESET) {
+        if(__this->sys_menu_status == SYS_MENU_RESET)
+        {
             ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 1);
         }
     }
@@ -753,21 +837,22 @@ static void sys_warning_tick(void *_p)
 }
 static int get_child_item_num(u8 sys_menu_status)
 {
-    switch (sys_menu_status) {
-    case SYS_MENU_AUTOOFF:
-    case SYS_MENU_LCDOFF:
-        return ARRAY_SIZE(table_system_auto_close);
-    case SYS_MENU_FREQUENCY:
-    case SYS_MENU_KEYVOICE:
-    case SYS_MENU_TVMODE:
-    case SYS_MENU_FORMAT:
-    case SYS_MENU_RESET:
-    case SYS_MENU_HL_WARNNING:
-        return 2;
-    case SYS_MENU_LANGUAGE:
-        return ARRAY_SIZE(table_system_language);
-    default:
-        break;
+    switch(sys_menu_status)
+    {
+        case SYS_MENU_AUTOOFF:
+        case SYS_MENU_LCDOFF:
+            return ARRAY_SIZE(table_system_auto_close);
+        case SYS_MENU_FREQUENCY:
+        case SYS_MENU_KEYVOICE:
+        case SYS_MENU_TVMODE:
+        case SYS_MENU_FORMAT:
+        case SYS_MENU_RESET:
+        case SYS_MENU_HL_WARNNING:
+            return 2;
+        case SYS_MENU_LANGUAGE:
+            return ARRAY_SIZE(table_system_language);
+        default:
+            break;
     }
     return 0;
 }
@@ -776,38 +861,41 @@ int menu_sys_default_set(u8 sel_item);
 static void set_format_reset_func(void)
 {
 
-    switch (__this->sys_menu_status) {
-        ui_hide(SYS_BTN_WARNING_CONFIRM);
-        btn_warning_show_f = 0;
-        ui_hide(SYS_TXT_WARNING_CONFIRM);
-    case SYS_MENU_FORMAT:
-        if (storage_device_ready()) {
-            menu_sys_format_set(1);
-            ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 3);
-        }
-        break;
-    case SYS_MENU_RESET:
-        menu_sys_default_set(1);
-        sys_fun_restore();
-        __this->reset_flag = 1;
-        ui_hide(SYS_LAY);
-        ui_show(SYS_LAY);
-        __this->lcd_protect = index_of_table16(db_select("pro"), TABLE(table_system_lcd_protect));
-        __this->auto_off    = index_of_table8(db_select("aff"), TABLE(table_system_auto_close));
-        __this->led_fre_hz  = index_of_table8(db_select("fre"), TABLE(table_system_led_fre));
-        __this->key_voice   = db_select("kvo");
-        __this->language    = index_of_table8(db_select("lag"), TABLE(table_system_language));
-        __this->tv_mod      = index_of_table8(db_select("tvm"), TABLE(table_system_tv_mod));
-        ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 7);
+    switch(__this->sys_menu_status)
+    {
+            ui_hide(SYS_BTN_WARNING_CONFIRM);
+            btn_warning_show_f = 0;
+            ui_hide(SYS_TXT_WARNING_CONFIRM);
+        case SYS_MENU_FORMAT:
+            if(storage_device_ready())
+            {
+                menu_sys_format_set(1);
+                ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 3);
+            }
+            break;
+        case SYS_MENU_RESET:
+            menu_sys_default_set(1);
+            sys_fun_restore();
+            __this->reset_flag = 1;
+            ui_hide(SYS_LAY);
+            ui_show(SYS_LAY);
+            __this->lcd_protect = index_of_table16(db_select("pro"), TABLE(table_system_lcd_protect));
+            __this->auto_off    = index_of_table8(db_select("aff"), TABLE(table_system_auto_close));
+            __this->led_fre_hz  = index_of_table8(db_select("fre"), TABLE(table_system_led_fre));
+            __this->key_voice   = db_select("kvo");
+            __this->language    = index_of_table8(db_select("lag"), TABLE(table_system_language));
+            __this->tv_mod      = index_of_table8(db_select("tvm"), TABLE(table_system_tv_mod));
+            ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 7);
 
-        break;
+            break;
     }
 }
 
 /*
  * (begin)提示框显示接口 ********************************************
  */
-enum box_msg {
+enum box_msg
+{
     BOX_MSG_POWER_OFF = 1,
     BOX_MSG_NO_POWER,
 };
@@ -815,13 +903,18 @@ static u8 msg_show_f = 0;
 static enum box_msg msg_show_id = 0;
 static void __sys_msg_hide(enum box_msg id)
 {
-    if (msg_show_id == id) {
-        if (msg_show_f) {
+    if(msg_show_id == id)
+    {
+        if(msg_show_f)
+        {
             msg_show_f = 0;
             ui_hide(SYS_LAY_MESSAGEBOX);
         }
-    } else if (id == 0) { /* 没有指定ID，强制隐藏 */
-        if (msg_show_f) {
+    }
+    else if(id == 0)      /* 没有指定ID，强制隐藏 */
+    {
+        if(msg_show_f)
+        {
             msg_show_f = 0;
             ui_hide(SYS_LAY_MESSAGEBOX);
         }
@@ -834,36 +927,46 @@ static void __sys_msg_timeout_func(void *priv)
 static void __sys_msg_show(enum box_msg msg, u32 timeout_msec)
 {
     static int t_id = 0;
-    if (msg == 0) {
+    if(msg == 0)
+    {
         ASSERT(0, "__main_msg_show msg 0!\n");
         return;
     }
 
-    if (msg == msg_show_id) {
-        if (msg_show_f == 0) {
+    if(msg == msg_show_id)
+    {
+        if(msg_show_f == 0)
+        {
             msg_show_f = 1;
             ui_show(SYS_LAY_MESSAGEBOX);
             ui_text_show_index_by_id(SYS_TXT_MESSAGEBOX, msg - 1);
-            if (t_id) {
+            if(t_id)
+            {
                 sys_timeout_del(t_id);
                 t_id = 0;
             }
-            if (timeout_msec > 0) {
+            if(timeout_msec > 0)
+            {
                 t_id = sys_timeout_add((void *)msg, __sys_msg_timeout_func, timeout_msec);
             }
         }
-    } else {
+    }
+    else
+    {
         msg_show_id = msg;
-        if (msg_show_f == 0) {
+        if(msg_show_f == 0)
+        {
             msg_show_f = 1;
             ui_show(SYS_LAY_MESSAGEBOX);
         }
         ui_text_show_index_by_id(SYS_TXT_MESSAGEBOX, msg - 1);
-        if (t_id) {
+        if(t_id)
+        {
             sys_timeout_del(t_id);
             t_id = 0;
         }
-        if (timeout_msec > 0) {
+        if(timeout_msec > 0)
+        {
             t_id = sys_timeout_add((void *)msg, __sys_msg_timeout_func, timeout_msec);
         }
     }
@@ -877,276 +980,294 @@ static void __sys_msg_show(enum box_msg msg, u32 timeout_msec)
 
 static void sys_menu_show(enum SYS_MENU item)
 {
-    switch (item) {
-    case SYS_MENU_LCDOFF:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_01);
-        ui_highlight_element_by_id(SYS_FORM_TXT_01);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 0);
-        ui_show(SYS_LAY_C4);
-        ui_text_show_index_by_id(SYS_TXT_C4_2, 0);
-        ui_text_show_index_by_id(SYS_TXT_C4_3, 0);
-        ui_text_show_index_by_id(SYS_TXT_C4_4, 0);
-        switch (__this->lcd_protect) {
-        case 0:
-            ui_show(SYS_PIC_C4_1);
+    switch(item)
+    {
+        case SYS_MENU_LCDOFF:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_01);
+            ui_highlight_element_by_id(SYS_FORM_TXT_01);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 0);
+            ui_show(SYS_LAY_C4);
+            ui_text_show_index_by_id(SYS_TXT_C4_2, 0);
+            ui_text_show_index_by_id(SYS_TXT_C4_3, 0);
+            ui_text_show_index_by_id(SYS_TXT_C4_4, 0);
+            switch(__this->lcd_protect)
+            {
+                case 0:
+                    ui_show(SYS_PIC_C4_1);
+                    break;
+                case 1:
+                    ui_show(SYS_PIC_C4_2);
+                    break;
+                case 2:
+                    ui_show(SYS_PIC_C4_3);
+                    break;
+                case 3:
+                    ui_show(SYS_PIC_C4_4);
+                    break;
+            }
             break;
-        case 1:
-            ui_show(SYS_PIC_C4_2);
+        case SYS_MENU_AUTOOFF:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_02);
+            ui_highlight_element_by_id(SYS_FORM_TXT_02);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 1);
+            ui_show(SYS_LAY_C4);
+            ui_text_show_index_by_id(SYS_TXT_C4_2, 1);
+            ui_text_show_index_by_id(SYS_TXT_C4_3, 1);
+            ui_text_show_index_by_id(SYS_TXT_C4_4, 1);
+            switch(__this->auto_off)
+            {
+                case 0:
+                    ui_show(SYS_PIC_C4_1);
+                    break;
+                case 1:
+                    ui_show(SYS_PIC_C4_2);
+                    break;
+                case 2:
+                    ui_show(SYS_PIC_C4_3);
+                    break;
+                case 3:
+                    ui_show(SYS_PIC_C4_4);
+                    break;
+            }
             break;
-        case 2:
-            ui_show(SYS_PIC_C4_3);
+        case SYS_MENU_FREQUENCY:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_03);
+            ui_highlight_element_by_id(SYS_FORM_TXT_03);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 2);
+            ui_show(SYS_LAY_C2);
+            ui_text_show_index_by_id(SYS_TXT_C2_1, 0);
+            ui_text_show_index_by_id(SYS_TXT_C2_2, 0);
+            switch(__this->led_fre_hz)
+            {
+                case 0:
+                    ui_show(SYS_PIC_C2_1);
+                    break;
+                case 1:
+                    ui_show(SYS_PIC_C2_2);
+                    break;
+            }
             break;
-        case 3:
-            ui_show(SYS_PIC_C4_4);
+        case SYS_MENU_KEYVOICE:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_04);
+            ui_highlight_element_by_id(SYS_FORM_TXT_04);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 3);
+            ui_show(SYS_LAY_C2);
+            ui_text_show_index_by_id(SYS_TXT_C2_1, 1);
+            ui_text_show_index_by_id(SYS_TXT_C2_2, 1);
+            switch(__this->key_voice)
+            {
+                case 0:
+                    ui_show(SYS_PIC_C2_1);
+                    break;
+                case 1:
+                    ui_show(SYS_PIC_C2_2);
+                    break;
+            }
             break;
-        }
-        break;
-    case SYS_MENU_AUTOOFF:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_02);
-        ui_highlight_element_by_id(SYS_FORM_TXT_02);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 1);
-        ui_show(SYS_LAY_C4);
-        ui_text_show_index_by_id(SYS_TXT_C4_2, 1);
-        ui_text_show_index_by_id(SYS_TXT_C4_3, 1);
-        ui_text_show_index_by_id(SYS_TXT_C4_4, 1);
-        switch (__this->auto_off) {
-        case 0:
-            ui_show(SYS_PIC_C4_1);
+        case SYS_MENU_LANGUAGE:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_05);
+            ui_highlight_element_by_id(SYS_FORM_TXT_05);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 4);
+            ui_show(SYS_LAY_C3);
+            switch(__this->language)
+            {
+                case 0:
+                    ui_show(SYS_PIC_C3_1);
+                    break;
+                case 1:
+                    ui_show(SYS_PIC_C3_2);
+                    break;
+                case 2:
+                    ui_show(SYS_PIC_C3_3);
+                    break;
+            }
             break;
-        case 1:
-            ui_show(SYS_PIC_C4_2);
+        case SYS_MENU_TVMODE:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_06);
+            ui_highlight_element_by_id(SYS_FORM_TXT_06);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 5);
+            ui_show(SYS_LAY_C2);
+            ui_text_show_index_by_id(SYS_TXT_C2_1, 2);
+            ui_text_show_index_by_id(SYS_TXT_C2_2, 2);
+            switch(__this->tv_mod)
+            {
+                case 0:
+                    ui_show(SYS_PIC_C2_1);
+                    break;
+                case 1:
+                    ui_show(SYS_PIC_C2_2);
+                    break;
+            }
             break;
-        case 2:
-            ui_show(SYS_PIC_C4_3);
+        case SYS_MENU_DATETIME:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_07);
+            ui_highlight_element_by_id(SYS_FORM_TXT_07);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 6);
+            ui_show(SYS_LAY_TIM);
+            /* >>>>>>>>>>>>>显示当前时间 */
+            /* sys_menu_tim_show(); */
             break;
-        case 3:
-            ui_show(SYS_PIC_C4_4);
+        case SYS_MENU_CARNUM:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_08);
+            ui_highlight_element_by_id(SYS_FORM_TXT_08);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 7);
+            ui_show(SYS_LAY_CID);
+            /* >>>>>>>>>>>>>显示当前车牌，第一位闪烁 */
+            /* sys_menu_cid_show(); */
             break;
-        }
-        break;
-    case SYS_MENU_FREQUENCY:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_03);
-        ui_highlight_element_by_id(SYS_FORM_TXT_03);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 2);
-        ui_show(SYS_LAY_C2);
-        ui_text_show_index_by_id(SYS_TXT_C2_1, 0);
-        ui_text_show_index_by_id(SYS_TXT_C2_2, 0);
-        switch (__this->led_fre_hz) {
-        case 0:
-            ui_show(SYS_PIC_C2_1);
+        case SYS_MENU_HL_WARNNING:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_09);
+            ui_highlight_element_by_id(SYS_FORM_TXT_09);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 9);
+            ui_show(SYS_LAY_C2);
+            ui_text_show_index_by_id(SYS_TXT_C2_1, 1);
+            ui_text_show_index_by_id(SYS_TXT_C2_2, 1);
+            switch(__this->hl_warnning)
+            {
+                case 0:
+                    ui_show(SYS_PIC_C2_1);
+                    break;
+                case 1:
+                    ui_show(SYS_PIC_C2_2);
+                    break;
+            }
             break;
-        case 1:
-            ui_show(SYS_PIC_C2_2);
+        case SYS_MENU_FORMAT:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_10);
+            ui_highlight_element_by_id(SYS_FORM_TXT_10);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 10);
+            ui_show(SYS_LAY_WARNING);
+            if(dev_online(SDX_DEV))
+            {
+                ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 0);
+            }
+            else
+            {
+                ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 2);
+            }
+            /* >>>>>>>>>>>>倒计时五秒，隐藏SYS_PIC_WARNING_CONFIRM,显示SYS_BTN_WARNING_CONFIRM */
             break;
-        }
-        break;
-    case SYS_MENU_KEYVOICE:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_04);
-        ui_highlight_element_by_id(SYS_FORM_TXT_04);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 3);
-        ui_show(SYS_LAY_C2);
-        ui_text_show_index_by_id(SYS_TXT_C2_1, 1);
-        ui_text_show_index_by_id(SYS_TXT_C2_2, 1);
-        switch (__this->key_voice) {
-        case 0:
-            ui_show(SYS_PIC_C2_1);
+        case SYS_MENU_RESET:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_11);
+            ui_highlight_element_by_id(SYS_FORM_TXT_11);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 11);
+            ui_show(SYS_LAY_WARNING);
+            if(__this->reset_flag)
+            {
+                ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 7);
+                ui_text_show_index_by_id(SYS_TXT_WARNING_CONFIRM, 5);
+            }
+            else
+            {
+                ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 1);
+            }
+            /* >>>>>>>>>>>>倒计时五秒，隐藏SYS_PIC_WARNING_CONFIRM,显示SYS_BTN_WARNING_CONFIRM */
             break;
-        case 1:
-            ui_show(SYS_PIC_C2_2);
+        case SYS_MENU_VERSION:
+            __this->sys_menu_status = item;
+            ui_highlight_element_by_id(SYS_FORM_PIC_12);
+            ui_highlight_element_by_id(SYS_FORM_TXT_12);
+            ui_text_show_index_by_id(SYS_TXT_TITLE, 12);
+            ui_show(SYS_LAY_VERSION);
+            /* >>>>>>>>>>>>显示版本号 */
+            ui_text_set_str_by_id(SYS_TXT_VERSION, "ascii", "VERSION: 2.0.0 beta");
             break;
-        }
-        break;
-    case SYS_MENU_LANGUAGE:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_05);
-        ui_highlight_element_by_id(SYS_FORM_TXT_05);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 4);
-        ui_show(SYS_LAY_C3);
-        switch (__this->language) {
-        case 0:
-            ui_show(SYS_PIC_C3_1);
+        default:
             break;
-        case 1:
-            ui_show(SYS_PIC_C3_2);
-            break;
-        case 2:
-            ui_show(SYS_PIC_C3_3);
-            break;
-        }
-        break;
-    case SYS_MENU_TVMODE:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_06);
-        ui_highlight_element_by_id(SYS_FORM_TXT_06);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 5);
-        ui_show(SYS_LAY_C2);
-        ui_text_show_index_by_id(SYS_TXT_C2_1, 2);
-        ui_text_show_index_by_id(SYS_TXT_C2_2, 2);
-        switch (__this->tv_mod) {
-        case 0:
-            ui_show(SYS_PIC_C2_1);
-            break;
-        case 1:
-            ui_show(SYS_PIC_C2_2);
-            break;
-        }
-        break;
-    case SYS_MENU_DATETIME:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_07);
-        ui_highlight_element_by_id(SYS_FORM_TXT_07);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 6);
-        ui_show(SYS_LAY_TIM);
-        /* >>>>>>>>>>>>>显示当前时间 */
-        /* sys_menu_tim_show(); */
-        break;
-    case SYS_MENU_CARNUM:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_08);
-        ui_highlight_element_by_id(SYS_FORM_TXT_08);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 7);
-        ui_show(SYS_LAY_CID);
-        /* >>>>>>>>>>>>>显示当前车牌，第一位闪烁 */
-        /* sys_menu_cid_show(); */
-        break;
-    case SYS_MENU_HL_WARNNING:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_09);
-        ui_highlight_element_by_id(SYS_FORM_TXT_09);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 9);
-        ui_show(SYS_LAY_C2);
-        ui_text_show_index_by_id(SYS_TXT_C2_1, 1);
-        ui_text_show_index_by_id(SYS_TXT_C2_2, 1);
-        switch (__this->hl_warnning) {
-        case 0:
-            ui_show(SYS_PIC_C2_1);
-            break;
-        case 1:
-            ui_show(SYS_PIC_C2_2);
-            break;
-        }
-        break;
-    case SYS_MENU_FORMAT:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_10);
-        ui_highlight_element_by_id(SYS_FORM_TXT_10);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 10);
-        ui_show(SYS_LAY_WARNING);
-        if (dev_online(SDX_DEV)) {
-            ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 0);
-        } else {
-            ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 2);
-        }
-        /* >>>>>>>>>>>>倒计时五秒，隐藏SYS_PIC_WARNING_CONFIRM,显示SYS_BTN_WARNING_CONFIRM */
-        break;
-    case SYS_MENU_RESET:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_11);
-        ui_highlight_element_by_id(SYS_FORM_TXT_11);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 11);
-        ui_show(SYS_LAY_WARNING);
-        if (__this->reset_flag) {
-            ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 7);
-            ui_text_show_index_by_id(SYS_TXT_WARNING_CONFIRM, 5);
-        } else {
-            ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 1);
-        }
-        /* >>>>>>>>>>>>倒计时五秒，隐藏SYS_PIC_WARNING_CONFIRM,显示SYS_BTN_WARNING_CONFIRM */
-        break;
-    case SYS_MENU_VERSION:
-        __this->sys_menu_status = item;
-        ui_highlight_element_by_id(SYS_FORM_PIC_12);
-        ui_highlight_element_by_id(SYS_FORM_TXT_12);
-        ui_text_show_index_by_id(SYS_TXT_TITLE, 12);
-        ui_show(SYS_LAY_VERSION);
-        /* >>>>>>>>>>>>显示版本号 */
-        ui_text_set_str_by_id(SYS_TXT_VERSION, "ascii", "VERSION: 2.0.0 beta");
-        break;
-    default:
-        break;
     }
 }
 
 static void sys_menu_hide()
 {
-    switch (__this->sys_menu_status) {
-    case SYS_MENU_LCDOFF:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_01);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_01);
-        ui_hide(SYS_LAY_C4);
-        break;
-    case SYS_MENU_AUTOOFF:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_02);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_02);
-        ui_hide(SYS_LAY_C4);
-        break;
-    case SYS_MENU_FREQUENCY:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_03);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_03);
-        ui_hide(SYS_LAY_C2);
-        break;
-    case SYS_MENU_KEYVOICE:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_04);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_04);
-        ui_hide(SYS_LAY_C2);
-        break;
-    case SYS_MENU_LANGUAGE:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_05);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_05);
-        ui_hide(SYS_LAY_C3);
-        break;
-    case SYS_MENU_TVMODE:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_06);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_06);
-        ui_hide(SYS_LAY_C2);
-        break;
-    case SYS_MENU_DATETIME:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_07);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_07);
-        ui_hide(SYS_LAY_TIM);
-        break;
-    case SYS_MENU_CARNUM:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_08);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_08);
-        ui_hide(SYS_LAY_CID);
-        break;
-    case SYS_MENU_HL_WARNNING:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_09);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_09);
-        ui_hide(SYS_LAY_C2);
-        break;
-    case SYS_MENU_FORMAT:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_10);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_10);
-        ui_hide(SYS_LAY_WARNING);
-        break;
-    case SYS_MENU_RESET:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_11);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_11);
-        ui_hide(SYS_LAY_WARNING);
-        __this->reset_flag = 0;
-        break;
-    case SYS_MENU_VERSION:
-        ui_no_highlight_element_by_id(SYS_FORM_PIC_12);
-        ui_no_highlight_element_by_id(SYS_FORM_TXT_12);
-        ui_hide(SYS_LAY_VERSION);
-        break;
-    default:
-        __this->sys_menu_status = 0;
-        break;
+    switch(__this->sys_menu_status)
+    {
+        case SYS_MENU_LCDOFF:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_01);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_01);
+            ui_hide(SYS_LAY_C4);
+            break;
+        case SYS_MENU_AUTOOFF:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_02);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_02);
+            ui_hide(SYS_LAY_C4);
+            break;
+        case SYS_MENU_FREQUENCY:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_03);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_03);
+            ui_hide(SYS_LAY_C2);
+            break;
+        case SYS_MENU_KEYVOICE:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_04);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_04);
+            ui_hide(SYS_LAY_C2);
+            break;
+        case SYS_MENU_LANGUAGE:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_05);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_05);
+            ui_hide(SYS_LAY_C3);
+            break;
+        case SYS_MENU_TVMODE:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_06);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_06);
+            ui_hide(SYS_LAY_C2);
+            break;
+        case SYS_MENU_DATETIME:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_07);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_07);
+            ui_hide(SYS_LAY_TIM);
+            break;
+        case SYS_MENU_CARNUM:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_08);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_08);
+            ui_hide(SYS_LAY_CID);
+            break;
+        case SYS_MENU_HL_WARNNING:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_09);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_09);
+            ui_hide(SYS_LAY_C2);
+            break;
+        case SYS_MENU_FORMAT:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_10);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_10);
+            ui_hide(SYS_LAY_WARNING);
+            break;
+        case SYS_MENU_RESET:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_11);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_11);
+            ui_hide(SYS_LAY_WARNING);
+            __this->reset_flag = 0;
+            break;
+        case SYS_MENU_VERSION:
+            ui_no_highlight_element_by_id(SYS_FORM_PIC_12);
+            ui_no_highlight_element_by_id(SYS_FORM_TXT_12);
+            ui_hide(SYS_LAY_VERSION);
+            break;
+        default:
+            __this->sys_menu_status = 0;
+            break;
     }
 }
 
 
 int sys_menu(int item)
 {
-    if (item == __this->sys_menu_status || item < 0 || item >= SYS_MENU_NONE) {
+    if(item == __this->sys_menu_status || item < 0 || item >= SYS_MENU_NONE)
+    {
         return 0;
-    } else {
+    }
+    else
+    {
         sys_menu_hide();
         sys_menu_show(item);
     }
@@ -1166,12 +1287,13 @@ int menu_sys_lcd_pro_set(u8 sel_item)
     int err;
 
     init_intent(&it);
-    it.name	= "video_system";
+    it.name = "video_system";
     it.action = ACTION_SYSTEM_SET_CONFIG;
     it.data = "pro";
     it.exdata = table_system_lcd_protect[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":lcd_protect set fail!\n");
         return -1;
     }
@@ -1185,12 +1307,13 @@ int menu_sys_auto_off_set(u8 sel_item)
     int err;
 
     init_intent(&it);
-    it.name	= "video_system";
+    it.name = "video_system";
     it.action = ACTION_SYSTEM_SET_CONFIG;
     it.data = "aff";
     it.exdata = table_system_auto_close[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":auto_off set fail!\n");
         return -1;
     }
@@ -1205,12 +1328,13 @@ int menu_sys_led_fre_set(u8 sel_item)
     int err;
 
     init_intent(&it);
-    it.name	= "video_system";
+    it.name = "video_system";
     it.action = ACTION_SYSTEM_SET_CONFIG;
     it.data = "fre";
     it.exdata = table_system_led_fre[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":led_fre set fail!\n");
         return -1;
     }
@@ -1225,12 +1349,13 @@ int menu_sys_key_voice_set(u8 sel_item)
     int err;
 
     init_intent(&it);
-    it.name	= "video_system";
+    it.name = "video_system";
     it.action = ACTION_SYSTEM_SET_CONFIG;
     it.data = "kvo";
     it.exdata = sel_item;
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":key_voice set fail!\n");
         return -1;
     }
@@ -1245,12 +1370,13 @@ int menu_sys_hlight_warning_set(u8 sel_item)
     int err;
 
     init_intent(&it);
-    it.name	= "video_system";
+    it.name = "video_system";
     it.action = ACTION_SYSTEM_SET_CONFIG;
     it.data = "hlw";
     it.exdata = sel_item;
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":head light warning set fail!\n");
         return -1;
     }
@@ -1264,12 +1390,13 @@ int menu_sys_language_set(u8 sel_item)
     int err;
 
     init_intent(&it);
-    it.name	= "video_system";
+    it.name = "video_system";
     it.action = ACTION_SYSTEM_SET_CONFIG;
     it.data = "lag";
     it.exdata = table_system_language[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":language set fail!\n");
         return -1;
     }
@@ -1284,12 +1411,13 @@ int menu_sys_tv_mod_set(u8 sel_item)
     int err;
 
     init_intent(&it);
-    it.name	= "video_system";
+    it.name = "video_system";
     it.action = ACTION_SYSTEM_SET_CONFIG;
     it.data = "tvm";
     it.exdata = table_system_tv_mod[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":tv_mod set fail!\n");
         return -1;
     }
@@ -1302,10 +1430,13 @@ int menu_sys_tv_mod_set(u8 sel_item)
 
 void format_callback(void *priv, int err)
 {
-    if (err) {
+    if(err)
+    {
         printf("format err!!\n");
         ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 5);
-    } else {
+    }
+    else
+    {
         printf("format success!!\n");
         ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 4);
     }
@@ -1314,9 +1445,10 @@ void format_callback(void *priv, int err)
 int menu_sys_format_set(u8 sel_item)
 {
     struct intent it;
-    if (sel_item == 1) {
+    if(sel_item == 1)
+    {
         init_intent(&it);
-        it.name	= "video_system";
+        it.name = "video_system";
         it.action = ACTION_SYSTEM_SET_CONFIG;
         it.data = "frm";
         start_app_async(&it, format_callback, NULL);
@@ -1325,17 +1457,21 @@ int menu_sys_format_set(u8 sel_item)
 }
 void default_callback(void *priv, int err)
 {
-    if (err) {
+    if(err)
+    {
         printf("default err!!\n");
         ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 8);
-    } else {
+    }
+    else
+    {
         printf("default success!!\n");
         ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 7);
     }
 }
 int menu_sys_default_set(u8 sel_item)
 {
-    if (sel_item == 1) {
+    if(sel_item == 1)
+    {
         db_reset();
         default_callback(NULL, 0);
     }
@@ -1355,27 +1491,29 @@ static int sys_backhome_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**sys back to home ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->page_exit = HOME_SW_EXIT;
-        init_intent(&it);
-        app = get_current_app();
-        if (app) {
-            it.name = "video_system";
-            it.action = ACTION_BACK;
-            start_app_async(&it, NULL, NULL); //不等待直接启动app
-        }
-        break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->page_exit = HOME_SW_EXIT;
+            init_intent(&it);
+            app = get_current_app();
+            if(app)
+            {
+                it.name = "video_system";
+                it.action = ACTION_BACK;
+                start_app_async(&it, NULL, NULL); //不等待直接启动app
+            }
+            break;
     }
     return false;
 }
@@ -1389,31 +1527,33 @@ static int sys_to_rec_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**sys to rec ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        init_intent(&it);
-        app = get_current_app();
-        if (app) {
-            __this->page_exit = MODE_SW_EXIT;
-            it.name = "video_system";
-            it.action = ACTION_BACK;
-            start_app_async(&it, NULL, NULL); //不等待直接启动app
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            init_intent(&it);
+            app = get_current_app();
+            if(app)
+            {
+                __this->page_exit = MODE_SW_EXIT;
+                it.name = "video_system";
+                it.action = ACTION_BACK;
+                start_app_async(&it, NULL, NULL); //不等待直接启动app
 
-            it.name = "video_rec";
-            it.action = ACTION_VIDEO_REC_MAIN;
-            start_app_async(&it, NULL, NULL); //不等待直接启动app
-        }
-        break;
+                it.name = "video_rec";
+                it.action = ACTION_VIDEO_REC_MAIN;
+                start_app_async(&it, NULL, NULL); //不等待直接启动app
+            }
+            break;
     }
     return false;
 }
@@ -1425,30 +1565,32 @@ static int sys_to_file_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**sys to file ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        init_intent(&it);
-        app = get_current_app();
-        if (app) {
-            it.name = "video_system";
-            it.action = ACTION_BACK;
-            start_app_async(&it, NULL, NULL); //不等待直接启动app
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            init_intent(&it);
+            app = get_current_app();
+            if(app)
+            {
+                it.name = "video_system";
+                it.action = ACTION_BACK;
+                start_app_async(&it, NULL, NULL); //不等待直接启动app
 
-            it.name = "video_dec";
-            it.action = ACTION_VIDEO_DEC_MAIN;
-            start_app_async(&it, NULL, NULL); //不等待直接启动app
-        }
-        break;
+                it.name = "video_dec";
+                it.action = ACTION_VIDEO_DEC_MAIN;
+                start_app_async(&it, NULL, NULL); //不等待直接启动app
+            }
+            break;
     }
     return false;
 }
@@ -1462,31 +1604,43 @@ REGISTER_UI_EVENT_HANDLER(SYS_BTN_FILES)
 static void battery_event_handler(struct sys_event *event, void *priv)
 {
     static u8 ten_sec_off = 0;
-    if (ten_sec_off) {
-        if (event->type == SYS_KEY_EVENT || event->type == SYS_TOUCH_EVENT) {
+    if(ten_sec_off)
+    {
+        if(event->type == SYS_KEY_EVENT || event->type == SYS_TOUCH_EVENT)
+        {
             ten_sec_off = 0;
             __sys_msg_hide(0);
             return;
         }
     }
-    if (event->type == SYS_DEVICE_EVENT) {
-        if (!ASCII_StrCmp(event->arg, "sys_power", 9)) {
-            if (event->u.dev.event == DEVICE_EVENT_POWER_PERCENT) {
+    if(event->type == SYS_DEVICE_EVENT)
+    {
+        if(!ASCII_StrCmp(event->arg, "sys_power", 9))
+        {
+            if(event->u.dev.event == DEVICE_EVENT_POWER_PERCENT)
+            {
                 __this->battery_val = event->u.dev.value;
-                if (__this->battery_val > 100) {
+                if(__this->battery_val > 100)
+                {
                     __this->battery_val = 100;
                 }
-                if (__this->battery_char == 0) {
+                if(__this->battery_char == 0)
+                {
                     /* ui_battery_level_change(__this->battery_val, 0); */
                 }
-            } else if (event->u.dev.event == DEVICE_EVENT_POWER_CHARGER_IN) {
+            }
+            else if(event->u.dev.event == DEVICE_EVENT_POWER_CHARGER_IN)
+            {
                 /* ui_battery_level_change(100, 1); */
                 __this->battery_char = 1;
-                if (ten_sec_off) {
+                if(ten_sec_off)
+                {
                     ten_sec_off = 0;
                     __sys_msg_hide(0);
                 }
-            } else if (event->u.dev.event == DEVICE_EVENT_POWER_CHARGER_OUT) {
+            }
+            else if(event->u.dev.event == DEVICE_EVENT_POWER_CHARGER_OUT)
+            {
                 /* ui_battery_level_change(__this->battery_val, 0); */
                 __this->battery_char = 0;
                 __sys_msg_show(BOX_MSG_POWER_OFF, 0);
@@ -1499,16 +1653,22 @@ static void battery_event_handler(struct sys_event *event, void *priv)
 static void no_power_msg_box_timer(void *priv)
 {
     static u32 cnt = 0;
-    if (__this->battery_val <= 20 && __this->battery_char == 0) {
+    if(__this->battery_val <= 20 && __this->battery_char == 0)
+    {
         cnt++;
-        if ((cnt % 2) == 0) {
+        if((cnt % 2) == 0)
+        {
             puts("no power show.\n");
             __sys_msg_show(BOX_MSG_NO_POWER, 0);
-        } else {
+        }
+        else
+        {
             puts("no power hide.\n");
             __sys_msg_hide(BOX_MSG_NO_POWER);
         }
-    } else {
+    }
+    else
+    {
         __sys_msg_hide(BOX_MSG_NO_POWER);
         cnt = 0;
     }
@@ -1529,61 +1689,67 @@ static int sys_page_onchange(void *ctr, enum element_change_event e, void *arg)
     static u32 timer_handle = 0;
     struct intent it;
     static u16 id = 0;
-    switch (e) {
-    case ON_CHANGE_INIT:
-        sys_cur_mod = 4;
-        memset(__this, 0, sizeof(struct sys_menu_info));
-        __this->sys_menu_status = SYS_MENU_NONE;
-        __this->lcd_protect = index_of_table16(db_select("pro"), TABLE(table_system_lcd_protect));
-        __this->auto_off    = index_of_table8(db_select("aff"), TABLE(table_system_auto_close));
-        __this->led_fre_hz  = index_of_table8(db_select("fre"), TABLE(table_system_led_fre));
-        __this->key_voice   = db_select("kvo");
-        __this->language    = index_of_table8(db_select("lag"), TABLE(table_system_language));
-        __this->tv_mod      = index_of_table8(db_select("tvm"), TABLE(table_system_tv_mod));
-        __this->hl_warnning = db_select("hlw");
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            sys_cur_mod = 4;
+            memset(__this, 0, sizeof(struct sys_menu_info));
+            __this->sys_menu_status = SYS_MENU_NONE;
+            __this->lcd_protect = index_of_table16(db_select("pro"), TABLE(table_system_lcd_protect));
+            __this->auto_off    = index_of_table8(db_select("aff"), TABLE(table_system_auto_close));
+            __this->led_fre_hz  = index_of_table8(db_select("fre"), TABLE(table_system_led_fre));
+            __this->key_voice   = db_select("kvo");
+            __this->language    = index_of_table8(db_select("lag"), TABLE(table_system_language));
+            __this->tv_mod      = index_of_table8(db_select("tvm"), TABLE(table_system_tv_mod));
+            __this->hl_warnning = db_select("hlw");
 
-        ui_set_call(sys_menu, 0);
-        __this->onkey_mod = 0;
-        __this->onkey_sel = 0;
-        sys_key_event_takeover(true, false);
-        break;
-    case ON_CHANGE_FIRST_SHOW:
-        __this->battery_val = sys_power_get_battery_persent();
-        /* u32 power_level = 0; */
-        /* dev_ioctl(fd, POWER_DET_GET_LEVEL, (u32)&power_level); */
-        /* __this->battery_val = power_level * 20; */
-        if (__this->battery_val > 100) {
-            __this->battery_val = 100;
-        }
-        __this->battery_char = (usb_is_charging() ? 1 : 0);
-        timer_handle = sys_timer_add(NULL, no_power_msg_box_timer, 1000);
-        id = register_sys_event_handler(SYS_DEVICE_EVENT | SYS_KEY_EVENT | SYS_TOUCH_EVENT, 200, 0, battery_event_handler);
+            ui_set_call(sys_menu, 0);
+            __this->onkey_mod = 0;
+            __this->onkey_sel = 0;
+            sys_key_event_takeover(true, false);
+            break;
+        case ON_CHANGE_FIRST_SHOW:
+            __this->battery_val = sys_power_get_battery_persent();
+            /* u32 power_level = 0; */
+            /* dev_ioctl(fd, POWER_DET_GET_LEVEL, (u32)&power_level); */
+            /* __this->battery_val = power_level * 20; */
+            if(__this->battery_val > 100)
+            {
+                __this->battery_val = 100;
+            }
+            __this->battery_char = (usb_is_charging() ? 1 : 0);
+            timer_handle = sys_timer_add(NULL, no_power_msg_box_timer, 1000);
+            id = register_sys_event_handler(SYS_DEVICE_EVENT | SYS_KEY_EVENT | SYS_TOUCH_EVENT, 200, 0, battery_event_handler);
 
-        break;
-    case ON_CHANGE_RELEASE:
-        unregister_sys_event_handler(id);
-        if (timer_handle) {
-            sys_timer_del(timer_handle);
-            timer_handle = 0;
-        }
-        if (__this->page_exit == HOME_SW_EXIT) {
-            ui_show(ID_WINDOW_MAIN_PAGE);
-        }
-        __sys_msg_hide(0);//强制隐藏消息框
-        break;
-    default:
-        return false;
+            break;
+        case ON_CHANGE_RELEASE:
+            unregister_sys_event_handler(id);
+            if(timer_handle)
+            {
+                sys_timer_del(timer_handle);
+                timer_handle = 0;
+            }
+            if(__this->page_exit == HOME_SW_EXIT)
+            {
+                ui_show(ID_WINDOW_MAIN_PAGE);
+            }
+            __sys_msg_hide(0);//强制隐藏消息框
+            break;
+        default:
+            return false;
     }
     return true;
 }
 REGISTER_UI_EVENT_HANDLER(ID_WINDOW_VIDEO_SYS)
 .onchange = sys_page_onchange,
- .ontouch = NULL,
+.ontouch = NULL,
 };
 int language_set_highlight(int p)
 {
-    if (__this->onkey_mod == 1) {
-        if (__this->sys_menu_status == SYS_MENU_LANGUAGE) {
+    if(__this->onkey_mod == 1)
+    {
+        if(__this->sys_menu_status == SYS_MENU_LANGUAGE)
+        {
             ui_highlight_element_by_id(sel_layout3[__this->language]);
         }
     }
@@ -1594,23 +1760,24 @@ static int sys_table_onchange(void *ctr, enum element_change_event e, void *arg)
 {
     struct ui_grid *grid = (struct ui_grid *)ctr;
     /* UI_ONTOUCH_DEBUG("\n***sys table onchange %d***\n",e); */
-    switch (e) {
-    case ON_CHANGE_INIT:
-        ui_grid_set_item(grid, -1);
-        break;
-    case ON_CHANGE_TRY_OPEN_DC:
-        ui_core_element_on_focus(ui_core_get_element_by_id(SYS_WIN), true);
-        break;
-    case ON_CHANGE_FIRST_SHOW:
-        /* ui_set_call(sys_menu_show, __this->sys_menu_status); */
-        sys_menu_show(__this->sys_menu_status);//降低刷新效果
-        return true;
-        break;
-    case ON_CHANGE_SHOW_COMPLETED:
-        ui_set_call(language_set_highlight, 0);
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            ui_grid_set_item(grid, -1);
+            break;
+        case ON_CHANGE_TRY_OPEN_DC:
+            ui_core_element_on_focus(ui_core_get_element_by_id(SYS_WIN), true);
+            break;
+        case ON_CHANGE_FIRST_SHOW:
+            /* ui_set_call(sys_menu_show, __this->sys_menu_status); */
+            sys_menu_show(__this->sys_menu_status);//降低刷新效果
+            return true;
+            break;
+        case ON_CHANGE_SHOW_COMPLETED:
+            ui_set_call(language_set_highlight, 0);
+            break;
+        default:
+            return false;
     }
     return false;
 }
@@ -1623,73 +1790,94 @@ static int sys_table_ontouch(void *ctr, struct element_touch_event *e)
     int i;
     struct ui_grid *grid = (struct ui_grid *)ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        sel_item = ui_grid_cur_item(grid);
-        printf("sel_item=%d\n", sel_item);
-        if (sel_item < 0 || sel_item > SYS_SETTING_ITEM) {
-            printf("sel item=%d\n", sel_item);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            return true;
             break;
-        }
-        if (__this->onkey_mod == 2) {
-            ui_no_highlight_element_by_id(onkey_sel_item[mode_sel]);
-            mode_sel = 0;
-        } else if (__this->onkey_mod == 1) {
-            if (__this->onkey_sel == sel_item) {
-                if (__this->sys_menu_status == SYS_MENU_FORMAT || __this->sys_menu_status == SYS_MENU_RESET) {
-                    ui_no_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            sel_item = ui_grid_cur_item(grid);
+            printf("sel_item=%d\n", sel_item);
+            if(sel_item < 0 || sel_item > SYS_SETTING_ITEM)
+            {
+                printf("sel item=%d\n", sel_item);
+                break;
+            }
+            if(__this->onkey_mod == 2)
+            {
+                ui_no_highlight_element_by_id(onkey_sel_item[mode_sel]);
+                mode_sel = 0;
+            }
+            else if(__this->onkey_mod == 1)
+            {
+                if(__this->onkey_sel == sel_item)
+                {
+                    if(__this->sys_menu_status == SYS_MENU_FORMAT || __this->sys_menu_status == SYS_MENU_RESET)
+                    {
+                        ui_no_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
 
-                } else if (__this->sys_menu_status == SYS_MENU_DATETIME) {
-                    if (__this->time_set_pos > SYS_MENU_TIME_YEAR && __this->time_set_pos < SYS_MENU_TIME_SET) {
-                        ui_hide(sel_timePic[__this->time_set_pos]);
-                    } else if (__this->time_set_pos == SYS_MENU_TIME_SET) {
-                        ui_no_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
                     }
+                    else if(__this->sys_menu_status == SYS_MENU_DATETIME)
+                    {
+                        if(__this->time_set_pos > SYS_MENU_TIME_YEAR && __this->time_set_pos < SYS_MENU_TIME_SET)
+                        {
+                            ui_hide(sel_timePic[__this->time_set_pos]);
+                        }
+                        else if(__this->time_set_pos == SYS_MENU_TIME_SET)
+                        {
+                            ui_no_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
+                        }
 
-                } else if (__this->sys_menu_status == SYS_MENU_CARNUM) {
-                    if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
-                        ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
-                    } else {
-                        ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
-                        if (confirm_f) {
-                            confirm_f = 0;
-                            ui_no_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
+                    }
+                    else if(__this->sys_menu_status == SYS_MENU_CARNUM)
+                    {
+                        if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+                        {
+                            ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
+                        }
+                        else
+                        {
+                            ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
+                            if(confirm_f)
+                            {
+                                confirm_f = 0;
+                                ui_no_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
+                            }
                         }
                     }
-                } else {
-                    switch (__this->sys_menu_status) {
-                    case SYS_MENU_LCDOFF:
-                    case SYS_MENU_AUTOOFF:
-                        ui_no_highlight_element_by_id(sel_layout4[cur_sel_item]);
-                        break;
-                    case SYS_MENU_FREQUENCY:
-                    case SYS_MENU_KEYVOICE:
-                    case SYS_MENU_TVMODE:
-                        ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
-                        break;
-                    case SYS_MENU_LANGUAGE:
-                        ui_no_highlight_element_by_id(sel_layout3[cur_sel_item]);
-                        break;
+                    else
+                    {
+                        switch(__this->sys_menu_status)
+                        {
+                            case SYS_MENU_LCDOFF:
+                            case SYS_MENU_AUTOOFF:
+                                ui_no_highlight_element_by_id(sel_layout4[cur_sel_item]);
+                                break;
+                            case SYS_MENU_FREQUENCY:
+                            case SYS_MENU_KEYVOICE:
+                            case SYS_MENU_TVMODE:
+                                ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
+                                break;
+                            case SYS_MENU_LANGUAGE:
+                                ui_no_highlight_element_by_id(sel_layout3[cur_sel_item]);
+                                break;
+                        }
                     }
                 }
             }
-        }
-        __this->onkey_sel = sel_item;
-        __this->onkey_mod = 0;
-        ui_set_call(sys_menu, sel_item);
+            __this->onkey_sel = sel_item;
+            __this->onkey_mod = 0;
+            ui_set_call(sys_menu, sel_item);
 
-        break;
+            break;
     }
     return false;
 }
 REGISTER_UI_EVENT_HANDLER(SYS_FORM)
 .ontouch = sys_table_ontouch,
- .onchange = sys_table_onchange,
+.onchange = sys_table_onchange,
 };
 
 
@@ -1697,12 +1885,13 @@ REGISTER_UI_EVENT_HANDLER(SYS_FORM)
 /***************************** 显示系统时钟设置界面 ************************************/
 static int sys_time_onchange(void *ctr, enum element_change_event e, void *arg)
 {
-    switch (e) {
-    case ON_CHANGE_FIRST_SHOW:
-        sys_menu_tim_show();
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_FIRST_SHOW:
+            sys_menu_tim_show();
+            break;
+        default:
+            return false;
     }
     return false;
 }
@@ -1727,64 +1916,86 @@ static int sys_time_ontouch(void *ctr, struct element_touch_event *e)
 #endif
 
     UI_ONTOUCH_DEBUG("**sys time ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        y_down = y;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            y_down = y;
 #if DOUBLE_720
-        u16 d_value = (720 - 480);
-        if (x > (810 * LCD_DEV_WIDTH / 1280) && x < (958 * LCD_DEV_WIDTH / 1280)
-            && y > (91 + d_value * LCD_DEV_HIGHT / 720) && y < (235 + d_value * LCD_DEV_HIGHT / 720)) {
-            ymdhm = SYS_MENU_TIME_YEAR;
-        } else if (x > (958 * LCD_DEV_WIDTH / 1280) && x < (1050 * LCD_DEV_WIDTH / 1280)
-                   && y > (91 + d_value * LCD_DEV_HIGHT / 720) && y < (235 + d_value * LCD_DEV_HIGHT / 720)) {
-            ymdhm = SYS_MENU_TIME_MONTH;
-        } else if (x > (1050 * LCD_DEV_WIDTH / 1280) && x < (1150 * LCD_DEV_WIDTH / 1280)
-                   && y > (91 + d_value * LCD_DEV_HIGHT / 720) && y < (235 + d_value * LCD_DEV_HIGHT / 720)) {
-            ymdhm = SYS_MENU_TIME_DAY;
-        } else if (x > (810 * LCD_DEV_WIDTH / 1280) && x < (958 * LCD_DEV_WIDTH / 1280)
-                   && y > (257 + d_value * LCD_DEV_HIGHT / 720) && y < (400 + d_value * LCD_DEV_HIGHT / 720)) {
-            ymdhm = SYS_MENU_TIME_HOUR;
-        } else if (x > (958 * LCD_DEV_WIDTH / 1280) && x < (1050 * LCD_DEV_WIDTH / 1280)
-                   && y > (257 + d_value * LCD_DEV_HIGHT / 720) && y < (400 + d_value * LCD_DEV_HIGHT / 720)) {
-            ymdhm = SYS_MENU_TIME_MIN;
-        }
+            u16 d_value = (720 - 480);
+            if(x > (810 * LCD_DEV_WIDTH / 1280) && x < (958 * LCD_DEV_WIDTH / 1280)
+                    && y > (91 + d_value * LCD_DEV_HIGHT / 720) && y < (235 + d_value * LCD_DEV_HIGHT / 720))
+            {
+                ymdhm = SYS_MENU_TIME_YEAR;
+            }
+            else if(x > (958 * LCD_DEV_WIDTH / 1280) && x < (1050 * LCD_DEV_WIDTH / 1280)
+                    && y > (91 + d_value * LCD_DEV_HIGHT / 720) && y < (235 + d_value * LCD_DEV_HIGHT / 720))
+            {
+                ymdhm = SYS_MENU_TIME_MONTH;
+            }
+            else if(x > (1050 * LCD_DEV_WIDTH / 1280) && x < (1150 * LCD_DEV_WIDTH / 1280)
+                    && y > (91 + d_value * LCD_DEV_HIGHT / 720) && y < (235 + d_value * LCD_DEV_HIGHT / 720))
+            {
+                ymdhm = SYS_MENU_TIME_DAY;
+            }
+            else if(x > (810 * LCD_DEV_WIDTH / 1280) && x < (958 * LCD_DEV_WIDTH / 1280)
+                    && y > (257 + d_value * LCD_DEV_HIGHT / 720) && y < (400 + d_value * LCD_DEV_HIGHT / 720))
+            {
+                ymdhm = SYS_MENU_TIME_HOUR;
+            }
+            else if(x > (958 * LCD_DEV_WIDTH / 1280) && x < (1050 * LCD_DEV_WIDTH / 1280)
+                    && y > (257 + d_value * LCD_DEV_HIGHT / 720) && y < (400 + d_value * LCD_DEV_HIGHT / 720))
+            {
+                ymdhm = SYS_MENU_TIME_MIN;
+            }
 #else
-        if (x > (810 * LCD_DEV_WIDTH / 1280) && x < (958 * LCD_DEV_WIDTH / 1280)
-            && y > (91 * LCD_DEV_HIGHT / 480) && y < (235 * LCD_DEV_HIGHT / 480)) {
-            ymdhm = SYS_MENU_TIME_YEAR;
-        } else if (x > (958 * LCD_DEV_WIDTH / 1280) && x < (1050 * LCD_DEV_WIDTH / 1280)
-                   && y > (91 * LCD_DEV_HIGHT / 480) && y < (235 * LCD_DEV_HIGHT / 480)) {
-            ymdhm = SYS_MENU_TIME_MONTH;
-        } else if (x > (1050 * LCD_DEV_WIDTH / 1280) && x < (1150 * LCD_DEV_WIDTH / 1280)
-                   && y > (91 * LCD_DEV_HIGHT / 480) && y < (235 * LCD_DEV_HIGHT / 480)) {
-            ymdhm = SYS_MENU_TIME_DAY;
-        } else if (x > (810 * LCD_DEV_WIDTH / 1280) && x < (958 * LCD_DEV_WIDTH / 1280)
-                   && y > (257 * LCD_DEV_HIGHT / 480) && y < (400 * LCD_DEV_HIGHT / 480)) {
-            ymdhm = SYS_MENU_TIME_HOUR;
-        } else if (x > (958 * LCD_DEV_WIDTH / 1280) && x < (1050 * LCD_DEV_WIDTH / 1280)
-                   && y > (257 * LCD_DEV_HIGHT / 480) && y < (400 * LCD_DEV_HIGHT / 480)) {
-            ymdhm = SYS_MENU_TIME_MIN;
-        }
+            if(x > (810 * LCD_DEV_WIDTH / 1280) && x < (958 * LCD_DEV_WIDTH / 1280)
+                    && y > (91 * LCD_DEV_HIGHT / 480) && y < (235 * LCD_DEV_HIGHT / 480))
+            {
+                ymdhm = SYS_MENU_TIME_YEAR;
+            }
+            else if(x > (958 * LCD_DEV_WIDTH / 1280) && x < (1050 * LCD_DEV_WIDTH / 1280)
+                    && y > (91 * LCD_DEV_HIGHT / 480) && y < (235 * LCD_DEV_HIGHT / 480))
+            {
+                ymdhm = SYS_MENU_TIME_MONTH;
+            }
+            else if(x > (1050 * LCD_DEV_WIDTH / 1280) && x < (1150 * LCD_DEV_WIDTH / 1280)
+                    && y > (91 * LCD_DEV_HIGHT / 480) && y < (235 * LCD_DEV_HIGHT / 480))
+            {
+                ymdhm = SYS_MENU_TIME_DAY;
+            }
+            else if(x > (810 * LCD_DEV_WIDTH / 1280) && x < (958 * LCD_DEV_WIDTH / 1280)
+                    && y > (257 * LCD_DEV_HIGHT / 480) && y < (400 * LCD_DEV_HIGHT / 480))
+            {
+                ymdhm = SYS_MENU_TIME_HOUR;
+            }
+            else if(x > (958 * LCD_DEV_WIDTH / 1280) && x < (1050 * LCD_DEV_WIDTH / 1280)
+                    && y > (257 * LCD_DEV_HIGHT / 480) && y < (400 * LCD_DEV_HIGHT / 480))
+            {
+                ymdhm = SYS_MENU_TIME_MIN;
+            }
 #endif
-        UI_ONTOUCH_DEBUG("select %d\n", ymdhm);
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        if (y_down >= y) {
+            UI_ONTOUCH_DEBUG("select %d\n", ymdhm);
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            if(y_down >= y)
+            {
+                value = (y_down - y) / SYS_TIME_TOUCH_BASE_LEN;
+            }
+            else
+            {
+                value = -((y - y_down) / SYS_TIME_TOUCH_BASE_LEN);
+            }
+            sys_menu_tim_change(ymdhm, value);
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            ymdhm = SYS_MENU_TIME_SET;
             value = (y_down - y) / SYS_TIME_TOUCH_BASE_LEN;
-        } else {
-            value = -((y - y_down) / SYS_TIME_TOUCH_BASE_LEN);
-        }
-        sys_menu_tim_change(ymdhm, value);
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        ymdhm = SYS_MENU_TIME_SET;
-        value = (y_down - y) / SYS_TIME_TOUCH_BASE_LEN;
-        sys_menu_tim_change(ymdhm, value);
-        break;
+            sys_menu_tim_change(ymdhm, value);
+            break;
     }
     return false;
 }
@@ -1799,24 +2010,30 @@ static int sys_time_confirm(void *ctr, struct element_touch_event *e)
     struct intent it;
     int err;
     UI_ONTOUCH_DEBUG("**sys time confirm ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        if (__this->onkey_mod == 1) {
-            if (__this->time_set_pos > SYS_MENU_TIME_YEAR && __this->time_set_pos < SYS_MENU_TIME_SET) {
-                ui_hide(sel_timePic[__this->time_set_pos]);
-            } else if (__this->time_set_pos == SYS_MENU_TIME_SET) {
-                ui_no_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            if(__this->onkey_mod == 1)
+            {
+                if(__this->time_set_pos > SYS_MENU_TIME_YEAR && __this->time_set_pos < SYS_MENU_TIME_SET)
+                {
+                    ui_hide(sel_timePic[__this->time_set_pos]);
+                }
+                else if(__this->time_set_pos == SYS_MENU_TIME_SET)
+                {
+                    ui_no_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
+                }
+                __this->onkey_mod = 0;
             }
-            __this->onkey_mod = 0;
-        }
-        void *fd = dev_open("rtc", NULL);
-        if (!fd) {
-            return -EFAULT;
-        }
-        dev_ioctl(fd, IOCTL_SET_SYS_TIME, (u32)&t);
-        dev_close(fd);
-        break;
+            void *fd = dev_open("rtc", NULL);
+            if(!fd)
+            {
+                return -EFAULT;
+            }
+            dev_ioctl(fd, IOCTL_SET_SYS_TIME, (u32)&t);
+            dev_close(fd);
+            break;
     }
     return false;
 }
@@ -1830,26 +2047,30 @@ REGISTER_UI_EVENT_HANDLER(SYS_BTN_TIM_CONFIRM)
 static int sys_cid_onchange(void *ctr, enum element_change_event e, void *arg)
 {
     static int cid_timer = 0;
-    switch (e) {
-    case ON_CHANGE_FIRST_SHOW:
-        sys_menu_cid_show();
-        if (cid_timer) {
-            printf("CID_TIMER repeatedly add");
+    switch(e)
+    {
+        case ON_CHANGE_FIRST_SHOW:
+            sys_menu_cid_show();
+            if(cid_timer)
+            {
+                printf("CID_TIMER repeatedly add");
+                break;
+            }
+            cid_timer = sys_timer_add(NULL, sys_menu_cid_toggle, 500);
+            if(!cid_timer)
+            {
+                UI_ONTOUCH_DEBUG("CID_TIMER add failed\n");
+            }
             break;
-        }
-        cid_timer = sys_timer_add(NULL, sys_menu_cid_toggle, 500);
-        if (!cid_timer) {
-            UI_ONTOUCH_DEBUG("CID_TIMER add failed\n");
-        }
-        break;
-    case ON_CHANGE_RELEASE:
-        if (cid_timer) {
-            sys_timer_del(cid_timer);
-            cid_timer = 0;
-        }
-        break;
-    default:
-        return false;
+        case ON_CHANGE_RELEASE:
+            if(cid_timer)
+            {
+                sys_timer_del(cid_timer);
+                cid_timer = 0;
+            }
+            break;
+        default:
+            return false;
     }
     return false;
 }
@@ -1860,19 +2081,28 @@ REGISTER_UI_EVENT_HANDLER(SYS_LAY_CID)
 /***************************** 车牌切换 ************************************/
 static int highlight_no_cid_item(int p)
 {
-    if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
+    if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+    {
         ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
-    } else {
+    }
+    else
+    {
         ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
     }
-    if (sys_menu_cid_setting == SYS_MENU_CID_1) {
+    if(sys_menu_cid_setting == SYS_MENU_CID_1)
+    {
         __this->cid_set_pos = 10;
-    } else {
+    }
+    else
+    {
         __this->cid_set_pos = 0;
     }
-    if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
+    if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+    {
         ui_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
-    } else {
+    }
+    else
+    {
         ui_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
     }
     return 0;
@@ -1881,41 +2111,44 @@ static int sys_cid_change(void *ctr, struct element_touch_event *e)
 {
     struct ui_pic *pic = (struct ui_pic *)ctr;
     UI_ONTOUCH_DEBUG("**sys cid change ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        switch (pic->elm.id) {
-        case SYS_PIC_CID_0:
-            sys_menu_cid_selete(SYS_MENU_CID_PRO);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
             break;
-        case SYS_PIC_CID_1:
-            sys_menu_cid_selete(SYS_MENU_CID_1);
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            switch(pic->elm.id)
+            {
+                case SYS_PIC_CID_0:
+                    sys_menu_cid_selete(SYS_MENU_CID_PRO);
+                    break;
+                case SYS_PIC_CID_1:
+                    sys_menu_cid_selete(SYS_MENU_CID_1);
+                    break;
+                case SYS_PIC_CID_2:
+                    sys_menu_cid_selete(SYS_MENU_CID_2);
+                    break;
+                case SYS_PIC_CID_3:
+                    sys_menu_cid_selete(SYS_MENU_CID_3);
+                    break;
+                case SYS_PIC_CID_4:
+                    sys_menu_cid_selete(SYS_MENU_CID_4);
+                    break;
+                case SYS_PIC_CID_5:
+                    sys_menu_cid_selete(SYS_MENU_CID_5);
+                    break;
+                case SYS_PIC_CID_6:
+                    sys_menu_cid_selete(SYS_MENU_CID_6);
+                    break;
+            }
+            sys_menu_cid_toggle(NULL);
+            if(__this->onkey_mod == 1)
+            {
+                ui_set_call(highlight_no_cid_item, 0);
+            }
             break;
-        case SYS_PIC_CID_2:
-            sys_menu_cid_selete(SYS_MENU_CID_2);
-            break;
-        case SYS_PIC_CID_3:
-            sys_menu_cid_selete(SYS_MENU_CID_3);
-            break;
-        case SYS_PIC_CID_4:
-            sys_menu_cid_selete(SYS_MENU_CID_4);
-            break;
-        case SYS_PIC_CID_5:
-            sys_menu_cid_selete(SYS_MENU_CID_5);
-            break;
-        case SYS_PIC_CID_6:
-            sys_menu_cid_selete(SYS_MENU_CID_6);
-            break;
-        }
-        sys_menu_cid_toggle(NULL);
-        if (__this->onkey_mod == 1) {
-            ui_set_call(highlight_no_cid_item, 0);
-        }
-        break;
     }
     return false;
 }
@@ -1944,12 +2177,13 @@ REGISTER_UI_EVENT_HANDLER(SYS_PIC_CID_6)
 static int sys_cid_prev(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**sys cid change ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        sys_menu_cid_selete(SYS_MENU_CID_PREV);
-        sys_menu_cid_toggle(NULL);
-        break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            sys_menu_cid_selete(SYS_MENU_CID_PREV);
+            sys_menu_cid_toggle(NULL);
+            break;
     }
     return false;
 }
@@ -1960,12 +2194,13 @@ REGISTER_UI_EVENT_HANDLER(SYS_BTN_CID_PREV)
 static int sys_cid_next(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**sys cid change ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        sys_menu_cid_selete(SYS_MENU_CID_NEXT);
-        sys_menu_cid_toggle(NULL);
-        break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            sys_menu_cid_selete(SYS_MENU_CID_NEXT);
+            sys_menu_cid_toggle(NULL);
+            break;
     }
     return false;
 }
@@ -1976,7 +2211,8 @@ REGISTER_UI_EVENT_HANDLER(SYS_BTN_CID_NEXT)
 static int sys_cid_set_pro(void *ctr, struct element_touch_event *e)
 {
     struct button *btn = (struct button *)ctr;
-    const int btn_id[31] = {
+    const int btn_id[31] =
+    {
         SYS_BTN_CID_PRO_01,
         SYS_BTN_CID_PRO_02,
         SYS_BTN_CID_PRO_03,
@@ -2011,19 +2247,23 @@ static int sys_cid_set_pro(void *ctr, struct element_touch_event *e)
     };
     u8 i;
     UI_ONTOUCH_DEBUG("**sys cid set pro ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        for (i = 0; i < 31; i++) {
-            if (btn->elm.id == btn_id[i]) {
-                if (sys_menu_cid_status[0] != i) {
-                    sys_menu_cid_status[0] = i;
-                    sys_menu_cid_toggle(NULL);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            for(i = 0; i < 31; i++)
+            {
+                if(btn->elm.id == btn_id[i])
+                {
+                    if(sys_menu_cid_status[0] != i)
+                    {
+                        sys_menu_cid_status[0] = i;
+                        sys_menu_cid_toggle(NULL);
+                    }
+                    break;
                 }
-                break;
             }
-        }
-        break;
+            break;
     }
     return false;
 }
@@ -2124,7 +2364,8 @@ REGISTER_UI_EVENT_HANDLER(SYS_BTN_CID_PRO_31)
 static int sys_cid_set(void *ctr, struct element_touch_event *e)
 {
     struct button *btn = (struct button *)ctr;
-    const int btn_id[36] = {
+    const int btn_id[36] =
+    {
         SYS_BTN_CID_KB_A,
         SYS_BTN_CID_KB_B,
         SYS_BTN_CID_KB_C,
@@ -2164,22 +2405,27 @@ static int sys_cid_set(void *ctr, struct element_touch_event *e)
     };
     u8 i;
     UI_ONTOUCH_DEBUG("**sys cid set pro ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        for (i = 0; i < 36; i++) {
-            if (btn->elm.id == btn_id[i]) {
-                if (sys_menu_cid_setting == SYS_MENU_CID_1 && i >= 26) {
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            for(i = 0; i < 36; i++)
+            {
+                if(btn->elm.id == btn_id[i])
+                {
+                    if(sys_menu_cid_setting == SYS_MENU_CID_1 && i >= 26)
+                    {
+                        break;
+                    }
+                    if(sys_menu_cid_status[sys_menu_cid_setting - 1] != i)
+                    {
+                        sys_menu_cid_status[sys_menu_cid_setting - 1] = i;
+                        sys_menu_cid_toggle(NULL);
+                    }
                     break;
                 }
-                if (sys_menu_cid_status[sys_menu_cid_setting - 1] != i) {
-                    sys_menu_cid_status[sys_menu_cid_setting - 1] = i;
-                    sys_menu_cid_toggle(NULL);
-                }
-                break;
             }
-        }
-        break;
+            break;
     }
     return false;
 }
@@ -2296,23 +2542,30 @@ REGISTER_UI_EVENT_HANDLER(SYS_BTN_CID_KB_0)
 static int sys_cid_confirm(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**sys cid confirm ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        if (__this->onkey_mod == 1) {
-            if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
-                ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
-            } else if (confirm_f) {
-                confirm_f = 0;
-                ui_no_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
-            } else {
-                ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            if(__this->onkey_mod == 1)
+            {
+                if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+                {
+                    ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
+                }
+                else if(confirm_f)
+                {
+                    confirm_f = 0;
+                    ui_no_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
+                }
+                else
+                {
+                    ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
+                }
             }
-        }
-        __this->cid_set_pos = 0;
-        __this->onkey_mod = 0;
-        sys_menu_cid_save();
-        break;
+            __this->cid_set_pos = 0;
+            __this->onkey_mod = 0;
+            sys_menu_cid_save();
+            break;
     }
     return false;
 }
@@ -2321,93 +2574,95 @@ REGISTER_UI_EVENT_HANDLER(SYS_BTN_CID_CONFIRM)
 };
 static s8 cid_set_pos_remap(u8 pos)
 {
-    if (pos < 9) {
+    if(pos < 9)
+    {
         return 27 + pos;
     }
-    switch (pos) {
-    case 9:
-        return 26;
-        break;
-    case 10:
-        return 16;
-        break;
-    case 11:
-        return 22;
-        break;
-    case 12:
-        return 4;
-        break;
-    case 13:
-        return 17;
-        break;
-    case 14:
-        return 19;
-        break;
-    case 15:
-        return 24;
-        break;
-    case 16:
-        return 20;
-        break;
-    case 17:
-        return 8;
-        break;
-    case 18:
-        return 14;
-        break;
-    case 19:
-        return 15;
-        break;
-    case 20:
-        return 0;
-        break;
-    case 21:
-        return 18;
-        break;
-    case 22:
-        return 3;
-        break;
-    case 23:
-        return 5;
-        break;
-    case 24:
-        return 6;
-        break;
-    case 25:
-        return 7;
-        break;
-    case 26:
-        return 9;
-        break;
-    case 27:
-        return 10;
-        break;
-    case 28:
-        return 11;
-        break;
-    case 29:
-        return 25;
-        break;
-    case 30:
-        return 23;
-        break;
-    case 31:
-        return 2;
-        break;
-    case 32:
-        return 21;
-        break;
-    case 33:
-        return 1;
-        break;
-    case 34:
-        return 13;
-        break;
-    case 35:
-        return 12;
-        break;
-    default:
-        break;
+    switch(pos)
+    {
+        case 9:
+            return 26;
+            break;
+        case 10:
+            return 16;
+            break;
+        case 11:
+            return 22;
+            break;
+        case 12:
+            return 4;
+            break;
+        case 13:
+            return 17;
+            break;
+        case 14:
+            return 19;
+            break;
+        case 15:
+            return 24;
+            break;
+        case 16:
+            return 20;
+            break;
+        case 17:
+            return 8;
+            break;
+        case 18:
+            return 14;
+            break;
+        case 19:
+            return 15;
+            break;
+        case 20:
+            return 0;
+            break;
+        case 21:
+            return 18;
+            break;
+        case 22:
+            return 3;
+            break;
+        case 23:
+            return 5;
+            break;
+        case 24:
+            return 6;
+            break;
+        case 25:
+            return 7;
+            break;
+        case 26:
+            return 9;
+            break;
+        case 27:
+            return 10;
+            break;
+        case 28:
+            return 11;
+            break;
+        case 29:
+            return 25;
+            break;
+        case 30:
+            return 23;
+            break;
+        case 31:
+            return 2;
+            break;
+        case 32:
+            return 21;
+            break;
+        case 33:
+            return 1;
+            break;
+        case 34:
+            return 13;
+            break;
+        case 35:
+            return 12;
+            break;
+        default:
+            break;
     }
     return -1;
 }
@@ -2415,9 +2670,12 @@ static s8 cid_set_pos_remap(u8 pos)
 static int highlight_cid_lay_item(int p)
 {
     ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
-    if (sys_menu_cid_setting == SYS_MENU_CID_1) {
+    if(sys_menu_cid_setting == SYS_MENU_CID_1)
+    {
         __this->cid_set_pos = 10;
-    } else {
+    }
+    else
+    {
         __this->cid_set_pos = 0;
     }
     ui_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
@@ -2429,106 +2687,140 @@ static void set_cid_onkey(u8 key_value)
     s8 remap_cid_selnum;
     u8 sel_item_num;
     u8 cur_cid_setting = 0;
-    if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
+    if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+    {
         sel_item_num = ARRAY_SIZE(cid_btn_id0);
         cur_cid_setting = SYS_MENU_CID_PRO;
         confirm_f = 0;
-    } else {
+    }
+    else
+    {
         sel_item_num = ARRAY_SIZE(cid_btn_id1);
         cur_cid_setting = sys_menu_cid_setting;
     }
-    switch (key_value) {
-    case KEY_DOWN:
-        if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
-            ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
-        } else {
-            ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
-        }
-        __this->cid_set_pos++;
-        if (__this->cid_set_pos >= sel_item_num) {
-            __this->cid_set_pos = 0;
-        }
-        if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
-            ui_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
-        } else {
-            ui_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
-        }
-        break;
-    case KEY_UP:
-        if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
-            ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
-        } else {
-            ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
-        }
-        if (__this->cid_set_pos == 0) {
-            __this->cid_set_pos = sel_item_num;
-        }
-        __this->cid_set_pos--;
-        if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
-            ui_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
-        } else {
-            ui_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
-        }
-        break;
-    case KEY_OK:
-        if (confirm_f) {
-            sys_menu_cid_save();
-            ui_no_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
-            confirm_f = 0;
+    switch(key_value)
+    {
+        case KEY_DOWN:
+            if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+            {
+                ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
+            }
+            else
+            {
+                ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
+            }
+            __this->cid_set_pos++;
+            if(__this->cid_set_pos >= sel_item_num)
+            {
+                __this->cid_set_pos = 0;
+            }
+            if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+            {
+                ui_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
+            }
+            else
+            {
+                ui_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
+            }
+            break;
+        case KEY_UP:
+            if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+            {
+                ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
+            }
+            else
+            {
+                ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
+            }
+            if(__this->cid_set_pos == 0)
+            {
+                __this->cid_set_pos = sel_item_num;
+            }
+            __this->cid_set_pos--;
+            if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+            {
+                ui_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
+            }
+            else
+            {
+                ui_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
+            }
+            break;
+        case KEY_OK:
+            if(confirm_f)
+            {
+                sys_menu_cid_save();
+                ui_no_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
+                confirm_f = 0;
+                __this->onkey_mod = 0;
+                sys_menu_cid_selete(SYS_MENU_CID_PRO);
+                sys_menu_cid_toggle(NULL);
+                break;
+            }
+            if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+            {
+                if(sys_menu_cid_status[sys_menu_cid_setting - 1] != __this->cid_set_pos)
+                {
+                    sys_menu_cid_status[sys_menu_cid_setting - 1] = __this->cid_set_pos;
+                    sys_menu_cid_toggle(NULL);
+                }
+            }
+            else if(sys_menu_cid_setting == SYS_MENU_CID_1)
+            {
+                if(__this->cid_set_pos < 10)
+                {
+                    break;
+                }
+                remap_cid_selnum = cid_set_pos_remap(__this->cid_set_pos);
+                if(remap_cid_selnum < 0)
+                {
+                    break;
+                }
+                if(sys_menu_cid_status[sys_menu_cid_setting - 1] != remap_cid_selnum)
+                {
+                    sys_menu_cid_status[sys_menu_cid_setting - 1] = remap_cid_selnum;
+                    sys_menu_cid_toggle(NULL);
+                }
+            }
+            else
+            {
+                remap_cid_selnum = cid_set_pos_remap(__this->cid_set_pos);
+                if(remap_cid_selnum < 0)
+                {
+                    break;
+                }
+                if(sys_menu_cid_status[sys_menu_cid_setting - 1] != remap_cid_selnum)
+                {
+                    sys_menu_cid_status[sys_menu_cid_setting - 1] = remap_cid_selnum;
+                    sys_menu_cid_toggle(NULL);
+                }
+            }
+            cur_cid_setting++;
+            if(cur_cid_setting > SYS_MENU_CID_6)
+            {
+                ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
+                ui_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
+                confirm_f = 1;
+                break;
+            }
+            sys_menu_cid_selete(cur_cid_setting);
+            sys_menu_cid_toggle(NULL);
+            ui_set_call(highlight_cid_lay_item, 0);
+            break;
+        case KEY_MODE:
             __this->onkey_mod = 0;
+            if(confirm_f)
+            {
+                ui_no_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
+                confirm_f = 0;
+            }
+            else if(sys_menu_cid_setting == SYS_MENU_CID_PRO)
+            {
+                ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
+            }
             sys_menu_cid_selete(SYS_MENU_CID_PRO);
             sys_menu_cid_toggle(NULL);
             break;
-        }
-        if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
-            if (sys_menu_cid_status[sys_menu_cid_setting - 1] != __this->cid_set_pos) {
-                sys_menu_cid_status[sys_menu_cid_setting - 1] = __this->cid_set_pos;
-                sys_menu_cid_toggle(NULL);
-            }
-        } else if (sys_menu_cid_setting == SYS_MENU_CID_1) {
-            if (__this->cid_set_pos < 10) {
-                break;
-            }
-            remap_cid_selnum = cid_set_pos_remap(__this->cid_set_pos);
-            if (remap_cid_selnum < 0) {
-                break;
-            }
-            if (sys_menu_cid_status[sys_menu_cid_setting - 1] != remap_cid_selnum) {
-                sys_menu_cid_status[sys_menu_cid_setting - 1] = remap_cid_selnum;
-                sys_menu_cid_toggle(NULL);
-            }
-        } else {
-            remap_cid_selnum = cid_set_pos_remap(__this->cid_set_pos);
-            if (remap_cid_selnum < 0) {
-                break;
-            }
-            if (sys_menu_cid_status[sys_menu_cid_setting - 1] != remap_cid_selnum) {
-                sys_menu_cid_status[sys_menu_cid_setting - 1] = remap_cid_selnum;
-                sys_menu_cid_toggle(NULL);
-            }
-        }
-        cur_cid_setting++;
-        if (cur_cid_setting > SYS_MENU_CID_6) {
-            ui_no_highlight_element_by_id(cid_btn_id1[__this->cid_set_pos]);
-            ui_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
-            confirm_f = 1;
-            break;
-        }
-        sys_menu_cid_selete(cur_cid_setting);
-        sys_menu_cid_toggle(NULL);
-        ui_set_call(highlight_cid_lay_item, 0);
-        break;
-    case KEY_MODE:
-        __this->onkey_mod = 0;
-        if (confirm_f) {
-            ui_no_highlight_element_by_id(SYS_BTN_CID_CONFIRM);
-            confirm_f = 0;
-        } else if (sys_menu_cid_setting == SYS_MENU_CID_PRO) {
-            ui_no_highlight_element_by_id(cid_btn_id0[__this->cid_set_pos]);
-        }
-        sys_menu_cid_selete(SYS_MENU_CID_PRO);
-        sys_menu_cid_toggle(NULL);
-        break;
     }
 }
 /***************************** 选择设置菜单 ************************************/
@@ -2536,35 +2828,37 @@ static int sys_set2_onchange(void *ctr, enum element_change_event e, void *arg)
 {
     struct ui_grid *grid = (struct ui_grid *)ctr;
 
-    switch (e) {
-    case ON_CHANGE_INIT:
-        ui_grid_set_item(grid, -1);
-    case ON_CHANGE_FIRST_SHOW:
-        return true;
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            ui_grid_set_item(grid, -1);
+        case ON_CHANGE_FIRST_SHOW:
+            return true;
+            break;
+        default:
+            return false;
     }
     return false;
 }
 static int highlight_sel_item(int p)
 {
-    switch (__this->sys_menu_status) {
-    case SYS_MENU_LCDOFF:
-    case SYS_MENU_AUTOOFF:
-        ui_highlight_element_by_id(sel_layout4[p]);
-        break;
-    case SYS_MENU_FREQUENCY:
-    case SYS_MENU_KEYVOICE:
-    case SYS_MENU_TVMODE:
-    case SYS_MENU_HL_WARNNING:
-        ui_highlight_element_by_id(sel_layout2[p]);
-        break;
-    case SYS_MENU_LANGUAGE:
-        ui_highlight_element_by_id(sel_layout3[p]);
-        break;
-    default:
-        break;
+    switch(__this->sys_menu_status)
+    {
+        case SYS_MENU_LCDOFF:
+        case SYS_MENU_AUTOOFF:
+            ui_highlight_element_by_id(sel_layout4[p]);
+            break;
+        case SYS_MENU_FREQUENCY:
+        case SYS_MENU_KEYVOICE:
+        case SYS_MENU_TVMODE:
+        case SYS_MENU_HL_WARNNING:
+            ui_highlight_element_by_id(sel_layout2[p]);
+            break;
+        case SYS_MENU_LANGUAGE:
+            ui_highlight_element_by_id(sel_layout3[p]);
+            break;
+        default:
+            break;
     }
     return 0;
 }
@@ -2576,109 +2870,129 @@ static int sys_set2_ontouch(void *ctr, struct element_touch_event *e)
     int sel_item;
     struct ui_grid *grid = (struct ui_grid *)ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        sel_item = ui_grid_cur_item(grid);
-        if (sel_item < 0 || sel_item > 1) {
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            return true;
             break;
-        }
-        switch (__this->sys_menu_status) {
-        case SYS_MENU_FREQUENCY:
-            if (__this->onkey_mod == 0) {
-                if (sel_item == __this->led_fre_hz) {
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            sel_item = ui_grid_cur_item(grid);
+            if(sel_item < 0 || sel_item > 1)
+            {
+                break;
+            }
+            switch(__this->sys_menu_status)
+            {
+                case SYS_MENU_FREQUENCY:
+                    if(__this->onkey_mod == 0)
+                    {
+                        if(sel_item == __this->led_fre_hz)
+                        {
+                            break;
+                        }
+                    }
+                    ui_hide(sel_pic2[__this->led_fre_hz]);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
+                    }
+                    menu_sys_led_fre_set(sel_item);
+                    ui_show(sel_pic2[sel_item]);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_set_call(highlight_sel_item, sel_item);
+                    }
+                    cur_sel_item = __this->led_fre_hz;
                     break;
-                }
-            }
-            ui_hide(sel_pic2[__this->led_fre_hz]);
-            if (__this->onkey_mod  == 1) {
-                ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
-            }
-            menu_sys_led_fre_set(sel_item);
-            ui_show(sel_pic2[sel_item]);
-            if (__this->onkey_mod  == 1) {
-                ui_set_call(highlight_sel_item, sel_item);
-            }
-            cur_sel_item = __this->led_fre_hz;
-            break;
-        case SYS_MENU_KEYVOICE:
-            if (__this->onkey_mod == 0) {
-                if (sel_item == __this->key_voice) {
+                case SYS_MENU_KEYVOICE:
+                    if(__this->onkey_mod == 0)
+                    {
+                        if(sel_item == __this->key_voice)
+                        {
+                            break;
+                        }
+                    }
+                    ui_hide(sel_pic2[__this->key_voice]);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
+                    }
+                    menu_sys_key_voice_set(sel_item);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_set_call(highlight_sel_item, sel_item);
+                    }
+                    ui_show(sel_pic2[sel_item]);
+                    cur_sel_item = __this->key_voice;
                     break;
-                }
-            }
-            ui_hide(sel_pic2[__this->key_voice]);
-            if (__this->onkey_mod  == 1) {
-                ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
-            }
-            menu_sys_key_voice_set(sel_item);
-            if (__this->onkey_mod  == 1) {
-                ui_set_call(highlight_sel_item, sel_item);
-            }
-            ui_show(sel_pic2[sel_item]);
-            cur_sel_item = __this->key_voice;
-            break;
-        case SYS_MENU_TVMODE:
-            if (__this->onkey_mod == 0) {
-                if (sel_item == __this->tv_mod) {
+                case SYS_MENU_TVMODE:
+                    if(__this->onkey_mod == 0)
+                    {
+                        if(sel_item == __this->tv_mod)
+                        {
+                            break;
+                        }
+                    }
+                    ui_hide(sel_pic2[__this->tv_mod]);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
+                    }
+                    menu_sys_tv_mod_set(sel_item);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_set_call(highlight_sel_item, sel_item);
+                    }
+                    ui_show(sel_pic2[sel_item]);
+                    cur_sel_item = __this->tv_mod;
                     break;
-                }
-            }
-            ui_hide(sel_pic2[__this->tv_mod]);
-            if (__this->onkey_mod  == 1) {
-                ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
-            }
-            menu_sys_tv_mod_set(sel_item);
-            if (__this->onkey_mod  == 1) {
-                ui_set_call(highlight_sel_item, sel_item);
-            }
-            ui_show(sel_pic2[sel_item]);
-            cur_sel_item = __this->tv_mod;
-            break;
-        case SYS_MENU_HL_WARNNING:
-            if (__this->onkey_mod == 0) {
-                if (sel_item == __this->hl_warnning) {
+                case SYS_MENU_HL_WARNNING:
+                    if(__this->onkey_mod == 0)
+                    {
+                        if(sel_item == __this->hl_warnning)
+                        {
+                            break;
+                        }
+                    }
+                    ui_hide(sel_pic2[__this->hl_warnning]);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
+                    }
+                    menu_sys_hlight_warning_set(sel_item);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_set_call(highlight_sel_item, sel_item);
+                    }
+                    ui_show(sel_pic2[sel_item]);
+                    cur_sel_item = __this->hl_warnning;
                     break;
-                }
             }
-            ui_hide(sel_pic2[__this->hl_warnning]);
-            if (__this->onkey_mod  == 1) {
-                ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
-            }
-            menu_sys_hlight_warning_set(sel_item);
-            if (__this->onkey_mod  == 1) {
-                ui_set_call(highlight_sel_item, sel_item);
-            }
-            ui_show(sel_pic2[sel_item]);
-            cur_sel_item = __this->hl_warnning;
             break;
-        }
-        break;
     }
     return false;
 }
 REGISTER_UI_EVENT_HANDLER(SYS_LIST_C2)
 .onchange = sys_set2_onchange,
- .ontouch = sys_set2_ontouch,
+.ontouch = sys_set2_ontouch,
 };
 
 static int sys_set3_onchange(void *ctr, enum element_change_event e, void *arg)
 {
     struct ui_grid *grid = (struct ui_grid *)ctr;
 
-    switch (e) {
-    case ON_CHANGE_INIT:
-        ui_grid_set_item(grid, -1);
-        break;
-    case ON_CHANGE_FIRST_SHOW:
-        return true;
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            ui_grid_set_item(grid, -1);
+            break;
+        case ON_CHANGE_FIRST_SHOW:
+            return true;
+            break;
+        default:
+            return false;
     }
     return false;
 }
@@ -2688,48 +3002,53 @@ static int sys_set3_ontouch(void *ctr, struct element_touch_event *e)
     int sel_item;
     struct ui_grid *grid = (struct ui_grid *)ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        sel_item = ui_grid_cur_item(grid);
-        if (sel_item < 0 || sel_item > 2) {
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            return true;
             break;
-        }
-        switch (__this->sys_menu_status) {
-        case SYS_MENU_LANGUAGE:
-            if (__this->language != sel_item) {
-                menu_sys_language_set(sel_item);
-                //整体刷新提升刷新速度
-                ui_hide(SYS_LAY);
-                ui_show(SYS_LAY);
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            sel_item = ui_grid_cur_item(grid);
+            if(sel_item < 0 || sel_item > 2)
+            {
+                break;
+            }
+            switch(__this->sys_menu_status)
+            {
+                case SYS_MENU_LANGUAGE:
+                    if(__this->language != sel_item)
+                    {
+                        menu_sys_language_set(sel_item);
+                        //整体刷新提升刷新速度
+                        ui_hide(SYS_LAY);
+                        ui_show(SYS_LAY);
+                    }
+                    break;
             }
             break;
-        }
-        break;
     }
     return false;
 }
 REGISTER_UI_EVENT_HANDLER(SYS_LIST_C3)
 .onchange = sys_set3_onchange,
- .ontouch = sys_set3_ontouch,
+.ontouch = sys_set3_ontouch,
 };
 
 static int sys_set4_onchange(void *ctr, enum element_change_event e, void *arg)
 {
     struct ui_grid *grid = (struct ui_grid *)ctr;
 
-    switch (e) {
-    case ON_CHANGE_INIT:
-        ui_grid_set_item(grid, -1);
-    case ON_CHANGE_FIRST_SHOW:
-        return true;
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            ui_grid_set_item(grid, -1);
+        case ON_CHANGE_FIRST_SHOW:
+            return true;
+            break;
+        default:
+            return false;
     }
     return false;
 }
@@ -2739,60 +3058,71 @@ static int sys_set4_ontouch(void *ctr, struct element_touch_event *e)
     int sel_item;
     struct ui_grid *grid = (struct ui_grid *)ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        sel_item = ui_grid_cur_item(grid);
-        if (sel_item < 0 || sel_item > 3) {
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            return true;
             break;
-        }
-        switch (__this->sys_menu_status) {
-        case SYS_MENU_LCDOFF:
-            if (__this->onkey_mod == 0) {
-                if (sel_item == __this->lcd_protect) {
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            sel_item = ui_grid_cur_item(grid);
+            if(sel_item < 0 || sel_item > 3)
+            {
+                break;
+            }
+            switch(__this->sys_menu_status)
+            {
+                case SYS_MENU_LCDOFF:
+                    if(__this->onkey_mod == 0)
+                    {
+                        if(sel_item == __this->lcd_protect)
+                        {
+                            break;
+                        }
+                    }
+                    ui_hide(sel_pic4[__this->lcd_protect]);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_no_highlight_element_by_id(sel_layout4[cur_sel_item]);
+                    }
+                    menu_sys_lcd_pro_set(sel_item);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_set_call(highlight_sel_item, sel_item);
+                    }
+                    ui_show(sel_pic4[sel_item]);
+                    cur_sel_item = __this->lcd_protect;
                     break;
-                }
-            }
-            ui_hide(sel_pic4[__this->lcd_protect]);
-            if (__this->onkey_mod  == 1) {
-                ui_no_highlight_element_by_id(sel_layout4[cur_sel_item]);
-            }
-            menu_sys_lcd_pro_set(sel_item);
-            if (__this->onkey_mod  == 1) {
-                ui_set_call(highlight_sel_item, sel_item);
-            }
-            ui_show(sel_pic4[sel_item]);
-            cur_sel_item = __this->lcd_protect;
-            break;
-        case SYS_MENU_AUTOOFF:
-            if (__this->onkey_mod == 0) {
-                if (sel_item == __this->auto_off) {
+                case SYS_MENU_AUTOOFF:
+                    if(__this->onkey_mod == 0)
+                    {
+                        if(sel_item == __this->auto_off)
+                        {
+                            break;
+                        }
+                    }
+                    ui_hide(sel_pic4[__this->auto_off]);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_no_highlight_element_by_id(sel_layout4[cur_sel_item]);
+                    }
+                    menu_sys_auto_off_set(sel_item);
+                    if(__this->onkey_mod  == 1)
+                    {
+                        ui_set_call(highlight_sel_item, sel_item);
+                    }
+                    ui_show(sel_pic4[sel_item]);
+                    cur_sel_item = __this->auto_off;
                     break;
-                }
             }
-            ui_hide(sel_pic4[__this->auto_off]);
-            if (__this->onkey_mod  == 1) {
-                ui_no_highlight_element_by_id(sel_layout4[cur_sel_item]);
-            }
-            menu_sys_auto_off_set(sel_item);
-            if (__this->onkey_mod  == 1) {
-                ui_set_call(highlight_sel_item, sel_item);
-            }
-            ui_show(sel_pic4[sel_item]);
-            cur_sel_item = __this->auto_off;
             break;
-        }
-        break;
     }
     return false;
 }
 REGISTER_UI_EVENT_HANDLER(SYS_LIST_C4)
 .onchange = sys_set4_onchange,
- .ontouch = sys_set4_ontouch,
+.ontouch = sys_set4_ontouch,
 };
 
 /***************************** 格式化、默认设置菜单 ************************************/
@@ -2800,31 +3130,36 @@ static int sys_warning_onchange(void *ctr, enum element_change_event e, void *ar
 {
     static int warning_timer = 0;
     static int timer_countdown = 4;
-    switch (e) {
-    case ON_CHANGE_FIRST_SHOW:
-        timer_countdown = 4;
-        if (warning_timer) {
-            UI_ONTOUCH_DEBUG("WARNING_TIMER repeatedly add");
+    switch(e)
+    {
+        case ON_CHANGE_FIRST_SHOW:
+            timer_countdown = 4;
+            if(warning_timer)
+            {
+                UI_ONTOUCH_DEBUG("WARNING_TIMER repeatedly add");
+                break;
+            }
+            if(__this->sys_menu_status == SYS_MENU_RESET && __this->reset_flag)
+            {
+                break;
+            }
+            warning_timer = sys_timer_add(&timer_countdown, sys_warning_tick, 1000);
+            if(!warning_timer)
+            {
+                UI_ONTOUCH_DEBUG("WARNING_TIMER add failed\n");
+            }
             break;
-        }
-        if (__this->sys_menu_status == SYS_MENU_RESET && __this->reset_flag) {
+        case ON_CHANGE_RELEASE:
+            if(warning_timer)
+            {
+                sys_timer_del(warning_timer);
+                UI_ONTOUCH_DEBUG("WARNING_TIMER del\n");
+                warning_timer = 0;
+                btn_warning_show_f = 0;
+            }
             break;
-        }
-        warning_timer = sys_timer_add(&timer_countdown, sys_warning_tick, 1000);
-        if (!warning_timer) {
-            UI_ONTOUCH_DEBUG("WARNING_TIMER add failed\n");
-        }
-        break;
-    case ON_CHANGE_RELEASE:
-        if (warning_timer) {
-            sys_timer_del(warning_timer);
-            UI_ONTOUCH_DEBUG("WARNING_TIMER del\n");
-            warning_timer = 0;
-            btn_warning_show_f = 0;
-        }
-        break;
-    default:
-        return false;
+        default:
+            return false;
     }
     return false;
 }
@@ -2837,41 +3172,45 @@ static int sys_warning_confirm_ontouch(void *ctr, struct element_touch_event *e)
     int err;
     struct intent it;
     UI_ONTOUCH_DEBUG("**sys warning confirm ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
 
-        switch (__this->sys_menu_status) {
-            ui_hide(SYS_BTN_WARNING_CONFIRM);
-            btn_warning_show_f = 0;
-            ui_hide(SYS_TXT_WARNING_CONFIRM);
-        case SYS_MENU_FORMAT:
-            if (dev_online(SDX_DEV)) {
-                menu_sys_format_set(1);
-                ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 3);
+            switch(__this->sys_menu_status)
+            {
+                    ui_hide(SYS_BTN_WARNING_CONFIRM);
+                    btn_warning_show_f = 0;
+                    ui_hide(SYS_TXT_WARNING_CONFIRM);
+                case SYS_MENU_FORMAT:
+                    if(dev_online(SDX_DEV))
+                    {
+                        menu_sys_format_set(1);
+                        ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 3);
+                    }
+                    break;
+                case SYS_MENU_RESET:
+                    menu_sys_default_set(1);
+                    sys_fun_restore();
+                    __this->reset_flag = 1;
+                    ui_hide(SYS_LAY);
+                    ui_show(SYS_LAY);
+                    __this->lcd_protect = index_of_table16(db_select("pro"), TABLE(table_system_lcd_protect));
+                    __this->auto_off    = index_of_table8(db_select("aff"), TABLE(table_system_auto_close));
+                    __this->led_fre_hz  = index_of_table8(db_select("fre"), TABLE(table_system_led_fre));
+                    __this->key_voice   = db_select("kvo");
+                    __this->language    = index_of_table8(db_select("lag"), TABLE(table_system_language));
+                    __this->tv_mod      = index_of_table8(db_select("tvm"), TABLE(table_system_tv_mod));
+                    __this->hl_warnning = db_select("hlw");
+                    ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 7);
+
+                    break;
+            }
+            if(__this->onkey_mod == 1)
+            {
+                ui_no_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
             }
             break;
-        case SYS_MENU_RESET:
-            menu_sys_default_set(1);
-            sys_fun_restore();
-            __this->reset_flag = 1;
-            ui_hide(SYS_LAY);
-            ui_show(SYS_LAY);
-            __this->lcd_protect = index_of_table16(db_select("pro"), TABLE(table_system_lcd_protect));
-            __this->auto_off    = index_of_table8(db_select("aff"), TABLE(table_system_auto_close));
-            __this->led_fre_hz  = index_of_table8(db_select("fre"), TABLE(table_system_led_fre));
-            __this->key_voice   = db_select("kvo");
-            __this->language    = index_of_table8(db_select("lag"), TABLE(table_system_language));
-            __this->tv_mod      = index_of_table8(db_select("tvm"), TABLE(table_system_tv_mod));
-            __this->hl_warnning = db_select("hlw");
-            ui_text_show_index_by_id(SYS_TXT_WARNING_BODY, 7);
-
-            break;
-        }
-        if (__this->onkey_mod == 1) {
-            ui_no_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
-        }
-        break;
     }
     return false;
 }
@@ -2886,321 +3225,384 @@ static int sys_onkey(void *ctr, struct element_key_event *e)
     struct intent it;
     static u8 child_item_sel = 0;
     static u8 child_item_num = 0;
-    if (e->event == KEY_EVENT_LONG && e->value == KEY_POWER) {
+    if(e->event == KEY_EVENT_LONG && e->value == KEY_POWER)
+    {
         ui_hide(ui_get_current_window_id());
         sys_key_event_takeover(false, true);
         return true;
     }
 
-    if (e->event != KEY_EVENT_CLICK) {
+    if(e->event != KEY_EVENT_CLICK)
+    {
         return false;
     }
-    if (__this->onkey_mod == 0) {
-        switch (e->value) {
-        case KEY_DOWN:
-            __this->onkey_sel++;
-            if (__this->onkey_sel > SYS_SETTING_ITEM - 1) {
-                __this->onkey_sel = 0;
-            }
-            ui_set_call(sys_menu, __this->onkey_sel);
-            break;
-        case KEY_UP:
-            if (__this->onkey_sel == 0) {
-                __this->onkey_sel = SYS_SETTING_ITEM;
-            }
-            __this->onkey_sel--;
-            ui_set_call(sys_menu, __this->onkey_sel);
-            break;
-        case KEY_OK:
-            if (__this->sys_menu_status == SYS_MENU_VERSION) {
+    if(__this->onkey_mod == 0)
+    {
+        switch(e->value)
+        {
+            case KEY_DOWN:
+                __this->onkey_sel++;
+                if(__this->onkey_sel > SYS_SETTING_ITEM - 1)
+                {
+                    __this->onkey_sel = 0;
+                }
+                ui_set_call(sys_menu, __this->onkey_sel);
                 break;
-            } else if (__this->sys_menu_status == SYS_MENU_FORMAT || __this->sys_menu_status == SYS_MENU_RESET) {
-                if (btn_warning_show_f == 0) {
+            case KEY_UP:
+                if(__this->onkey_sel == 0)
+                {
+                    __this->onkey_sel = SYS_SETTING_ITEM;
+                }
+                __this->onkey_sel--;
+                ui_set_call(sys_menu, __this->onkey_sel);
+                break;
+            case KEY_OK:
+                if(__this->sys_menu_status == SYS_MENU_VERSION)
+                {
                     break;
                 }
-                ui_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
-            } else if (__this->sys_menu_status == SYS_MENU_CARNUM) {
-                ui_set_call(highlight_no_cid_item, 0);
-            } else if (__this->sys_menu_status == SYS_MENU_DATETIME) {
-                ui_show(sel_timePic[1]);
-            }
-            __this->onkey_mod = 1;
-            child_item_sel = 0;
-            __this->time_set_pos = SYS_MENU_TIME_YEAR;
-            child_item_num = get_child_item_num(__this->sys_menu_status);
-            switch (__this->sys_menu_status) {
-            case SYS_MENU_LCDOFF:
-                ui_highlight_element_by_id(sel_layout4[__this->lcd_protect]);
-                cur_sel_item = __this->lcd_protect;
-                break;
-            case SYS_MENU_AUTOOFF:
-                ui_highlight_element_by_id(sel_layout4[__this->auto_off]);
-                cur_sel_item = __this->auto_off;
-                break;
-            case SYS_MENU_FREQUENCY:
-                ui_highlight_element_by_id(sel_layout2[__this->led_fre_hz]);
-                cur_sel_item = __this->led_fre_hz;
-                break;
-            case SYS_MENU_KEYVOICE:
-                ui_highlight_element_by_id(sel_layout2[__this->key_voice]);
-                cur_sel_item = __this->key_voice;
-                break;
-            case SYS_MENU_HL_WARNNING:
-                printf("hl_warnning====%d\n", __this->hl_warnning);
-                ui_highlight_element_by_id(sel_layout2[__this->hl_warnning]);
-                cur_sel_item = __this->hl_warnning;
-                break;
-            case SYS_MENU_LANGUAGE:
-                ui_highlight_element_by_id(sel_layout3[__this->language]);
-                cur_sel_item = __this->language;
-                break;
-            case SYS_MENU_TVMODE:
-                ui_highlight_element_by_id(sel_layout2[__this->tv_mod]);
-                cur_sel_item = __this->tv_mod;
-                break;
-            }
-            break;
-        case KEY_MODE:
-            __this->onkey_mod = 2;
-            mode_sel = 0;
-            ui_highlight_element_by_id(SYS_BTN_REC);
-            break;
-        default:
-            break;
-        }
-    } else if (__this->onkey_mod == 1) {
-        switch (e->value) {
-        case KEY_DOWN:
-            switch (__this->sys_menu_status) {
-            case SYS_MENU_LCDOFF:
-            case SYS_MENU_AUTOOFF:
-                child_item_sel = cur_sel_item;
-                ui_no_highlight_element_by_id(sel_layout4[child_item_sel]);
-                child_item_sel++;
-                if (child_item_sel >= child_item_num) {
-                    child_item_sel = 0;
-                }
-                ui_highlight_element_by_id(sel_layout4[child_item_sel]);
-                cur_sel_item = child_item_sel;
-                break;
-            case SYS_MENU_FREQUENCY:
-            case SYS_MENU_KEYVOICE:
-            case SYS_MENU_TVMODE:
-            case SYS_MENU_HL_WARNNING:
-            case SYS_MENU_LANGUAGE:
-                child_item_sel = cur_sel_item;
-                ui_no_highlight_element_by_id(sel_layout3[child_item_sel]);
-                child_item_sel++;
-                if (child_item_sel >= child_item_num) {
-                    child_item_sel = 0;
-                }
-                ui_highlight_element_by_id(sel_layout3[child_item_sel]);
-                cur_sel_item = child_item_sel;
-                break;
-            case SYS_MENU_DATETIME:
-                sys_menu_tim_change(__this->time_set_pos, 1);
-                sys_menu_tim_change(SYS_MENU_TIME_SET, 0);
-                break;
-            case SYS_MENU_CARNUM:
-                set_cid_onkey(KEY_DOWN);
-                break;
-            }
-            break;
-        case KEY_UP:
-            switch (__this->sys_menu_status) {
-            case SYS_MENU_LCDOFF:
-            case SYS_MENU_AUTOOFF:
-                child_item_sel = cur_sel_item;
-                ui_no_highlight_element_by_id(sel_layout4[child_item_sel]);
-                if (child_item_sel == 0) {
-                    child_item_sel = child_item_num;
-                }
-                child_item_sel--;
-                ui_highlight_element_by_id(sel_layout4[child_item_sel]);
-                cur_sel_item = child_item_sel;
-                break;
-            case SYS_MENU_FREQUENCY:
-            case SYS_MENU_KEYVOICE:
-            case SYS_MENU_TVMODE:
-            case SYS_MENU_HL_WARNNING:
-            case SYS_MENU_LANGUAGE:
-                child_item_sel = cur_sel_item;
-                ui_no_highlight_element_by_id(sel_layout3[child_item_sel]);
-                if (child_item_sel == 0) {
-                    child_item_sel = child_item_num;
-                }
-                child_item_sel--;
-                ui_highlight_element_by_id(sel_layout3[child_item_sel]);
-                cur_sel_item = child_item_sel;
-                break;
-            case SYS_MENU_DATETIME:
-                sys_menu_tim_change(__this->time_set_pos, -1);
-                sys_menu_tim_change(SYS_MENU_TIME_SET, 0);
-                break;
-            case SYS_MENU_CARNUM:
-                set_cid_onkey(KEY_UP);
-                break;
-            }
-            break;
-        case KEY_OK:
-            if (__this->sys_menu_status == SYS_MENU_DATETIME) {
-                ui_hide(sel_timePic[__this->time_set_pos]);
-                __this->time_set_pos++;
-                if (__this->time_set_pos == SYS_MENU_TIME_SET) {
-                    ui_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
-                }
-                if (__this->time_set_pos > SYS_MENU_TIME_SET) {
-                    ui_no_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
-                    void *fd = dev_open("rtc", NULL);
-                    if (!fd) {
-                        return -1;
+                else if(__this->sys_menu_status == SYS_MENU_FORMAT || __this->sys_menu_status == SYS_MENU_RESET)
+                {
+                    if(btn_warning_show_f == 0)
+                    {
+                        break;
                     }
-                    dev_ioctl(fd, IOCTL_SET_SYS_TIME, (u32)&t);
-                    dev_close(fd);
+                    ui_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
+                }
+                else if(__this->sys_menu_status == SYS_MENU_CARNUM)
+                {
+                    ui_set_call(highlight_no_cid_item, 0);
+                }
+                else if(__this->sys_menu_status == SYS_MENU_DATETIME)
+                {
+                    ui_show(sel_timePic[1]);
+                }
+                __this->onkey_mod = 1;
+                child_item_sel = 0;
+                __this->time_set_pos = SYS_MENU_TIME_YEAR;
+                child_item_num = get_child_item_num(__this->sys_menu_status);
+                switch(__this->sys_menu_status)
+                {
+                    case SYS_MENU_LCDOFF:
+                        ui_highlight_element_by_id(sel_layout4[__this->lcd_protect]);
+                        cur_sel_item = __this->lcd_protect;
+                        break;
+                    case SYS_MENU_AUTOOFF:
+                        ui_highlight_element_by_id(sel_layout4[__this->auto_off]);
+                        cur_sel_item = __this->auto_off;
+                        break;
+                    case SYS_MENU_FREQUENCY:
+                        ui_highlight_element_by_id(sel_layout2[__this->led_fre_hz]);
+                        cur_sel_item = __this->led_fre_hz;
+                        break;
+                    case SYS_MENU_KEYVOICE:
+                        ui_highlight_element_by_id(sel_layout2[__this->key_voice]);
+                        cur_sel_item = __this->key_voice;
+                        break;
+                    case SYS_MENU_HL_WARNNING:
+                        printf("hl_warnning====%d\n", __this->hl_warnning);
+                        ui_highlight_element_by_id(sel_layout2[__this->hl_warnning]);
+                        cur_sel_item = __this->hl_warnning;
+                        break;
+                    case SYS_MENU_LANGUAGE:
+                        ui_highlight_element_by_id(sel_layout3[__this->language]);
+                        cur_sel_item = __this->language;
+                        break;
+                    case SYS_MENU_TVMODE:
+                        ui_highlight_element_by_id(sel_layout2[__this->tv_mod]);
+                        cur_sel_item = __this->tv_mod;
+                        break;
+                }
+                break;
+            case KEY_MODE:
+                __this->onkey_mod = 2;
+                mode_sel = 0;
+                ui_highlight_element_by_id(SYS_BTN_REC);
+                break;
+            default:
+                break;
+        }
+    }
+    else if(__this->onkey_mod == 1)
+    {
+        switch(e->value)
+        {
+            case KEY_DOWN:
+                switch(__this->sys_menu_status)
+                {
+                    case SYS_MENU_LCDOFF:
+                    case SYS_MENU_AUTOOFF:
+                        child_item_sel = cur_sel_item;
+                        ui_no_highlight_element_by_id(sel_layout4[child_item_sel]);
+                        child_item_sel++;
+                        if(child_item_sel >= child_item_num)
+                        {
+                            child_item_sel = 0;
+                        }
+                        ui_highlight_element_by_id(sel_layout4[child_item_sel]);
+                        cur_sel_item = child_item_sel;
+                        break;
+                    case SYS_MENU_FREQUENCY:
+                    case SYS_MENU_KEYVOICE:
+                    case SYS_MENU_TVMODE:
+                    case SYS_MENU_HL_WARNNING:
+                    case SYS_MENU_LANGUAGE:
+                        child_item_sel = cur_sel_item;
+                        ui_no_highlight_element_by_id(sel_layout3[child_item_sel]);
+                        child_item_sel++;
+                        if(child_item_sel >= child_item_num)
+                        {
+                            child_item_sel = 0;
+                        }
+                        ui_highlight_element_by_id(sel_layout3[child_item_sel]);
+                        cur_sel_item = child_item_sel;
+                        break;
+                    case SYS_MENU_DATETIME:
+                        sys_menu_tim_change(__this->time_set_pos, 1);
+                        sys_menu_tim_change(SYS_MENU_TIME_SET, 0);
+                        break;
+                    case SYS_MENU_CARNUM:
+                        set_cid_onkey(KEY_DOWN);
+                        break;
+                }
+                break;
+            case KEY_UP:
+                switch(__this->sys_menu_status)
+                {
+                    case SYS_MENU_LCDOFF:
+                    case SYS_MENU_AUTOOFF:
+                        child_item_sel = cur_sel_item;
+                        ui_no_highlight_element_by_id(sel_layout4[child_item_sel]);
+                        if(child_item_sel == 0)
+                        {
+                            child_item_sel = child_item_num;
+                        }
+                        child_item_sel--;
+                        ui_highlight_element_by_id(sel_layout4[child_item_sel]);
+                        cur_sel_item = child_item_sel;
+                        break;
+                    case SYS_MENU_FREQUENCY:
+                    case SYS_MENU_KEYVOICE:
+                    case SYS_MENU_TVMODE:
+                    case SYS_MENU_HL_WARNNING:
+                    case SYS_MENU_LANGUAGE:
+                        child_item_sel = cur_sel_item;
+                        ui_no_highlight_element_by_id(sel_layout3[child_item_sel]);
+                        if(child_item_sel == 0)
+                        {
+                            child_item_sel = child_item_num;
+                        }
+                        child_item_sel--;
+                        ui_highlight_element_by_id(sel_layout3[child_item_sel]);
+                        cur_sel_item = child_item_sel;
+                        break;
+                    case SYS_MENU_DATETIME:
+                        sys_menu_tim_change(__this->time_set_pos, -1);
+                        sys_menu_tim_change(SYS_MENU_TIME_SET, 0);
+                        break;
+                    case SYS_MENU_CARNUM:
+                        set_cid_onkey(KEY_UP);
+                        break;
+                }
+                break;
+            case KEY_OK:
+                if(__this->sys_menu_status == SYS_MENU_DATETIME)
+                {
+                    ui_hide(sel_timePic[__this->time_set_pos]);
+                    __this->time_set_pos++;
+                    if(__this->time_set_pos == SYS_MENU_TIME_SET)
+                    {
+                        ui_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
+                    }
+                    if(__this->time_set_pos > SYS_MENU_TIME_SET)
+                    {
+                        ui_no_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
+                        void *fd = dev_open("rtc", NULL);
+                        if(!fd)
+                        {
+                            return -1;
+                        }
+                        dev_ioctl(fd, IOCTL_SET_SYS_TIME, (u32)&t);
+                        dev_close(fd);
+                        __this->onkey_mod = 0;
+                    }
+                    else
+                    {
+                        ui_show(sel_timePic[__this->time_set_pos]);
+                        break;
+                    }
+                }
+                else if(__this->sys_menu_status == SYS_MENU_FORMAT || __this->sys_menu_status == SYS_MENU_RESET)
+                {
+                    ui_no_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
+                    if(child_item_sel == 0)
+                    {
+                        set_format_reset_func();
+                    }
                     __this->onkey_mod = 0;
-                } else {
-                    ui_show(sel_timePic[__this->time_set_pos]);
+                }
+                else if(__this->sys_menu_status == SYS_MENU_CARNUM)
+                {
+                    set_cid_onkey(KEY_OK);
                     break;
                 }
-            } else if (__this->sys_menu_status == SYS_MENU_FORMAT || __this->sys_menu_status == SYS_MENU_RESET) {
-                ui_no_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
-                if (child_item_sel == 0) {
-                    set_format_reset_func();
+                else
+                {
+                    switch(__this->sys_menu_status)
+                    {
+                        case SYS_MENU_LCDOFF:
+                            if(__this->lcd_protect != cur_sel_item)
+                            {
+                                ui_hide(sel_pic4[__this->lcd_protect]);
+                                menu_sys_lcd_pro_set(cur_sel_item);
+                                ui_show(sel_pic4[cur_sel_item]);
+                            }
+                            break;
+                        case SYS_MENU_AUTOOFF:
+                            if(__this->auto_off != cur_sel_item)
+                            {
+                                ui_hide(sel_pic4[__this->auto_off]);
+                                menu_sys_auto_off_set(cur_sel_item);
+                                ui_show(sel_pic4[cur_sel_item]);
+                            }
+                            break;
+                        case SYS_MENU_FREQUENCY:
+                            if(__this->led_fre_hz != cur_sel_item)
+                            {
+                                ui_hide(sel_pic2[__this->led_fre_hz]);
+                                menu_sys_led_fre_set(cur_sel_item);
+                                ui_show(sel_pic2[cur_sel_item]);
+                            }
+                            break;
+                        case SYS_MENU_KEYVOICE:
+                            if(__this->key_voice != cur_sel_item)
+                            {
+                                ui_hide(sel_pic2[__this->key_voice]);
+                                menu_sys_key_voice_set(cur_sel_item);
+                                ui_show(sel_pic2[cur_sel_item]);
+                            }
+                            break;
+                        case SYS_MENU_HL_WARNNING:
+                            if(__this->hl_warnning != cur_sel_item)
+                            {
+                                ui_hide(sel_pic2[__this->hl_warnning]);
+                                menu_sys_hlight_warning_set(cur_sel_item);
+                                ui_show(sel_pic2[cur_sel_item]);
+                            }
+                            break;
+                        case SYS_MENU_TVMODE:
+                            if(__this->tv_mod != cur_sel_item)
+                            {
+                                ui_hide(sel_pic2[__this->tv_mod]);
+                                menu_sys_tv_mod_set(cur_sel_item);
+                                ui_show(sel_pic2[cur_sel_item]);
+                            }
+                            break;
+                        case SYS_MENU_LANGUAGE:
+                            if(__this->language != cur_sel_item)
+                            {
+                                menu_sys_language_set(cur_sel_item);
+                                ui_hide(SYS_LAY);
+                                ui_show(SYS_LAY);
+                            }
+                            break;
+                    }
+                }
+                break;
+            case KEY_MODE:
+                if(__this->sys_menu_status == SYS_MENU_FORMAT || __this->sys_menu_status == SYS_MENU_RESET)
+                {
+                    ui_no_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
+                }
+                if(__this->sys_menu_status == SYS_MENU_DATETIME)
+                {
+                    if(__this->time_set_pos > SYS_MENU_TIME_YEAR && __this->time_set_pos < SYS_MENU_TIME_SET)
+                    {
+                        ui_hide(sel_timePic[__this->time_set_pos]);
+                    }
+                    else if(__this->time_set_pos == SYS_MENU_TIME_SET)
+                    {
+                        ui_no_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
+                    }
+                }
+                if(__this->sys_menu_status == SYS_MENU_CARNUM)
+                {
+                    set_cid_onkey(KEY_MODE);
+                    break;
                 }
                 __this->onkey_mod = 0;
-            } else if (__this->sys_menu_status == SYS_MENU_CARNUM) {
-                set_cid_onkey(KEY_OK);
-                break;
-            } else {
-                switch (__this->sys_menu_status) {
-                case SYS_MENU_LCDOFF:
-                    if (__this->lcd_protect != cur_sel_item) {
-                        ui_hide(sel_pic4[__this->lcd_protect]);
-                        menu_sys_lcd_pro_set(cur_sel_item);
-                        ui_show(sel_pic4[cur_sel_item]);
-                    }
-                    break;
-                case SYS_MENU_AUTOOFF:
-                    if (__this->auto_off != cur_sel_item) {
-                        ui_hide(sel_pic4[__this->auto_off]);
-                        menu_sys_auto_off_set(cur_sel_item);
-                        ui_show(sel_pic4[cur_sel_item]);
-                    }
-                    break;
-                case SYS_MENU_FREQUENCY:
-                    if (__this->led_fre_hz != cur_sel_item) {
-                        ui_hide(sel_pic2[__this->led_fre_hz]);
-                        menu_sys_led_fre_set(cur_sel_item);
-                        ui_show(sel_pic2[cur_sel_item]);
-                    }
-                    break;
-                case SYS_MENU_KEYVOICE:
-                    if (__this->key_voice != cur_sel_item) {
-                        ui_hide(sel_pic2[__this->key_voice]);
-                        menu_sys_key_voice_set(cur_sel_item);
-                        ui_show(sel_pic2[cur_sel_item]);
-                    }
-                    break;
-                case SYS_MENU_HL_WARNNING:
-                    if (__this->hl_warnning != cur_sel_item) {
-                        ui_hide(sel_pic2[__this->hl_warnning]);
-                        menu_sys_hlight_warning_set(cur_sel_item);
-                        ui_show(sel_pic2[cur_sel_item]);
-                    }
-                    break;
-                case SYS_MENU_TVMODE:
-                    if (__this->tv_mod != cur_sel_item) {
-                        ui_hide(sel_pic2[__this->tv_mod]);
-                        menu_sys_tv_mod_set(cur_sel_item);
-                        ui_show(sel_pic2[cur_sel_item]);
-                    }
-                    break;
-                case SYS_MENU_LANGUAGE:
-                    if (__this->language != cur_sel_item) {
-                        menu_sys_language_set(cur_sel_item);
-                        ui_hide(SYS_LAY);
-                        ui_show(SYS_LAY);
-                    }
-                    break;
+                switch(__this->sys_menu_status)
+                {
+                    case SYS_MENU_LCDOFF:
+                    case SYS_MENU_AUTOOFF:
+                        ui_no_highlight_element_by_id(sel_layout4[cur_sel_item]);
+                        break;
+                    case SYS_MENU_FREQUENCY:
+                    case SYS_MENU_KEYVOICE:
+                    case SYS_MENU_TVMODE:
+                    case SYS_MENU_HL_WARNNING:
+                        ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
+                        break;
+                    case SYS_MENU_LANGUAGE:
+                        ui_no_highlight_element_by_id(sel_layout3[cur_sel_item]);
+                        break;
                 }
-            }
-            break;
-        case KEY_MODE:
-            if (__this->sys_menu_status == SYS_MENU_FORMAT || __this->sys_menu_status == SYS_MENU_RESET) {
-                ui_no_highlight_element_by_id(SYS_BTN_WARNING_CONFIRM);
-            }
-            if (__this->sys_menu_status == SYS_MENU_DATETIME) {
-                if (__this->time_set_pos > SYS_MENU_TIME_YEAR && __this->time_set_pos < SYS_MENU_TIME_SET) {
-                    ui_hide(sel_timePic[__this->time_set_pos]);
-                } else if (__this->time_set_pos == SYS_MENU_TIME_SET) {
-                    ui_no_highlight_element_by_id(SYS_BTN_TIM_CONFIRM);
-                }
-            }
-            if (__this->sys_menu_status == SYS_MENU_CARNUM) {
-                set_cid_onkey(KEY_MODE);
                 break;
-            }
-            __this->onkey_mod = 0;
-            switch (__this->sys_menu_status) {
-            case SYS_MENU_LCDOFF:
-            case SYS_MENU_AUTOOFF:
-                ui_no_highlight_element_by_id(sel_layout4[cur_sel_item]);
-                break;
-            case SYS_MENU_FREQUENCY:
-            case SYS_MENU_KEYVOICE:
-            case SYS_MENU_TVMODE:
-            case SYS_MENU_HL_WARNNING:
-                ui_no_highlight_element_by_id(sel_layout2[cur_sel_item]);
-                break;
-            case SYS_MENU_LANGUAGE:
-                ui_no_highlight_element_by_id(sel_layout3[cur_sel_item]);
-                break;
-            }
-            break;
         }
 
-    } else if (__this->onkey_mod == 2) {
-        switch (e->value) {
-        case KEY_OK:
-            init_intent(&it);
-            if (mode_sel == ARRAY_SIZE(onkey_sel_item) - 1) {
-                __this->page_exit = HOME_SW_EXIT;
-            } else {
-                __this->page_exit = MODE_SW_EXIT;
-            }
-            it.name = "video_system";
-            it.action = ACTION_BACK;
-            start_app_async(&it, NULL, NULL); //不等待直接启动app
-            if (mode_sel == 0) {
-                it.name = "video_rec";
-                it.action = ACTION_VIDEO_REC_MAIN;
+    }
+    else if(__this->onkey_mod == 2)
+    {
+        switch(e->value)
+        {
+            case KEY_OK:
+                init_intent(&it);
+                if(mode_sel == ARRAY_SIZE(onkey_sel_item) - 1)
+                {
+                    __this->page_exit = HOME_SW_EXIT;
+                }
+                else
+                {
+                    __this->page_exit = MODE_SW_EXIT;
+                }
+                it.name = "video_system";
+                it.action = ACTION_BACK;
                 start_app_async(&it, NULL, NULL); //不等待直接启动app
-            } else if (mode_sel == 1) {
-                it.name = "video_dec";
-                it.action = ACTION_VIDEO_DEC_MAIN;
-                start_app_async(&it, NULL, NULL); //不等待直接启动app
-            }
-            break;
-        case KEY_DOWN:
-            ui_no_highlight_element_by_id(onkey_sel_item[mode_sel]);
-            mode_sel++;
-            if (mode_sel > ARRAY_SIZE(onkey_sel_item) - 1) {
-                mode_sel = 0;
-            }
-            ui_highlight_element_by_id(onkey_sel_item[mode_sel]);
-            break;
-        case KEY_UP:
-            ui_no_highlight_element_by_id(onkey_sel_item[mode_sel]);
-            if (mode_sel == 0) {
-                mode_sel = ARRAY_SIZE(onkey_sel_item);
-            }
-            mode_sel--;
-            ui_highlight_element_by_id(onkey_sel_item[mode_sel]);
-            break;
-        case KEY_MODE:
-            ui_no_highlight_element_by_id(onkey_sel_item[mode_sel]);
-            __this->onkey_mod = 0;
-            break;
+                if(mode_sel == 0)
+                {
+                    it.name = "video_rec";
+                    it.action = ACTION_VIDEO_REC_MAIN;
+                    start_app_async(&it, NULL, NULL); //不等待直接启动app
+                }
+                else if(mode_sel == 1)
+                {
+                    it.name = "video_dec";
+                    it.action = ACTION_VIDEO_DEC_MAIN;
+                    start_app_async(&it, NULL, NULL); //不等待直接启动app
+                }
+                break;
+            case KEY_DOWN:
+                ui_no_highlight_element_by_id(onkey_sel_item[mode_sel]);
+                mode_sel++;
+                if(mode_sel > ARRAY_SIZE(onkey_sel_item) - 1)
+                {
+                    mode_sel = 0;
+                }
+                ui_highlight_element_by_id(onkey_sel_item[mode_sel]);
+                break;
+            case KEY_UP:
+                ui_no_highlight_element_by_id(onkey_sel_item[mode_sel]);
+                if(mode_sel == 0)
+                {
+                    mode_sel = ARRAY_SIZE(onkey_sel_item);
+                }
+                mode_sel--;
+                ui_highlight_element_by_id(onkey_sel_item[mode_sel]);
+                break;
+            case KEY_MODE:
+                ui_no_highlight_element_by_id(onkey_sel_item[mode_sel]);
+                __this->onkey_mod = 0;
+                break;
 
         }
     }

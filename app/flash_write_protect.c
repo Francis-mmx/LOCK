@@ -6,7 +6,8 @@
 void test_wirte_protect()
 {
     void *dev = dev_open("spiflash", NULL);
-    if (!dev) {
+    if(!dev)
+    {
         return ;
     }
     /*dev_ioctl(dev, IOCTL_SET_WRITE_PROTECT, 0);*/
@@ -29,35 +30,43 @@ int spi_flash_write_protect()
 
     /* return 0; */
 
-    if (!fdir_exist("mnt/spiflash")) {
-        if (!mount("spiflash", "mnt/spiflash", "sdfile", 0, NULL)) {
+    if(!fdir_exist("mnt/spiflash"))
+    {
+        if(!mount("spiflash", "mnt/spiflash", "sdfile", 0, NULL))
+        {
             return -EFAULT;
         }
     }
 
     FILE *file = fopen("mnt/spiflash/res/flash_cfg.bin", "r");
-    if (!file) {
+    if(!file)
+    {
         return 0;
     }
 
     int len = flen(file);
     u32 *data = (u32 *)malloc(len);
-    if (!data) {
+    if(!data)
+    {
         return -ENOMEM;
     }
-    if (len != fread(file, data, len)) {
+    if(len != fread(file, data, len))
+    {
         return -EFAULT;
     }
     fclose(file);
 
     void *dev = dev_open("spiflash", NULL);
-    if (!dev) {
+    if(!dev)
+    {
         return -EFAULT;
     }
     dev_ioctl(dev, IOCTL_GET_ID, (u32)&id);
 
-    for (i = 1; i < len; i += 6) {
-        if (data[i] == id) {
+    for(i = 1; i < len; i += 6)
+    {
+        if(data[i] == id)
+        {
             u32 cmd = data[i + 1];
             log_v("flash_id = %x, write_protect\n", id);
             dev_ioctl(dev, IOCTL_SET_WRITE_PROTECT, cmd);

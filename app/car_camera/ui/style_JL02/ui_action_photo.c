@@ -13,13 +13,14 @@
 
 #define STYLE_NAME  JL02
 
-#define TPH_REMAIN_DISCAL 		1
+#define TPH_REMAIN_DISCAL       1
 #define TPH_MENU_HIDE_ENABLE    1  //选定菜单后子菜单收起
-#define TOUCH_R90 				1  //触摸屏XY反转
+#define TOUCH_R90               1  //触摸屏XY反转
 
 #define FACE_DET_NUM            3  //人脸检测数
 
-struct tph_menu_sta {
+struct tph_menu_sta
+{
     char tph_delay;
     char resolution;
     char repeat;
@@ -34,7 +35,8 @@ struct tph_menu_sta {
     char quick_scan;
 };
 
-struct tph_menu_info {
+struct tph_menu_info
+{
     u8 cur_camera_id;
     struct tph_menu_sta camera[2];
 
@@ -58,20 +60,22 @@ struct tph_menu_info {
 };
 
 static struct tph_menu_info handler = {0};
-#define __this 	(&handler)
+#define __this  (&handler)
 #define sizeof_this     (sizeof(struct tph_menu_info))
 
 extern int sys_cur_mod;  /* 1:rec, 2:tph, 3:dec */
 extern u8 av_in_statu;
 extern int storage_device_ready();
 
-const static int onkey_sel_item[3] = {
+const static int onkey_sel_item[3] =
+{
     TPH_PIC_SETTING,
     TPH_BTN_PHOTO,
     TPH_BTN_HOME,
 };
 
-const static int onkey_sel_setting[12] = {
+const static int onkey_sel_setting[12] =
+{
     TPH_SET_PIC_1_1,
     TPH_SET_PIC_1_2,
     TPH_SET_PIC_1_3,
@@ -85,7 +89,8 @@ const static int onkey_sel_setting[12] = {
     TPH_SET_PIC_3_3,
     TPH_SET_PIC_3_4,
 };
-const static int onkey_sel_setting1[12] = {
+const static int onkey_sel_setting1[12] =
+{
     TPH_SET_TXT_1_1,
     TPH_SET_TXT_1_2,
     TPH_SET_TXT_1_3,
@@ -99,22 +104,26 @@ const static int onkey_sel_setting1[12] = {
     TPH_SET_TXT_3_3,
     TPH_SET_TXT_3_4,
 };
-const static int _TPH_SET_PIC_C2[] = {
+const static int _TPH_SET_PIC_C2[] =
+{
     TPH_SET_PIC_C2_1,
     TPH_SET_PIC_C2_2,
 };
-const static int _TPH_SET_PIC_C3[] = {
+const static int _TPH_SET_PIC_C3[] =
+{
     TPH_SET_PIC_C3_1,
     TPH_SET_PIC_C3_2,
     TPH_SET_PIC_C3_3,
 };
-const static int _TPH_SET_PIC_C4[] = {
+const static int _TPH_SET_PIC_C4[] =
+{
     TPH_SET_PIC_C4_1,
     TPH_SET_PIC_C4_2,
     TPH_SET_PIC_C4_3,
     TPH_SET_PIC_C4_4,
 };
-const static int _TPH_SET_PIC_RES[] = {
+const static int _TPH_SET_PIC_RES[] =
+{
     TPH_SET_PIC_RES_S1,
     TPH_SET_PIC_RES_S2,
     TPH_SET_PIC_RES_S3,
@@ -123,7 +132,8 @@ const static int _TPH_SET_PIC_RES[] = {
     TPH_SET_PIC_RES_S6,
     TPH_SET_PIC_RES_S7,
 };
-const static int _TPH_SET_PIC_EXP[] = {
+const static int _TPH_SET_PIC_EXP[] =
+{
     TPH_SET_PIC_EXP_S01,
     TPH_SET_PIC_EXP_S02,
     TPH_SET_PIC_EXP_S03,
@@ -132,18 +142,21 @@ const static int _TPH_SET_PIC_EXP[] = {
     TPH_SET_PIC_EXP_S06,
     TPH_SET_PIC_EXP_S07,
 };
-const static int _TPH_SET_PIC_C30[] = {
+const static int _TPH_SET_PIC_C30[] =
+{
     TPH_SET_PIC_C30_1,
     TPH_SET_PIC_C30_2,
     TPH_SET_PIC_C30_3,
 };
-const static int _TPH_SET_PIC_C40[] = {
+const static int _TPH_SET_PIC_C40[] =
+{
     TPH_SET_PIC_C40_1,
     TPH_SET_PIC_C40_2,
     TPH_SET_PIC_C40_3,
     TPH_SET_PIC_C40_4,
 };
-const static int _TPH_SET_PIC_C50[] = {
+const static int _TPH_SET_PIC_C50[] =
+{
     TPH_SET_PIC_C50_1,
     TPH_SET_PIC_C50_2,
     TPH_SET_PIC_C50_3,
@@ -152,12 +165,13 @@ const static int _TPH_SET_PIC_C50[] = {
 };
 
 /************************************************************
-					  拍照模式设置
+                      拍照模式设置
 ************************************************************/
 /*
  *  * photo拍摄延时方式设置
  *   */
-static const u8 table_photo_delay_mode_camera0[] = {
+static const u8 table_photo_delay_mode_camera0[] =
+{
     0,
     2,
     5,
@@ -168,7 +182,8 @@ static const u8 table_photo_delay_mode_camera0[] = {
 /*
  *  * photo拍摄分辨率设置
  *   */
-static const u8 table_photo_res_camera0[] = {
+static const u8 table_photo_res_camera0[] =
+{
     PHOTO_RES_VGA,      /* 640*480 */
     PHOTO_RES_1M,     /* 1280*960 */
     PHOTO_RES_2M,       /* 1920*1080 */
@@ -183,7 +198,8 @@ static const u8 table_photo_res_camera0[] = {
 /*
  *  * photo图像质量设置
  *   */
-static const u8 table_photo_quality_camera0[] = {
+static const u8 table_photo_quality_camera0[] =
+{
     PHOTO_QUA_HI,
     PHOTO_QUA_MD,
     PHOTO_QUA_LO,
@@ -192,7 +208,8 @@ static const u8 table_photo_quality_camera0[] = {
 /*
  *  * photo图像锐度设置
  *   */
-static const u8 table_photo_acutance_camera0[] = {
+static const u8 table_photo_acutance_camera0[] =
+{
     PHOTO_ACU_HI,
     PHOTO_ACU_MD,
     PHOTO_ACU_LO,
@@ -201,7 +218,8 @@ static const u8 table_photo_acutance_camera0[] = {
 /*
  *  * photo图像白平衡设置
  *   */
-static const u8 table_photo_white_balance_camera0[] = {
+static const u8 table_photo_white_balance_camera0[] =
+{
     PHOTO_WBL_AUTO,     /* 自动 */
     PHOTO_WBL_SUN,      /* 日光 */
     PHOTO_WBL_CLDY,     /* 阴天 */
@@ -212,7 +230,8 @@ static const u8 table_photo_white_balance_camera0[] = {
 /*
  *  * photo图像ISO设置
  *   */
-static const u16 table_photo_iso_camera0[] = {
+static const u16 table_photo_iso_camera0[] =
+{
     0,
     100,
     200,
@@ -222,7 +241,8 @@ static const u16 table_photo_iso_camera0[] = {
 /*
  *  * photo曝光补偿设置
  *   */
-static const u8 table_photo_exposure_camera0[] = {
+static const u8 table_photo_exposure_camera0[] =
+{
     3,
     2,
     1,
@@ -236,7 +256,8 @@ static const u8 table_photo_exposure_camera0[] = {
 /*
  *  * photo快速预览设置
  *   */
-static const u8 table_photo_quick_scan_camera0[] = {
+static const u8 table_photo_quick_scan_camera0[] =
+{
     0,
     2,
     5,
@@ -246,7 +267,8 @@ static const u8 table_photo_quick_scan_camera0[] = {
 /*
  *  * photo色彩设置
  *   */
-static const u8 table_photo_color_camera0[] = {
+static const u8 table_photo_color_camera0[] =
+{
     PHOTO_COLOR_NORMAL,
     PHOTO_COLOR_WB,
     PHOTO_COLOR_OLD,
@@ -268,7 +290,8 @@ int menu_tph_set_sok(u8 sel_item)
     it.data = "sok";
     it.exdata = sel_item;
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":hand shake set fail!\n");
         return -1;
     }
@@ -285,7 +308,8 @@ int menu_tph_set_pdat(u8 sel_item)
     it.data = "pdat";
     it.exdata = sel_item;
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":date label set fail!\n");
         return -1;
     }
@@ -302,7 +326,8 @@ int menu_tph_set_cyt(u8 sel_item)
     it.data = "cyt";
     it.exdata = sel_item;
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":repeat set fail!\n");
         return -1;
     }
@@ -319,7 +344,8 @@ int menu_tph_set_qua(u8 sel_item)
     it.data = "qua";
     it.exdata = table_photo_quality_camera0[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":quality set fail!\n");
         return -1;
     }
@@ -336,7 +362,8 @@ int menu_tph_set_acu(u8 sel_item)
     it.data = "acu";
     it.exdata = table_photo_acutance_camera0[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":acutance set fail!\n");
         return -1;
     }
@@ -353,7 +380,8 @@ int menu_tph_set_phm(u8 sel_item)
     it.data = "phm";
     it.exdata = table_photo_delay_mode_camera0[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":tph delay set fail!\n");
         return -1;
     }
@@ -370,7 +398,8 @@ int menu_tph_set_pres(u8 sel_item)
     it.data = "pres";
     it.exdata = table_photo_res_camera0[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":photo res set fail!\n");
         return -1;
     }
@@ -389,7 +418,8 @@ int menu_tph_set_wbl(u8 sel_item)
     it.data = "wbl";
     it.exdata = table_photo_white_balance_camera0[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":photo white_balance set fail!\n");
         return -1;
     }
@@ -401,12 +431,13 @@ int menu_tph_set_col(u8 sel_item)
     int err;
 
     init_intent(&it);
-    it.name	= "video_photo";
+    it.name = "video_photo";
     it.action = ACTION_PHOTO_TAKE_SET_CONFIG;
     it.data = "col";
     it.exdata = table_photo_color_camera0[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":tph color set fail!\n");
         return -1;
     }
@@ -423,7 +454,8 @@ int menu_tph_set_sca(u8 sel_item)
     it.data = "sca";
     it.exdata = table_photo_quick_scan_camera0[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":photo quick_scan set fail!\n");
         return -1;
     }
@@ -440,7 +472,8 @@ int menu_tph_set_pexp(u8 sel_item)
     it.data = "pexp";
     it.exdata = table_photo_exposure_camera0[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":photo exposure set fail!\n");
         return -1;
     }
@@ -457,7 +490,8 @@ int menu_tph_set_iso(u8 sel_item)
     it.data = "iso";
     it.exdata = table_photo_iso_camera0[sel_item];
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         ASSERT(err == 0, ":photo iso set fail!\n");
         return -1;
     }
@@ -467,13 +501,15 @@ int menu_tph_set_iso(u8 sel_item)
 /*
  *  * (end)拍照设置各项操作请求
  *   */
-enum {
+enum
+{
     PAGE_SHOW = 0,
     MODE_SW_EXIT,
     HOME_SW_EXIT,
 };
 
-enum TPH_MENU {
+enum TPH_MENU
+{
     TPH_MENU_NULL = 0,
     TPH_MENU_RESOLUTION,
     TPH_MENU_DELAY,
@@ -493,449 +529,501 @@ enum TPH_MENU {
 
 void tph_menu_show(enum TPH_MENU item)
 {
-    if (__this->tph_menu_status == TPH_MENU_HIDE) {
+    if(__this->tph_menu_status == TPH_MENU_HIDE)
+    {
         __this->tph_menu_status = TPH_MENU_NULL;
         return;
     }
-    switch (item) {
-    case TPH_MENU_NULL:
-        __this->tph_menu_status = TPH_MENU_NULL;
-        break;
-    case TPH_MENU_RESOLUTION:
-        if (__this->tph_menu_status != TPH_MENU_DELAY &&
-            __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
-            __this->tph_menu_status != TPH_MENU_QUALITY &&
-            __this->tph_menu_status != TPH_MENU_EXPOSURE &&
-            __this->tph_menu_status != TPH_MENU_TREMOR &&
-            __this->tph_menu_status != TPH_MENU_PREVIEW &&
-            __this->tph_menu_status != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_2);
-            ui_show(TPH_SET_LAY_SET_1);
-        }
+    switch(item)
+    {
+        case TPH_MENU_NULL:
+            __this->tph_menu_status = TPH_MENU_NULL;
+            break;
+        case TPH_MENU_RESOLUTION:
+            if(__this->tph_menu_status != TPH_MENU_DELAY &&
+                                          __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
+                                              __this->tph_menu_status != TPH_MENU_QUALITY &&
+                                                  __this->tph_menu_status != TPH_MENU_EXPOSURE &&
+                                                      __this->tph_menu_status != TPH_MENU_TREMOR &&
+                                                          __this->tph_menu_status != TPH_MENU_PREVIEW &&
+                                                              __this->tph_menu_status != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_2);
+                ui_show(TPH_SET_LAY_SET_1);
+            }
 #if (DOUBLE_720 == 1)
-        ui_show(TPH_SET_LAY_C3);
-        ui_show(TPH_SET_PIC_SEL_1_1);
-        ui_highlight_element_by_id(TPH_SET_PIC_1_1);
-        ui_highlight_element_by_id(TPH_SET_TXT_1_1);
-        ui_text_show_index_by_id(TPH_SET_TXT_C3_1, 2);
-        ui_text_show_index_by_id(TPH_SET_TXT_C3_2, 2);
-        ui_text_show_index_by_id(TPH_SET_TXT_C3_3, 2);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].resolution]);
-        __this->tph_menu_status = item;
+            ui_show(TPH_SET_LAY_C3);
+            ui_show(TPH_SET_PIC_SEL_1_1);
+            ui_highlight_element_by_id(TPH_SET_PIC_1_1);
+            ui_highlight_element_by_id(TPH_SET_TXT_1_1);
+            ui_text_show_index_by_id(TPH_SET_TXT_C3_1, 2);
+            ui_text_show_index_by_id(TPH_SET_TXT_C3_2, 2);
+            ui_text_show_index_by_id(TPH_SET_TXT_C3_3, 2);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].resolution]);
+            __this->tph_menu_status = item;
 #else
-        ui_show(TPH_SET_LAY_RES);
-        ui_show(TPH_SET_PIC_SEL_1_1);
-        ui_highlight_element_by_id(TPH_SET_PIC_1_1);
-        ui_highlight_element_by_id(TPH_SET_TXT_1_1);
-        ui_show(_TPH_SET_PIC_RES[__this->camera[0].resolution]);
-        __this->tph_menu_status = item;
+            ui_show(TPH_SET_LAY_RES);
+            ui_show(TPH_SET_PIC_SEL_1_1);
+            ui_highlight_element_by_id(TPH_SET_PIC_1_1);
+            ui_highlight_element_by_id(TPH_SET_TXT_1_1);
+            ui_show(_TPH_SET_PIC_RES[__this->camera[0].resolution]);
+            __this->tph_menu_status = item;
 #endif
-        break;
-    case TPH_MENU_DELAY:
-        if (__this->tph_menu_status != TPH_MENU_RESOLUTION &&
-            __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
-            __this->tph_menu_status != TPH_MENU_QUALITY &&
-            __this->tph_menu_status != TPH_MENU_EXPOSURE &&
-            __this->tph_menu_status != TPH_MENU_LABEL &&
-            __this->tph_menu_status != TPH_MENU_TREMOR &&
-            __this->tph_menu_status != TPH_MENU_PREVIEW &&
-            __this->tph_menu_status != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_2);
-            ui_show(TPH_SET_LAY_SET_1);
-        }
-        ui_show(TPH_SET_LAY_C4);
-        ui_show(TPH_SET_PIC_SEL_1_2);
-        ui_highlight_element_by_id(TPH_SET_PIC_1_2);
-        ui_highlight_element_by_id(TPH_SET_TXT_1_2);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C4[__this->camera[0].tph_delay]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_CONTINUOUS:
-        if (__this->tph_menu_status != TPH_MENU_RESOLUTION &&
-            __this->tph_menu_status != TPH_MENU_DELAY &&
-            __this->tph_menu_status != TPH_MENU_QUALITY &&
-            __this->tph_menu_status != TPH_MENU_EXPOSURE &&
-            __this->tph_menu_status != TPH_MENU_TREMOR &&
-            __this->tph_menu_status != TPH_MENU_PREVIEW &&
-            __this->tph_menu_status != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_2);
-            ui_show(TPH_SET_LAY_SET_1);
-        }
-        ui_show(TPH_SET_LAY_C2);
-        ui_show(TPH_SET_PIC_SEL_1_3);
-        ui_highlight_element_by_id(TPH_SET_PIC_1_3);
-        ui_highlight_element_by_id(TPH_SET_TXT_1_3);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C2[__this->camera[0].repeat]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_QUALITY:
-        if (__this->tph_menu_status != TPH_MENU_RESOLUTION &&
-            __this->tph_menu_status != TPH_MENU_DELAY &&
-            __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
-            __this->tph_menu_status != TPH_MENU_EXPOSURE &&
-            __this->tph_menu_status != TPH_MENU_TREMOR &&
-            __this->tph_menu_status != TPH_MENU_PREVIEW &&
-            __this->tph_menu_status != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_2);
-            ui_show(TPH_SET_LAY_SET_1);
-        }
-        ui_show(TPH_SET_LAY_C3);
-        ui_show(TPH_SET_PIC_SEL_1_4);
-        ui_highlight_element_by_id(TPH_SET_PIC_1_4);
-        ui_highlight_element_by_id(TPH_SET_TXT_1_4);
-        ui_text_show_index_by_id(TPH_SET_TXT_C3_1, 0);
-        ui_text_show_index_by_id(TPH_SET_TXT_C3_2, 0);
-        ui_text_show_index_by_id(TPH_SET_TXT_C3_3, 0);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].quality]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_ACUITY:
-        if (__this->tph_menu_status != TPH_MENU_AWB &&
-            __this->tph_menu_status != TPH_MENU_COLOR &&
-            __this->tph_menu_status != TPH_MENU_ISO) {
-            ui_hide(TPH_SET_LAY_3);
-            ui_show(TPH_SET_LAY_SET_2);
-        }
-        ui_show(TPH_SET_LAY_C30);
-        ui_show(TPH_SET_PIC_SEL_2_1);
-        ui_highlight_element_by_id(TPH_SET_PIC_2_1);
-        ui_highlight_element_by_id(TPH_SET_TXT_2_1);
-        ui_text_show_index_by_id(TPH_SET_TXT_C30_1, 0);
-        ui_text_show_index_by_id(TPH_SET_TXT_C30_2, 0);
-        ui_text_show_index_by_id(TPH_SET_TXT_C30_3, 0);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C30[__this->camera[0].acutance]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_AWB:
-        if (__this->tph_menu_status != TPH_MENU_ACUITY &&
-            __this->tph_menu_status != TPH_MENU_COLOR &&
-            __this->tph_menu_status != TPH_MENU_ISO) {
-            ui_hide(TPH_SET_LAY_3);
-            ui_show(TPH_SET_LAY_SET_2);
-        }
-        ui_show(TPH_SET_LAY_C50);
-        ui_show(TPH_SET_PIC_SEL_2_2);
-        ui_highlight_element_by_id(TPH_SET_PIC_2_2);
-        ui_highlight_element_by_id(TPH_SET_TXT_2_2);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C50[__this->camera[0].white_balance]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_COLOR:
-        if (__this->tph_menu_status != TPH_MENU_ACUITY &&
-            __this->tph_menu_status != TPH_MENU_AWB &&
-            __this->tph_menu_status != TPH_MENU_ISO) {
-            ui_hide(TPH_SET_LAY_3);
-            ui_show(TPH_SET_LAY_SET_2);
-        }
-        ui_show(TPH_SET_LAY_C30);
-        ui_show(TPH_SET_PIC_SEL_2_3);
-        ui_highlight_element_by_id(TPH_SET_PIC_2_3);
-        ui_highlight_element_by_id(TPH_SET_TXT_2_3);
-        ui_text_show_index_by_id(TPH_SET_TXT_C30_1, 1);
-        ui_text_show_index_by_id(TPH_SET_TXT_C30_2, 1);
-        ui_text_show_index_by_id(TPH_SET_TXT_C30_3, 1);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C30[__this->camera[0].color]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_ISO:
-        if (__this->tph_menu_status != TPH_MENU_ACUITY &&
-            __this->tph_menu_status != TPH_MENU_AWB &&
-            __this->tph_menu_status != TPH_MENU_COLOR) {
-            ui_hide(TPH_SET_LAY_3);
-            ui_show(TPH_SET_LAY_SET_2);
-        }
-        ui_show(TPH_SET_LAY_C40);
-        ui_show(TPH_SET_PIC_SEL_2_4);
-        ui_highlight_element_by_id(TPH_SET_PIC_2_4);
-        ui_highlight_element_by_id(TPH_SET_TXT_2_4);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C40[__this->camera[0].iso]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_EXPOSURE:
-        if (__this->tph_menu_status != TPH_MENU_RESOLUTION &&
-            __this->tph_menu_status != TPH_MENU_DELAY &&
-            __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
-            __this->tph_menu_status != TPH_MENU_QUALITY &&
-            __this->tph_menu_status != TPH_MENU_TREMOR &&
-            __this->tph_menu_status != TPH_MENU_PREVIEW &&
-            __this->tph_menu_status != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_2);
-            ui_show(TPH_SET_LAY_SET_1);
-        }
-        ui_show(TPH_SET_LAY_EXP);
-        ui_show(TPH_SET_PIC_SEL_3_1);
-        ui_highlight_element_by_id(TPH_SET_PIC_3_1);
-        ui_highlight_element_by_id(TPH_SET_TXT_3_1);
-        ui_show(_TPH_SET_PIC_EXP[(6 - __this->camera[0].exposure)]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_TREMOR:
-        if (__this->tph_menu_status != TPH_MENU_RESOLUTION &&
-            __this->tph_menu_status != TPH_MENU_DELAY &&
-            __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
-            __this->tph_menu_status != TPH_MENU_QUALITY &&
-            __this->tph_menu_status != TPH_MENU_EXPOSURE &&
-            __this->tph_menu_status != TPH_MENU_PREVIEW &&
-            __this->tph_menu_status != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_2);
-            ui_show(TPH_SET_LAY_SET_1);
-        }
-        ui_show(TPH_SET_LAY_C2);
-        ui_show(TPH_SET_PIC_SEL_3_2);
-        ui_highlight_element_by_id(TPH_SET_PIC_3_2);
-        ui_highlight_element_by_id(TPH_SET_TXT_3_2);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C2[__this->camera[0].hand_shake]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_PREVIEW:
-        if (__this->tph_menu_status != TPH_MENU_RESOLUTION &&
-            __this->tph_menu_status != TPH_MENU_DELAY &&
-            __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
-            __this->tph_menu_status != TPH_MENU_QUALITY &&
-            __this->tph_menu_status != TPH_MENU_EXPOSURE &&
-            __this->tph_menu_status != TPH_MENU_TREMOR &&
-            __this->tph_menu_status != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_2);
-            ui_show(TPH_SET_LAY_SET_1);
-        }
-        ui_show(TPH_SET_LAY_C3);
-        ui_show(TPH_SET_PIC_SEL_3_3);
-        ui_highlight_element_by_id(TPH_SET_PIC_3_3);
-        ui_highlight_element_by_id(TPH_SET_TXT_3_3);
-        ui_text_show_index_by_id(TPH_SET_TXT_C3_1, 1);
-        ui_text_show_index_by_id(TPH_SET_TXT_C3_2, 1);
-        ui_text_show_index_by_id(TPH_SET_TXT_C3_3, 1);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].quick_scan]);
-        __this->tph_menu_status = item;
-        break;
-    case TPH_MENU_LABEL:
-        if (__this->tph_menu_status != TPH_MENU_RESOLUTION &&
-            __this->tph_menu_status != TPH_MENU_DELAY &&
-            __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
-            __this->tph_menu_status != TPH_MENU_QUALITY &&
-            __this->tph_menu_status != TPH_MENU_EXPOSURE &&
-            __this->tph_menu_status != TPH_MENU_TREMOR &&
-            __this->tph_menu_status != TPH_MENU_PREVIEW) {
-            ui_hide(TPH_SET_LAY_2);
-            ui_show(TPH_SET_LAY_SET_1);
-        }
-        ui_show(TPH_SET_LAY_C2);
-        ui_show(TPH_SET_PIC_SEL_3_4);
-        ui_highlight_element_by_id(TPH_SET_PIC_3_4);
-        ui_highlight_element_by_id(TPH_SET_TXT_3_4);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C2[__this->camera[0].dat_label]);
-        __this->tph_menu_status = item;
-        break;
-    default:
-        break;
+            break;
+        case TPH_MENU_DELAY:
+            if(__this->tph_menu_status != TPH_MENU_RESOLUTION &&
+                                          __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
+                                              __this->tph_menu_status != TPH_MENU_QUALITY &&
+                                                  __this->tph_menu_status != TPH_MENU_EXPOSURE &&
+                                                      __this->tph_menu_status != TPH_MENU_LABEL &&
+                                                          __this->tph_menu_status != TPH_MENU_TREMOR &&
+                                                              __this->tph_menu_status != TPH_MENU_PREVIEW &&
+                                                                  __this->tph_menu_status != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_2);
+                ui_show(TPH_SET_LAY_SET_1);
+            }
+            ui_show(TPH_SET_LAY_C4);
+            ui_show(TPH_SET_PIC_SEL_1_2);
+            ui_highlight_element_by_id(TPH_SET_PIC_1_2);
+            ui_highlight_element_by_id(TPH_SET_TXT_1_2);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C4[__this->camera[0].tph_delay]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_CONTINUOUS:
+            if(__this->tph_menu_status != TPH_MENU_RESOLUTION &&
+                                          __this->tph_menu_status != TPH_MENU_DELAY &&
+                                              __this->tph_menu_status != TPH_MENU_QUALITY &&
+                                                  __this->tph_menu_status != TPH_MENU_EXPOSURE &&
+                                                      __this->tph_menu_status != TPH_MENU_TREMOR &&
+                                                          __this->tph_menu_status != TPH_MENU_PREVIEW &&
+                                                              __this->tph_menu_status != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_2);
+                ui_show(TPH_SET_LAY_SET_1);
+            }
+            ui_show(TPH_SET_LAY_C2);
+            ui_show(TPH_SET_PIC_SEL_1_3);
+            ui_highlight_element_by_id(TPH_SET_PIC_1_3);
+            ui_highlight_element_by_id(TPH_SET_TXT_1_3);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C2[__this->camera[0].repeat]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_QUALITY:
+            if(__this->tph_menu_status != TPH_MENU_RESOLUTION &&
+                                          __this->tph_menu_status != TPH_MENU_DELAY &&
+                                              __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
+                                                  __this->tph_menu_status != TPH_MENU_EXPOSURE &&
+                                                      __this->tph_menu_status != TPH_MENU_TREMOR &&
+                                                          __this->tph_menu_status != TPH_MENU_PREVIEW &&
+                                                              __this->tph_menu_status != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_2);
+                ui_show(TPH_SET_LAY_SET_1);
+            }
+            ui_show(TPH_SET_LAY_C3);
+            ui_show(TPH_SET_PIC_SEL_1_4);
+            ui_highlight_element_by_id(TPH_SET_PIC_1_4);
+            ui_highlight_element_by_id(TPH_SET_TXT_1_4);
+            ui_text_show_index_by_id(TPH_SET_TXT_C3_1, 0);
+            ui_text_show_index_by_id(TPH_SET_TXT_C3_2, 0);
+            ui_text_show_index_by_id(TPH_SET_TXT_C3_3, 0);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].quality]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_ACUITY:
+            if(__this->tph_menu_status != TPH_MENU_AWB &&
+                                          __this->tph_menu_status != TPH_MENU_COLOR &&
+                                              __this->tph_menu_status != TPH_MENU_ISO)
+            {
+                ui_hide(TPH_SET_LAY_3);
+                ui_show(TPH_SET_LAY_SET_2);
+            }
+            ui_show(TPH_SET_LAY_C30);
+            ui_show(TPH_SET_PIC_SEL_2_1);
+            ui_highlight_element_by_id(TPH_SET_PIC_2_1);
+            ui_highlight_element_by_id(TPH_SET_TXT_2_1);
+            ui_text_show_index_by_id(TPH_SET_TXT_C30_1, 0);
+            ui_text_show_index_by_id(TPH_SET_TXT_C30_2, 0);
+            ui_text_show_index_by_id(TPH_SET_TXT_C30_3, 0);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C30[__this->camera[0].acutance]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_AWB:
+            if(__this->tph_menu_status != TPH_MENU_ACUITY &&
+                                          __this->tph_menu_status != TPH_MENU_COLOR &&
+                                              __this->tph_menu_status != TPH_MENU_ISO)
+            {
+                ui_hide(TPH_SET_LAY_3);
+                ui_show(TPH_SET_LAY_SET_2);
+            }
+            ui_show(TPH_SET_LAY_C50);
+            ui_show(TPH_SET_PIC_SEL_2_2);
+            ui_highlight_element_by_id(TPH_SET_PIC_2_2);
+            ui_highlight_element_by_id(TPH_SET_TXT_2_2);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C50[__this->camera[0].white_balance]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_COLOR:
+            if(__this->tph_menu_status != TPH_MENU_ACUITY &&
+                                          __this->tph_menu_status != TPH_MENU_AWB &&
+                                              __this->tph_menu_status != TPH_MENU_ISO)
+            {
+                ui_hide(TPH_SET_LAY_3);
+                ui_show(TPH_SET_LAY_SET_2);
+            }
+            ui_show(TPH_SET_LAY_C30);
+            ui_show(TPH_SET_PIC_SEL_2_3);
+            ui_highlight_element_by_id(TPH_SET_PIC_2_3);
+            ui_highlight_element_by_id(TPH_SET_TXT_2_3);
+            ui_text_show_index_by_id(TPH_SET_TXT_C30_1, 1);
+            ui_text_show_index_by_id(TPH_SET_TXT_C30_2, 1);
+            ui_text_show_index_by_id(TPH_SET_TXT_C30_3, 1);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C30[__this->camera[0].color]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_ISO:
+            if(__this->tph_menu_status != TPH_MENU_ACUITY &&
+                                          __this->tph_menu_status != TPH_MENU_AWB &&
+                                              __this->tph_menu_status != TPH_MENU_COLOR)
+            {
+                ui_hide(TPH_SET_LAY_3);
+                ui_show(TPH_SET_LAY_SET_2);
+            }
+            ui_show(TPH_SET_LAY_C40);
+            ui_show(TPH_SET_PIC_SEL_2_4);
+            ui_highlight_element_by_id(TPH_SET_PIC_2_4);
+            ui_highlight_element_by_id(TPH_SET_TXT_2_4);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C40[__this->camera[0].iso]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_EXPOSURE:
+            if(__this->tph_menu_status != TPH_MENU_RESOLUTION &&
+                                          __this->tph_menu_status != TPH_MENU_DELAY &&
+                                              __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
+                                                  __this->tph_menu_status != TPH_MENU_QUALITY &&
+                                                      __this->tph_menu_status != TPH_MENU_TREMOR &&
+                                                          __this->tph_menu_status != TPH_MENU_PREVIEW &&
+                                                              __this->tph_menu_status != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_2);
+                ui_show(TPH_SET_LAY_SET_1);
+            }
+            ui_show(TPH_SET_LAY_EXP);
+            ui_show(TPH_SET_PIC_SEL_3_1);
+            ui_highlight_element_by_id(TPH_SET_PIC_3_1);
+            ui_highlight_element_by_id(TPH_SET_TXT_3_1);
+            ui_show(_TPH_SET_PIC_EXP[(6 - __this->camera[0].exposure)]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_TREMOR:
+            if(__this->tph_menu_status != TPH_MENU_RESOLUTION &&
+                                          __this->tph_menu_status != TPH_MENU_DELAY &&
+                                              __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
+                                                  __this->tph_menu_status != TPH_MENU_QUALITY &&
+                                                      __this->tph_menu_status != TPH_MENU_EXPOSURE &&
+                                                          __this->tph_menu_status != TPH_MENU_PREVIEW &&
+                                                              __this->tph_menu_status != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_2);
+                ui_show(TPH_SET_LAY_SET_1);
+            }
+            ui_show(TPH_SET_LAY_C2);
+            ui_show(TPH_SET_PIC_SEL_3_2);
+            ui_highlight_element_by_id(TPH_SET_PIC_3_2);
+            ui_highlight_element_by_id(TPH_SET_TXT_3_2);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C2[__this->camera[0].hand_shake]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_PREVIEW:
+            if(__this->tph_menu_status != TPH_MENU_RESOLUTION &&
+                                          __this->tph_menu_status != TPH_MENU_DELAY &&
+                                              __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
+                                                  __this->tph_menu_status != TPH_MENU_QUALITY &&
+                                                      __this->tph_menu_status != TPH_MENU_EXPOSURE &&
+                                                          __this->tph_menu_status != TPH_MENU_TREMOR &&
+                                                              __this->tph_menu_status != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_2);
+                ui_show(TPH_SET_LAY_SET_1);
+            }
+            ui_show(TPH_SET_LAY_C3);
+            ui_show(TPH_SET_PIC_SEL_3_3);
+            ui_highlight_element_by_id(TPH_SET_PIC_3_3);
+            ui_highlight_element_by_id(TPH_SET_TXT_3_3);
+            ui_text_show_index_by_id(TPH_SET_TXT_C3_1, 1);
+            ui_text_show_index_by_id(TPH_SET_TXT_C3_2, 1);
+            ui_text_show_index_by_id(TPH_SET_TXT_C3_3, 1);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].quick_scan]);
+            __this->tph_menu_status = item;
+            break;
+        case TPH_MENU_LABEL:
+            if(__this->tph_menu_status != TPH_MENU_RESOLUTION &&
+                                          __this->tph_menu_status != TPH_MENU_DELAY &&
+                                              __this->tph_menu_status != TPH_MENU_CONTINUOUS &&
+                                                  __this->tph_menu_status != TPH_MENU_QUALITY &&
+                                                      __this->tph_menu_status != TPH_MENU_EXPOSURE &&
+                                                          __this->tph_menu_status != TPH_MENU_TREMOR &&
+                                                              __this->tph_menu_status != TPH_MENU_PREVIEW)
+            {
+                ui_hide(TPH_SET_LAY_2);
+                ui_show(TPH_SET_LAY_SET_1);
+            }
+            ui_show(TPH_SET_LAY_C2);
+            ui_show(TPH_SET_PIC_SEL_3_4);
+            ui_highlight_element_by_id(TPH_SET_PIC_3_4);
+            ui_highlight_element_by_id(TPH_SET_TXT_3_4);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C2[__this->camera[0].dat_label]);
+            __this->tph_menu_status = item;
+            break;
+        default:
+            break;
     }
 }
 
 
 void tph_menu_hide(enum TPH_MENU item)
 {
-    switch (__this->tph_menu_status) {
-    case TPH_MENU_NULL:
-        break;
-    case TPH_MENU_RESOLUTION:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_1_1);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_1_1);
-        if (item != TPH_MENU_DELAY &&
-            item != TPH_MENU_CONTINUOUS &&
-            item != TPH_MENU_QUALITY &&
-            item != TPH_MENU_EXPOSURE &&
-            item != TPH_MENU_TREMOR &&
-            item != TPH_MENU_PREVIEW &&
-            item != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_SET_1);
-            ui_show(TPH_SET_LAY_2);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_1_1);
+    switch(__this->tph_menu_status)
+    {
+        case TPH_MENU_NULL:
+            break;
+        case TPH_MENU_RESOLUTION:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_1_1);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_1_1);
+            if(item != TPH_MENU_DELAY &&
+                       item != TPH_MENU_CONTINUOUS &&
+                               item != TPH_MENU_QUALITY &&
+                                       item != TPH_MENU_EXPOSURE &&
+                                               item != TPH_MENU_TREMOR &&
+                                                   item != TPH_MENU_PREVIEW &&
+                                                       item != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_SET_1);
+                ui_show(TPH_SET_LAY_2);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_1_1);
 #if (DOUBLE_720 == 1)
-            ui_hide(TPH_SET_LAY_C3);
+                ui_hide(TPH_SET_LAY_C3);
 #else
-            ui_hide(TPH_SET_LAY_RES);
+                ui_hide(TPH_SET_LAY_RES);
 #endif
-        }
-        break;
-    case TPH_MENU_DELAY:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_1_2);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_1_2);
-        if (item != TPH_MENU_RESOLUTION &&
-            item != TPH_MENU_CONTINUOUS &&
-            item != TPH_MENU_QUALITY &&
-            item != TPH_MENU_EXPOSURE &&
-            item != TPH_MENU_TREMOR &&
-            item != TPH_MENU_PREVIEW &&
-            item != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_SET_1);
-            ui_show(TPH_SET_LAY_2);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_1_2);
-            ui_hide(TPH_SET_LAY_C4);
-        }
-        break;
-    case TPH_MENU_CONTINUOUS:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_1_3);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_1_3);
-        if (item != TPH_MENU_RESOLUTION &&
-            item != TPH_MENU_DELAY &&
-            item != TPH_MENU_QUALITY &&
-            item != TPH_MENU_EXPOSURE &&
-            item != TPH_MENU_TREMOR &&
-            item != TPH_MENU_PREVIEW &&
-            item != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_SET_1);
-            ui_show(TPH_SET_LAY_2);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_1_3);
-            ui_hide(TPH_SET_LAY_C2);
-        }
-        break;
-    case TPH_MENU_QUALITY:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_1_4);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_1_4);
-        if (item != TPH_MENU_RESOLUTION &&
-            item != TPH_MENU_DELAY &&
-            item != TPH_MENU_CONTINUOUS &&
-            item != TPH_MENU_EXPOSURE &&
-            item != TPH_MENU_TREMOR &&
-            item != TPH_MENU_PREVIEW &&
-            item != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_SET_1);
-            ui_show(TPH_SET_LAY_2);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_1_4);
-            ui_hide(TPH_SET_LAY_C3);
-        }
-        break;
-    case TPH_MENU_ACUITY:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_2_1);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_2_1);
-        if (item != TPH_MENU_AWB &&
-            item != TPH_MENU_COLOR &&
-            item != TPH_MENU_ISO) {
-            ui_hide(TPH_SET_LAY_SET_2);
-            ui_show(TPH_SET_LAY_3);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_2_1);
-            ui_hide(TPH_SET_LAY_C30);
-        }
-        break;
-    case TPH_MENU_AWB:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_2_2);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_2_2);
-        if (item != TPH_MENU_ACUITY &&
-            item != TPH_MENU_COLOR &&
-            item != TPH_MENU_ISO) {
-            ui_hide(TPH_SET_LAY_SET_2);
-            ui_show(TPH_SET_LAY_3);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_2_2);
-            ui_hide(TPH_SET_LAY_C50);
-        }
-        break;
-    case TPH_MENU_COLOR:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_2_3);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_2_3);
-        if (item != TPH_MENU_ACUITY &&
-            item != TPH_MENU_AWB &&
-            item != TPH_MENU_ISO) {
-            ui_hide(TPH_SET_LAY_SET_2);
-            ui_show(TPH_SET_LAY_3);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_2_3);
-            ui_hide(TPH_SET_LAY_C30);
-        }
-        break;
-    case TPH_MENU_ISO:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_2_4);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_2_4);
-        if (item != TPH_MENU_ACUITY &&
-            item != TPH_MENU_AWB &&
-            item != TPH_MENU_COLOR) {
-            ui_hide(TPH_SET_LAY_SET_2);
-            ui_show(TPH_SET_LAY_3);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_2_4);
-            ui_hide(TPH_SET_LAY_C40);
-        }
-        break;
-    case TPH_MENU_EXPOSURE:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_3_1);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_3_1);
-        if (item != TPH_MENU_RESOLUTION &&
-            item != TPH_MENU_DELAY &&
-            item != TPH_MENU_CONTINUOUS &&
-            item != TPH_MENU_QUALITY &&
-            item != TPH_MENU_TREMOR &&
-            item != TPH_MENU_PREVIEW &&
-            item != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_SET_1);
-            ui_show(TPH_SET_LAY_2);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_3_1);
-            ui_hide(TPH_SET_LAY_EXP);
-        }
-        break;
-    case TPH_MENU_TREMOR:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_3_2);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_3_2);
-        if (item != TPH_MENU_RESOLUTION &&
-            item != TPH_MENU_DELAY &&
-            item != TPH_MENU_CONTINUOUS &&
-            item != TPH_MENU_QUALITY &&
-            item != TPH_MENU_EXPOSURE &&
-            item != TPH_MENU_PREVIEW &&
-            item != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_SET_1);
-            ui_show(TPH_SET_LAY_2);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_3_2);
-            ui_hide(TPH_SET_LAY_C2);
-        }
-        break;
-    case TPH_MENU_PREVIEW:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_3_3);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_3_3);
-        if (item != TPH_MENU_RESOLUTION &&
-            item != TPH_MENU_DELAY &&
-            item != TPH_MENU_CONTINUOUS &&
-            item != TPH_MENU_QUALITY &&
-            item != TPH_MENU_EXPOSURE &&
-            item != TPH_MENU_TREMOR &&
-            item != TPH_MENU_LABEL) {
-            ui_hide(TPH_SET_LAY_SET_1);
-            ui_show(TPH_SET_LAY_2);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_3_3);
-            ui_hide(TPH_SET_LAY_C3);
-        }
-        break;
-    case TPH_MENU_LABEL:
-        ui_no_highlight_element_by_id(TPH_SET_PIC_3_4);
-        ui_no_highlight_element_by_id(TPH_SET_TXT_3_4);
-        if (item != TPH_MENU_RESOLUTION &&
-            item != TPH_MENU_DELAY &&
-            item != TPH_MENU_CONTINUOUS &&
-            item != TPH_MENU_QUALITY &&
-            item != TPH_MENU_EXPOSURE &&
-            item != TPH_MENU_TREMOR &&
-            item != TPH_MENU_PREVIEW) {
-            ui_hide(TPH_SET_LAY_SET_1);
-            ui_show(TPH_SET_LAY_2);
-        } else {
-            ui_hide(TPH_SET_PIC_SEL_3_4);
-            ui_hide(TPH_SET_LAY_C2);
-        }
-        break;
-    default:
-        __this->onkey_mod = 2;
-        __this->tph_menu_status = TPH_MENU_NULL;
-        break;
+            }
+            break;
+        case TPH_MENU_DELAY:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_1_2);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_1_2);
+            if(item != TPH_MENU_RESOLUTION &&
+                       item != TPH_MENU_CONTINUOUS &&
+                               item != TPH_MENU_QUALITY &&
+                                       item != TPH_MENU_EXPOSURE &&
+                                               item != TPH_MENU_TREMOR &&
+                                                   item != TPH_MENU_PREVIEW &&
+                                                       item != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_SET_1);
+                ui_show(TPH_SET_LAY_2);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_1_2);
+                ui_hide(TPH_SET_LAY_C4);
+            }
+            break;
+        case TPH_MENU_CONTINUOUS:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_1_3);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_1_3);
+            if(item != TPH_MENU_RESOLUTION &&
+                       item != TPH_MENU_DELAY &&
+                               item != TPH_MENU_QUALITY &&
+                                       item != TPH_MENU_EXPOSURE &&
+                                               item != TPH_MENU_TREMOR &&
+                                                   item != TPH_MENU_PREVIEW &&
+                                                       item != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_SET_1);
+                ui_show(TPH_SET_LAY_2);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_1_3);
+                ui_hide(TPH_SET_LAY_C2);
+            }
+            break;
+        case TPH_MENU_QUALITY:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_1_4);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_1_4);
+            if(item != TPH_MENU_RESOLUTION &&
+                       item != TPH_MENU_DELAY &&
+                               item != TPH_MENU_CONTINUOUS &&
+                                       item != TPH_MENU_EXPOSURE &&
+                                               item != TPH_MENU_TREMOR &&
+                                                   item != TPH_MENU_PREVIEW &&
+                                                       item != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_SET_1);
+                ui_show(TPH_SET_LAY_2);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_1_4);
+                ui_hide(TPH_SET_LAY_C3);
+            }
+            break;
+        case TPH_MENU_ACUITY:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_2_1);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_2_1);
+            if(item != TPH_MENU_AWB &&
+                       item != TPH_MENU_COLOR &&
+                               item != TPH_MENU_ISO)
+            {
+                ui_hide(TPH_SET_LAY_SET_2);
+                ui_show(TPH_SET_LAY_3);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_2_1);
+                ui_hide(TPH_SET_LAY_C30);
+            }
+            break;
+        case TPH_MENU_AWB:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_2_2);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_2_2);
+            if(item != TPH_MENU_ACUITY &&
+                       item != TPH_MENU_COLOR &&
+                               item != TPH_MENU_ISO)
+            {
+                ui_hide(TPH_SET_LAY_SET_2);
+                ui_show(TPH_SET_LAY_3);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_2_2);
+                ui_hide(TPH_SET_LAY_C50);
+            }
+            break;
+        case TPH_MENU_COLOR:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_2_3);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_2_3);
+            if(item != TPH_MENU_ACUITY &&
+                       item != TPH_MENU_AWB &&
+                               item != TPH_MENU_ISO)
+            {
+                ui_hide(TPH_SET_LAY_SET_2);
+                ui_show(TPH_SET_LAY_3);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_2_3);
+                ui_hide(TPH_SET_LAY_C30);
+            }
+            break;
+        case TPH_MENU_ISO:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_2_4);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_2_4);
+            if(item != TPH_MENU_ACUITY &&
+                       item != TPH_MENU_AWB &&
+                               item != TPH_MENU_COLOR)
+            {
+                ui_hide(TPH_SET_LAY_SET_2);
+                ui_show(TPH_SET_LAY_3);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_2_4);
+                ui_hide(TPH_SET_LAY_C40);
+            }
+            break;
+        case TPH_MENU_EXPOSURE:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_3_1);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_3_1);
+            if(item != TPH_MENU_RESOLUTION &&
+                       item != TPH_MENU_DELAY &&
+                               item != TPH_MENU_CONTINUOUS &&
+                                       item != TPH_MENU_QUALITY &&
+                                               item != TPH_MENU_TREMOR &&
+                                                   item != TPH_MENU_PREVIEW &&
+                                                       item != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_SET_1);
+                ui_show(TPH_SET_LAY_2);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_3_1);
+                ui_hide(TPH_SET_LAY_EXP);
+            }
+            break;
+        case TPH_MENU_TREMOR:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_3_2);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_3_2);
+            if(item != TPH_MENU_RESOLUTION &&
+                       item != TPH_MENU_DELAY &&
+                               item != TPH_MENU_CONTINUOUS &&
+                                       item != TPH_MENU_QUALITY &&
+                                               item != TPH_MENU_EXPOSURE &&
+                                                   item != TPH_MENU_PREVIEW &&
+                                                       item != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_SET_1);
+                ui_show(TPH_SET_LAY_2);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_3_2);
+                ui_hide(TPH_SET_LAY_C2);
+            }
+            break;
+        case TPH_MENU_PREVIEW:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_3_3);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_3_3);
+            if(item != TPH_MENU_RESOLUTION &&
+                       item != TPH_MENU_DELAY &&
+                               item != TPH_MENU_CONTINUOUS &&
+                                       item != TPH_MENU_QUALITY &&
+                                               item != TPH_MENU_EXPOSURE &&
+                                                   item != TPH_MENU_TREMOR &&
+                                                       item != TPH_MENU_LABEL)
+            {
+                ui_hide(TPH_SET_LAY_SET_1);
+                ui_show(TPH_SET_LAY_2);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_3_3);
+                ui_hide(TPH_SET_LAY_C3);
+            }
+            break;
+        case TPH_MENU_LABEL:
+            ui_no_highlight_element_by_id(TPH_SET_PIC_3_4);
+            ui_no_highlight_element_by_id(TPH_SET_TXT_3_4);
+            if(item != TPH_MENU_RESOLUTION &&
+                       item != TPH_MENU_DELAY &&
+                               item != TPH_MENU_CONTINUOUS &&
+                                       item != TPH_MENU_QUALITY &&
+                                               item != TPH_MENU_EXPOSURE &&
+                                                   item != TPH_MENU_TREMOR &&
+                                                       item != TPH_MENU_PREVIEW)
+            {
+                ui_hide(TPH_SET_LAY_SET_1);
+                ui_show(TPH_SET_LAY_2);
+            }
+            else
+            {
+                ui_hide(TPH_SET_PIC_SEL_3_4);
+                ui_hide(TPH_SET_LAY_C2);
+            }
+            break;
+        default:
+            __this->onkey_mod = 2;
+            __this->tph_menu_status = TPH_MENU_NULL;
+            break;
     }
 
-    if (item == __this->tph_menu_status) {
+    if(item == __this->tph_menu_status)
+    {
         __this->tph_menu_status = TPH_MENU_HIDE;
     }
 }
@@ -949,7 +1037,8 @@ int tph_menu(int item)
 /*
  * (begin)提示框显示接口
  */
-enum box_msg {
+enum box_msg
+{
     BOX_MSG_POWER_OFF = 1,
     BOX_MSG_NO_POWER,
     BOX_MSG_MEM_ERR,
@@ -963,16 +1052,21 @@ static u8 msg_show_f = 0;
 static enum box_msg msg_show_id = 0;
 static void __tph_msg_hide(enum box_msg id)
 {
-    if (msg_show_id == id) {
-        if (msg_show_f) {
+    if(msg_show_id == id)
+    {
+        if(msg_show_f)
+        {
             msg_show_f = 0;
             ui_hide(TPH_LAY_MESSAGEBOX);
         }
-    } else if (id == 0) {
+    }
+    else if(id == 0)
+    {
         /*
          * 没有指定ID，强制隐藏
          */
-        if (msg_show_f) {
+        if(msg_show_f)
+        {
             msg_show_f = 0;
             ui_hide(TPH_LAY_MESSAGEBOX);
         }
@@ -985,36 +1079,46 @@ static void __tph_msg_timeout_func(void *priv)
 static void __tph_msg_show(enum box_msg msg, u32 timeout_msec)
 {
     static int t_id = 0;
-    if (msg == 0) {
+    if(msg == 0)
+    {
         ASSERT(0, "__tph_msg_show msg 0!\n");
         return;
     }
 
-    if (msg == msg_show_id) {
-        if (msg_show_f == 0) {
+    if(msg == msg_show_id)
+    {
+        if(msg_show_f == 0)
+        {
             ui_show(TPH_LAY_MESSAGEBOX);
             ui_text_show_index_by_id(TPH_TXT_MESSAGEBOX, msg - 1);
             msg_show_f = 1;
-            if (t_id) {
+            if(t_id)
+            {
                 sys_timeout_del(t_id);
                 t_id = 0;
             }
-            if (timeout_msec > 0) {
+            if(timeout_msec > 0)
+            {
                 t_id = sys_timeout_add((void *)msg, __tph_msg_timeout_func, timeout_msec);
             }
         }
-    } else {
+    }
+    else
+    {
         msg_show_id = msg;
-        if (msg_show_f == 0) {
+        if(msg_show_f == 0)
+        {
             msg_show_f = 1;
             ui_show(TPH_LAY_MESSAGEBOX);
         }
         ui_text_show_index_by_id(TPH_TXT_MESSAGEBOX, msg - 1);
-        if (t_id) {
+        if(t_id)
+        {
             sys_timeout_del(t_id);
             t_id = 0;
         }
-        if (timeout_msec > 0) {
+        if(timeout_msec > 0)
+        {
             t_id = sys_timeout_add((void *)msg, __tph_msg_timeout_func, timeout_msec);
         }
     }
@@ -1028,11 +1132,12 @@ static void tph_tell_app_exit_menu(void)
     int err;
     struct intent it;
     init_intent(&it);
-    it.name	= "video_photo";
+    it.name = "video_photo";
     it.action = ACTION_PHOTO_TAKE_CHANGE_STATUS;
     it.data = "exitMENU";
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         /*ASSERT(err == 0, ":tph exitMENU\n");*/
     }
 }
@@ -1042,19 +1147,25 @@ static int tph_ask_app_open_menu(void)
     struct intent it;
 
     init_intent(&it);
-    it.name	= "video_photo";
+    it.name = "video_photo";
     it.action = ACTION_PHOTO_TAKE_CHANGE_STATUS;
     it.data = "opMENU:";
     err = start_app(&it);
-    if (err) {
+    if(err)
+    {
         return err;
     }
-    if (!strcmp(it.data, "opMENU:dis")) {
+    if(!strcmp(it.data, "opMENU:dis"))
+    {
         puts("tph do not allow ui to open menu.\n");
         return -1;
-    } else if (!strcmp(it.data, "opMENU:en")) {
+    }
+    else if(!strcmp(it.data, "opMENU:en"))
+    {
         puts("tph allow ui to open menu.\n");
-    } else {
+    }
+    else
+    {
         ASSERT(0, "opMENU err\n");
     }
     return 0;
@@ -1062,7 +1173,8 @@ static int tph_ask_app_open_menu(void)
 
 static int disp_TphSetting_lay(u8 menu_status)
 {
-    if (menu_status) {
+    if(menu_status)
+    {
         __this->menu_status = 1;
         __this->tph_menu_status = TPH_MENU_NULL;
         ui_hide(TPH_LAY_TPH);
@@ -1072,19 +1184,25 @@ static int disp_TphSetting_lay(u8 menu_status)
         ui_show(TPH_SET_WIN);
 #endif
         ui_highlight_element_by_id(TPH_PIC_SETTING);
-    } else {
+    }
+    else
+    {
 #if DOUBLE_720
         ui_hide(TPH_SET_LAY);
 #else
         ui_hide(TPH_SET_WIN);
 #endif
         ui_show(TPH_LAY_TPH);
-        if (av_in_statu) {
+        if(av_in_statu)
+        {
             ui_show(TPH_BTN_SWITCH);
         }
-        if (__this->onkey_mod == 0) {
+        if(__this->onkey_mod == 0)
+        {
             ui_no_highlight_element_by_id(TPH_PIC_SETTING);
-        } else {
+        }
+        else
+        {
             ui_highlight_element_by_id(TPH_PIC_SETTING);
         }
         __this->menu_status = 0;
@@ -1099,7 +1217,8 @@ static void open_screen(void *p)
 }
 static int tph_take_photo_in_handler(const char *type, u32 arg)
 {
-    if (__this->camera[0].tph_delay == 0 || __this->camera[0].repeat == 1) {
+    if(__this->camera[0].tph_delay == 0 || __this->camera[0].repeat == 1)
+    {
         sys_touch_event_disable();
         sys_key_event_disable();
     }
@@ -1126,16 +1245,20 @@ static int tph_take_photo_end_handler(const char *type, u32 arg)
     //闪动
     lcd_backlight_ctrl(false);
     static int hand = 0;
-    if (!hand) {
+    if(!hand)
+    {
         hand = sys_timeout_add(NULL, open_screen, 50);
-    } else {
+    }
+    else
+    {
         sys_timeout_del(hand);
         hand = 0;
         hand = sys_timeout_add(NULL, open_screen, 50);
     }
 
 #if TPH_REMAIN_DISCAL
-    if (__this->remain_num) {
+    if(__this->remain_num)
+    {
         __this->remain_num--;
     }
 #endif
@@ -1148,7 +1271,8 @@ static int tph_camera_sw_handler(const char *type, u32 args)
     ASSERT(type != NULL, "tph_camera_sw_handler err.");
     printf("tph_camera_sw type: %s = %d.\n", type, args);
 
-    if (!strcmp(type, "id")) {
+    if(!strcmp(type, "id"))
+    {
         __this->cur_camera_id = args;
         ui_hide(TPH_TXT_REMAIN);
         ui_show(TPH_TXT_REMAIN);
@@ -1166,19 +1290,21 @@ static int tph_delay_take_handler(const char *type, u32 arg)
     puts("tph_delay_take_handler.\n");
     __this->take_photo_busy = 1;
     __tph_msg_hide(0);
-    if (!strcmp(type, "ms")) {
+    if(!strcmp(type, "ms"))
+    {
         printf("ms:%d\n", arg);
         ui_show(TPH_LAY_CONUTDOWN);
-        switch (arg) {
-        case 2000:
-            ui_show(TPH_ANI_COUNTDOWN_2);
-            break;
-        case 5000:
-            ui_show(TPH_ANI_COUNTDOWN_5);
-            break;
-        case 10000:
-            ui_show(TPH_ANI_COUNTDOWN_10);
-            break;
+        switch(arg)
+        {
+            case 2000:
+                ui_show(TPH_ANI_COUNTDOWN_2);
+                break;
+            case 5000:
+                ui_show(TPH_ANI_COUNTDOWN_5);
+                break;
+            case 10000:
+                ui_show(TPH_ANI_COUNTDOWN_10);
+                break;
         }
     }
     sys_touch_event_disable();
@@ -1211,7 +1337,8 @@ extern void play_voice_file(const char *file_name);
 static int tph_headlight_on_handler(const char *type, u32 arg)
 {
     puts("tph_headlight_on_handler\n");
-    if (__this->hlight_show_status == 0) {
+    if(__this->hlight_show_status == 0)
+    {
         __this->hlight_show_status = 1;
 
         ui_show(TPH_LAY_FLIG);//show head light
@@ -1246,32 +1373,43 @@ static int tph_face_on_handler(const char *type, u32 arg)
     static u8 face_flush = 0;
     BBox *bounding_box = NULL;
     Point_t *alignment_temp = NULL;
-    if (type[0] == 'd') {
+    if(type[0] == 'd')
+    {
         //解析人脸个数
         /* printf("d======%d\n", arg); */
         face_num = arg;
-    } else if (type[0] == 'p') {
+    }
+    else if(type[0] == 'p')
+    {
         //解析5个关键点坐标
         alignment_temp = (Point_t *)arg;
-        if (face_flush) {
-            for (int i = 0; i < 5; i++) {
+        if(face_flush)
+        {
+            for(int i = 0; i < 5; i++)
+            {
                 __this->alignment_temp[i + face_num * 5].x = alignment_temp[i].x;
                 __this->alignment_temp[i + face_num * 5].y = alignment_temp[i].y;
             }
         }
-    } else if (type[0] == 'I') {
+    }
+    else if(type[0] == 'I')
+    {
         bounding_box = (BBox *)arg;
         /* printf("I == (%d,%d) (%d,%d) %dx%d", bounding_box[face_num].x1, bounding_box[face_num].y1, \ */
         /* bounding_box[face_num].x2, bounding_box[face_num].y2, \ */
         /* bounding_box[face_num].x2 - bounding_box[face_num].x1, \ */
         /* bounding_box[face_num].y2 - bounding_box[face_num].y1); */
-        if (ABS(__this->box_face[face_num].x1 - bounding_box[face_num].x1) > XY_VAL &&  \
-            ABS(__this->box_face[face_num].y1 - bounding_box[face_num].y1) > XY_VAL) {
+        if(ABS(__this->box_face[face_num].x1 - bounding_box[face_num].x1) > XY_VAL &&  \
+                ABS(__this->box_face[face_num].y1 - bounding_box[face_num].y1) > XY_VAL)
+        {
             memcpy(&__this->box_face[face_num], &bounding_box[face_num], sizeof(BBox));
             face_flush = 1;
         }
-    } else if (type[0] == 's') {
-        if (face_flush) {
+    }
+    else if(type[0] == 's')
+    {
+        if(face_flush)
+        {
             face_flush = 0;
             puts("sss\n");
             //显示图片
@@ -1285,7 +1423,8 @@ static int tph_face_on_handler(const char *type, u32 arg)
 static int tph_face_off_handler(const char *type, u32 arg)
 {
     log_d(">>>>> tph_face_off_handler\n");
-    for (int i = 0; i < sizeof(__this->box_face) / sizeof(__this->box_face[0]); i++) {
+    for(int i = 0; i < sizeof(__this->box_face) / sizeof(__this->box_face[0]); i++)
+    {
         memset(&__this->box_face[i], 0x0, sizeof(BBox));
     }
     reset_photo_icons();
@@ -1297,7 +1436,8 @@ static int tph_face_off_handler(const char *type, u32 arg)
 /*
  * 拍照模式的APP状态响应回调
  */
-static const struct uimsg_handl tph_msg_handler[] = {
+static const struct uimsg_handl tph_msg_handler[] =
+{
 
     { "swCAM",      tph_camera_sw_handler             },
     { "fsErr",      tph_fs_err_handler                },
@@ -1320,19 +1460,21 @@ static const struct uimsg_handl tph_msg_handler[] = {
 
 static void avin_event_handler(struct sys_event *event, void *priv)
 {
-    if (!strncmp(event->arg, "video1", 6) || !strncmp((char *)event->arg, "uvc", 3)) {
-        switch (event->u.dev.event) {
-        case DEVICE_EVENT_IN:
-        case DEVICE_EVENT_ONLINE:
-            log_w("avin event handler in\n");
-            av_in_statu = 1;
-            ui_show(TPH_BTN_SWITCH);
-            break;
-        case DEVICE_EVENT_OUT:
-            av_in_statu = 0;
-            ui_hide(TPH_BTN_SWITCH);
-            log_w("avin event handler out\n");
-            break;
+    if(!strncmp(event->arg, "video1", 6) || !strncmp((char *)event->arg, "uvc", 3))
+    {
+        switch(event->u.dev.event)
+        {
+            case DEVICE_EVENT_IN:
+            case DEVICE_EVENT_ONLINE:
+                log_w("avin event handler in\n");
+                av_in_statu = 1;
+                ui_show(TPH_BTN_SWITCH);
+                break;
+            case DEVICE_EVENT_OUT:
+                av_in_statu = 0;
+                ui_hide(TPH_BTN_SWITCH);
+                log_w("avin event handler out\n");
+                break;
         }
     }
 }
@@ -1341,37 +1483,43 @@ static void avin_event_handler(struct sys_event *event, void *priv)
  */
 static void sd_event_handler(struct sys_event *event, void *priv)
 {
-    if (!strcmp(event->arg, "sd0") || !strcmp(event->arg, "sd1") || !strcmp(event->arg, "sd2")) {
-        switch (event->u.dev.event) {
-        case DEVICE_EVENT_IN:
-            __tph_msg_hide(BOX_MSG_INSERT_SD);
-            ui_hide(TPH_PIC_SD);
-            ui_hide(TPH_TXT_REMAIN);
-            ui_show(TPH_TXT_REMAIN);
-            break;
-        case DEVICE_EVENT_OUT:
-            __tph_msg_hide(BOX_MSG_NEED_FORMAT);
-            ui_show(TPH_PIC_SD);
-            ui_show(TPH_TXT_REMAIN);
-            break;
-        default:
-            break;
+    if(!strcmp(event->arg, "sd0") || !strcmp(event->arg, "sd1") || !strcmp(event->arg, "sd2"))
+    {
+        switch(event->u.dev.event)
+        {
+            case DEVICE_EVENT_IN:
+                __tph_msg_hide(BOX_MSG_INSERT_SD);
+                ui_hide(TPH_PIC_SD);
+                ui_hide(TPH_TXT_REMAIN);
+                ui_show(TPH_TXT_REMAIN);
+                break;
+            case DEVICE_EVENT_OUT:
+                __tph_msg_hide(BOX_MSG_NEED_FORMAT);
+                ui_show(TPH_PIC_SD);
+                ui_show(TPH_TXT_REMAIN);
+                break;
+            default:
+                break;
         }
     }
 }
 /***************************** 拍照按钮显示 ************************************/
 static int tph_tph_onchange(void *ctr, enum element_change_event e, void *arg)
 {
-    switch (e) {
-    case ON_CHANGE_FIRST_SHOW:
-        if (__this->onkey_mod == 0) {
-            ui_highlight_element_by_id(TPH_PIC_TPH);
-        } else {
-            ui_no_highlight_element_by_id(TPH_PIC_TPH);
-        }
-        return TRUE;
-    default:
-        return FALSE;
+    switch(e)
+    {
+        case ON_CHANGE_FIRST_SHOW:
+            if(__this->onkey_mod == 0)
+            {
+                ui_highlight_element_by_id(TPH_PIC_TPH);
+            }
+            else
+            {
+                ui_no_highlight_element_by_id(TPH_PIC_TPH);
+            }
+            return TRUE;
+        default:
+            return FALSE;
     }
     return FALSE;
 }
@@ -1382,15 +1530,17 @@ REGISTER_UI_EVENT_HANDLER(TPH_LAY_TPH)
 /***************************** 拍照设置显示 ************************************/
 static int tph_set_onchange(void *ctr, enum element_change_event e, void *arg)
 {
-    switch (e) {
-    case ON_CHANGE_FIRST_SHOW:
-        if (__this->onkey_sel) {
-            ui_highlight_element_by_id(onkey_sel_setting[0]);
-            ui_highlight_element_by_id(onkey_sel_setting1[0]);
-        }
-        return TRUE;
-    default:
-        return FALSE;
+    switch(e)
+    {
+        case ON_CHANGE_FIRST_SHOW:
+            if(__this->onkey_sel)
+            {
+                ui_highlight_element_by_id(onkey_sel_setting[0]);
+                ui_highlight_element_by_id(onkey_sel_setting1[0]);
+            }
+            return TRUE;
+        default:
+            return FALSE;
     }
     return FALSE;
 }
@@ -1404,22 +1554,23 @@ static int pic_sd_tph_onchange(void *ctr, enum element_change_event e, void *arg
     struct ui_pic *pic = (struct ui_pic *)ctr;
     static u16 id = 0;
 
-    switch (e) {
-    case ON_CHANGE_INIT:
-        id = register_sys_event_handler(SYS_DEVICE_EVENT, 0, 0, sd_event_handler);
-        break;
-    case ON_CHANGE_RELEASE:
-        unregister_sys_event_handler(id);
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            id = register_sys_event_handler(SYS_DEVICE_EVENT, 0, 0, sd_event_handler);
+            break;
+        case ON_CHANGE_RELEASE:
+            unregister_sys_event_handler(id);
+            break;
+        default:
+            return false;
     }
     return false;
 }
 REGISTER_UI_EVENT_HANDLER(TPH_PIC_SD)
 .onchange = pic_sd_tph_onchange,
- .onkey = NULL,
-  .ontouch = NULL,
+.onkey = NULL,
+.ontouch = NULL,
 };
 
 static int text_tph_remain_num_onchange(void *ctr, enum element_change_event e, void *arg)
@@ -1427,34 +1578,39 @@ static int text_tph_remain_num_onchange(void *ctr, enum element_change_event e, 
     struct ui_text *text = (struct ui_text *)ctr;
     struct intent it;
     int err;
-    switch (e) {
-    case ON_CHANGE_INIT:
-        if (__this->cur_camera_id == 0) {
-            text->str = "00000";
-        } else {
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            if(__this->cur_camera_id == 0)
+            {
+                text->str = "00000";
+            }
+            else
+            {
 #ifdef CONFIG_VIDEO1_ENABLE
-            text->str = "00000";
+                text->str = "00000";
 #elif defined CONFIG_VIDEO3_ENABLE
-            text->str = "N/A";
+                text->str = "N/A";
 #endif
-        }
-        return TRUE;
-    default:
-        return FALSE;
+            }
+            return TRUE;
+        default:
+            return FALSE;
     }
     return FALSE;
 }
 
 REGISTER_UI_EVENT_HANDLER(TPH_TXT_REMAIN)
 .onchange = text_tph_remain_num_onchange,
- .onkey = NULL,
-  .ontouch = NULL,
+.onkey = NULL,
+.ontouch = NULL,
 };
 /***************************** 拍照系统日期控件动作 ************************************/
 static void get_sys_time(struct sys_time *time)
 {
     void *fd = dev_open("rtc", NULL);
-    if (!fd) {
+    if(!fd)
+    {
         memset(time, 0, sizeof(*time));
         return;
     }
@@ -1466,31 +1622,33 @@ static int timer_sys_date_tph_onchange(void *ctr, enum element_change_event e, v
 {
     struct ui_time *time = (struct ui_time *)ctr;
     struct sys_time sys_time;
-    switch (e) {
-    case ON_CHANGE_INIT:
-        get_sys_time(&sys_time);
-        time->year = sys_time.year;
-        time->month = sys_time.month;
-        time->day = sys_time.day;
-        time->hour = sys_time.hour;
-        time->min = sys_time.min;
-        time->sec = sys_time.sec;
-        break;
-    default:
-        return FALSE;
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            get_sys_time(&sys_time);
+            time->year = sys_time.year;
+            time->month = sys_time.month;
+            time->day = sys_time.day;
+            time->hour = sys_time.hour;
+            time->min = sys_time.min;
+            time->sec = sys_time.sec;
+            break;
+        default:
+            return FALSE;
     }
     return FALSE;
 }
 REGISTER_UI_EVENT_HANDLER(TPH_TIM_TIME)
 .onchange = timer_sys_date_tph_onchange,
- .onkey = NULL,
-  .ontouch = NULL,
+.onkey = NULL,
+.ontouch = NULL,
 };
 
 static int ani_delay_2s_onchange(void *_ani, enum element_change_event e, void *arg)
 {
     UI_ONTOUCH_DEBUG("ani_delay_2s_onchange: %d\n", e);
-    if (e == ON_CHANGE_ANIMATION_END || (e == ON_CHANGE_SHOW_PROBE && msg_show_f)) {
+    if(e == ON_CHANGE_ANIMATION_END || (e == ON_CHANGE_SHOW_PROBE && msg_show_f))
+    {
         //动画播完或有提示框时隐藏倒计时动画
         ui_hide(TPH_ANI_COUNTDOWN_2);
         ui_hide(TPH_LAY_CONUTDOWN);
@@ -1506,7 +1664,8 @@ REGISTER_UI_EVENT_HANDLER(TPH_ANI_COUNTDOWN_2)
 static int ani_delay_5s_onchange(void *_ani, enum element_change_event e, void *arg)
 {
     UI_ONTOUCH_DEBUG("ani_delay_5s_onchange: %d\n", e);
-    if (e == ON_CHANGE_ANIMATION_END || (e == ON_CHANGE_SHOW_PROBE && msg_show_f)) {
+    if(e == ON_CHANGE_ANIMATION_END || (e == ON_CHANGE_SHOW_PROBE && msg_show_f))
+    {
         //动画播完或有提示框时隐藏倒计时动画
         ui_hide(TPH_ANI_COUNTDOWN_5);
         ui_hide(TPH_LAY_CONUTDOWN);
@@ -1522,7 +1681,8 @@ REGISTER_UI_EVENT_HANDLER(TPH_ANI_COUNTDOWN_5)
 static int ani_delay_10s_onchange(void *_ani, enum element_change_event e, void *arg)
 {
     UI_ONTOUCH_DEBUG("ani_delay_10s_onchange: %d\n", e);
-    if (e == ON_CHANGE_ANIMATION_END || (e == ON_CHANGE_SHOW_PROBE && msg_show_f)) {
+    if(e == ON_CHANGE_ANIMATION_END || (e == ON_CHANGE_SHOW_PROBE && msg_show_f))
+    {
         //动画播完或有提示框时隐藏倒计时动画
         ui_hide(TPH_ANI_COUNTDOWN_10);
         ui_hide(TPH_LAY_CONUTDOWN);
@@ -1541,31 +1701,43 @@ static void battery_event_handler(struct sys_event *event, void *priv)
 {
 
     static u8 ten_sec_off = 0;
-    if (ten_sec_off) {
-        if (event->type == SYS_KEY_EVENT || event->type == SYS_TOUCH_EVENT) {
+    if(ten_sec_off)
+    {
+        if(event->type == SYS_KEY_EVENT || event->type == SYS_TOUCH_EVENT)
+        {
             ten_sec_off = 0;
             __tph_msg_hide(0);
             return;
         }
     }
-    if (event->type == SYS_DEVICE_EVENT) {
-        if (!ASCII_StrCmp(event->arg, "sys_power", 9)) {
-            if (event->u.dev.event == DEVICE_EVENT_POWER_PERCENT) {
+    if(event->type == SYS_DEVICE_EVENT)
+    {
+        if(!ASCII_StrCmp(event->arg, "sys_power", 9))
+        {
+            if(event->u.dev.event == DEVICE_EVENT_POWER_PERCENT)
+            {
                 __this->battery_val = event->u.dev.value;
-                if (__this->battery_val > 100) {
+                if(__this->battery_val > 100)
+                {
                     __this->battery_val = 100;
                 }
-                if (__this->battery_char == 0) {
+                if(__this->battery_char == 0)
+                {
                     ui_battery_level_change(__this->battery_val, 0);
                 }
-            } else if (event->u.dev.event == DEVICE_EVENT_POWER_CHARGER_IN) {
+            }
+            else if(event->u.dev.event == DEVICE_EVENT_POWER_CHARGER_IN)
+            {
                 ui_battery_level_change(100, 1);
                 __this->battery_char = 1;
-                if (ten_sec_off) {
+                if(ten_sec_off)
+                {
                     ten_sec_off = 0;
                     __tph_msg_hide(0);
                 }
-            } else if (event->u.dev.event == DEVICE_EVENT_POWER_CHARGER_OUT) {
+            }
+            else if(event->u.dev.event == DEVICE_EVENT_POWER_CHARGER_OUT)
+            {
                 ui_battery_level_change(__this->battery_val, 0);
                 __this->battery_char = 0;
                 __tph_msg_show(BOX_MSG_POWER_OFF, 0);
@@ -1577,16 +1749,22 @@ static void battery_event_handler(struct sys_event *event, void *priv)
 static void no_power_msg_box_timer(void *priv)
 {
     static u32 cnt = 0;
-    if (__this->battery_val <= 20
-        && __this->battery_char == 0
-        && __this->take_photo_busy == 0) {
+    if(__this->battery_val <= 20
+    && __this->battery_char == 0
+    && __this->take_photo_busy == 0)
+    {
         cnt++;
-        if ((cnt % 2) == 0) {
+        if((cnt % 2) == 0)
+        {
             __tph_msg_show(BOX_MSG_NO_POWER, 0);
-        } else {
+        }
+        else
+        {
             __tph_msg_hide(BOX_MSG_NO_POWER);
         }
-    } else {
+    }
+    else
+    {
         __tph_msg_hide(BOX_MSG_NO_POWER);
         cnt = 0;
     }
@@ -1598,39 +1776,42 @@ static int battery_tph_onchange(void *ctr, enum element_change_event e, void *ar
     struct ui_battery *battery = (struct ui_battery *)ctr;
     static u16 id = 0;
     static u32 timer_handle = 0;
-    switch (e) {
-    case ON_CHANGE_INIT:
-        id = register_sys_event_handler(SYS_DEVICE_EVENT | SYS_KEY_EVENT | SYS_TOUCH_EVENT, 200, 0, battery_event_handler);
-        break;
-    case ON_CHANGE_FIRST_SHOW:
-        __this->battery_val = sys_power_get_battery_persent();
-        /* u32 power_level = 0; */
-        /* dev_ioctl(fd, POWER_DET_GET_LEVEL, (u32)&power_level); */
-        /* printf("power_level : %d\n", power_level); */
-        /* __this->battery_val = power_level * 20; */
-        if (__this->battery_val > 100) {
-            __this->battery_val = 100;
-        }
-        __this->battery_char = (usb_is_charging() ? 1 : 0);
-        ui_battery_level_change(__this->battery_val, __this->battery_char);
-        timer_handle = sys_timer_add(NULL, no_power_msg_box_timer, 1000);
-        break;
-    case ON_CHANGE_RELEASE:
-        unregister_sys_event_handler(id);
-        if (timer_handle) {
-            sys_timer_del(timer_handle);
-            timer_handle = 0;
-        }
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            id = register_sys_event_handler(SYS_DEVICE_EVENT | SYS_KEY_EVENT | SYS_TOUCH_EVENT, 200, 0, battery_event_handler);
+            break;
+        case ON_CHANGE_FIRST_SHOW:
+            __this->battery_val = sys_power_get_battery_persent();
+            /* u32 power_level = 0; */
+            /* dev_ioctl(fd, POWER_DET_GET_LEVEL, (u32)&power_level); */
+            /* printf("power_level : %d\n", power_level); */
+            /* __this->battery_val = power_level * 20; */
+            if(__this->battery_val > 100)
+            {
+                __this->battery_val = 100;
+            }
+            __this->battery_char = (usb_is_charging() ? 1 : 0);
+            ui_battery_level_change(__this->battery_val, __this->battery_char);
+            timer_handle = sys_timer_add(NULL, no_power_msg_box_timer, 1000);
+            break;
+        case ON_CHANGE_RELEASE:
+            unregister_sys_event_handler(id);
+            if(timer_handle)
+            {
+                sys_timer_del(timer_handle);
+                timer_handle = 0;
+            }
+            break;
+        default:
+            return false;
     }
     return false;
 }
 REGISTER_UI_EVENT_HANDLER(TPH_BAT)
 .onchange = battery_tph_onchange,
- .onkey = NULL,
-  .ontouch = NULL,
+.onkey = NULL,
+.ontouch = NULL,
 };
 
 
@@ -1644,50 +1825,53 @@ int tph_mode_onchange(void *ctr, enum element_change_event e, void *arg)
     int ret;
     /* printf("^^^ tph_mode_onchange %d^^^\r\n", e); */
 
-    switch (e) {
-    case ON_CHANGE_INIT:
-        /* 注册APP消息响应 */
-        ui_register_msg_handler(ID_WINDOW_VIDEO_TPH, tph_msg_handler);
-        __this->cur_camera_id = 0;
-        sys_cur_mod = 2;  /* 1:rec, 2:tph, 3:dec */
-        memset(__this, 0, sizeof_this);
-        __this->camera[0].hand_shake = db_select("sok");
-        __this->camera[0].dat_label = db_select("pdat");
-        __this->camera[0].repeat = db_select("cyt");
-        __this->camera[0].quality = index_of_table8(db_select("qua"), TABLE(table_photo_quality_camera0));
-        __this->camera[0].tph_delay = index_of_table8(db_select("phm"), TABLE(table_photo_delay_mode_camera0));
-        __this->camera[0].acutance = index_of_table8(db_select("acu"), TABLE(table_photo_acutance_camera0));
-        __this->camera[0].resolution = index_of_table8(db_select("pres"), TABLE(table_photo_res_camera0));
-        __this->camera[0].white_balance = index_of_table8(db_select("wbl"), TABLE(table_photo_white_balance_camera0));
-        __this->camera[0].color = index_of_table8(db_select("col"), TABLE(table_photo_color_camera0));
-        __this->camera[0].quick_scan = index_of_table8(db_select("sca"), TABLE(table_photo_quick_scan_camera0));
-        __this->camera[0].exposure = index_of_table8(db_select("pexp"), TABLE(table_photo_exposure_camera0));
-        __this->camera[0].iso = index_of_table16(db_select("iso"), TABLE(table_photo_iso_camera0));
-        break;
-    case ON_CHANGE_FIRST_SHOW:
-        break;
-    case ON_CHANGE_RELEASE:
-        /* ui_hide(ID_WINDOW_VIDEO_SYS); */
-        if (__this->menu_status) {
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            /* 注册APP消息响应 */
+            ui_register_msg_handler(ID_WINDOW_VIDEO_TPH, tph_msg_handler);
+            __this->cur_camera_id = 0;
+            sys_cur_mod = 2;  /* 1:rec, 2:tph, 3:dec */
+            memset(__this, 0, sizeof_this);
+            __this->camera[0].hand_shake = db_select("sok");
+            __this->camera[0].dat_label = db_select("pdat");
+            __this->camera[0].repeat = db_select("cyt");
+            __this->camera[0].quality = index_of_table8(db_select("qua"), TABLE(table_photo_quality_camera0));
+            __this->camera[0].tph_delay = index_of_table8(db_select("phm"), TABLE(table_photo_delay_mode_camera0));
+            __this->camera[0].acutance = index_of_table8(db_select("acu"), TABLE(table_photo_acutance_camera0));
+            __this->camera[0].resolution = index_of_table8(db_select("pres"), TABLE(table_photo_res_camera0));
+            __this->camera[0].white_balance = index_of_table8(db_select("wbl"), TABLE(table_photo_white_balance_camera0));
+            __this->camera[0].color = index_of_table8(db_select("col"), TABLE(table_photo_color_camera0));
+            __this->camera[0].quick_scan = index_of_table8(db_select("sca"), TABLE(table_photo_quick_scan_camera0));
+            __this->camera[0].exposure = index_of_table8(db_select("pexp"), TABLE(table_photo_exposure_camera0));
+            __this->camera[0].iso = index_of_table16(db_select("iso"), TABLE(table_photo_iso_camera0));
+            break;
+        case ON_CHANGE_FIRST_SHOW:
+            break;
+        case ON_CHANGE_RELEASE:
+            /* ui_hide(ID_WINDOW_VIDEO_SYS); */
+            if(__this->menu_status)
+            {
 #if DOUBLE_720
-            ui_hide(TPH_SET_LAY);
+                ui_hide(TPH_SET_LAY);
 #else
-            ui_hide(TPH_SET_WIN);
+                ui_hide(TPH_SET_WIN);
 #endif
-        }
-        if (__this->page_exit == HOME_SW_EXIT) {
-            ui_show(ID_WINDOW_MAIN_PAGE);
-        }
-        __tph_msg_hide(0);//强制隐藏消息框
-        break;
-    default:
-        return false;
+            }
+            if(__this->page_exit == HOME_SW_EXIT)
+            {
+                ui_show(ID_WINDOW_MAIN_PAGE);
+            }
+            __tph_msg_hide(0);//强制隐藏消息框
+            break;
+        default:
+            return false;
     }
     return false;
 }
 REGISTER_UI_EVENT_HANDLER(ID_WINDOW_VIDEO_TPH)
 .onchange = tph_mode_onchange,
- .ontouch = NULL,
+.ontouch = NULL,
 };
 /*****************************布局up回调 ************************************/
 static int tph_layout_up_onchange(void *ctr, enum element_change_event e, void *arg)
@@ -1697,35 +1881,41 @@ static int tph_layout_up_onchange(void *ctr, enum element_change_event e, void *
     struct intent it;
     int ret;
 
-    switch (e) {
-    case ON_CHANGE_FIRST_SHOW: /* 在此获取默认隐藏的图标的状态并显示 */
+    switch(e)
+    {
+        case ON_CHANGE_FIRST_SHOW: /* 在此获取默认隐藏的图标的状态并显示 */
 
-        if (dev_online("uvc") || dev_online("video1.*")) {
-            av_in_statu = 1;
-            ui_show(TPH_BTN_SWITCH);
-        }
-        if (__this->camera[0].tph_delay != 0) {
-            ui_pic_show_image_by_id(TPH_PIC_DELAY, __this->camera[0].tph_delay - 1);
-        }
-        printf("\n__this->camera[0].res===%d\n", __this->camera[0].resolution);
-        ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
-        ui_pic_show_image_by_id(TPH_PIC_QUALITY, 2 - __this->camera[0].quality);
-        ui_pic_show_image_by_id(TPH_PIC_WB, __this->camera[0].white_balance);
-        ui_pic_show_image_by_id(TPH_PIC_ISO, __this->camera[0].iso);
-        if (__this->camera[0].hand_shake != 0) {
-            ui_show(TPH_PIC_HS);
-        }
-        if (__this->camera[0].repeat != 0) {
-            ui_show(TPH_PIC_TRIPLE);
-        }
+            if(dev_online("uvc") || dev_online("video1.*"))
+            {
+                av_in_statu = 1;
+                ui_show(TPH_BTN_SWITCH);
+            }
+            if(__this->camera[0].tph_delay != 0)
+            {
+                ui_pic_show_image_by_id(TPH_PIC_DELAY, __this->camera[0].tph_delay - 1);
+            }
+            printf("\n__this->camera[0].res===%d\n", __this->camera[0].resolution);
+            ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
+            ui_pic_show_image_by_id(TPH_PIC_QUALITY, 2 - __this->camera[0].quality);
+            ui_pic_show_image_by_id(TPH_PIC_WB, __this->camera[0].white_balance);
+            ui_pic_show_image_by_id(TPH_PIC_ISO, __this->camera[0].iso);
+            if(__this->camera[0].hand_shake != 0)
+            {
+                ui_show(TPH_PIC_HS);
+            }
+            if(__this->camera[0].repeat != 0)
+            {
+                ui_show(TPH_PIC_TRIPLE);
+            }
 
-        if (storage_device_ready() == 0) {
-            ui_show(TPH_PIC_SD);
-        }
+            if(storage_device_ready() == 0)
+            {
+                ui_show(TPH_PIC_SD);
+            }
 
-        break;
-    default:
-        return false;
+            break;
+        default:
+            return false;
     }
     return false;
 }
@@ -1736,22 +1926,24 @@ REGISTER_UI_EVENT_HANDLER(TPH_LAY)
 static int tph_layout_button_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**tph layout button ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        if (__this->menu_status) {
-            disp_TphSetting_lay(0);
-        }
-        break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            if(__this->menu_status)
+            {
+                disp_TphSetting_lay(0);
+            }
+            break;
     }
     return false;
 }
@@ -1761,15 +1953,17 @@ REGISTER_UI_EVENT_HANDLER(TPH_BTN_BASE)
 static int ani_headlight_onchange(void *_ani, enum element_change_event e, void *arg)
 {
     UI_ONTOUCH_DEBUG("ani_headlight_onchange: %d\n", e);
-    switch (e) {
-    case ON_CHANGE_SHOW_PROBE:
-        if (msg_show_f && __this->hlight_show_status) {
-            //有提示框时隐藏前照灯
-            ui_hide(TPH_LAY_FLIG);//hide head light
-        }
-        break;
-    default:
-        break;
+    switch(e)
+    {
+        case ON_CHANGE_SHOW_PROBE:
+            if(msg_show_f && __this->hlight_show_status)
+            {
+                //有提示框时隐藏前照灯
+                ui_hide(TPH_LAY_FLIG);//hide head light
+            }
+            break;
+        default:
+            break;
     }
 
     return false;
@@ -1782,35 +1976,41 @@ static int tph_set_ontouch(void *ctr, struct element_touch_event *e)
 {
     static u8 last_onkey_mod = 0;
     UI_ONTOUCH_DEBUG("**tph set ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        if (__this->menu_status) {
-            __this->onkey_mod = last_onkey_mod ? 1 : 0;
-            __this->onkey_sel = 0;
-            disp_TphSetting_lay(0);
-            if (__this->onkey_mod == 0) {
-                tph_tell_app_exit_menu();
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            if(__this->menu_status)
+            {
+                __this->onkey_mod = last_onkey_mod ? 1 : 0;
+                __this->onkey_sel = 0;
+                disp_TphSetting_lay(0);
+                if(__this->onkey_mod == 0)
+                {
+                    tph_tell_app_exit_menu();
+                }
             }
-        } else {
-            if (tph_ask_app_open_menu() == (int) - 1) {
-                return -1;
+            else
+            {
+                if(tph_ask_app_open_menu() == (int) - 1)
+                {
+                    return -1;
+                }
+                last_onkey_mod = __this->onkey_mod;
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
+                disp_TphSetting_lay(1);
             }
-            last_onkey_mod = __this->onkey_mod;
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-            disp_TphSetting_lay(1);
-        }
-        break;
+            break;
     }
     return false;
 }
@@ -1820,9 +2020,12 @@ REGISTER_UI_EVENT_HANDLER(TPH_BTN_SETTING)
 /***************************** 拍照开始结束动作 ************************************/
 static void tph_control_ok(void *p, int err)
 {
-    if (err == 0) {
+    if(err == 0)
+    {
         puts("---tph control ok\n");
-    } else {
+    }
+    else
+    {
         printf("---tph control faild: %d\n", err);
     }
 }
@@ -1830,30 +2033,32 @@ static int tph_control_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**tph control ontouch**");
     struct intent it;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        if (__this->onkey_mod == 1) {
-            ui_no_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
-            ui_highlight_element_by_id(TPH_PIC_TPH);
-            tph_tell_app_exit_menu();
-            __this->onkey_mod = 0;
-            __this->onkey_sel = 0;
-        }
-        it.name = "video_photo";
-        it.action = ACTION_PHOTO_TAKE_CONTROL;
-        start_app_async(&it, tph_control_ok, NULL);
-        break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            if(__this->onkey_mod == 1)
+            {
+                ui_no_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
+                ui_highlight_element_by_id(TPH_PIC_TPH);
+                tph_tell_app_exit_menu();
+                __this->onkey_mod = 0;
+                __this->onkey_sel = 0;
+            }
+            it.name = "video_photo";
+            it.action = ACTION_PHOTO_TAKE_CONTROL;
+            start_app_async(&it, tph_control_ok, NULL);
+            break;
     }
     return false;
 }
@@ -1865,15 +2070,16 @@ static int tph_switch_onchange(void *ctr, enum element_change_event e, void *arg
 {
     static u16 id = 0;
 
-    switch (e) {
-    case ON_CHANGE_INIT:
-        id = register_sys_event_handler(SYS_DEVICE_EVENT, 0, 0, avin_event_handler);
-        break;
-    case ON_CHANGE_RELEASE:
-        unregister_sys_event_handler(id);
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            id = register_sys_event_handler(SYS_DEVICE_EVENT, 0, 0, avin_event_handler);
+            break;
+        case ON_CHANGE_RELEASE:
+            unregister_sys_event_handler(id);
+            break;
+        default:
+            return false;
     }
     return false;
 }
@@ -1881,29 +2087,30 @@ static int tph_switch_cam_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**tph switch camera ontouch**");
     struct intent it;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        init_intent(&it);
-        it.name = "video_photo";
-        it.action = ACTION_PHOTO_TAKE_SWITCH_WIN;
-        start_app(&it);
-        break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            init_intent(&it);
+            it.name = "video_photo";
+            it.action = ACTION_PHOTO_TAKE_SWITCH_WIN;
+            start_app(&it);
+            break;
     }
     return false;
 }
 REGISTER_UI_EVENT_HANDLER(TPH_BTN_SWITCH)
 .ontouch = tph_switch_cam_ontouch,
- .onchange = tph_switch_onchange,
+.onchange = tph_switch_onchange,
 };
 /***************************** 返回HOME按钮动作 ************************************/
 static int tph_backhome_ontouch(void *ctr, struct element_touch_event *e)
@@ -1911,28 +2118,30 @@ static int tph_backhome_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**tph back to home ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        init_intent(&it);
-        app = get_current_app();
-        if (app) {
-            __this->page_exit = HOME_SW_EXIT;
-            it.name = "video_photo";
-            it.action = ACTION_BACK;
-            start_app_async(&it, NULL, NULL); //不等待直接启动app
-        }
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            init_intent(&it);
+            app = get_current_app();
+            if(app)
+            {
+                __this->page_exit = HOME_SW_EXIT;
+                it.name = "video_photo";
+                it.action = ACTION_BACK;
+                start_app_async(&it, NULL, NULL); //不等待直接启动app
+            }
 
-        break;
+            break;
     }
     return false;
 }
@@ -1944,32 +2153,34 @@ static int tph_to_rec_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**tph  to rec ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->page_exit = MODE_SW_EXIT;
-        init_intent(&it);
-        app = get_current_app();
-        if (app) {
-            it.name = "video_photo";
-            it.action = ACTION_BACK;
-            start_app_async(&it, NULL, NULL); //不等待直接启动app
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->page_exit = MODE_SW_EXIT;
+            init_intent(&it);
+            app = get_current_app();
+            if(app)
+            {
+                it.name = "video_photo";
+                it.action = ACTION_BACK;
+                start_app_async(&it, NULL, NULL); //不等待直接启动app
 
-            it.name = "video_rec";
-            it.action = ACTION_VIDEO_REC_MAIN;
-            start_app_async(&it, NULL, NULL); //不等待直接启动app
-        }
-        malloc_stats();
-        break;
+                it.name = "video_rec";
+                it.action = ACTION_VIDEO_REC_MAIN;
+                start_app_async(&it, NULL, NULL); //不等待直接启动app
+            }
+            malloc_stats();
+            break;
     }
     return false;
 }
@@ -1983,33 +2194,38 @@ REGISTER_UI_EVENT_HANDLER(TPH_BTN_PHOTO)
 static int menu_photo_res_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**res menu ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].resolution = index_of_table8(db_select("pres"), TABLE(table_photo_res_camera0));
-        if (__this->tph_menu_status == TPH_MENU_RESOLUTION) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].resolution = index_of_table8(db_select("pres"), TABLE(table_photo_res_camera0));
+            if(__this->tph_menu_status == TPH_MENU_RESOLUTION)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 1;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_RESOLUTION);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 1;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_RESOLUTION);
+            break;
     }
     return false;
 }
@@ -2022,33 +2238,38 @@ static int menu_photo_mode_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**photo mode  ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].tph_delay = index_of_table8(db_select("phm"), TABLE(table_photo_delay_mode_camera0));
-        if (__this->tph_menu_status == TPH_MENU_DELAY) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].tph_delay = index_of_table8(db_select("phm"), TABLE(table_photo_delay_mode_camera0));
+            if(__this->tph_menu_status == TPH_MENU_DELAY)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 2;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_DELAY);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 2;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_DELAY);
+            break;
     }
     return false;
 }
@@ -2060,33 +2281,38 @@ static int menu_photo_continue_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**photo continue ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].repeat = db_select("cyt");
-        if (__this->tph_menu_status == TPH_MENU_CONTINUOUS) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].repeat = db_select("cyt");
+            if(__this->tph_menu_status == TPH_MENU_CONTINUOUS)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 3;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_CONTINUOUS);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 3;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_CONTINUOUS);
+            break;
     }
     return false;
 }
@@ -2099,33 +2325,38 @@ static int menu_photo_quality_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**photo quality ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].quality = index_of_table8(db_select("qua"), TABLE(table_photo_quality_camera0));
-        if (__this->tph_menu_status == TPH_MENU_QUALITY) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].quality = index_of_table8(db_select("qua"), TABLE(table_photo_quality_camera0));
+            if(__this->tph_menu_status == TPH_MENU_QUALITY)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 4;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_QUALITY);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 4;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_QUALITY);
+            break;
     }
     return false;
 }
@@ -2137,33 +2368,38 @@ static int menu_photo_acu_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**photo acutance ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].acutance = index_of_table8(db_select("acu"), TABLE(table_photo_acutance_camera0));
-        if (__this->tph_menu_status == TPH_MENU_ACUITY) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].acutance = index_of_table8(db_select("acu"), TABLE(table_photo_acutance_camera0));
+            if(__this->tph_menu_status == TPH_MENU_ACUITY)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 5;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_ACUITY);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 5;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_ACUITY);
+            break;
     }
     return false;
 }
@@ -2175,33 +2411,38 @@ static int menu_photo_wbl_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**photo white_balance ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].white_balance = index_of_table8(db_select("wbl"), TABLE(table_photo_white_balance_camera0));
-        if (__this->tph_menu_status == TPH_MENU_AWB) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].white_balance = index_of_table8(db_select("wbl"), TABLE(table_photo_white_balance_camera0));
+            if(__this->tph_menu_status == TPH_MENU_AWB)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 6;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_AWB);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 6;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_AWB);
+            break;
     }
     return false;
 }
@@ -2213,33 +2454,38 @@ static int menu_photo_color_ontouch(void *ctr, struct element_touch_event *e)
     UI_ONTOUCH_DEBUG("**photo color ontouch**");
     struct intent it;
     struct application *app;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].color = index_of_table8(db_select("col"), TABLE(table_photo_color_camera0));
-        if (__this->tph_menu_status == TPH_MENU_COLOR) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].color = index_of_table8(db_select("col"), TABLE(table_photo_color_camera0));
+            if(__this->tph_menu_status == TPH_MENU_COLOR)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 7;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_COLOR);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 7;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_COLOR);
+            break;
     }
     return false;
 }
@@ -2250,33 +2496,38 @@ REGISTER_UI_EVENT_HANDLER(TPH_SET_PIC_2_3)
 static int menu_photo_iso_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**photo iso  ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].iso = index_of_table16(db_select("iso"), TABLE(table_photo_iso_camera0));
-        if (__this->tph_menu_status == TPH_MENU_ISO) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].iso = index_of_table16(db_select("iso"), TABLE(table_photo_iso_camera0));
+            if(__this->tph_menu_status == TPH_MENU_ISO)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 8;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_ISO);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 8;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_ISO);
+            break;
     }
     return false;
 }
@@ -2286,33 +2537,38 @@ REGISTER_UI_EVENT_HANDLER(TPH_SET_PIC_2_4)
 static int menu_photo_exp_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**photo exp  ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].exposure = index_of_table8(db_select("pexp"), TABLE(table_photo_exposure_camera0));
-        if (__this->tph_menu_status == TPH_MENU_EXPOSURE) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].exposure = index_of_table8(db_select("pexp"), TABLE(table_photo_exposure_camera0));
+            if(__this->tph_menu_status == TPH_MENU_EXPOSURE)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 9;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_EXPOSURE);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 9;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_EXPOSURE);
+            break;
     }
     return false;
 }
@@ -2322,33 +2578,38 @@ REGISTER_UI_EVENT_HANDLER(TPH_SET_PIC_3_1)
 static int menu_photo_sok_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**photo shake  ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].hand_shake = db_select("sok");
-        if (__this->tph_menu_status == TPH_MENU_TREMOR) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].hand_shake = db_select("sok");
+            if(__this->tph_menu_status == TPH_MENU_TREMOR)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 10;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_TREMOR);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 10;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_TREMOR);
+            break;
     }
     return false;
 }
@@ -2358,33 +2619,38 @@ REGISTER_UI_EVENT_HANDLER(TPH_SET_PIC_3_2)
 static int menu_photo_preview_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**photo preview  ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].quick_scan = index_of_table8(db_select("sca"), TABLE(table_photo_quick_scan_camera0));
-        if (__this->tph_menu_status == TPH_MENU_PREVIEW) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].quick_scan = index_of_table8(db_select("sca"), TABLE(table_photo_quick_scan_camera0));
+            if(__this->tph_menu_status == TPH_MENU_PREVIEW)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 11;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_PREVIEW);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 11;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_PREVIEW);
+            break;
     }
     return false;
 }
@@ -2394,33 +2660,38 @@ REGISTER_UI_EVENT_HANDLER(TPH_SET_PIC_3_3)
 static int menu_photo_datlable_ontouch(void *ctr, struct element_touch_event *e)
 {
     UI_ONTOUCH_DEBUG("**photo date lable  ontouch**");
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        __this->camera[0].dat_label = db_select("pdat");
-        if (__this->tph_menu_status == TPH_MENU_LABEL) {
-            __this->onkey_mod = 2;
-            __this->onkey_sel = 0;
-        } else {
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            __this->camera[0].dat_label = db_select("pdat");
+            if(__this->tph_menu_status == TPH_MENU_LABEL)
+            {
+                __this->onkey_mod = 2;
+                __this->onkey_sel = 0;
             }
-            __this->onkey_mod = 2 + 12;
-            __this->onkey_sel = 0;
-        }
-        ui_set_call(tph_menu, TPH_MENU_LABEL);
-        break;
+            else
+            {
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_mod = 2 + 12;
+                __this->onkey_sel = 0;
+            }
+            ui_set_call(tph_menu, TPH_MENU_LABEL);
+            break;
     }
     return false;
 }
@@ -2441,63 +2712,72 @@ int menu_tph_res_ontouch(void *arg1, struct element_touch_event *e)
     static s16 x_pos_down = 0;
     static s16 old_res = 0;
     s16 tmp;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
 #if TOUCH_R90
-        x_pos_down = e->pos.y;
+            x_pos_down = e->pos.y;
 #else
-        x_pos_down = e->pos.x;
+            x_pos_down = e->pos.x;
 #endif
-        old_res = __this->camera[0].resolution;
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        return true;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            old_res = __this->camera[0].resolution;
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            return true;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
 #if TOUCH_R90
-        s16 x_pos_now = e->pos.y;
+            s16 x_pos_now = e->pos.y;
 #else
-        s16 x_pos_now = e->pos.x;
+            s16 x_pos_now = e->pos.x;
 #endif
-        s16 x_pos_ch = x_pos_now -  x_pos_down;
-        tmp = __this->camera[0].resolution;
-        if (x_pos_ch < SLID_RES_GAP && x_pos_ch > -SLID_RES_GAP) {
-            return false;
-        }
-        tmp = old_res + x_pos_ch / SLID_RES_GAP;
-        if (tmp > SLID_RES_ITEM - 1) {
-            tmp = SLID_RES_ITEM - 1;
-            x_pos_down = x_pos_now;
-            old_res = SLID_RES_ITEM - 1;
-        } else if (tmp < 0) {
-            tmp = 0;
-            x_pos_down = x_pos_now;
-            old_res = 0;
-        }
-        printf("\n tmp_res = %d \n", tmp);
-        if (__this->camera[0].resolution == tmp) {
-            return false;
-        }
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-#if TPH_MENU_HIDE_ENABLE
-        ui_set_call(tph_menu, __this->tph_menu_status);
-#endif
-        int i;
-        tmp = __this->camera[0].resolution;
-        for (i = 1; i <= SLID_RES_ITEM; i++) {
-            if (e->pos.x - SLID_RES_X < SLID_RES_GAP * i && e->pos.x > SLID_RES_X + SLID_RES_GAP * (i - 1)) {
-                tmp = i - 1;
+            s16 x_pos_ch = x_pos_now -  x_pos_down;
+            tmp = __this->camera[0].resolution;
+            if(x_pos_ch < SLID_RES_GAP && x_pos_ch > -SLID_RES_GAP)
+            {
+                return false;
             }
-        }
-        if (__this->camera[0].resolution == tmp) {
-            return false;
-        }
-        break;
+            tmp = old_res + x_pos_ch / SLID_RES_GAP;
+            if(tmp > SLID_RES_ITEM - 1)
+            {
+                tmp = SLID_RES_ITEM - 1;
+                x_pos_down = x_pos_now;
+                old_res = SLID_RES_ITEM - 1;
+            }
+            else if(tmp < 0)
+            {
+                tmp = 0;
+                x_pos_down = x_pos_now;
+                old_res = 0;
+            }
+            printf("\n tmp_res = %d \n", tmp);
+            if(__this->camera[0].resolution == tmp)
+            {
+                return false;
+            }
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+#if TPH_MENU_HIDE_ENABLE
+            ui_set_call(tph_menu, __this->tph_menu_status);
+#endif
+            int i;
+            tmp = __this->camera[0].resolution;
+            for(i = 1; i <= SLID_RES_ITEM; i++)
+            {
+                if(e->pos.x - SLID_RES_X < SLID_RES_GAP * i && e->pos.x > SLID_RES_X + SLID_RES_GAP * (i - 1))
+                {
+                    tmp = i - 1;
+                }
+            }
+            if(__this->camera[0].resolution == tmp)
+            {
+                return false;
+            }
+            break;
     }
     ui_hide(_TPH_SET_PIC_RES[__this->camera[0].resolution]);
     ui_show(_TPH_SET_PIC_RES[tmp]);
@@ -2506,7 +2786,8 @@ int menu_tph_res_ontouch(void *arg1, struct element_touch_event *e)
 #if TPH_REMAIN_DISCAL
     __this->remain_num = 0;
 #endif
-    if (__this->cur_camera_id == 0) {
+    if(__this->cur_camera_id == 0)
+    {
         ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
     }
     return false;
@@ -2522,50 +2803,59 @@ static int menu_tph_c4_ontouch(void *_ctr, struct element_touch_event *e)
     int sel_item = 0;
     struct ui_pic *ctr = (struct ui_pic *)_ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        for (int i = 0; i < 4; i++) {
-            if (ctr->elm.id == _TPH_SET_PIC_C4[i]) {
-                sel_item = i;
-                break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            for(int i = 0; i < 4; i++)
+            {
+                if(ctr->elm.id == _TPH_SET_PIC_C4[i])
+                {
+                    sel_item = i;
+                    break;
+                }
             }
-        }
 #if TPH_MENU_HIDE_ENABLE
-        ui_set_call(tph_menu, __this->tph_menu_status);
+            ui_set_call(tph_menu, __this->tph_menu_status);
 #endif
-        switch (__this->tph_menu_status) {
-        case TPH_MENU_DELAY:
-            if (__this->camera[0].tph_delay == sel_item) {
-                return false;
-            }
-            ui_no_highlight_element_by_id(_TPH_SET_PIC_C4[__this->camera[0].tph_delay]);
-            ui_highlight_element_by_id(_TPH_SET_PIC_C4[sel_item]);
-            if (__this->camera[0].tph_delay == 0) {
-                ui_show(TPH_PIC_DELAY);
-            }
-            menu_tph_set_phm(sel_item);
-            __this->camera[0].tph_delay = sel_item;
-            if (sel_item == 0) {
-                ui_hide(TPH_PIC_DELAY);
-            } else {
-                ui_pic_show_image_by_id(TPH_PIC_DELAY, sel_item - 1);
+            switch(__this->tph_menu_status)
+            {
+                case TPH_MENU_DELAY:
+                    if(__this->camera[0].tph_delay == sel_item)
+                    {
+                        return false;
+                    }
+                    ui_no_highlight_element_by_id(_TPH_SET_PIC_C4[__this->camera[0].tph_delay]);
+                    ui_highlight_element_by_id(_TPH_SET_PIC_C4[sel_item]);
+                    if(__this->camera[0].tph_delay == 0)
+                    {
+                        ui_show(TPH_PIC_DELAY);
+                    }
+                    menu_tph_set_phm(sel_item);
+                    __this->camera[0].tph_delay = sel_item;
+                    if(sel_item == 0)
+                    {
+                        ui_hide(TPH_PIC_DELAY);
+                    }
+                    else
+                    {
+                        ui_pic_show_image_by_id(TPH_PIC_DELAY, sel_item - 1);
+                    }
+                    break;
+                default:
+                    break;
             }
             break;
-        default:
-            break;
-        }
-        break;
     }
     return false;
 }
@@ -2590,67 +2880,80 @@ static int menu_tph_c2_ontouch(void *_ctr, struct element_touch_event *e)
     int sel_item = 0;
     struct ui_pic *ctr = (struct ui_pic *)_ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        for (int i = 0; i < 2; i++) {
-            if (ctr->elm.id == _TPH_SET_PIC_C2[i]) {
-                sel_item = i;
-                break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            for(int i = 0; i < 2; i++)
+            {
+                if(ctr->elm.id == _TPH_SET_PIC_C2[i])
+                {
+                    sel_item = i;
+                    break;
+                }
             }
-        }
 #if TPH_MENU_HIDE_ENABLE
-        ui_set_call(tph_menu, __this->tph_menu_status);
+            ui_set_call(tph_menu, __this->tph_menu_status);
 #endif
-        switch (__this->tph_menu_status) {
-        case TPH_MENU_CONTINUOUS:
-            if (__this->camera[0].repeat == sel_item) {
-                return false;
+            switch(__this->tph_menu_status)
+            {
+                case TPH_MENU_CONTINUOUS:
+                    if(__this->camera[0].repeat == sel_item)
+                    {
+                        return false;
+                    }
+                    menu_tph_set_cyt(sel_item);
+                    __this->camera[0].repeat = sel_item;
+                    if(sel_item)
+                    {
+                        ui_show(TPH_PIC_TRIPLE);
+                    }
+                    else
+                    {
+                        ui_hide(TPH_PIC_TRIPLE);
+                    }
+                    break;
+                case TPH_MENU_TREMOR:
+                    if(__this->camera[0].hand_shake == sel_item)
+                    {
+                        return false;
+                    }
+                    menu_tph_set_sok(sel_item);
+                    __this->camera[0].hand_shake = sel_item;
+                    if(sel_item)
+                    {
+                        ui_show(TPH_PIC_HS);
+                    }
+                    else
+                    {
+                        ui_hide(TPH_PIC_HS);
+                    }
+                    break;
+                case TPH_MENU_LABEL:
+                    if(__this->camera[0].dat_label == sel_item)
+                    {
+                        return false;
+                    }
+                    menu_tph_set_pdat(sel_item);
+                    __this->camera[0].dat_label = sel_item;
+                    break;
+                default:
+                    return false;
+                    break;
             }
-            menu_tph_set_cyt(sel_item);
-            __this->camera[0].repeat = sel_item;
-            if (sel_item) {
-                ui_show(TPH_PIC_TRIPLE);
-            } else {
-                ui_hide(TPH_PIC_TRIPLE);
-            }
+            ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[!sel_item]);
+            ui_highlight_element_by_id(_TPH_SET_PIC_C2[sel_item]);
             break;
-        case TPH_MENU_TREMOR:
-            if (__this->camera[0].hand_shake == sel_item) {
-                return false;
-            }
-            menu_tph_set_sok(sel_item);
-            __this->camera[0].hand_shake = sel_item;
-            if (sel_item) {
-                ui_show(TPH_PIC_HS);
-            } else {
-                ui_hide(TPH_PIC_HS);
-            }
-            break;
-        case TPH_MENU_LABEL:
-            if (__this->camera[0].dat_label == sel_item) {
-                return false;
-            }
-            menu_tph_set_pdat(sel_item);
-            __this->camera[0].dat_label = sel_item;
-            break;
-        default:
-            return false;
-            break;
-        }
-        ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[!sel_item]);
-        ui_highlight_element_by_id(_TPH_SET_PIC_C2[sel_item]);
-        break;
     }
     return false;
 }
@@ -2668,68 +2971,76 @@ static int menu_tph_c3_ontouch(void *_ctr, struct element_touch_event *e)
     int sel_item = 0;
     struct ui_pic *ctr = (struct ui_pic *)_ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        for (int i = 0; i < 3; i++) {
-            if (ctr->elm.id == _TPH_SET_PIC_C3[i]) {
-                sel_item = i;
-                break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            for(int i = 0; i < 3; i++)
+            {
+                if(ctr->elm.id == _TPH_SET_PIC_C3[i])
+                {
+                    sel_item = i;
+                    break;
+                }
             }
-        }
 #if TPH_MENU_HIDE_ENABLE
-        ui_set_call(tph_menu, __this->tph_menu_status);
+            ui_set_call(tph_menu, __this->tph_menu_status);
 #endif
-        switch (__this->tph_menu_status) {
+            switch(__this->tph_menu_status)
+            {
 #if (DOUBLE_720 == 1)
-        case TPH_MENU_RESOLUTION:
-            if (__this->camera[0].resolution == sel_item) {
-                break;
-            }
-            ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].resolution]);
-            ui_highlight_element_by_id(_TPH_SET_PIC_C3[sel_item]);
-            menu_tph_set_pres(sel_item);
-            if (__this->cur_camera_id == 0) {
-                ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, sel_item);
-            }
+                case TPH_MENU_RESOLUTION:
+                    if(__this->camera[0].resolution == sel_item)
+                    {
+                        break;
+                    }
+                    ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].resolution]);
+                    ui_highlight_element_by_id(_TPH_SET_PIC_C3[sel_item]);
+                    menu_tph_set_pres(sel_item);
+                    if(__this->cur_camera_id == 0)
+                    {
+                        ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, sel_item);
+                    }
 
-            break;
+                    break;
 #endif
 
-        case TPH_MENU_QUALITY:
-            if (__this->camera[0].quality == sel_item) {
-                return false;
+                case TPH_MENU_QUALITY:
+                    if(__this->camera[0].quality == sel_item)
+                    {
+                        return false;
+                    }
+                    ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].quality]);
+                    ui_highlight_element_by_id(_TPH_SET_PIC_C3[sel_item]);
+                    menu_tph_set_qua(sel_item);
+                    __this->camera[0].quality = sel_item;
+                    ui_pic_show_image_by_id(TPH_PIC_QUALITY, 2 - __this->camera[0].quality);
+                    break;
+                case TPH_MENU_PREVIEW:
+                    if(__this->camera[0].quick_scan == sel_item)
+                    {
+                        return false;
+                    }
+                    ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].quick_scan]);
+                    ui_highlight_element_by_id(_TPH_SET_PIC_C3[sel_item]);
+                    menu_tph_set_sca(sel_item);
+                    __this->camera[0].quick_scan = sel_item;
+                    break;
+                default:
+                    return false;
+                    break;
             }
-            ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].quality]);
-            ui_highlight_element_by_id(_TPH_SET_PIC_C3[sel_item]);
-            menu_tph_set_qua(sel_item);
-            __this->camera[0].quality = sel_item;
-            ui_pic_show_image_by_id(TPH_PIC_QUALITY, 2 - __this->camera[0].quality);
             break;
-        case TPH_MENU_PREVIEW:
-            if (__this->camera[0].quick_scan == sel_item) {
-                return false;
-            }
-            ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[__this->camera[0].quick_scan]);
-            ui_highlight_element_by_id(_TPH_SET_PIC_C3[sel_item]);
-            menu_tph_set_sca(sel_item);
-            __this->camera[0].quick_scan = sel_item;
-            break;
-        default:
-            return false;
-            break;
-        }
-        break;
     }
     return false;
 }
@@ -2750,52 +3061,58 @@ static int menu_tph_c30_ontouch(void *_ctr, struct element_touch_event *e)
     int sel_item = 0;
     struct ui_pic *ctr = (struct ui_pic *)_ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        for (int i = 0; i < 3; i++) {
-            if (ctr->elm.id == _TPH_SET_PIC_C30[i]) {
-                sel_item = i;
-                break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            for(int i = 0; i < 3; i++)
+            {
+                if(ctr->elm.id == _TPH_SET_PIC_C30[i])
+                {
+                    sel_item = i;
+                    break;
+                }
             }
-        }
 #if TPH_MENU_HIDE_ENABLE
-        ui_set_call(tph_menu, __this->tph_menu_status);
+            ui_set_call(tph_menu, __this->tph_menu_status);
 #endif
-        switch (__this->tph_menu_status) {
-        case TPH_MENU_ACUITY:
-            if (__this->camera[0].acutance == sel_item) {
-                return false;
+            switch(__this->tph_menu_status)
+            {
+                case TPH_MENU_ACUITY:
+                    if(__this->camera[0].acutance == sel_item)
+                    {
+                        return false;
+                    }
+                    ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[__this->camera[0].acutance]);
+                    ui_highlight_element_by_id(_TPH_SET_PIC_C30[sel_item]);
+                    menu_tph_set_acu(sel_item);
+                    __this->camera[0].acutance = sel_item;
+                    break;
+                case TPH_MENU_COLOR:
+                    if(__this->camera[0].color == sel_item)
+                    {
+                        return false;
+                    }
+                    ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[__this->camera[0].color]);
+                    ui_highlight_element_by_id(_TPH_SET_PIC_C30[sel_item]);
+                    menu_tph_set_col(sel_item);
+                    __this->camera[0].color = sel_item;
+                    break;
+                default:
+                    return false;
+                    break;
             }
-            ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[__this->camera[0].acutance]);
-            ui_highlight_element_by_id(_TPH_SET_PIC_C30[sel_item]);
-            menu_tph_set_acu(sel_item);
-            __this->camera[0].acutance = sel_item;
             break;
-        case TPH_MENU_COLOR:
-            if (__this->camera[0].color == sel_item) {
-                return false;
-            }
-            ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[__this->camera[0].color]);
-            ui_highlight_element_by_id(_TPH_SET_PIC_C30[sel_item]);
-            menu_tph_set_col(sel_item);
-            __this->camera[0].color = sel_item;
-            break;
-        default:
-            return false;
-            break;
-        }
-        break;
     }
     return false;
 }
@@ -2816,43 +3133,48 @@ static int menu_tph_c50_ontouch(void *_ctr, struct element_touch_event *e)
     int sel_item = 0;
     struct ui_pic *ctr = (struct ui_pic *)_ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        for (int i = 0; i < 5; i++) {
-            if (ctr->elm.id == _TPH_SET_PIC_C50[i]) {
-                sel_item = i;
-                break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            for(int i = 0; i < 5; i++)
+            {
+                if(ctr->elm.id == _TPH_SET_PIC_C50[i])
+                {
+                    sel_item = i;
+                    break;
+                }
             }
-        }
 #if TPH_MENU_HIDE_ENABLE
-        ui_set_call(tph_menu, __this->tph_menu_status);
+            ui_set_call(tph_menu, __this->tph_menu_status);
 #endif
-        switch (__this->tph_menu_status) {
-        case TPH_MENU_AWB:
-            if (__this->camera[0].white_balance == sel_item) {
-                return false;
+            switch(__this->tph_menu_status)
+            {
+                case TPH_MENU_AWB:
+                    if(__this->camera[0].white_balance == sel_item)
+                    {
+                        return false;
+                    }
+                    ui_no_highlight_element_by_id(_TPH_SET_PIC_C50[__this->camera[0].white_balance]);
+                    ui_highlight_element_by_id(_TPH_SET_PIC_C50[sel_item]);
+                    menu_tph_set_wbl(sel_item);
+                    __this->camera[0].white_balance = sel_item;
+                    ui_pic_show_image_by_id(TPH_PIC_WB, __this->camera[0].white_balance);
+                    break;
+                default:
+                    break;
             }
-            ui_no_highlight_element_by_id(_TPH_SET_PIC_C50[__this->camera[0].white_balance]);
-            ui_highlight_element_by_id(_TPH_SET_PIC_C50[sel_item]);
-            menu_tph_set_wbl(sel_item);
-            __this->camera[0].white_balance = sel_item;
-            ui_pic_show_image_by_id(TPH_PIC_WB, __this->camera[0].white_balance);
             break;
-        default:
-            break;
-        }
-        break;
     }
     return false;
 }
@@ -2879,43 +3201,48 @@ static int menu_tph_c40_ontouch(void *_ctr, struct element_touch_event *e)
     int sel_item = 0;
     struct ui_pic *ctr = (struct ui_pic *)_ctr;
 
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        for (int i = 0; i < 4; i++) {
-            if (ctr->elm.id == _TPH_SET_PIC_C40[i]) {
-                sel_item = i;
-                break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            for(int i = 0; i < 4; i++)
+            {
+                if(ctr->elm.id == _TPH_SET_PIC_C40[i])
+                {
+                    sel_item = i;
+                    break;
+                }
             }
-        }
 #if TPH_MENU_HIDE_ENABLE
-        ui_set_call(tph_menu, __this->tph_menu_status);
+            ui_set_call(tph_menu, __this->tph_menu_status);
 #endif
-        switch (__this->tph_menu_status) {
-        case TPH_MENU_ISO:
-            if (__this->camera[0].iso == sel_item) {
-                return false;
+            switch(__this->tph_menu_status)
+            {
+                case TPH_MENU_ISO:
+                    if(__this->camera[0].iso == sel_item)
+                    {
+                        return false;
+                    }
+                    ui_no_highlight_element_by_id(_TPH_SET_PIC_C40[__this->camera[0].iso]);
+                    ui_highlight_element_by_id(_TPH_SET_PIC_C40[sel_item]);
+                    menu_tph_set_iso(sel_item);
+                    __this->camera[0].iso = sel_item;
+                    ui_pic_show_image_by_id(TPH_PIC_ISO, __this->camera[0].iso);
+                    break;
+                default:
+                    break;
             }
-            ui_no_highlight_element_by_id(_TPH_SET_PIC_C40[__this->camera[0].iso]);
-            ui_highlight_element_by_id(_TPH_SET_PIC_C40[sel_item]);
-            menu_tph_set_iso(sel_item);
-            __this->camera[0].iso = sel_item;
-            ui_pic_show_image_by_id(TPH_PIC_ISO, __this->camera[0].iso);
             break;
-        default:
-            break;
-        }
-        break;
     }
     return false;
 }
@@ -2942,64 +3269,73 @@ static int menu_tph_exp_ontouch(void *arg1, struct element_touch_event *e)
     static s16 x_pos_down = 0;
     static s16 old_exp = 0;
     s16 tmp;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
 #if TOUCH_R90
-        x_pos_down = e->pos.y;
+            x_pos_down = e->pos.y;
 #else
-        x_pos_down = e->pos.x;
+            x_pos_down = e->pos.x;
 #endif
-        old_exp = __this->camera[0].exposure;
-        return true;
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        return true;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            old_exp = __this->camera[0].exposure;
+            return true;
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            return true;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
 #if TOUCH_R90
-        s16 x_pos_now = e->pos.y;
+            s16 x_pos_now = e->pos.y;
 #else
-        s16 x_pos_now = e->pos.x;
+            s16 x_pos_now = e->pos.x;
 #endif
-        s16 x_pos_ch = x_pos_down - x_pos_now;
-        tmp = __this->camera[0].exposure;
-        if (x_pos_ch < SLID_GAP && x_pos_ch > -SLID_GAP) {
-            return false;
-        }
-        tmp = old_exp + x_pos_ch / SLID_GAP;
-        if (tmp > SLID_ITEM - 1) {
-            tmp = SLID_ITEM - 1;
-            x_pos_down = x_pos_now;
-            old_exp = SLID_ITEM - 1;
-        } else if (tmp < 0) {
-            tmp = 0;
-            x_pos_down = x_pos_now;
-            old_exp = 0;
-        }
-        printf("\n tmp_exp = %d \n", tmp);
-        if (__this->camera[0].exposure == tmp) {
-            return false;
-        }
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        /* printf("x_pos=%d y_pos=%d",e->pos.x,e->pos.y); */
-#if TPH_MENU_HIDE_ENABLE
-        ui_set_call(tph_menu, __this->tph_menu_status);
-#endif
-        int i;
-        tmp = __this->camera[0].exposure;
-        for (i = 1; i <= SLID_ITEM; i++) {
-            if (e->pos.x - SLID_X < SLID_GAP * i && e->pos.x > SLID_X + SLID_GAP * (i - 1)) {
-                tmp = SLID_ITEM - i;
+            s16 x_pos_ch = x_pos_down - x_pos_now;
+            tmp = __this->camera[0].exposure;
+            if(x_pos_ch < SLID_GAP && x_pos_ch > -SLID_GAP)
+            {
+                return false;
             }
-        }
-        if (__this->camera[0].exposure == tmp) {
-            return false;
-        }
-        break;
+            tmp = old_exp + x_pos_ch / SLID_GAP;
+            if(tmp > SLID_ITEM - 1)
+            {
+                tmp = SLID_ITEM - 1;
+                x_pos_down = x_pos_now;
+                old_exp = SLID_ITEM - 1;
+            }
+            else if(tmp < 0)
+            {
+                tmp = 0;
+                x_pos_down = x_pos_now;
+                old_exp = 0;
+            }
+            printf("\n tmp_exp = %d \n", tmp);
+            if(__this->camera[0].exposure == tmp)
+            {
+                return false;
+            }
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            /* printf("x_pos=%d y_pos=%d",e->pos.x,e->pos.y); */
+#if TPH_MENU_HIDE_ENABLE
+            ui_set_call(tph_menu, __this->tph_menu_status);
+#endif
+            int i;
+            tmp = __this->camera[0].exposure;
+            for(i = 1; i <= SLID_ITEM; i++)
+            {
+                if(e->pos.x - SLID_X < SLID_GAP * i && e->pos.x > SLID_X + SLID_GAP * (i - 1))
+                {
+                    tmp = SLID_ITEM - i;
+                }
+            }
+            if(__this->camera[0].exposure == tmp)
+            {
+                return false;
+            }
+            break;
     }
     ui_hide(_TPH_SET_PIC_EXP[(6 - __this->camera[0].exposure)]);
     ui_show(_TPH_SET_PIC_EXP[(6 - tmp)]);
@@ -3018,16 +3354,17 @@ REGISTER_UI_EVENT_HANDLER(TPH_SET_PIC_EXP)
 
 static int tph_onchange(void *ctr, enum element_change_event e, void *arg)
 {
-    switch (e) {
-    case ON_CHANGE_FIRST_SHOW:
-        printf("tph_onchange\n");
-        sys_key_event_takeover(true, false);
-        __this->onkey_mod = 0;
-        __this->onkey_sel = 0;
-        ui_highlight_element_by_id(TPH_PIC_TPH);
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_FIRST_SHOW:
+            printf("tph_onchange\n");
+            sys_key_event_takeover(true, false);
+            __this->onkey_mod = 0;
+            __this->onkey_sel = 0;
+            ui_highlight_element_by_id(TPH_PIC_TPH);
+            break;
+        default:
+            return false;
     }
 
     return false;
@@ -3036,520 +3373,572 @@ static int tph_onkey(void *ctr, struct element_key_event *e)
 {
     struct intent it;
     struct application *app;
-    if (e->event == KEY_EVENT_LONG && e->value == KEY_POWER) {
+    if(e->event == KEY_EVENT_LONG && e->value == KEY_POWER)
+    {
         ui_hide(ui_get_current_window_id());
         sys_key_event_takeover(false, true);
         return true;
     }
-    if (e->event != KEY_EVENT_CLICK) {
+    if(e->event != KEY_EVENT_CLICK)
+    {
         return false;
     }
-    if (__this->onkey_mod == 0) {
+    if(__this->onkey_mod == 0)
+    {
         //拍照模式
-        switch (e->value) {
-        case KEY_UP:
-        case KEY_DOWN:
-            //上下键切前后视
-            init_intent(&it);
-            it.name = "video_photo";
-            it.action = ACTION_PHOTO_TAKE_SWITCH_WIN;
-            start_app(&it);
-            break;
-        case KEY_PHOTO:
-            //OK键拍照
-            it.name = "video_photo";
-            it.action = ACTION_PHOTO_TAKE_CONTROL;
-            start_app_async(&it, tph_control_ok, NULL);
-            break;
-        case KEY_MODE:
-            //MODE键切换到工具栏
-            if (tph_ask_app_open_menu() == (int) - 1) {
-                return -1;
-            }
-            __this->onkey_mod = 1;
-            __this->onkey_sel = 1;
-            ui_no_highlight_element_by_id(TPH_PIC_TPH);
-            ui_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
-            break;
-        default:
-            return false;
+        switch(e->value)
+        {
+            case KEY_UP:
+            case KEY_DOWN:
+                //上下键切前后视
+                init_intent(&it);
+                it.name = "video_photo";
+                it.action = ACTION_PHOTO_TAKE_SWITCH_WIN;
+                start_app(&it);
+                break;
+            case KEY_PHOTO:
+                //OK键拍照
+                it.name = "video_photo";
+                it.action = ACTION_PHOTO_TAKE_CONTROL;
+                start_app_async(&it, tph_control_ok, NULL);
+                break;
+            case KEY_MODE:
+                //MODE键切换到工具栏
+                if(tph_ask_app_open_menu() == (int) - 1)
+                {
+                    return -1;
+                }
+                __this->onkey_mod = 1;
+                __this->onkey_sel = 1;
+                ui_no_highlight_element_by_id(TPH_PIC_TPH);
+                ui_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
+                break;
+            default:
+                return false;
         }
-    } else if (__this->onkey_mod == 1) {
+    }
+    else if(__this->onkey_mod == 1)
+    {
         //工具栏
-        switch (e->value) {
-        case KEY_UP:
-            //上键向上
-            ui_no_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
-            __this->onkey_sel --;
-            if (__this->onkey_sel < 1) {
-                __this->onkey_sel = 3;
-            }
-            ui_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
-            break;
-        case KEY_DOWN:
-            //下键向下
-            ui_no_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
-            __this->onkey_sel ++;
-            if (__this->onkey_sel > 3) {
-                __this->onkey_sel = 1;
-            }
-            ui_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
-            break;
-        case KEY_OK:
-            //OK键对应动作
-            switch (__this->onkey_sel) {
-            case 1:
-                //进入设置模式
-                if (!__this->menu_status) {
-                    __this->onkey_mod = 2;
+        switch(e->value)
+        {
+            case KEY_UP:
+                //上键向上
+                ui_no_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
+                __this->onkey_sel --;
+                if(__this->onkey_sel < 1)
+                {
+                    __this->onkey_sel = 3;
+                }
+                ui_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
+                break;
+            case KEY_DOWN:
+                //下键向下
+                ui_no_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
+                __this->onkey_sel ++;
+                if(__this->onkey_sel > 3)
+                {
                     __this->onkey_sel = 1;
-                    disp_TphSetting_lay(1);
                 }
+                ui_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
                 break;
-            case 2:
-                //切换到录像模式
-                __this->page_exit = MODE_SW_EXIT;
-                init_intent(&it);
-                app = get_current_app();
-                if (app) {
-                    it.name = "video_photo";
-                    it.action = ACTION_BACK;
-                    start_app_async(&it, NULL, NULL); //不等待直接启动app
+            case KEY_OK:
+                //OK键对应动作
+                switch(__this->onkey_sel)
+                {
+                    case 1:
+                        //进入设置模式
+                        if(!__this->menu_status)
+                        {
+                            __this->onkey_mod = 2;
+                            __this->onkey_sel = 1;
+                            disp_TphSetting_lay(1);
+                        }
+                        break;
+                    case 2:
+                        //切换到录像模式
+                        __this->page_exit = MODE_SW_EXIT;
+                        init_intent(&it);
+                        app = get_current_app();
+                        if(app)
+                        {
+                            it.name = "video_photo";
+                            it.action = ACTION_BACK;
+                            start_app_async(&it, NULL, NULL); //不等待直接启动app
 
-                    it.name = "video_rec";
-                    it.action = ACTION_VIDEO_REC_MAIN;
-                    start_app_async(&it, NULL, NULL); //不等待直接启动app
+                            it.name = "video_rec";
+                            it.action = ACTION_VIDEO_REC_MAIN;
+                            start_app_async(&it, NULL, NULL); //不等待直接启动app
+                        }
+                        break;
+                    case 3:
+                        //退出到主界面
+                        init_intent(&it);
+                        app = get_current_app();
+                        if(app)
+                        {
+                            __this->page_exit = HOME_SW_EXIT;
+                            it.name = "video_photo";
+                            it.action = ACTION_BACK;
+                            start_app_async(&it, NULL, NULL); //不等待直接启动app
+                        }
+                        break;
                 }
                 break;
-            case 3:
-                //退出到主界面
-                init_intent(&it);
-                app = get_current_app();
-                if (app) {
-                    __this->page_exit = HOME_SW_EXIT;
-                    it.name = "video_photo";
-                    it.action = ACTION_BACK;
-                    start_app_async(&it, NULL, NULL); //不等待直接启动app
-                }
+            case KEY_MODE:
+                //MODE键返回拍照模式
+                ui_highlight_element_by_id(TPH_PIC_TPH);
+                ui_no_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
+                tph_tell_app_exit_menu();
+                __this->onkey_mod = 0;
+                __this->onkey_sel = 0;
                 break;
-            }
-            break;
-        case KEY_MODE:
-            //MODE键返回拍照模式
-            ui_highlight_element_by_id(TPH_PIC_TPH);
-            ui_no_highlight_element_by_id(onkey_sel_item[__this->onkey_sel - 1]);
-            tph_tell_app_exit_menu();
-            __this->onkey_mod = 0;
-            __this->onkey_sel = 0;
-            break;
-        default:
-            return false;
+            default:
+                return false;
         }
-    } else if (__this->onkey_mod == 2) {
+    }
+    else if(__this->onkey_mod == 2)
+    {
         //设置模式
-        switch (e->value) {
-        case KEY_UP:
-            //上键向左
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
-            }
-            __this->onkey_sel --;
-            if (__this->onkey_sel < 1) {
-                __this->onkey_sel = 12;
-            }
-            ui_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-            ui_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
-            break;
-        case KEY_DOWN:
-            //下键向右
-            if (__this->onkey_sel) {
-                ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-                ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
-            }
-            __this->onkey_sel ++;
-            if (__this->onkey_sel > 12) {
+        switch(e->value)
+        {
+            case KEY_UP:
+                //上键向左
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_sel --;
+                if(__this->onkey_sel < 1)
+                {
+                    __this->onkey_sel = 12;
+                }
+                ui_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                ui_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                break;
+            case KEY_DOWN:
+                //下键向右
+                if(__this->onkey_sel)
+                {
+                    ui_no_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                    ui_no_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                }
+                __this->onkey_sel ++;
+                if(__this->onkey_sel > 12)
+                {
+                    __this->onkey_sel = 1;
+                }
+                ui_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                ui_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
+                break;
+            case KEY_OK:
+                //OK键进入对应设置项
+                if(__this->onkey_sel)
+                {
+                    __this->onkey_mod = 2 + __this->onkey_sel;
+                    switch(__this->onkey_sel)
+                    {
+                        case 1:
+                            __this->camera[0].resolution = index_of_table8(db_select("pres"), TABLE(table_photo_res_camera0));
+                            __this->onkey_sel = __this->camera[0].resolution;
+                            ui_set_call(tph_menu, TPH_MENU_RESOLUTION);
+                            break;
+                        case 2:
+                            __this->camera[0].tph_delay = index_of_table8(db_select("phm"), TABLE(table_photo_delay_mode_camera0));
+                            __this->onkey_sel = __this->camera->tph_delay;
+                            ui_set_call(tph_menu, TPH_MENU_DELAY);
+                            break;
+                        case 3:
+                            __this->camera[0].repeat = db_select("cyt");
+                            __this->onkey_sel = __this->camera[0].repeat;
+                            ui_set_call(tph_menu, TPH_MENU_CONTINUOUS);
+                            break;
+                        case 4:
+                            __this->camera[0].quality = index_of_table8(db_select("qua"), TABLE(table_photo_quality_camera0));
+                            __this->onkey_sel = __this->camera[0].quality;
+                            ui_set_call(tph_menu, TPH_MENU_QUALITY);
+                            break;
+                        case 5:
+                            __this->camera[0].acutance = index_of_table8(db_select("acu"), TABLE(table_photo_acutance_camera0));
+                            __this->onkey_sel = __this->camera[0].acutance;
+                            ui_set_call(tph_menu, TPH_MENU_ACUITY);
+                            break;
+                        case 6:
+                            __this->camera[0].white_balance = index_of_table8(db_select("wbl"), TABLE(table_photo_white_balance_camera0));
+                            __this->onkey_sel = __this->camera[0].white_balance;
+                            ui_set_call(tph_menu, TPH_MENU_AWB);
+                            break;
+                        case 7:
+                            __this->camera[0].color = index_of_table8(db_select("col"), TABLE(table_photo_color_camera0));
+                            __this->onkey_sel = __this->camera[0].color;
+                            ui_set_call(tph_menu, TPH_MENU_COLOR);
+                            break;
+                        case 8:
+                            __this->camera[0].iso = index_of_table16(db_select("iso"), TABLE(table_photo_iso_camera0));
+                            __this->onkey_sel = __this->camera[0].iso;
+                            ui_set_call(tph_menu, TPH_MENU_ISO);
+                            break;
+                        case 9:
+                            __this->camera[0].exposure = index_of_table8(db_select("pexp"), TABLE(table_photo_exposure_camera0));
+                            __this->onkey_sel = __this->camera[0].exposure;
+                            ui_set_call(tph_menu, TPH_MENU_EXPOSURE);
+                            break;
+                        case 10:
+                            __this->camera[0].hand_shake = db_select("sok");
+                            __this->onkey_sel = __this->camera[0].hand_shake;
+                            ui_set_call(tph_menu, TPH_MENU_TREMOR);
+                            break;
+                        case 11:
+                            __this->camera[0].quick_scan = index_of_table8(db_select("sca"), TABLE(table_photo_quick_scan_camera0));
+                            __this->onkey_sel = __this->camera[0].quick_scan;
+                            ui_set_call(tph_menu, TPH_MENU_PREVIEW);
+                            break;
+                        case 12:
+                            __this->camera[0].dat_label = db_select("pdat");
+                            __this->onkey_sel = __this->camera[0].dat_label;
+                            ui_set_call(tph_menu, TPH_MENU_LABEL);
+                            break;
+                    }
+                }
+                break;
+            case KEY_MODE:
+                //MODE键退出到工具栏
+                __this->onkey_mod = 1;
                 __this->onkey_sel = 1;
-            }
-            ui_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-            ui_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
-            break;
-        case KEY_OK:
-            //OK键进入对应设置项
-            if (__this->onkey_sel) {
-                __this->onkey_mod = 2 + __this->onkey_sel;
-                switch (__this->onkey_sel) {
-                case 1:
-                    __this->camera[0].resolution = index_of_table8(db_select("pres"), TABLE(table_photo_res_camera0));
-                    __this->onkey_sel = __this->camera[0].resolution;
-                    ui_set_call(tph_menu, TPH_MENU_RESOLUTION);
-                    break;
-                case 2:
-                    __this->camera[0].tph_delay = index_of_table8(db_select("phm"), TABLE(table_photo_delay_mode_camera0));
-                    __this->onkey_sel = __this->camera->tph_delay;
-                    ui_set_call(tph_menu, TPH_MENU_DELAY);
-                    break;
-                case 3:
-                    __this->camera[0].repeat = db_select("cyt");
-                    __this->onkey_sel =	__this->camera[0].repeat;
-                    ui_set_call(tph_menu, TPH_MENU_CONTINUOUS);
-                    break;
-                case 4:
-                    __this->camera[0].quality = index_of_table8(db_select("qua"), TABLE(table_photo_quality_camera0));
-                    __this->onkey_sel = __this->camera[0].quality;
-                    ui_set_call(tph_menu, TPH_MENU_QUALITY);
-                    break;
-                case 5:
-                    __this->camera[0].acutance = index_of_table8(db_select("acu"), TABLE(table_photo_acutance_camera0));
-                    __this->onkey_sel = __this->camera[0].acutance;
-                    ui_set_call(tph_menu, TPH_MENU_ACUITY);
-                    break;
-                case 6:
-                    __this->camera[0].white_balance = index_of_table8(db_select("wbl"), TABLE(table_photo_white_balance_camera0));
-                    __this->onkey_sel = __this->camera[0].white_balance;
-                    ui_set_call(tph_menu, TPH_MENU_AWB);
-                    break;
-                case 7:
-                    __this->camera[0].color = index_of_table8(db_select("col"), TABLE(table_photo_color_camera0));
-                    __this->onkey_sel = __this->camera[0].color;
-                    ui_set_call(tph_menu, TPH_MENU_COLOR);
-                    break;
-                case 8:
-                    __this->camera[0].iso = index_of_table16(db_select("iso"), TABLE(table_photo_iso_camera0));
-                    __this->onkey_sel = __this->camera[0].iso;
-                    ui_set_call(tph_menu, TPH_MENU_ISO);
-                    break;
-                case 9:
-                    __this->camera[0].exposure = index_of_table8(db_select("pexp"), TABLE(table_photo_exposure_camera0));
-                    __this->onkey_sel = __this->camera[0].exposure;
-                    ui_set_call(tph_menu, TPH_MENU_EXPOSURE);
-                    break;
-                case 10:
-                    __this->camera[0].hand_shake = db_select("sok");
-                    __this->onkey_sel = __this->camera[0].hand_shake;
-                    ui_set_call(tph_menu, TPH_MENU_TREMOR);
-                    break;
-                case 11:
-                    __this->camera[0].quick_scan = index_of_table8(db_select("sca"), TABLE(table_photo_quick_scan_camera0));
-                    __this->onkey_sel = __this->camera[0].quick_scan;
-                    ui_set_call(tph_menu, TPH_MENU_PREVIEW);
-                    break;
-                case 12:
-                    __this->camera[0].dat_label = db_select("pdat");
-                    __this->onkey_sel = __this->camera[0].dat_label;
-                    ui_set_call(tph_menu, TPH_MENU_LABEL);
-                    break;
-                }
-            }
-            break;
-        case KEY_MODE:
-            //MODE键退出到工具栏
-            __this->onkey_mod = 1;
-            __this->onkey_sel = 1;
-            disp_TphSetting_lay(0);
-            break;
-        default:
-            return false;
+                disp_TphSetting_lay(0);
+                break;
+            default:
+                return false;
         }
-    } else if (__this->onkey_mod > 2 && __this->onkey_mod < 3 + 12) {
+    }
+    else if(__this->onkey_mod > 2 && __this->onkey_mod < 3 + 12)
+    {
         s8 tmp;
-        switch (e->value) {
-        case KEY_UP:
-            switch (__this->tph_menu_status) {
-            case TPH_MENU_RESOLUTION:
+        switch(e->value)
+        {
+            case KEY_UP:
+                switch(__this->tph_menu_status)
+                {
+                    case TPH_MENU_RESOLUTION:
 
 #if (DOUBLE_720 == 1)
-                tmp = __this->camera[0].resolution;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                tmp = tmp == 0 ? 2 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                ui_show(_TPH_SET_PIC_RES[tmp]);
-                menu_tph_set_pres(tmp);
-                __this->camera[0].resolution = tmp;
-                if (__this->cur_camera_id == 0) {
-                    ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
-                }
+                        tmp = __this->camera[0].resolution;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        tmp = tmp == 0 ? 2 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        ui_show(_TPH_SET_PIC_RES[tmp]);
+                        menu_tph_set_pres(tmp);
+                        __this->camera[0].resolution = tmp;
+                        if(__this->cur_camera_id == 0)
+                        {
+                            ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
+                        }
 
 
 #else
-                tmp = __this->camera[0].resolution;
-                ui_hide(_TPH_SET_PIC_RES[tmp]);
-                tmp = tmp == 0 ? 0 : tmp - 1;
-                ui_show(_TPH_SET_PIC_RES[tmp]);
-                menu_tph_set_pres(tmp);
-                __this->camera[0].resolution = tmp;
-                if (__this->cur_camera_id == 0) {
-                    ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
-                }
+                        tmp = __this->camera[0].resolution;
+                        ui_hide(_TPH_SET_PIC_RES[tmp]);
+                        tmp = tmp == 0 ? 0 : tmp - 1;
+                        ui_show(_TPH_SET_PIC_RES[tmp]);
+                        menu_tph_set_pres(tmp);
+                        __this->camera[0].resolution = tmp;
+                        if(__this->cur_camera_id == 0)
+                        {
+                            ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
+                        }
 #endif
-                break;
-            case TPH_MENU_DELAY:
-                tmp = __this->camera[0].tph_delay;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C4[tmp]);
-                tmp = tmp == 0 ? 3 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C4[tmp]);
-                if (__this->camera[0].tph_delay == 0) {
-                    ui_show(TPH_PIC_DELAY);
+                        break;
+                    case TPH_MENU_DELAY:
+                        tmp = __this->camera[0].tph_delay;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C4[tmp]);
+                        tmp = tmp == 0 ? 3 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C4[tmp]);
+                        if(__this->camera[0].tph_delay == 0)
+                        {
+                            ui_show(TPH_PIC_DELAY);
+                        }
+                        menu_tph_set_phm(tmp);
+                        __this->camera[0].tph_delay = tmp;
+                        if(tmp == 0)
+                        {
+                            ui_hide(TPH_PIC_DELAY);
+                        }
+                        else
+                        {
+                            ui_pic_show_image_by_id(TPH_PIC_DELAY, tmp - 1);
+                        }
+                        break;
+                    case TPH_MENU_CONTINUOUS:
+                        tmp = __this->camera[0].repeat ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        tmp = tmp == 0 ? 1 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        menu_tph_set_cyt(tmp);
+                        __this->camera[0].repeat = tmp;
+                        if(tmp)
+                        {
+                            ui_show(TPH_PIC_TRIPLE);
+                        }
+                        else
+                        {
+                            ui_hide(TPH_PIC_TRIPLE);
+                        }
+                        break;
+                    case TPH_MENU_QUALITY:
+                        tmp = __this->camera[0].quality ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        tmp = tmp == 0 ? 2 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        menu_tph_set_qua(tmp);
+                        __this->camera[0].quality = tmp;
+                        ui_pic_show_image_by_id(TPH_PIC_QUALITY, 2 - __this->camera[0].quality);
+                        break;
+                    case TPH_MENU_ACUITY:
+                        tmp = __this->camera[0].acutance  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
+                        tmp = tmp == 0 ? 2 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
+                        menu_tph_set_acu(tmp);
+                        __this->camera[0].acutance = tmp;
+                        break;
+                    case TPH_MENU_AWB:
+                        tmp = __this->camera[0].white_balance  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C50[tmp]);
+                        tmp = tmp == 0 ? 4 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C50[tmp]);
+                        menu_tph_set_wbl(tmp);
+                        __this->camera[0].white_balance = tmp;
+                        ui_pic_show_image_by_id(TPH_PIC_WB, __this->camera[0].white_balance);
+                        break;
+                    case TPH_MENU_COLOR:
+                        tmp = __this->camera[0].color  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
+                        tmp = tmp == 0 ? 2 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
+                        menu_tph_set_col(tmp);
+                        __this->camera[0].color = tmp;
+                        break;
+                    case TPH_MENU_ISO:
+                        tmp = __this->camera[0].iso  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C40[tmp]);
+                        tmp = tmp == 0 ? 3 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C40[tmp]);
+                        menu_tph_set_iso(tmp);
+                        __this->camera[0].iso = tmp;
+                        ui_pic_show_image_by_id(TPH_PIC_ISO, __this->camera[0].iso);
+                        break;
+                    case TPH_MENU_EXPOSURE:
+                        tmp = __this->camera[0].exposure;
+                        ui_hide(_TPH_SET_PIC_EXP[6 - tmp]);
+                        tmp = tmp == 6 ? 6 : tmp + 1;
+                        ui_show(_TPH_SET_PIC_EXP[6 - tmp]);
+                        menu_tph_set_pexp(tmp);
+                        __this->camera[0].exposure = tmp;
+                        break;
+                    case TPH_MENU_TREMOR:
+                        tmp = __this->camera[0].hand_shake ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        tmp = tmp == 0 ? 1 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        menu_tph_set_sok(tmp);
+                        __this->camera[0].hand_shake = tmp;
+                        if(tmp)
+                        {
+                            ui_show(TPH_PIC_HS);
+                        }
+                        else
+                        {
+                            ui_hide(TPH_PIC_HS);
+                        }
+                        break;
+                    case TPH_MENU_PREVIEW:
+                        tmp = __this->camera[0].quick_scan  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        tmp = tmp == 0 ? 2 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        menu_tph_set_sca(tmp);
+                        __this->camera[0].quick_scan = tmp;
+                        break;
+                    case TPH_MENU_LABEL:
+                        tmp = __this->camera[0].dat_label ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        tmp = tmp == 0 ? 1 : tmp - 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        menu_tph_set_pdat(tmp);
+                        __this->camera[0].dat_label = tmp;
+                        break;
                 }
-                menu_tph_set_phm(tmp);
-                __this->camera[0].tph_delay = tmp;
-                if (tmp == 0) {
-                    ui_hide(TPH_PIC_DELAY);
-                } else {
-                    ui_pic_show_image_by_id(TPH_PIC_DELAY, tmp - 1);
-                }
                 break;
-            case TPH_MENU_CONTINUOUS:
-                tmp = __this->camera[0].repeat ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                tmp = tmp == 0 ? 1 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                menu_tph_set_cyt(tmp);
-                __this->camera[0].repeat = tmp;
-                if (tmp) {
-                    ui_show(TPH_PIC_TRIPLE);
-                } else {
-                    ui_hide(TPH_PIC_TRIPLE);
-                }
-                break;
-            case TPH_MENU_QUALITY:
-                tmp = __this->camera[0].quality ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                tmp = tmp == 0 ? 2 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                menu_tph_set_qua(tmp);
-                __this->camera[0].quality = tmp;
-                ui_pic_show_image_by_id(TPH_PIC_QUALITY, 2 - __this->camera[0].quality);
-                break;
-            case TPH_MENU_ACUITY:
-                tmp = __this->camera[0].acutance  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
-                tmp = tmp == 0 ? 2 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
-                menu_tph_set_acu(tmp);
-                __this->camera[0].acutance = tmp;
-                break;
-            case TPH_MENU_AWB:
-                tmp = __this->camera[0].white_balance  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C50[tmp]);
-                tmp = tmp == 0 ? 4 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C50[tmp]);
-                menu_tph_set_wbl(tmp);
-                __this->camera[0].white_balance = tmp;
-                ui_pic_show_image_by_id(TPH_PIC_WB, __this->camera[0].white_balance);
-                break;
-            case TPH_MENU_COLOR:
-                tmp = __this->camera[0].color  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
-                tmp = tmp == 0 ? 2 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
-                menu_tph_set_col(tmp);
-                __this->camera[0].color = tmp;
-                break;
-            case TPH_MENU_ISO:
-                tmp = __this->camera[0].iso  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C40[tmp]);
-                tmp = tmp == 0 ? 3 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C40[tmp]);
-                menu_tph_set_iso(tmp);
-                __this->camera[0].iso = tmp;
-                ui_pic_show_image_by_id(TPH_PIC_ISO, __this->camera[0].iso);
-                break;
-            case TPH_MENU_EXPOSURE:
-                tmp = __this->camera[0].exposure;
-                ui_hide(_TPH_SET_PIC_EXP[6 - tmp]);
-                tmp = tmp == 6 ? 6 : tmp + 1;
-                ui_show(_TPH_SET_PIC_EXP[6 - tmp]);
-                menu_tph_set_pexp(tmp);
-                __this->camera[0].exposure = tmp;
-                break;
-            case TPH_MENU_TREMOR:
-                tmp = __this->camera[0].hand_shake ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                tmp = tmp == 0 ? 1 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                menu_tph_set_sok(tmp);
-                __this->camera[0].hand_shake = tmp;
-                if (tmp) {
-                    ui_show(TPH_PIC_HS);
-                } else {
-                    ui_hide(TPH_PIC_HS);
-                }
-                break;
-            case TPH_MENU_PREVIEW:
-                tmp = __this->camera[0].quick_scan  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                tmp = tmp == 0 ? 2 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                menu_tph_set_sca(tmp);
-                __this->camera[0].quick_scan = tmp;
-                break;
-            case TPH_MENU_LABEL:
-                tmp = __this->camera[0].dat_label ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                tmp = tmp == 0 ? 1 : tmp - 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                menu_tph_set_pdat(tmp);
-                __this->camera[0].dat_label = tmp;
-                break;
-            }
-            break;
-        case KEY_DOWN:
-            switch (__this->tph_menu_status) {
-            case TPH_MENU_RESOLUTION:
+            case KEY_DOWN:
+                switch(__this->tph_menu_status)
+                {
+                    case TPH_MENU_RESOLUTION:
 #if (DOUBLE_720 == 1)
-                tmp = __this->camera[0].resolution;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                tmp = tmp == 2 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                ui_show(_TPH_SET_PIC_RES[tmp]);
-                menu_tph_set_pres(tmp);
-                __this->camera[0].resolution = tmp;
-                if (__this->cur_camera_id == 0) {
-                    ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
-                }
+                        tmp = __this->camera[0].resolution;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        tmp = tmp == 2 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        ui_show(_TPH_SET_PIC_RES[tmp]);
+                        menu_tph_set_pres(tmp);
+                        __this->camera[0].resolution = tmp;
+                        if(__this->cur_camera_id == 0)
+                        {
+                            ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
+                        }
 
 #else
 
-                tmp = __this->camera[0].resolution;
-                ui_hide(_TPH_SET_PIC_RES[tmp]);
-                tmp = tmp == 6 ? 6 : tmp + 1;
-                ui_show(_TPH_SET_PIC_RES[tmp]);
-                menu_tph_set_pres(tmp);
-                __this->camera[0].resolution = tmp;
-                if (__this->cur_camera_id == 0) {
-                    ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
-                }
+                        tmp = __this->camera[0].resolution;
+                        ui_hide(_TPH_SET_PIC_RES[tmp]);
+                        tmp = tmp == 6 ? 6 : tmp + 1;
+                        ui_show(_TPH_SET_PIC_RES[tmp]);
+                        menu_tph_set_pres(tmp);
+                        __this->camera[0].resolution = tmp;
+                        if(__this->cur_camera_id == 0)
+                        {
+                            ui_pic_show_image_by_id(TPH_PIC_RESOLUTION, __this->camera[0].resolution);
+                        }
 #endif
-                break;
-            case TPH_MENU_DELAY:
-                tmp = __this->camera[0].tph_delay;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C4[tmp]);
-                tmp = tmp == 3 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C4[tmp]);
-                if (__this->camera[0].tph_delay == 0) {
-                    ui_show(TPH_PIC_DELAY);
+                        break;
+                    case TPH_MENU_DELAY:
+                        tmp = __this->camera[0].tph_delay;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C4[tmp]);
+                        tmp = tmp == 3 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C4[tmp]);
+                        if(__this->camera[0].tph_delay == 0)
+                        {
+                            ui_show(TPH_PIC_DELAY);
+                        }
+                        menu_tph_set_phm(tmp);
+                        __this->camera[0].tph_delay = tmp;
+                        if(tmp == 0)
+                        {
+                            ui_hide(TPH_PIC_DELAY);
+                        }
+                        else
+                        {
+                            ui_pic_show_image_by_id(TPH_PIC_DELAY, tmp - 1);
+                        }
+                        break;
+                    case TPH_MENU_CONTINUOUS:
+                        tmp = __this->camera[0].repeat ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        tmp = tmp == 1 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        menu_tph_set_cyt(tmp);
+                        __this->camera[0].repeat = tmp;
+                        if(tmp)
+                        {
+                            ui_show(TPH_PIC_TRIPLE);
+                        }
+                        else
+                        {
+                            ui_hide(TPH_PIC_TRIPLE);
+                        }
+                        break;
+                    case TPH_MENU_QUALITY:
+                        tmp = __this->camera[0].quality ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        tmp = tmp == 2 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        menu_tph_set_qua(tmp);
+                        __this->camera[0].quality = tmp;
+                        ui_pic_show_image_by_id(TPH_PIC_QUALITY, 2 - __this->camera[0].quality);
+                        break;
+                    case TPH_MENU_ACUITY:
+                        tmp = __this->camera[0].acutance  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
+                        tmp = tmp == 2 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
+                        menu_tph_set_acu(tmp);
+                        __this->camera[0].acutance = tmp;
+                        break;
+                    case TPH_MENU_AWB:
+                        tmp = __this->camera[0].white_balance  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C50[tmp]);
+                        tmp = tmp == 4 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C50[tmp]);
+                        menu_tph_set_wbl(tmp);
+                        __this->camera[0].white_balance = tmp;
+                        ui_pic_show_image_by_id(TPH_PIC_WB, __this->camera[0].white_balance);
+                        break;
+                    case TPH_MENU_COLOR:
+                        tmp = __this->camera[0].color  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
+                        tmp = tmp == 2 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
+                        menu_tph_set_col(tmp);
+                        __this->camera[0].color = tmp;
+                        break;
+                    case TPH_MENU_ISO:
+                        tmp = __this->camera[0].iso  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C40[tmp]);
+                        tmp = tmp == 3 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C40[tmp]);
+                        menu_tph_set_iso(tmp);
+                        __this->camera[0].iso = tmp;
+                        ui_pic_show_image_by_id(TPH_PIC_ISO, __this->camera[0].iso);
+                        break;
+                    case TPH_MENU_EXPOSURE:
+                        tmp = __this->camera[0].exposure;
+                        ui_hide(_TPH_SET_PIC_EXP[6 - tmp]);
+                        tmp = tmp == 0 ? 0 : tmp - 1;
+                        ui_show(_TPH_SET_PIC_EXP[6 - tmp]);
+                        menu_tph_set_pexp(tmp);
+                        __this->camera[0].exposure = tmp;
+                        break;
+                    case TPH_MENU_TREMOR:
+                        tmp = __this->camera[0].hand_shake ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        tmp = tmp == 1 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        menu_tph_set_sok(tmp);
+                        __this->camera[0].hand_shake = tmp;
+                        if(tmp)
+                        {
+                            ui_show(TPH_PIC_HS);
+                        }
+                        else
+                        {
+                            ui_hide(TPH_PIC_HS);
+                        }
+                        break;
+                    case TPH_MENU_PREVIEW:
+                        tmp = __this->camera[0].quick_scan  ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        tmp = tmp == 2 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
+                        menu_tph_set_sca(tmp);
+                        __this->camera[0].quick_scan = tmp;
+                        break;
+                    case TPH_MENU_LABEL:
+                        tmp = __this->camera[0].dat_label ;
+                        ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        tmp = tmp == 1 ? 0 : tmp + 1;
+                        ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
+                        menu_tph_set_pdat(tmp);
+                        __this->camera[0].dat_label = tmp;
+                        break;
                 }
-                menu_tph_set_phm(tmp);
-                __this->camera[0].tph_delay = tmp;
-                if (tmp == 0) {
-                    ui_hide(TPH_PIC_DELAY);
-                } else {
-                    ui_pic_show_image_by_id(TPH_PIC_DELAY, tmp - 1);
-                }
                 break;
-            case TPH_MENU_CONTINUOUS:
-                tmp = __this->camera[0].repeat ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                tmp = tmp == 1 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                menu_tph_set_cyt(tmp);
-                __this->camera[0].repeat = tmp;
-                if (tmp) {
-                    ui_show(TPH_PIC_TRIPLE);
-                } else {
-                    ui_hide(TPH_PIC_TRIPLE);
-                }
+            case KEY_OK:
+            case KEY_MODE:
+                __this->onkey_sel = __this->onkey_mod - 2;
+                __this->onkey_mod = 2;
+                tph_menu(__this->tph_menu_status);
+                ui_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
+                ui_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
                 break;
-            case TPH_MENU_QUALITY:
-                tmp = __this->camera[0].quality ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                tmp = tmp == 2 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                menu_tph_set_qua(tmp);
-                __this->camera[0].quality = tmp;
-                ui_pic_show_image_by_id(TPH_PIC_QUALITY, 2 - __this->camera[0].quality);
-                break;
-            case TPH_MENU_ACUITY:
-                tmp = __this->camera[0].acutance  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
-                tmp = tmp == 2 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
-                menu_tph_set_acu(tmp);
-                __this->camera[0].acutance = tmp;
-                break;
-            case TPH_MENU_AWB:
-                tmp = __this->camera[0].white_balance  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C50[tmp]);
-                tmp = tmp == 4 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C50[tmp]);
-                menu_tph_set_wbl(tmp);
-                __this->camera[0].white_balance = tmp;
-                ui_pic_show_image_by_id(TPH_PIC_WB, __this->camera[0].white_balance);
-                break;
-            case TPH_MENU_COLOR:
-                tmp = __this->camera[0].color  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
-                tmp = tmp == 2 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C30[tmp]);
-                menu_tph_set_col(tmp);
-                __this->camera[0].color = tmp;
-                break;
-            case TPH_MENU_ISO:
-                tmp = __this->camera[0].iso  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C40[tmp]);
-                tmp = tmp == 3 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C40[tmp]);
-                menu_tph_set_iso(tmp);
-                __this->camera[0].iso = tmp;
-                ui_pic_show_image_by_id(TPH_PIC_ISO, __this->camera[0].iso);
-                break;
-            case TPH_MENU_EXPOSURE:
-                tmp = __this->camera[0].exposure;
-                ui_hide(_TPH_SET_PIC_EXP[6 - tmp]);
-                tmp = tmp == 0 ? 0 : tmp - 1;
-                ui_show(_TPH_SET_PIC_EXP[6 - tmp]);
-                menu_tph_set_pexp(tmp);
-                __this->camera[0].exposure = tmp;
-                break;
-            case TPH_MENU_TREMOR:
-                tmp = __this->camera[0].hand_shake ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                tmp = tmp == 1 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                menu_tph_set_sok(tmp);
-                __this->camera[0].hand_shake = tmp;
-                if (tmp) {
-                    ui_show(TPH_PIC_HS);
-                } else {
-                    ui_hide(TPH_PIC_HS);
-                }
-                break;
-            case TPH_MENU_PREVIEW:
-                tmp = __this->camera[0].quick_scan  ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                tmp = tmp == 2 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C3[tmp]);
-                menu_tph_set_sca(tmp);
-                __this->camera[0].quick_scan = tmp;
-                break;
-            case TPH_MENU_LABEL:
-                tmp = __this->camera[0].dat_label ;
-                ui_no_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                tmp = tmp == 1 ? 0 : tmp + 1;
-                ui_highlight_element_by_id(_TPH_SET_PIC_C2[tmp]);
-                menu_tph_set_pdat(tmp);
-                __this->camera[0].dat_label = tmp;
-                break;
-            }
-            break;
-        case KEY_OK:
-        case KEY_MODE:
-            __this->onkey_sel = __this->onkey_mod - 2;
-            __this->onkey_mod = 2;
-            tph_menu(__this->tph_menu_status);
-            ui_highlight_element_by_id(onkey_sel_setting[__this->onkey_sel - 1]);
-            ui_highlight_element_by_id(onkey_sel_setting1[__this->onkey_sel - 1]);
-            break;
-        default:
-            return false;
+            default:
+                return false;
         }
     }
     return true;
 }
 REGISTER_UI_EVENT_HANDLER(TPH_WIN)
 .onchange = tph_onchange,
- .onkey = tph_onkey,
+.onkey = tph_onkey,
 };
 
 /****************************************************************************************/
@@ -3557,16 +3946,18 @@ REGISTER_UI_EVENT_HANDLER(TPH_WIN)
 static int face_show_lay_onchange(void *ctr, enum element_change_event e, void *arg)
 {
     struct photo_icon_t *c = NULL;
-    switch (e) {
-    case ON_CHANGE_FIRST_SHOW:
-        puts("ON_CHANGE_FIRST_SHOW......\n");
-        list_for_each_face_icon(c) {
-            /* log_d("face On.......%x\n",c->id); */
-            ui_show(c->id);
-        }
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_FIRST_SHOW:
+            puts("ON_CHANGE_FIRST_SHOW......\n");
+            list_for_each_face_icon(c)
+            {
+                /* log_d("face On.......%x\n",c->id); */
+                ui_show(c->id);
+            }
+            break;
+        default:
+            return false;
     }
 
     return false;
@@ -3582,33 +3973,37 @@ static int face_icon_onchange(void *ctr, enum element_change_event e, void *arg)
 
     struct photo_icon_t *icon_photo = NULL;
     struct photo_icon_t *tmp = NULL;
-    switch (e) {
-    case ON_CHANGE_SHOW:
-        puts("face show onchange\n");
-        list_for_each_face_icon(tmp) {
-            if (tmp->id == elm->id) {
-                icon_photo = tmp->put_image(tmp->name, &__this->box_face[0], &__this->alignment_temp[0]);
-                break;
+    switch(e)
+    {
+        case ON_CHANGE_SHOW:
+            puts("face show onchange\n");
+            list_for_each_face_icon(tmp)
+            {
+                if(tmp->id == elm->id)
+                {
+                    icon_photo = tmp->put_image(tmp->name, &__this->box_face[0], &__this->alignment_temp[0]);
+                    break;
+                }
             }
-        }
-        if (!icon_photo->wear_sucess) {
-            return true;
-        }
-        dc->rect.width = icon_photo->height;
-        dc->rect.height = icon_photo->width;
-        dc->rect.left = icon_photo->left;
-        dc->rect.top = icon_photo->top;
-        printf("rect left=%d  top=%d width=%d height=%d\n", dc->rect.left, \
-               dc->rect.top,  \
-               dc->rect.width, \
-               dc->rect.height);
-        dc->draw.left = dc->rect.left;
-        dc->draw.top = dc->rect.top;
-        dc->draw.width = dc->rect.width;
-        dc->draw.height = dc->rect.height;
-        break;
-    default:
-        return false;
+            if(!icon_photo->wear_sucess)
+            {
+                return true;
+            }
+            dc->rect.width = icon_photo->height;
+            dc->rect.height = icon_photo->width;
+            dc->rect.left = icon_photo->left;
+            dc->rect.top = icon_photo->top;
+            printf("rect left=%d  top=%d width=%d height=%d\n", dc->rect.left, \
+                   dc->rect.top,  \
+                   dc->rect.width, \
+                   dc->rect.height);
+            dc->draw.left = dc->rect.left;
+            dc->draw.top = dc->rect.top;
+            dc->draw.width = dc->rect.width;
+            dc->draw.height = dc->rect.height;
+            break;
+        default:
+            return false;
     }
 
     return false;

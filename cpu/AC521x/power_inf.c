@@ -25,35 +25,36 @@ static int system_reset_reason_check(void)
     volatile u32 reset_flag;
     reset_flag = (PWR_CON & 0xe0) >> 5;
 
-    switch (reset_flag) {
-    case 0:
-        log_v("=====power on reset=====\n");
-        break;
-    case 1:
-        log_v("=====VCM reset======\n");
-        break;
-    case 2:
-        log_v("=====PR2 4s reset=====\n");
-        break;
-    case 3:
-        log_v("=====LVD lower power reset=====\n");
-        break;
-    case 4:
-        log_v("=====WDT reset=====\n");
-        break;
-    case 5:
-        log_v("=====sofware reset=====\n");
-        break;
-    default:
-        log_v("=====other reason======\n");
-        break;
+    switch(reset_flag)
+    {
+        case 0:
+            log_v("=====power on reset=====\n");
+            break;
+        case 1:
+            log_v("=====VCM reset======\n");
+            break;
+        case 2:
+            log_v("=====PR2 4s reset=====\n");
+            break;
+        case 3:
+            log_v("=====LVD lower power reset=====\n");
+            break;
+        case 4:
+            log_v("=====WDT reset=====\n");
+            break;
+        case 5:
+            log_v("=====sofware reset=====\n");
+            break;
+        default:
+            log_v("=====other reason======\n");
+            break;
     }
     return reset_flag;
 }
 
 static void sys_poweroff(void *arg)
 {
-    while (__this->read_power_key());
+    while(__this->read_power_key());
     rtc_poweroff();
 }
 
@@ -63,30 +64,35 @@ static int port_wakeup_set_config(const char *port, int enable)
     int cnt = 0;
     static struct rtc_wkup_cfg rtc_cfg = {0};
 
-    if (!port) {
+    if(!port)
+    {
         log_e("%s() port invalid\n", __FUNCTION__);
         return -EINVAL;
     }
-    for (p = __this->wkup_map; p->wkup_port != 0; p++) {
-        if (!strcmp(port, p->wkup_port)) {
-            switch (p->portr) {
-            case WKUP_IO_PR1:
-                rtc_cfg.pr1.edge = p->edge;
-                rtc_cfg.pr1.port_en = enable;
-                break;
-            case WKUP_IO_PR2:
-                rtc_cfg.pr2.edge = p->edge;
-                rtc_cfg.pr2.port_en = enable;
-                break;
-            case WKUP_IO_PR3:
-                rtc_cfg.pr3.edge = p->edge;
-                rtc_cfg.pr3.port_en = enable;
-                break;
+    for(p = __this->wkup_map; p->wkup_port != 0; p++)
+    {
+        if(!strcmp(port, p->wkup_port))
+        {
+            switch(p->portr)
+            {
+                case WKUP_IO_PR1:
+                    rtc_cfg.pr1.edge = p->edge;
+                    rtc_cfg.pr1.port_en = enable;
+                    break;
+                case WKUP_IO_PR2:
+                    rtc_cfg.pr2.edge = p->edge;
+                    rtc_cfg.pr2.port_en = enable;
+                    break;
+                case WKUP_IO_PR3:
+                    rtc_cfg.pr3.edge = p->edge;
+                    rtc_cfg.pr3.port_en = enable;
+                    break;
             }
             break;
         }
     }
-    if (p->wkup_port == 0) {
+    if(p->wkup_port == 0)
+    {
         log_e("%s() port not found\n", __FUNCTION__);
         return -EINVAL;
     }
@@ -104,24 +110,29 @@ static void usb_wakeup_enable()
     const char *ch;
     int cnt = 0;
 
-    for (p = __this->wkup_map; p->wkup_port != 0 && !cnt; p++) {
+    for(p = __this->wkup_map; p->wkup_port != 0 && !cnt; p++)
+    {
         ch = p->wkup_port;
-        while (*ch && !cnt) {
-            if (*ch == 'u' || *ch == 'U') {
-                if (!ASCII_StrCmpNoCase(ch, "usb", 3)) {
-                    switch (p->portr) {
-                    case WKUP_IO_PR1:
-                        rtc_cfg.pr1.edge = p->edge;
-                        rtc_cfg.pr1.port_en = 1;
-                        break;
-                    case WKUP_IO_PR2:
-                        rtc_cfg.pr2.edge = p->edge;
-                        rtc_cfg.pr2.port_en = 1;
-                        break;
-                    case WKUP_IO_PR3:
-                        rtc_cfg.pr3.edge = p->edge;
-                        rtc_cfg.pr3.port_en = 1;
-                        break;
+        while(*ch && !cnt)
+        {
+            if(*ch == 'u' || *ch == 'U')
+            {
+                if(!ASCII_StrCmpNoCase(ch, "usb", 3))
+                {
+                    switch(p->portr)
+                    {
+                        case WKUP_IO_PR1:
+                            rtc_cfg.pr1.edge = p->edge;
+                            rtc_cfg.pr1.port_en = 1;
+                            break;
+                        case WKUP_IO_PR2:
+                            rtc_cfg.pr2.edge = p->edge;
+                            rtc_cfg.pr2.port_en = 1;
+                            break;
+                        case WKUP_IO_PR3:
+                            rtc_cfg.pr3.edge = p->edge;
+                            rtc_cfg.pr3.port_en = 1;
+                            break;
                     }
                     cnt = 1;
                 }
@@ -150,32 +161,42 @@ static int wkup_reason_check(char *reason, int max_len)
     int cnt = 0;
     struct wkup_io_map *p;
 
-    if (!reason || !max_len) {
+    if(!reason || !max_len)
+    {
         log_e("%s() string buffer invalid\n", __FUNCTION__);
         return -EINVAL;
     }
 
     system_reset_reason_check();
 
-    for (int i = 0; i < 5; i++) {
-        if (__this->read_power_key()) {
+    for(int i = 0; i < 5; i++)
+    {
+        if(__this->read_power_key())
+        {
             cnt++;
         }
     }
-    if (cnt >= 4) {
+    if(cnt >= 4)
+    {
         log_v("power key press wake up\n");
         len = max_len > strlen(PWR_WKUP_PWR_ON) ? strlen(PWR_WKUP_PWR_ON) : max_len - 1;
         strncpy(reason, PWR_WKUP_PWR_ON, len);
-    } else {
+    }
+    else
+    {
         tmp = rtc_wkup_reason();
-        if (tmp & (WKUP_IO_PR1 | WKUP_IO_PR2 | WKUP_IO_PR3)) {
+        if(tmp & (WKUP_IO_PR1 | WKUP_IO_PR2 | WKUP_IO_PR3))
+        {
             len = max_len > strlen(PWR_WKUP_PORT) ? strlen(PWR_WKUP_PORT) : max_len - 1;
-            for (p = __this->wkup_map; p->wkup_port != 0; p++) {
-                if (tmp & p->portr) {
+            for(p = __this->wkup_map; p->wkup_port != 0; p++)
+            {
+                if(tmp & p->portr)
+                {
                     strncpy(reason, PWR_WKUP_PORT, len);
                     max_len -= len;
 
-                    if (max_len > 1) {
+                    if(max_len > 1)
+                    {
                         reason[len] = ':';
                         reason[len + 1] = '\0';
                         max_len -= 1;
@@ -186,30 +207,38 @@ static int wkup_reason_check(char *reason, int max_len)
                     }
                 }
             }
-        } else if (tmp & ABNORMAL_RESET) {
+        }
+        else if(tmp & ABNORMAL_RESET)
+        {
             //仅接电池中途复位不开机
             log_v("abnormal wakeup\n");
             len = max_len > strlen(PWR_WKUP_ABNORMAL) ? strlen(PWR_WKUP_ABNORMAL) : max_len - 1;
             strncpy(reason, PWR_WKUP_ABNORMAL, len);
-#if 0	//有需要则打开
-            if (!__this->charger_online()) {
+#if 0   //有需要则打开
+            if(!__this->charger_online())
+            {
                 rtc_pin_reset_ctrl(0);
                 usb_wakeup_enable();
                 sys_poweroff(0);
             }
 #endif
-        } else if (tmp & BAT_POWER_FIRST) {
+        }
+        else if(tmp & BAT_POWER_FIRST)
+        {
             //第一次接电池上电不开机
             len = max_len > strlen(PWR_WKUP_PWR_ON) ? strlen(PWR_WKUP_PWR_ON) : max_len - 1;
             strncpy(reason, PWR_WKUP_PWR_ON, len);
-#if 0	//默认第一次上电开机，有需要则打开
-            if (!__this->charger_online()) {
+#if 0   //默认第一次上电开机，有需要则打开
+            if(!__this->charger_online())
+            {
                 rtc_pin_reset_ctrl(0);
                 usb_wakeup_enable();
                 sys_poweroff(0);
             }
 #endif
-        } else if (tmp & WKUP_SHORT_KEY) {
+        }
+        else if(tmp & WKUP_SHORT_KEY)
+        {
             //短按开机不开机
             log_v("short key on\n");
             len = max_len > strlen(PWR_WKUP_SHORT_KEY) ? strlen(PWR_WKUP_SHORT_KEY) : max_len - 1;
@@ -219,7 +248,9 @@ static int wkup_reason_check(char *reason, int max_len)
             usb_wakeup_enable();
             sys_poweroff(0);
 #endif
-        } else if (tmp & WKUP_ALARM) {//闹钟唤醒最后判断
+        }
+        else if(tmp & WKUP_ALARM)     //闹钟唤醒最后判断
+        {
             log_v("alarm wakeup\n");
             len = max_len > strlen(PWR_WKUP_ALARM) ? strlen(PWR_WKUP_ALARM) : max_len - 1;
             strncpy(reason, PWR_WKUP_ALARM, len);
@@ -236,8 +267,8 @@ static void ldoin_updata();
 
 REGISTER_ADC_SCAN(ldoin_scan)
 .channel = AD_CH14_RTC_V50,
- .value = 0,
-  .updata = ldoin_updata,
+.value = 0,
+.updata = ldoin_updata,
 };
 
 static int ldoin_sum = 0;
@@ -255,8 +286,8 @@ static void ldo_vbg_updata();
 
 REGISTER_ADC_SCAN(ldo_vbg_scan)
 .channel = AD_CH15_LDO_VBG,
- .value = 0,
-  .updata = ldo_vbg_updata,
+.value = 0,
+.updata = ldo_vbg_updata,
 };
 
 static int ldo_vbg_sum = 0;
@@ -286,12 +317,14 @@ static u16 ldo_vbg_get_value(struct key_driver *key)
     return ldo_vbg_scan.value;
 }
 
-static const struct key_driver_ops ldo_vbg_driver_ops = {
+static const struct key_driver_ops ldo_vbg_driver_ops =
+{
     .init       = ldo_vbg_init,
     .get_value  = ldo_vbg_get_value,
 };
 
-REGISTER_KEY_DRIVER(ldo_vbg_driver) = {
+REGISTER_KEY_DRIVER(ldo_vbg_driver) =
+{
     .name = "ad_ldo",
     .ops  = &ldo_vbg_driver_ops,
 };
@@ -311,13 +344,13 @@ static void adc_scan_process(void)
 {
     ADCSEL(AD_CH15_LDO_VBG);
     KITSTART();
-    while (!ADC_PND());
+    while(!ADC_PND());
     ldo_vbg_scan.value = GPADC_RES;
 
     rtc_adc_enable(0);
     ADCSEL(AD_CH14_RTC_V50);
     KITSTART();
-    while (!ADC_PND());
+    while(!ADC_PND());
     ldoin_scan.value = GPADC_RES;
 }
 
@@ -327,13 +360,17 @@ static int get_battery_voltage()
     static u16 refer_val = 0;
     static u16 val = 0;
 
-    if (cpu_irq_disabled()) {
+    if(cpu_irq_disabled())
+    {
         adc_scan_process();
         refer_val = ldo_vbg_scan.value;
         in_val = ldoin_scan.value;
-    } else {
+    }
+    else
+    {
         spin_lock(&lock);
-        if (ldo_vbg_cnt && ldoin_cnt) {
+        if(ldo_vbg_cnt && ldoin_cnt)
+        {
             refer_val = ldo_vbg_sum / ldo_vbg_cnt;
             in_val = ldoin_sum / ldoin_cnt;
             ldo_vbg_sum = 0;
@@ -373,8 +410,10 @@ static int get_battery_voltage()
 
 int __attribute__((weak)) voltage_to_persent(int voltage)
 {
-    for (int i = 0; i < 10; i++) {
-        if (voltage <= __this->voltage_table[i][0]) {
+    for(int i = 0; i < 10; i++)
+    {
+        if(voltage <= __this->voltage_table[i][0])
+        {
             return __this->voltage_table[i][1];
         }
     }
@@ -406,7 +445,8 @@ static void power_early_init()
 }
 
 
-REGISTER_SYS_POWER_HAL_OPS(sys_power) = {
+REGISTER_SYS_POWER_HAL_OPS(sys_power) =
+{
     .init = power_early_init,
     .poweroff = sys_poweroff,
     .wakeup_check = wkup_reason_check,

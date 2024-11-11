@@ -13,11 +13,11 @@
 static void *uart_dev_handle;
 int spec_uart_recv(char *buf, u32 len)      //接收
 {
- return dev_read(uart_dev_handle, buf, len);
+    return dev_read(uart_dev_handle, buf, len);
 }
 int spec_uart_send(char *buf, u32 len)      //发送
 {
- return dev_write(uart_dev_handle, buf, len);
+    return dev_write(uart_dev_handle, buf, len);
 }
 
 
@@ -30,13 +30,15 @@ int spec_uart_send(char *buf, u32 len)      //发送
 static void uart_rec_function_task(void *arg)
 {
     int len;
-    static  u8 yun_cnt= 0;
+    static  u8 yun_cnt = 0;
     static u8 buf[512];
     puts("\nuart_rec_function_task>>>>>>>>\n");
     printf("XXXXXX\n");
-    while(1){
+    while(1)
+    {
         len = spec_uart_recv(buf, 200);
-        if(len > 0){
+        if(len > 0)
+        {
             put_buf(buf, len);
         }
         os_time_dly(1);
@@ -56,10 +58,10 @@ void spec_uart_init(void)
     /* 2 .设置接收数据地址长度 */
     dev_ioctl(uart_dev_handle, UART_SET_CIRCULAR_BUFF_LENTH, (int)parm);
     /* 4 .设置接收数据为阻赛方式,需要非阻赛可以去掉，建议加上超时设置 */
-    #if 1
+#if 1
     parm = 1;
     dev_ioctl(uart_dev_handle, UART_SET_RECV_BLOCK, (int)parm);
-    #endif
+#endif
     /* 5 . 使能特殊串口 */
     dev_ioctl(uart_dev_handle, UART_START, (int)0);
     /*thread_fork("uart_rec_function", 8, 0x1000, 0, 0, uart_rec_function, NULL);*/

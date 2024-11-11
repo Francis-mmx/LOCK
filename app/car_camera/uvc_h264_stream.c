@@ -9,7 +9,8 @@
 
 #define UVC_H264_BUF_SIZE  (1 * 1024 * 1024)
 
-struct uvc_cam_h264_t {
+struct uvc_cam_h264_t
+{
     volatile u8 streamon;
     u16 cur_width;
     u16 cur_height;
@@ -27,17 +28,22 @@ static void uvc_h264_recv_task(void *arg)
     int err = -1;
     int msg[32];
     u8 i = 0;
-    if (dev_online("uvc")) {
+    if(dev_online("uvc"))
+    {
         fd = dev_open("uvc", (void *)1); //指定uvc设备1
-        if (fd) {
+        if(fd)
+        {
             dev_ioctl(fd, UVCIOC_QUERYCAP, (unsigned int)&uvc_cap);
-            for (i = 0; i < uvc_cap.reso_num; i++) {
+            for(i = 0; i < uvc_cap.reso_num; i++)
+            {
                 printf("reso[%d] w:%d h=%d\n", i, uvc_cap.reso[i].width, uvc_cap.reso[i].height);
-                if (__this->cur_width == uvc_cap.reso[i].width && __this->cur_height == uvc_cap.reso[i].height) {
+                if(__this->cur_width == uvc_cap.reso[i].width && __this->cur_height == uvc_cap.reso[i].height)
+                {
                     break;
                 }
             }
-            if (i == uvc_cap.reso_num) {
+            if(i == uvc_cap.reso_num)
+            {
                 log_w("can not find reso,please check!!\n");
                 i = 0; //传入的分辨率非法时,默认输出第一个分辨率
             }
@@ -46,9 +52,12 @@ static void uvc_h264_recv_task(void *arg)
             breq.size = UVC_H264_BUF_SIZE;
 
             err = dev_ioctl(fd, UVCIOC_REQBUFS, (unsigned int)&breq);
-            if (!err) {
+            if(!err)
+            {
                 dev_ioctl(fd, UVCIOC_STREAM_ON, 0);
-            } else {
+            }
+            else
+            {
                 err = -1;
                 puts("uvc1 video open err1--------------------\n");
             }
@@ -59,13 +68,18 @@ static void uvc_h264_recv_task(void *arg)
     /* if (!f) { */
     /* log_e("fopen faild\n"); */
     /* } */
-    while (1) {
+    while(1)
+    {
         os_taskq_accept(ARRAY_SIZE(msg), msg);
-        if (msg[0] == Q_MSG) {
-            if (msg[1] == 0xaa) {
-                if (os_task_del_req(OS_TASK_SELF) == OS_TASK_DEL_REQ) {
+        if(msg[0] == Q_MSG)
+        {
+            if(msg[1] == 0xaa)
+            {
+                if(os_task_del_req(OS_TASK_SELF) == OS_TASK_DEL_REQ)
+                {
                     //准备退出线程
-                    if (fd) {
+                    if(fd)
+                    {
                         dev_ioctl(fd, UVCIOC_STREAM_OFF, 0);
                         dev_close(fd);
                     }
@@ -78,10 +92,12 @@ static void uvc_h264_recv_task(void *arg)
             }
         }
         //从uvc 缓存中请求一帧H264图像
-        if (fd) {
+        if(fd)
+        {
             err = dev_ioctl(fd, UVCIOC_DQBUF, (unsigned int)&b);
         }
-        if (err || b.len <= 0) { //请求失败
+        if(err || b.len <= 0)    //请求失败
+        {
             os_time_dly(1);
             continue;
         }
@@ -97,7 +113,8 @@ static void uvc_h264_recv_task(void *arg)
 
 int video2_uvc_h264_stream_open(u16 width, u16 height)
 {
-    if (__this->streamon) {
+    if(__this->streamon)
+    {
         return -1;
     }
     memset(__this, 0x00, sizeof(struct uvc_cam_h264_t));
@@ -109,7 +126,8 @@ int video2_uvc_h264_stream_open(u16 width, u16 height)
 
 int video2_uvc_h264_stream_close()
 {
-    while (OS_TASK_NOT_EXIST != os_task_del_req((const char *)"uvc_h264_recv")) {
+    while(OS_TASK_NOT_EXIST != os_task_del_req((const char *)"uvc_h264_recv"))
+    {
         os_taskq_post_msg((const char *)"uvc_h264_recv", 1,  0xaa);
         os_time_dly(1);
     }

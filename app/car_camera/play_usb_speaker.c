@@ -16,49 +16,60 @@ static u32 usb_speaker_get_stream_data(u8 *buf, u32 len)
 {
     u32 rlen = 0;
     running++;
-    if (!state) {
+    if(!state)
+    {
         memset(buf, 0, len);
         goto __exit;
     }
 #if 1
-    if (b.len == 0 || b.baddr == 0) {
+    if(b.len == 0 || b.baddr == 0)
+    {
         b.noblock = 1;
         b.index = bindex;
         dev_ioctl(dev, AUDIOC_DQBUF, (u32)&b);
         /* printf("baddr %x, blen %d\n", b.baddr, b.len); */
-        if (b.len == 0 || b.baddr == 0) {
+        if(b.len == 0 || b.baddr == 0)
+        {
             putchar('#');
             buf_offset = 0;
             memset(buf, 0, len);
             goto __exit;
         }
     }
-    if (spk_ch == 1) {
+    if(spk_ch == 1)
+    {
         rlen = len > b.len - buf_offset ? b.len - buf_offset : len;
         memcpy(buf, (u8 *)(b.baddr + buf_offset), rlen);
-        if (len > rlen) {
+        if(len > rlen)
+        {
             memset(buf + rlen, 0, len - rlen);
         }
-    } else if (spk_ch == 2) {
+    }
+    else if(spk_ch == 2)
+    {
         s16 *dst_buf = (s16 *)buf;
         s16 *src_buf = (s16 *)(b.baddr + buf_offset);
         rlen = len / 2 > b.len - buf_offset ? b.len - buf_offset : len / 2;
-        for (int i = rlen / 2 - 1; i >= 0; i--) {
+        for(int i = rlen / 2 - 1; i >= 0; i--)
+        {
             dst_buf[2 * i] = src_buf[i];
             dst_buf[2 * i + 1] = src_buf[i];
         }
-        if (len > 2 * rlen) {
+        if(len > 2 * rlen)
+        {
             memset(buf + 2 * rlen, 0, len - 2 * rlen);
         }
     }
     buf_offset += rlen;
-    if (buf_offset >= b.len) {
+    if(buf_offset >= b.len)
+    {
         buf_offset = 0;
         dev_ioctl(dev, AUDIOC_QBUF, (u32)&b);
         b.len = 0;
     }
 #else
-    const s16 sin_48k[] = {
+    const s16 sin_48k[] =
+    {
         0, 2139, 4240, 6270, 8192, 9974, 11585, 12998,
         14189, 15137, 15826, 16244, 16384, 16244, 15826, 15137,
         14189, 12998, 11585, 9974, 8192, 6270, 4240, 2139,
@@ -66,21 +77,27 @@ static u32 usb_speaker_get_stream_data(u8 *buf, u32 len)
         -14189, -15137, -15826, -16244, -16384, -16244, -15826, -15137,
         -14189, -12998, -11585, -9974, -8192, -6270, -4240, -2139
     };
-    if (spk_ch == 1) {
+    if(spk_ch == 1)
+    {
         rlen = len > sizeof(sin_48k) ? sizeof(sin_48k) : len;
         memcpy(buf, sin_48k, rlen);
-        if (len > rlen) {
+        if(len > rlen)
+        {
             memset(buf + rlen, 0, len - rlen);
         }
-    } else if (spk_ch == 2) {
+    }
+    else if(spk_ch == 2)
+    {
         s16 *dst_buf = (s16 *)buf;
         s16 *src_buf = (s16 *)sin_48k;
         rlen = len / 2 > sizeof(sin_48k) ? sizeof(sin_48k) : len / 2;
-        for (int i = rlen / 2 - 1; i >= 0; i--) {
+        for(int i = rlen / 2 - 1; i >= 0; i--)
+        {
             dst_buf[2 * i] = src_buf[i];
             dst_buf[2 * i + 1] = src_buf[i];
         }
-        if (len > rlen * 2) {
+        if(len > rlen * 2)
+        {
             memset(buf + 2 * rlen, 0, len - 2 * rlen);
         }
     }
@@ -99,11 +116,13 @@ int play_usb_speaker_start()
     struct audio_format f = {0};
     struct video_reqbufs breq = {0};
 
-    if (state) {
+    if(state)
+    {
         return 0;
     }
     dev = dev_open("audio", (void *)AUDIO_TYPE_ENC);
-    if (!dev) {
+    if(!dev)
+    {
         ret = -1;
         goto __exit_fail;
     }
@@ -134,25 +153,29 @@ int play_usb_speaker_start()
     ret = dev_ioctl(dev, AUDIOC_SET_FMT, (u32)&f);
 
     audio_buf = malloc(USB_AUDIO_BUF_SIZE);
-    if (!audio_buf) {
+    if(!audio_buf)
+    {
         ret = -2;
         goto __exit_fail;
     }
     breq.buf = audio_buf;
     breq.size = USB_AUDIO_BUF_SIZE;
     ret = dev_ioctl(dev, AUDIOC_REQBUFS, (u32)&breq);
-    if (ret) {
+    if(ret)
+    {
         ret = -3;
         goto __exit_fail;
     }
 
     ret = dev_ioctl(dev, AUDIOC_STREAM_ON, (u32)&bindex);
-    if (ret) {
+    if(ret)
+    {
         ret = -4;
         goto __exit_fail;
     }
     ret = usb_host_speaker_open();
-    if (ret) {
+    if(ret)
+    {
         ret = -5;
         goto __exit_fail;
     }
@@ -162,12 +185,14 @@ int play_usb_speaker_start()
 
 __exit_fail:
     usb_host_speaker_close();
-    if (dev) {
+    if(dev)
+    {
         dev_ioctl(dev, AUDIOC_STREAM_OFF, (u32)bindex);
         dev_close(dev);
         dev = NULL;
     }
-    if (audio_buf) {
+    if(audio_buf)
+    {
         free(audio_buf);
         audio_buf = NULL;
     }
@@ -180,11 +205,14 @@ int play_usb_speaker_stop()
     struct host_speaker_ops spk_ops = {0};
     u32 ot = jiffies + msecs_to_jiffies(100);
 
-    if (!state) {
+    if(!state)
+    {
         return 0;
     }
-    while (running) {
-        if (time_after(jiffies, ot)) {
+    while(running)
+    {
+        if(time_after(jiffies, ot))
+        {
             printf("wait usb speaker exit running timeout!\n");
             return -1;
         }
@@ -195,7 +223,8 @@ int play_usb_speaker_stop()
     usb_host_speaker_set_ops(&spk_ops);
     usb_host_speaker_close();
     dev_ioctl(dev, AUDIOC_STREAM_OFF, (u32)bindex);
-    if (b.len && b.len) {
+    if(b.len && b.len)
+    {
         dev_ioctl(dev, AUDIOC_QBUF, (u32)&b);
         b.baddr = 0;
         b.len = 0;

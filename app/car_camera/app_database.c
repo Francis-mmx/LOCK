@@ -15,7 +15,8 @@
  * 参数2: 配置项需要多少个bit存储
  * 参数3: 配置项的默认值
  */
-static const struct db_table app_config_table[] = {
+static const struct db_table app_config_table[] =
+{
     /*
      *  录像模式配置项
      */
@@ -68,12 +69,13 @@ static const struct db_table app_config_table[] = {
     {"stk",     8,      0},                         // 大头贴索引
 
     {"back",    4,      0},                         //壁纸设置保存  0-3
-    
-    {"spt",     16,     0},                         //存储记录的起始指针               startpointer
-        
-    
-    {"dac",     16,     0x55aa},                    // dac_trim
 
+
+    {"dac",     16,     0x55aa},                    // dac_trim
+    
+/*************************************Changed by liumenghui*************************************/
+
+    {"spt",     16,     0},                         //存储记录的起始指针               startpointer
     {"ver",     1,      0},                         // 验证模式
     {"pol",     1,      0},                         // 防撬报警
     {"body",    1,       0},                        // 人体感应
@@ -82,6 +84,8 @@ static const struct db_table app_config_table[] = {
     {"pop",    1,       0},                         // 自弹锁体选择
     {"dblock",    1,       0},                      // 自动反锁选择
     {"lockv",    6,       0},                       // 自动反锁阈值
+    
+/*************************************Changed by liumenghui*************************************/
 };
 
 
@@ -92,11 +96,15 @@ int app_set_config(struct intent *it, const struct app_cfg *cfg, int size)
 
     printf("app_set_config: %s, %d\n", it->data, it->exdata);
 
-    for (i = 0; i < size; i++) {
-        if (!strcmp(it->data, cfg[i].table)) {
-            if (cfg[i].set) {
+    for(i = 0; i < size; i++)
+    {
+        if(!strcmp(it->data, cfg[i].table))
+        {
+            if(cfg[i].set)
+            {
                 int err = cfg[i].set(it->exdata);
-                if (err) {
+                if(err)
+                {
                     return err;
                 }
             }
@@ -120,7 +128,8 @@ static int app_config_init()
     err = db_create("rtc", NULL);
     ASSERT(err == 0, "open device rtc faild\n");
 #elif defined CONFIG_DATABASE_2_FLASH
-    struct vm_arg vm_arg = {
+    struct vm_arg vm_arg =
+    {
         .need_defrag_when_write_full = 1,
         .large_mode = 0,
         .vm_magic = 0,

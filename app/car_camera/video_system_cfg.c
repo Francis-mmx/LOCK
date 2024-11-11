@@ -14,7 +14,7 @@
 
 extern struct video_system_hdl sys_handler;
 extern int sys_cur_mod;  /* 1:rec, 2:tph, 3:dec, 4:audio, 5:music */
-#define __this 	(&sys_handler)
+#define __this  (&sys_handler)
 
 
 
@@ -77,7 +77,7 @@ int frm_set_function(u32 parm)
 
 u8 get_default_setting_st()
 {
-    return	(__this->default_set);
+    return (__this->default_set);
 }
 
 void clear_default_setting_st()
@@ -107,7 +107,8 @@ static int lane_det_set_function(u32 parm)
 /*
  * 在此处添加所需配置即可
  */
-const static struct app_cfg cfg_table[] = {
+const static struct app_cfg cfg_table[] =
+{
     {"kvo", kvo_set_function},
     {"fre", fre_set_function},
     {"aff", aff_set_function},
@@ -144,12 +145,12 @@ void set_rtc_default_time(struct sys_time *t)
 {
     static int count = 0;
     count++;
-    printf("set_rtc_default_time %d\n",count);
-    t->year=2024;
-    t->month=1;
-    t->day=1;
-    t->hour=0;
-    t->min=0;
-    t->sec=0;
+    printf("set_rtc_default_time %d\n", count);
+    t->year = 2024;
+    t->month = 1;
+    t->day = 1;
+    t->hour = 0;
+    t->min = 0;
+    t->sec = 0;
 
 }

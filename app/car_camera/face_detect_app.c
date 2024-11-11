@@ -11,9 +11,9 @@
 #define FACE_DEBUG    1
 
 #if (FACE_DEBUG == 1)
-#define _FACE_DEBUG     log_d
+    #define _FACE_DEBUG     log_d
 #else
-#define _FACE_DEBUG(...)
+    #define _FACE_DEBUG(...)
 #endif
 
 void face_det_init(void);
@@ -22,7 +22,8 @@ extern void video_rec_post_msg(const char *msg, ...);
 extern void video_photo_post_msg(const char *msg, ...);
 
 
-struct face_det_info {
+struct face_det_info
+{
     int pid;
     u8 exit_state;
     u8 face_det_state;
@@ -35,7 +36,7 @@ struct face_det_info {
 };
 
 static struct face_det_info _info = {0};
-#define __this 	(&_info)
+#define __this  (&_info)
 
 
 
@@ -63,7 +64,8 @@ static int face_det_uninstall(void *p)
 {
     struct face_detect_f *e = (struct face_detect_f *)p;
 
-    if (e) {
+    if(e)
+    {
         face_detect_free(e);//释放内存
     }
 
@@ -85,17 +87,21 @@ int detect_f(frame *fp)
 
     _FACE_DEBUG("\nnum_box:%d \n", num_box);
     smile_face_process(num_box, fp, e, e->confidence_, e->bounding_box, e->alignment_temp, e->smile_idx); //0是笑脸  1是不笑的脸   //num_box检测笑脸个数,越大检测时间越长
-    if (num_box) {
-        for (int i = 0; i < num_box; i++) {
+    if(num_box)
+    {
+        for(int i = 0; i < num_box; i++)
+        {
             _FACE_DEBUG("e->bounding_box: start(%d,%d) end(%d,%d)\n",  \
                         e->bounding_box[i].x1, e->bounding_box[i].y1,  \
                         e->bounding_box[i].x2, e->bounding_box[i].y2);
-            for (int j = 0; j < 5; j++) {
+            for(int j = 0; j < 5; j++)
+            {
                 _FACE_DEBUG("e->alignment_temp: (%d,%d) \n",  \
                             e->alignment_temp[j].x, e->alignment_temp[j].y);
             }
             _FACE_DEBUG(">>>>>>> smile face : %d \n", e->smile_idx[i]);
-            if (e->smile_idx[i] == 0) {
+            if(e->smile_idx[i] == 0)
+            {
                 //笑脸
                 //TODO
             }
@@ -104,9 +110,13 @@ int detect_f(frame *fp)
             __this->no_face_cnt = 0;
 
         }
-    } else {
-        if (__this->have_face) {
-            if (++__this->no_face_cnt > (2000 / (1000 / FACE_DET_FPS))) { //2s未检测到人脸
+    }
+    else
+    {
+        if(__this->have_face)
+        {
+            if(++__this->no_face_cnt > (2000 / (1000 / FACE_DET_FPS)))    //2s未检测到人脸
+            {
                 video_photo_post_msg("faceOff");
                 __this->have_face = 0;
                 __this->no_face_cnt = 0;
@@ -130,7 +140,8 @@ static int image_deal_process(struct fb_map_user *map)
     f.c = 1;
     frame_size = f.w * f.h;
     u8 fps = (1000 / FACE_DET_FPS) / (1000 / __this->camera_fps);
-    if (++time > fps) {
+    if(++time > fps)
+    {
 //            fps_cnt++;
 //            if (time_after(jiffies, fps_cnt_time)) {
 //                fps_cnt_time = jiffies + msecs_to_jiffies(1000);
@@ -138,11 +149,13 @@ static int image_deal_process(struct fb_map_user *map)
 //                fps_cnt = 0;
 //            }
         time = 0;
-        if (!__this->y) {
+        if(!__this->y)
+        {
             __this->y = (u8 *)malloc(frame_size);
         }
         memcpy(__this->y, map->baddr, frame_size);
-        for (int i = 0; i < frame_size; i++) {
+        for(int i = 0; i < frame_size; i++)
+        {
             __this->y[i] -= 128;
         }
         f.pixel = __this->y;
@@ -181,20 +194,23 @@ void face_yuv_task(void *priv)
     f.private_data   = fb_name;
 
     video_dev_fd = dev_open(dev_name, NULL);
-    if (video_dev_fd == NULL) {
+    if(video_dev_fd == NULL)
+    {
         _FACE_DEBUG("%s test open device %s faild\n", fb_name, dev_name);
         return;
     }
 
     ret = dev_ioctl(video_dev_fd, VIDIOC_SET_FMT, (u32)&f);
-    if (ret) {
+    if(ret)
+    {
         _FACE_DEBUG("VIDIOC_SET_FMT faild\n");
         dev_close(video_dev_fd);
         return;
     }
 
     ret = dev_ioctl(video_dev_fd, VIDIOC_OVERLAY, 1);
-    if (ret) {
+    if(ret)
+    {
         _FACE_DEBUG("VIDIOC_OVERLAY faild\n");
         dev_close(video_dev_fd);
         return;
@@ -204,7 +220,8 @@ void face_yuv_task(void *priv)
 
     //打开显示通道
     fb2 = dev_open(f.private_data, (void *)FB_COLOR_FORMAT_YUV420);
-    if (!fb2) {
+    if(!fb2)
+    {
         _FACE_DEBUG(" ||| %s ,,, %d \r\n", __FUNCTION__, __LINE__);
         dev_close(video_dev_fd);
         return;
@@ -213,23 +230,29 @@ void face_yuv_task(void *priv)
     face_det_load(); /*初始化加载人脸识别模块*/
 
     malloc_stats();
-    while (1) {
+    while(1)
+    {
 
-        if (__this->exit_state) {
+        if(__this->exit_state)
+        {
             __this->exit_state = 0;
             break;
         }
-        if (!__this->face_det_state) {
+        if(!__this->face_det_state)
+        {
             os_time_dly(2);
             continue;
         }
 
         dev_ioctl(fb2, FBIOGET_FBUFFER_INUSED, (int)&map1);
-        if ((u32)map1.baddr) {
+        if((u32)map1.baddr)
+        {
             image_deal_process(&map1);
             //获取到才释放
             dev_ioctl(fb2, FBIOPUT_FBUFFER_INUSED, (int)&map1);
-        } else {
+        }
+        else
+        {
             //获取不到重试
             continue;
         }
@@ -245,7 +268,8 @@ void face_yuv_task(void *priv)
 
 void face_det_init()
 {
-    if (__this->yuv_init_flag == 1) {
+    if(__this->yuv_init_flag == 1)
+    {
         return;
     }
     memset(__this, 0, sizeof(struct face_det_info));
@@ -257,15 +281,17 @@ void face_det_init()
 }
 
 #ifdef FACE_DECT_ENABLE
-late_initcall(face_det_init);
+    late_initcall(face_det_init);
 #endif
 
 void face_det_uinit(void)
 {
-    if (__this->yuv_init_flag == 0) {
+    if(__this->yuv_init_flag == 0)
+    {
         return;
     }
-    if (__this->y) {
+    if(__this->y)
+    {
         free(__this->y);
         __this->y = NULL;
     }
@@ -277,7 +303,8 @@ void face_det_uinit(void)
 }
 void face_det_onoff(u8 onoff) // 人脸检测控制 0:暂停 1:开启
 {
-    if (__this->yuv_init_flag) {
+    if(__this->yuv_init_flag)
+    {
         __this->face_det_state = onoff;
     }
 }

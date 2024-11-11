@@ -3,7 +3,8 @@
 #include "server/video_dec_server.h"
 
 
-static const u8 key_voice[] = {
+static const u8 key_voice[] =
+{
     0x00, 0x00, 0xDA, 0x00, 0x59, 0x02, 0x78, 0x02, 0x86, 0x00, 0x0F, 0xFE, 0x54, 0xFD, 0xBE, 0xFE,
     0x1D, 0x00, 0xCF, 0xFE, 0xEA, 0xFA, 0x2E, 0xF8, 0x16, 0xFB, 0x53, 0x04, 0xC1, 0x0E, 0x8A, 0x12,
     0x60, 0x0B, 0xB6, 0xFC, 0xE5, 0xEF, 0x22, 0xED, 0x04, 0xF5, 0x21, 0x00, 0x85, 0x05, 0x95, 0x02,
@@ -106,7 +107,8 @@ static const u8 key_voice[] = {
 };
 
 
-static u8 take_photo_voice[] = {
+static u8 take_photo_voice[] =
+{
     0x1F, 0x00, 0x17, 0x00, 0x6C, 0x00, 0x25, 0x00, 0x5C, 0x00, 0xB4, 0x00, 0x6A, 0x00, 0x2D, 0x00,
     0x36, 0x00, 0x3C, 0x00, 0x5E, 0x00, 0x58, 0x00, 0x3C, 0x00, 0x50, 0x00, 0x5B, 0x00, 0x78, 0x00,
     0x63, 0x00, 0x47, 0x00, 0x56, 0x00, 0x5B, 0x00, 0x39, 0x00, 0x71, 0x00, 0x72, 0x00, 0x86, 0x00,
@@ -511,27 +513,34 @@ static void audio_dec_irq_handler(void *priv, void *data, int len)
     int total_len;
     const u8 *table;
 
-    if (bindex == 0xff) {
+    if(bindex == 0xff)
+    {
         return;
     }
 
-    if (key_tone_table == 0) {
+    if(key_tone_table == 0)
+    {
         table = key_voice;
         total_len = sizeof(key_voice);
-    } else {
+    }
+    else
+    {
         table = take_photo_voice;
         total_len = sizeof(take_photo_voice);
     }
 
-    if (rlen > total_len - offset) {
+    if(rlen > total_len - offset)
+    {
         rlen = total_len - offset;
     }
     memcpy(data, table + offset, rlen);
-    if (rlen < len) {
+    if(rlen < len)
+    {
         memset((u8 *)data + rlen, 0, len - rlen);
     }
     offset += rlen;
-    if (offset == total_len) {
+    if(offset == total_len)
+    {
         offset = 0;
         dev_ioctl(dev, AUDIOC_STREAM_OFF, bindex);
         bindex = 0xff;
@@ -540,43 +549,55 @@ static void audio_dec_irq_handler(void *priv, void *data, int len)
 
 static void key_event_handler(struct sys_event *e)
 {
-    static  u8  k=1;
-    static  u8  flag=0;
-    if(k==1){
-        k=0;
-        flag=db_select("kvo");
+    static  u8  k = 1;
+    static  u8  flag = 0;
+    if(k == 1)
+    {
+        k = 0;
+        flag = db_select("kvo");
     }
 //    printf("============== vol: %d\n",db_select("kvo"));
 
-    if(flag!=db_select("kvo")){
-        k=2;
-        flag=db_select("kvo");
+    if(flag != db_select("kvo"))
+    {
+        k = 2;
+        flag = db_select("kvo");
     }
 
-    if (!db_select("kvo")) {
+    if(!db_select("kvo"))
+    {
         return;
     }
-    if (kvoice_disable) {
+    if(kvoice_disable)
+    {
         return;
     }
 
-    if (e->type == SYS_KEY_EVENT) {
-        if (e->u.key.value == KEY_POWER) {
-            if (e->u.key.event != KEY_EVENT_CLICK) {
+    if(e->type == SYS_KEY_EVENT)
+    {
+        if(e->u.key.value == KEY_POWER)
+        {
+            if(e->u.key.event != KEY_EVENT_CLICK)
+            {
                 return;
             }
         }
-        if (e->u.key.value == KEY_PHOTO) {
+        if(e->u.key.value == KEY_PHOTO)
+        {
             return;
         }
-    } else {
-        if (e->u.touch.event != TOUCH_EVENT_DOWN) {
+    }
+    else
+    {
+        if(e->u.touch.event != TOUCH_EVENT_DOWN)
+        {
             return;
         }
     }
 
 #if 1
-    if (dev == NULL || (k == 2)) {
+    if(dev == NULL || (k == 2))
+    {
         key_voice_init();
     }
 #endif
@@ -584,7 +605,8 @@ static void key_event_handler(struct sys_event *e)
     offset = 0;
     key_tone_table = 0;
 
-    if (bindex == 0xff) {
+    if(bindex == 0xff)
+    {
         dev_ioctl(dev, AUDIOC_STREAM_ON, (u32)&bindex);
     }
 }
@@ -596,15 +618,18 @@ SYS_EVENT_HANDLER(SYS_KEY_EVENT | SYS_TOUCH_EVENT, key_event_handler, 3);
 
 void key_voice_start(int id)
 {
-    if (!db_select("kvo")) {
+    if(!db_select("kvo"))
+    {
         return;
     }
-    if (kvoice_disable) {
+    if(kvoice_disable)
+    {
         return;
     }
 
 #if 1
-    if (dev == NULL) {
+    if(dev == NULL)
+    {
         key_voice_init();
     }
 #endif
@@ -613,7 +638,8 @@ void key_voice_start(int id)
     key_tone_table = id;
 
 
-    if (bindex == 0xff) {
+    if(bindex == 0xff)
+    {
         dev_ioctl(dev, AUDIOC_STREAM_ON, (u32)&bindex);
     }
 }
@@ -626,17 +652,21 @@ int key_voice_set(int s)
     int err;
     u32 arg[2];
     struct audio_format f;
-    while(bindex!=0xff){
+    while(bindex != 0xff)
+    {
         //等待按键音播放完毕
         os_time_dly(1);
     }
-    if(dev){
+    if(dev)
+    {
         dev_close(dev);
         dev = NULL;
     }
-    if (!dev) {
+    if(!dev)
+    {
         dev = dev_open("audio", (void *)AUDIO_TYPE_DEC);
-        if(!dev){
+        if(!dev)
+        {
             puts("dev null err!!!\n");
             return -1;
         }
@@ -647,7 +677,8 @@ int key_voice_set(int s)
     f.sample_rate   = 8000;
     f.priority      = 10;
     err = dev_ioctl(dev, AUDIOC_SET_FMT, (u32)&f);
-    if (err) {
+    if(err)
+    {
         puts("format_err\n");
         return -1;
     }
@@ -666,7 +697,8 @@ static int key_voice_init()
     struct audio_format f;
 
     dev = dev_open("audio", (void *)AUDIO_TYPE_DEC);
-    if (!dev) {
+    if(!dev)
+    {
         return 0;
     }
 
@@ -675,7 +707,8 @@ static int key_voice_init()
     f.sample_rate   = 8000;
     f.priority      = 10;
     err = dev_ioctl(dev, AUDIOC_SET_FMT, (u32)&f);
-    if (err) {
+    if(err)
+    {
         puts("format_err\n");
         return 0;
     }
@@ -696,17 +729,19 @@ static FILE *file;
 static void audio_server_event_handler(void *priv, int argc, int *argv)
 {
     union audio_req r;
-    switch (argv[0]) {
-    case AUDIO_SERVER_EVENT_END:
-        if (audio) {
-            r.dec.cmd = AUDIO_DEC_STOP;
-            server_request(audio, AUDIO_REQ_DEC, &r);
-            server_close(audio);
-            fclose(file);
-            audio = NULL;
-            kvoice_disable = 0;
-        }
-        break;
+    switch(argv[0])
+    {
+        case AUDIO_SERVER_EVENT_END:
+            if(audio)
+            {
+                r.dec.cmd = AUDIO_DEC_STOP;
+                server_request(audio, AUDIO_REQ_DEC, &r);
+                server_close(audio);
+                fclose(file);
+                audio = NULL;
+                kvoice_disable = 0;
+            }
+            break;
     }
 }
 
@@ -714,19 +749,22 @@ void play_voice_file(const char *file_name)
 {
     union audio_req r = {0};
 
-    if (audio) {
+    if(audio)
+    {
         log_e("audio return ");
         return;
     }
 
     file = fopen(file_name, "r");
-    if (!file) {
+    if(!file)
+    {
         log_e("open voice file err %s", file_name);
         return;
     }
 
     audio = server_open("audio_server", "dec");
-    if (!audio) {
+    if(!audio)
+    {
         log_e("audio server open fail");
         fclose(file);
         return;
@@ -755,7 +793,8 @@ void stop_play_voice_file()
 {
     union audio_req r;
 
-    if (audio) {
+    if(audio)
+    {
         r.dec.cmd = AUDIO_DEC_STOP;
         server_request(audio, AUDIO_REQ_DEC, &r);
         server_close(audio);

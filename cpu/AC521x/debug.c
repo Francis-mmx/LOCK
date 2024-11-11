@@ -15,7 +15,8 @@ static u32 debug_index;
 
 void debug_enter_critical()
 {
-    if (DEBUG_WR_EN & BIT(0)) {
+    if(DEBUG_WR_EN & BIT(0))
+    {
         return;
     }
     DEBUG_WR_EN = 1;//0xe7;//set debug reg write enable
@@ -23,7 +24,8 @@ void debug_enter_critical()
 
 void debug_exit_critical()
 {
-    if (DEBUG_WR_EN & BIT(0)) {
+    if(DEBUG_WR_EN & BIT(0))
+    {
         DEBUG_WR_EN = 0;//0xe7;//set debug reg write disable
         return;
     }
@@ -33,16 +35,18 @@ void debug_exit_critical()
 /* --------------------------------------------------------------------------*/
 /**
  * @brief get_debug_index
- * 		»ñÈ¡¿ÉÒÔÊ¹ÓÃµÄdebugŽ°¿Ú
+ *      »ñÈ¡¿ÉÒÔÊ¹ÓÃµÄdebugŽ°¿Ú
  *
  * @return -1 ±íÊŸÃ»ÓÐ¿ÉÒÔÊ¹ÓÃµÄŽ°¿Ú
- * 			0-7 ¿ÉÒÔÊ¹ÓÃµÄŽ°¿ÚºÅ
+ *          0-7 ¿ÉÒÔÊ¹ÓÃµÄŽ°¿ÚºÅ
  */
 /* --------------------------------------------------------------------------*/
 static inline u32 get_debug_index()
 {
-    for (u32 i = 0; i < 8 ; i++) {
-        if (!(debug_index & BIT(i))) {
+    for(u32 i = 0; i < 8 ; i++)
+    {
+        if(!(debug_index & BIT(i)))
+        {
             return i;
         }
     }
@@ -96,9 +100,12 @@ void pc_rang_limit(void *low_addr, void *high_addr)
 
     debug_enter_critical();
 
-    if (OS_CPU_ID == 0) {
+    if(OS_CPU_ID == 0)
+    {
         pc0_rang_limit(low_addr, high_addr);
-    } else {
+    }
+    else
+    {
         pc1_rang_limit(low_addr, high_addr);
     }
 
@@ -110,7 +117,8 @@ void pc_rang_limit(void *low_addr, void *high_addr)
 /**
  * @brief debugŽ°¿Ú
  */
-struct _wr_limit {
+struct _wr_limit
+{
     volatile u32 wr_limit_h; ///<Ž°¿ÚžßµØÖ·
     volatile u32 wr_limit_l; ///<Ž°¿ÚµÍµØÖ·
 };
@@ -130,17 +138,20 @@ struct _wr_limit {
  *      µ±²ÎÊý¡Ÿis_allow_write¡¿Îª0µÄÊ±ºò£¬²ÎÊý¡Ÿdev¡¿ÎÞÐ§
  * @param dev Öž¶šÍâÉèµÄ±àºÅ
  * @return 0³É¹Š
- * 		  ÆäËû·µ»Ødebug_index
- * 	devnum ¶šÒåÔÚdebug.h
+ *        ÆäËû·µ»Ødebug_index
+ *  devnum ¶šÒåÔÚdebug.h
  * @note ²»¿ÉÒÔÊ¹ÓÃÒ»žöŽ°¿ÚÑ¡ÔñÒ»Æ¬ÄÚŽæÔÊÐíÍâÉèAÐŽ£¬Í¬Ê±Ê¹ÓÃÁíÒ»žöŽ°¿ÚœûÖ¹ÍâÉèBÐŽ¡£
  * low_addr high_addr Ö®²îÐèÒª>=4×ÖœÚ
  */
 /* --------------------------------------------------------------------------*/
 u32 dev_write_range_limit(u32 limit_index, void *low_addr, void *high_addr, u32 is_allow_write, u32 dev)
 {
-    if (limit_index == -1) {
+    if(limit_index == -1)
+    {
         limit_index = get_debug_index();
-    } else if (debug_index & BIT(limit_index)) {
+    }
+    else if(debug_index & BIT(limit_index))
+    {
         return debug_index;
     }
 
@@ -157,18 +168,27 @@ u32 dev_write_range_limit(u32 limit_index, void *low_addr, void *high_addr, u32 
     wr_limit[limit_index].wr_limit_h = (u32)high_addr;
     wr_limit[limit_index].wr_limit_l = (u32)low_addr;
 
-    if (is_allow_write) {
-        if (limit_index > 3) {
+    if(is_allow_write)
+    {
+        if(limit_index > 3)
+        {
             PRP_ALLOW_NUM1 |= dev << ((limit_index - 4) * 8);
-        } else {
+        }
+        else
+        {
             PRP_ALLOW_NUM0 |= dev << (limit_index * 8);
         }
 
         DSPCON |= ((1 << limit_index) << 24) | ((1 << limit_index) << 8);
-    } else {
-        if (limit_index > 3) {
+    }
+    else
+    {
+        if(limit_index > 3)
+        {
             PRP_ALLOW_NUM1 &= ~(0xff << ((limit_index - 4) * 8));
-        } else {
+        }
+        else
+        {
             PRP_ALLOW_NUM0 &= ~(0xff << (limit_index * 8));
         }
 
@@ -197,14 +217,17 @@ u32 dev_write_range_limit(u32 limit_index, void *low_addr, void *high_addr, u32 
  * @param low_addr ·¶Î§ÄÚµÄµÍµØÖ·
  * @param high_addr ·¶Î§ÍâµÄžßµØÖ·
  * @return 0³É¹Š
- * 		  ÆäËû·µ»Ødebug_index
+ *        ÆäËû·µ»Ødebug_index
  */
 /* --------------------------------------------------------------------------*/
 u32 cpu0_write_range_limit(u32 limit_index, void *low_addr, void *high_addr)
 {
-    if (limit_index == -1) {
+    if(limit_index == -1)
+    {
         limit_index = get_debug_index();
-    } else if (debug_index & BIT(limit_index)) {
+    }
+    else if(debug_index & BIT(limit_index))
+    {
         return debug_index;
     }
 
@@ -237,14 +260,17 @@ u32 cpu0_write_range_limit(u32 limit_index, void *low_addr, void *high_addr)
  * @param low_addr ·¶Î§ÄÚµÄµÍµØÖ·
  * @param high_addr ·¶Î§ÍâµÄžßµØÖ·
  * @return 0³É¹Š
- * 		  ÆäËû·µ»Ødebug_index
+ *        ÆäËû·µ»Ødebug_index
  */
 /* --------------------------------------------------------------------------*/
 u32 cpu1_write_range_limit(u32 limit_index, void *low_addr, void *high_addr)
 {
-    if (limit_index == -1) {
+    if(limit_index == -1)
+    {
         limit_index = get_debug_index();
-    } else if (debug_index & BIT(limit_index)) {
+    }
+    else if(debug_index & BIT(limit_index))
+    {
         return debug_index;
     }
     debug_index |= BIT(limit_index);
@@ -274,7 +300,7 @@ u32 cpu1_write_range_limit(u32 limit_index, void *low_addr, void *high_addr)
  * @param high_addr
  *
  * @return 0 ³É¹Š
- * 		  -1 Ê§°Ü
+ *        -1 Ê§°Ü
  */
 /* --------------------------------------------------------------------------*/
 u32 cpu_write_range_limit(void *low_addr, u32 win_size)
@@ -284,11 +310,14 @@ u32 cpu_write_range_limit(void *low_addr, u32 win_size)
 
     debug_enter_critical();
 
-    if (i != -1) {
+    if(i != -1)
+    {
         cpu0_write_range_limit(i, low_addr, high_addr);
         debug_exit_critical();
         return -1;
-    } else {
+    }
+    else
+    {
         debug_exit_critical();
         return -1;
     }
@@ -302,8 +331,10 @@ u32 cpu_write_range_unlimit(void *low_addr)
 {
     char i;
     debug_enter_critical();
-    for (i = 0; i < 8; i++) {
-        if (wr_limit[i].wr_limit_l == low_addr) {
+    for(i = 0; i < 8; i++)
+    {
+        if(wr_limit[i].wr_limit_l == low_addr)
+        {
             wr_limit[i].wr_limit_h = 0;
             wr_limit[i].wr_limit_l = 0;
             debug_index &= ~BIT(i);
@@ -322,7 +353,8 @@ u32 sdr_write_range_limit(void *low_addr, u32 win_size, u32 is_allow_write, u32 
     void *high_addr = (void *)((u32)low_addr + win_size);
 
     u32 i = get_debug_index();
-    if (i == -1) {
+    if(i == -1)
+    {
         return -1;
     }
 
@@ -336,18 +368,27 @@ u32 sdr_write_range_limit(void *low_addr, u32 win_size, u32 is_allow_write, u32 
            (u32)low_addr,
            (u32)high_addr);
 
-    if (is_allow_write) {
-        if (i > 3) {
+    if(is_allow_write)
+    {
+        if(i > 3)
+        {
             PRP_ALLOW_NUM1 |= dev << ((i - 4) * 8);
-        } else {
+        }
+        else
+        {
             PRP_ALLOW_NUM0 |= dev << (i * 8);
         }
 
         DSPCON |= ((1 << i) << 24) | ((1 << i) << 8);
-    } else {
-        if (i > 3) {
+    }
+    else
+    {
+        if(i > 3)
+        {
             PRP_ALLOW_NUM1 &= ~(0xff << ((i - 4) * 8));
-        } else {
+        }
+        else
+        {
             PRP_ALLOW_NUM0 &= ~(0xff << (i * 8));
         }
         DSPCON &= ~((1 << i) << 8);
@@ -397,7 +438,7 @@ void debug_clear()
 /* --------------------------------------------------------------------------*/
 void debug_init()
 {
-//	DBG_CON1 |= 3;	///< enable peripheral_bus_inv_en bus_inv_expt_en
+//  DBG_CON1 |= 3;  ///< enable peripheral_bus_inv_en bus_inv_expt_en
 
     debug_enter_critical();
 

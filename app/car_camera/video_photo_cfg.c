@@ -11,7 +11,7 @@
 
 
 extern struct video_photo_handle tph_handler;
-#define __this 	(&tph_handler)
+#define __this  (&tph_handler)
 
 
 /***************************camera0***********************************/
@@ -48,10 +48,12 @@ int acu_set_function_camera0(u32 parm)
 
     camera = &__this->camera[0];
     server = camera->server;
-    if (!camera->server) {
+    if(!camera->server)
+    {
         server = __this->display;
     }
-    if (server) {
+    if(server)
+    {
         req.camera.shpn_level = parm;
         req.camera.cmd = SET_CAMERA_SHP_LEVEL;
         server_request(server, VIDEO_REQ_CAMERA_EFFECT, &req);
@@ -67,10 +69,12 @@ int wbl_set_function_camera0(u32 parm)
 
     camera = &__this->camera[0];
     server = camera->server;
-    if (!camera->server) {
+    if(!camera->server)
+    {
         server = __this->display;
     }
-    if (server) {
+    if(server)
+    {
         req.camera.white_blance = parm;
         req.camera.cmd = SET_CAMERA_WB;
         server_request(server, VIDEO_REQ_CAMERA_EFFECT, &req);
@@ -91,10 +95,12 @@ int exp_set_function_camera0(u32 parm)
 
     camera = &__this->camera[0];
     server = camera->server;
-    if (!camera->server) {
+    if(!camera->server)
+    {
         server = __this->display;
     }
-    if (server) {
+    if(server)
+    {
         req.camera.ev = parm;
         req.camera.cmd = SET_CAMERA_EV;
         server_request(server, VIDEO_REQ_CAMERA_EFFECT, &req);
@@ -117,7 +123,8 @@ int col_set_function_camera0(u32 parm)
     struct photo_camera *camera;
 
     camera = &__this->camera[0];
-    if (__this->display) {
+    if(__this->display)
+    {
         set_isp_special_effect(__this->display, parm);
     }
     return 0;
@@ -135,9 +142,11 @@ int set_camera_config(struct photo_camera *camera)
     struct server *server;
 
     server = __this->display;
-    if (!server) {
+    if(!server)
+    {
         server = camera->server;
-        if (!server) {
+        if(!server)
+        {
             return -EINVAL;
         }
     }
@@ -147,14 +156,16 @@ int set_camera_config(struct photo_camera *camera)
     req.camera.white_blance = db_select("wbl");
     req.camera.cmd = /*SET_CAMERA_MODE | */SET_CAMERA_EV | SET_CAMERA_WB | SET_CAMERA_SHP_LEVEL;
     err = server_request(server, VIDEO_REQ_CAMERA_EFFECT, &req);
-    if (err) {
+    if(err)
+    {
         return err;
     }
 
     return 0;
 }
 
-static const struct app_cfg cfg_table_camera0[] = {
+static const struct app_cfg cfg_table_camera0[] =
+{
     {"phm", phm_set_function_camera0},
     {"pres", res_set_function_camera0},
     {"cyt", cyt_set_function_camera0},
@@ -191,7 +202,8 @@ int video_photo_set_config(struct intent *it)
 
 void video_photo_restore()
 {
-    if (get_default_setting_st()) {
+    if(get_default_setting_st())
+    {
         clear_default_setting_st();
 
         acu_set_function_camera0(db_select("acu"));

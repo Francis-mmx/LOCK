@@ -1,8 +1,8 @@
 /*************************************************************************
  *  > File Name: usb_app.c
-	> Author:
-	> Mail:
-	> Created Time: Tue 14 Feb 2017 09:14:45 AM HKT
+    > Author:
+    > Mail:
+    > Created Time: Tue 14 Feb 2017 09:14:45 AM HKT
  ************************************************************************/
 
 #include "system/includes.h"
@@ -16,13 +16,15 @@
 #include "server/video_server.h"
 
 extern u8 get_current_disp_device();
-enum {
+enum
+{
     USB_SLAVE_MASS_STORAGE,
     USB_SLAVE_CAMERA,
     USB_SLAVE_ISP_TOOL,
     USB_SLAVE_MAX,
 };
-enum {
+enum
+{
     UVC_ENC_R0 = 0, //不旋转
     UVC_ENC_R90,    //旋转90
     UVC_ENC_R270,   //旋转270
@@ -36,7 +38,8 @@ enum {
 #define USB_STATE_NO_DEV         0x0
 #define USB_STATE_DEVICE_MOUNT   0x1
 
-struct usb_app_handle {
+struct usb_app_handle
+{
     u8 state;
     u8 mode;
 #if UPDATE_UVC_ISP_SCENES
@@ -49,7 +52,8 @@ struct usb_app_handle {
     u32 buf_size;
 };
 
-static struct usb_app_handle handler = {
+static struct usb_app_handle handler =
+{
     .state = USB_STATE_NO_DEV,
 };
 
@@ -77,7 +81,8 @@ static int usb_app_mode_start(void)
 /*
  *mass storage挂载的设备列表
  */
-const static char *mass_storage_dev_list[] = {
+const static char *mass_storage_dev_list[] =
+{
     SDX_DEV,
     /* "extflash" //存储介质为flash */
 };
@@ -88,7 +93,8 @@ static int show_slave_list(void)
 #ifdef CONFIG_UI_ENABLE
     union uireq req;
 
-    if (!__this->ui) {
+    if(!__this->ui)
+    {
         return -EINVAL;
     }
     req.show.id = ID_WINDOW_USB_SLAVE;
@@ -102,7 +108,8 @@ static int hide_slave_list(void)
 #ifdef CONFIG_UI_ENABLE
     union uireq req;
 
-    if (!__this->ui) {
+    if(!__this->ui)
+    {
         return -EINVAL;
     }
     req.hide.id = ID_WINDOW_USB_SLAVE;
@@ -135,19 +142,22 @@ static int usb_slave_stop(void)
      *关闭服务、释放资源
      */
 #if UPDATE_UVC_ISP_SCENES
-    if (__this->isp_scene) {
+    if(__this->isp_scene)
+    {
         stop_update_isp_scenes();
     }
 #endif
 
-    if (__this->usb_slave) {
+    if(__this->usb_slave)
+    {
         server_close(__this->usb_slave);
         __this->usb_slave = NULL;
         unmount_sd_to_fs(CONFIG_STORAGE_PATH);
         mount_sd_to_fs(SDX_DEV);
     }
 
-    if (__this->buf) {
+    if(__this->buf)
+    {
         free(__this->buf);
         __this->buf = NULL;
     }
@@ -165,56 +175,63 @@ static int state_machine(struct application *app, enum app_state state, struct i
     extern int set_usb_mass_storage();
     extern int set_usb_camera();
 
-    switch (state) {
-    case APP_STA_CREATE:
-        memset(__this, 0x0, sizeof(*__this));
+    switch(state)
+    {
+        case APP_STA_CREATE:
+            memset(__this, 0x0, sizeof(*__this));
 #ifdef CONFIG_UI_ENABLE
 #ifdef MULTI_LCD_EN
-        struct ui_style style = {0};
-        if (get_current_disp_device()) {
-            style.file = "mnt/spiflash/res/avo_LY.sty\0";
-        } else {
-            style.file = "mnt/spiflash/res/lcd_LY.sty\0";
-        }
-        __this->ui = server_open("ui_server", &style);
+            struct ui_style style = {0};
+            if(get_current_disp_device())
+            {
+                style.file = "mnt/spiflash/res/avo_LY.sty\0";
+            }
+            else
+            {
+                style.file = "mnt/spiflash/res/lcd_LY.sty\0";
+            }
+            __this->ui = server_open("ui_server", &style);
 #else
-        __this->ui = server_open("ui_server", NULL);
+            __this->ui = server_open("ui_server", NULL);
 #endif
 
-        if (!__this->ui) {
-            return -EFAULT;
-        }
+            if(!__this->ui)
+            {
+                return -EFAULT;
+            }
 #endif
 #ifdef CONFIG_GSENSOR_ENABLE
-        sys_power_clr_wakeup_reason("wkup_port:wkup_gsen");
+            sys_power_clr_wakeup_reason("wkup_port:wkup_gsen");
 #endif
-        break;
-    case APP_STA_START:
-        switch (it->action) {
-        case ACTION_USB_SLAVE_MAIN:
-            usb_slave_start();
-            __this->mode = 0;
             break;
-        case ACTION_USB_SLAVE_SET_CONFIG:
-            __this->mode = usb_app_set_config(it);
+        case APP_STA_START:
+            switch(it->action)
+            {
+                case ACTION_USB_SLAVE_MAIN:
+                    usb_slave_start();
+                    __this->mode = 0;
+                    break;
+                case ACTION_USB_SLAVE_SET_CONFIG:
+                    __this->mode = usb_app_set_config(it);
+                    break;
+                case ACTION_USB_SLAVE_GET_CONFIG:
+                    usb_app_get_config(it);
+                    break;
+            }
             break;
-        case ACTION_USB_SLAVE_GET_CONFIG:
-            usb_app_get_config(it);
+        case APP_STA_PAUSE:
+        /* return -EFAULT; */
+        case APP_STA_RESUME:
             break;
-        }
-        break;
-    case APP_STA_PAUSE:
-    /* return -EFAULT; */
-    case APP_STA_RESUME:
-        break;
-    case APP_STA_STOP:
-        usb_slave_stop();
-        break;
-    case APP_STA_DESTROY:
-        if (__this->ui) {
-            server_close(__this->ui);
-        }
-        break;
+        case APP_STA_STOP:
+            usb_slave_stop();
+            break;
+        case APP_STA_DESTROY:
+            if(__this->ui)
+            {
+                server_close(__this->ui);
+            }
+            break;
     }
 
     return 0;
@@ -223,29 +240,32 @@ static int state_machine(struct application *app, enum app_state state, struct i
 static int usb_app_key_event_handler(struct key_event *key)
 {
 
-    switch (key->event) {
-    case KEY_EVENT_CLICK:
-        switch (key->value) {
-        case KEY_OK:
-            //usb_app_select();
-            break;
-        case KEY_UP:
+    switch(key->event)
+    {
+        case KEY_EVENT_CLICK:
+            switch(key->value)
+            {
+                case KEY_OK:
+                    //usb_app_select();
+                    break;
+                case KEY_UP:
 
-            break;
-        case KEY_DOWN:
+                    break;
+                case KEY_DOWN:
 
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case KEY_EVENT_LONG:
+            if(key->value == KEY_POWER)
+            {
+                return true;
+            }
             break;
         default:
             break;
-        }
-        break;
-    case KEY_EVENT_LONG:
-        if (key->value == KEY_POWER) {
-            return true;
-        }
-        break;
-    default:
-        break;
     }
     return false;
 }
@@ -253,14 +273,15 @@ static int usb_app_key_event_handler(struct key_event *key)
 static int usb_app_device_event_handler(struct sys_event *event)
 {
 
-    switch (event->u.dev.event) {
-    case DEVICE_EVENT_IN:
-        break;
-    case DEVICE_EVENT_ONLINE:
-        break;
-    case DEVICE_EVENT_OUT:
-        //usb_app_pause();
-        break;
+    switch(event->u.dev.event)
+    {
+        case DEVICE_EVENT_IN:
+            break;
+        case DEVICE_EVENT_ONLINE:
+            break;
+        case DEVICE_EVENT_OUT:
+            //usb_app_pause();
+            break;
     }
     return false;
 }
@@ -268,27 +289,30 @@ static int usb_app_device_event_handler(struct sys_event *event)
 static int event_handler(struct application *app, struct sys_event *event)
 {
 
-    switch (event->type) {
-    case SYS_KEY_EVENT:
-        return usb_app_key_event_handler(&event->u.key);
-    case SYS_DEVICE_EVENT:
-        return usb_app_device_event_handler(event);
-    default:
-        return false;
+    switch(event->type)
+    {
+        case SYS_KEY_EVENT:
+            return usb_app_key_event_handler(&event->u.key);
+        case SYS_DEVICE_EVENT:
+            return usb_app_device_event_handler(event);
+        default:
+            return false;
     }
     return false;
 }
 
 
-static const struct application_operation usb_app_ops = {
+static const struct application_operation usb_app_ops =
+{
     .state_machine  = state_machine,
     .event_handler  = event_handler,
 };
 
-REGISTER_APPLICATION(app_usb) = {
-    .name 	= "usb_app",
-    .action	= ACTION_USB_SLAVE_MAIN,
-    .ops 	= &usb_app_ops,
+REGISTER_APPLICATION(app_usb) =
+{
+    .name   = "usb_app",
+    .action = ACTION_USB_SLAVE_MAIN,
+    .ops    = &usb_app_ops,
     .state  = APP_STA_DESTROY,
 };
 
@@ -302,20 +326,23 @@ static int usb_tool_response(void *_tool, void *buf, int len)
     struct usb_tool *tool = (struct usb_tool *)_tool;
     u8 *cmd = (u8 *)buf;
 
-    if (!tool || !buf) {
+    if(!tool || !buf)
+    {
         return -EINVAL;
     }
 
-    if (cmd[0] != USER_DEFINED_TOOL_CMD) {
+    if(cmd[0] != USER_DEFINED_TOOL_CMD)
+    {
         log_w("not user defined tool");
         return 0;
     }
 
-    switch (cmd[1]) {
-    case 0x0:
-        break;
-    default:
-        break;
+    switch(cmd[1])
+    {
+        case 0x0:
+            break;
+        default:
+            break;
     }
     return 0;
 }
@@ -325,7 +352,8 @@ static void set_sd_card_protect_status(u8 protect)
 {
     void *sd_dev = NULL;
     sd_dev = dev_open(SDX_DEV, 0);
-    if (!sd_dev) {
+    if(!sd_dev)
+    {
         log_e("%s open falid!\n");
         return;
     }
@@ -337,7 +365,8 @@ static void set_extflash_protect_status(u8 protect)
 {
     void *dev = NULL;
     dev = dev_open("extflash", 0);
-    if (!dev) {
+    if(!dev)
+    {
         log_e("%s open falid!\n");
         return;
     }
@@ -353,13 +382,16 @@ int set_usb_mass_storage(void)
     struct usb_req req = {0};
     int err = 0;
 
-    if (__this->state == USB_STATE_DEVICE_MOUNT) {
+    if(__this->state == USB_STATE_DEVICE_MOUNT)
+    {
         //printf("state mass storage is opened, state : 0x%x.\n", __this->state);
         return 0;
     }
-    if (!__this->usb_slave) {
+    if(!__this->usb_slave)
+    {
         __this->usb_slave = server_open("usb_server", "slave");
-        if (!__this->usb_slave) {
+        if(!__this->usb_slave)
+        {
             puts("usb server open failed.\n");
             return -EFAULT;
         }
@@ -384,7 +416,8 @@ int set_usb_mass_storage(void)
 #endif
     req.state = USB_STATE_SLAVE_CONNECT;
     err = server_request(__this->usb_slave, USB_REQ_SLAVE_MODE, &req);
-    if (err != 0) {
+    if(err != 0)
+    {
         puts("usb slave request err.\n");
         return -EFAULT;
     }
@@ -395,7 +428,8 @@ int set_usb_mass_storage(void)
 }
 
 #if CUSTOM_RESOLUTION
-static struct uvc_reso_info uvc_mjpg_reso_info = {
+static struct uvc_reso_info uvc_mjpg_reso_info =
+{
     .num = 4,
     .reso = {
         /* {1920, 1088}, */
@@ -413,7 +447,7 @@ static void go_mask_usb_update(void)
 {
     strcpy((u8 *)0xf00000, "usb_update_mode");//usb uprgade
     PWR_CON |= BIT(4);
-    while (1);
+    while(1);
 }
 static int uvc_processing_unit_response(struct uvc_unit_ctrl *ctl_req)
 {
@@ -425,41 +459,52 @@ static int uvc_processing_unit_response(struct uvc_unit_ctrl *ctl_req)
     int msg[32];
     int err = 0;
     static u8 i = 0;
-    if (ctl_req->unit == 0x0a) {//white_blance
-        switch (ctl_req->request) {
-        case 0x01:
-            /* put_buf(ctl_req->data, ctl_req->len); */
-            /* if (ctl_req->bState == 2) */
+    if(ctl_req->unit == 0x0a)   //white_blance
+    {
+        switch(ctl_req->request)
         {
-            put_buf(ctl_req->data, ctl_req->len);
-            log_d("in pos %d\n", pos);
-            log_d("ctl_req->data[0] 0x%x, upgd[pos] 0x%x\n", ctl_req->data[0], upgd[pos]);
-            if (ctl_req->data[0] == upgd[pos]) {
-                pos++;
-                if (pos == sizeof(upgd)) {
-                    puts("<<<<<<enter>>>>>>>>\n");
-                    go_mask_usb_update();
+            case 0x01:
+                /* put_buf(ctl_req->data, ctl_req->len); */
+                /* if (ctl_req->bState == 2) */
+            {
+                put_buf(ctl_req->data, ctl_req->len);
+                log_d("in pos %d\n", pos);
+                log_d("ctl_req->data[0] 0x%x, upgd[pos] 0x%x\n", ctl_req->data[0], upgd[pos]);
+                if(ctl_req->data[0] == upgd[pos])
+                {
+                    pos++;
+                    if(pos == sizeof(upgd))
+                    {
+                        puts("<<<<<<enter>>>>>>>>\n");
+                        go_mask_usb_update();
+                    }
                 }
-            } else {
-                pos = 0;
+                else
+                {
+                    pos = 0;
+                }
+                return 1;
             }
-            return 1;
+            break;
+            default:
+                return -EINVAL;
+                break;
         }
-        break;
-        default:
-            return -EINVAL;
-            break;
-        }
-    } else if (ctl_req->unit == 0xaa) {
-        switch (ctl_req->request) {
-        case 0x01:
-            break;
-        default:
-            return -EINVAL;
-            break;
+    }
+    else if(ctl_req->unit == 0xaa)
+    {
+        switch(ctl_req->request)
+        {
+            case 0x01:
+                break;
+            default:
+                return -EINVAL;
+                break;
         }
 
-    } else {
+    }
+    else
+    {
         return -EINVAL;
     }
 
@@ -479,7 +524,8 @@ int usb_camera_set_zoom(u16 x, u16 y, u16 tar_w, u16 tar_h)
 {
     union video_req req = {0};
 
-    if (!__this->usb_slave) {
+    if(!__this->usb_slave)
+    {
         return -EFAULT;
     }
 
@@ -488,20 +534,25 @@ int usb_camera_set_zoom(u16 x, u16 y, u16 tar_w, u16 tar_h)
     static u8 test_expand = 0;
 
     u16 tar_width, tar_height;
-    if (!test_expand) {
+    if(!test_expand)
+    {
         x_offset += 16;
         y_offset += 9;
         tar_width = 1280 - x_offset * 2;
         tar_height = 720 - y_offset * 2;
-        if ((tar_width <= 0) || (tar_height <= 0)) {
+        if((tar_width <= 0) || (tar_height <= 0))
+        {
             test_expand = 1;
         }
-    } else {
+    }
+    else
+    {
         x_offset -= 16;
         y_offset -= 9;
         tar_width = 1280 - x_offset * 2;
         tar_height = 720 - y_offset * 2;
-        if (tar_width >= 1280 || tar_height >= 720) {
+        if(tar_width >= 1280 || tar_height >= 720)
+        {
             test_expand = 0;
         }
     }
@@ -524,13 +575,16 @@ int set_usb_camera(void)
     struct usb_req req = {0};
     int err = 0;
 
-    if (__this->state == USB_STATE_DEVICE_MOUNT) {
+    if(__this->state == USB_STATE_DEVICE_MOUNT)
+    {
         return 0;
     }
 
-    if (!__this->usb_slave) {
+    if(!__this->usb_slave)
+    {
         __this->usb_slave = server_open("usb_server", "slave");
-        if (!__this->usb_slave) {
+        if(!__this->usb_slave)
+        {
             return -EFAULT;
         }
     }
@@ -543,9 +597,11 @@ int set_usb_camera(void)
      */
     req.type = USB_CAMERA | USB_ISP_TOOL | USB_SCREEN_TOOL;
     req.camera[0].name = "video0.0";
-    if (!__this->buf) {
+    if(!__this->buf)
+    {
         __this->buf = (u8 *)malloc(USB_CAMERA_BUF_SIZE);
-        if (!__this->buf) {
+        if(!__this->buf)
+        {
             return -ENOMEM;
         }
     }
@@ -568,7 +624,8 @@ int set_usb_camera(void)
 
     req.state = USB_STATE_SLAVE_CONNECT;
     err = server_request(__this->usb_slave, USB_REQ_SLAVE_MODE, &req);
-    if (err != 0) {
+    if(err != 0)
+    {
         puts("usb slave request err.\n");
         return -EFAULT;
     }
@@ -595,13 +652,16 @@ int set_usb_microphone(void)
     struct usb_req req = {0};
     int err = 0;
 
-    if (__this->state == USB_STATE_DEVICE_MOUNT) {
+    if(__this->state == USB_STATE_DEVICE_MOUNT)
+    {
         return 0;
     }
 
-    if (!__this->usb_slave) {
+    if(!__this->usb_slave)
+    {
         __this->usb_slave = server_open("usb_server", "slave");
-        if (!__this->usb_slave) {
+        if(!__this->usb_slave)
+        {
             return -EFAULT;
         }
     }
@@ -615,7 +675,8 @@ int set_usb_microphone(void)
 
     req.state = USB_STATE_SLAVE_CONNECT;
     err = server_request(__this->usb_slave, USB_REQ_SLAVE_MODE, &req);
-    if (err != 0) {
+    if(err != 0)
+    {
         puts("usb slave request err.\n");
         return -EFAULT;
     }
@@ -625,7 +686,8 @@ int set_usb_microphone(void)
 
     return 0;
 }
-static struct uac_micreso_info speaker_info[] = {
+static struct uac_micreso_info speaker_info[] =
+{
     {
         .num = 4,
         {
@@ -642,9 +704,11 @@ int set_usb_speaker(void)
     struct usb_req req = {0};
     int err = 0;
 
-    if (!__this->usb_slave) {
+    if(!__this->usb_slave)
+    {
         __this->usb_slave = server_open("usb_server", "slave");
-        if (!__this->usb_slave) {
+        if(!__this->usb_slave)
+        {
             return -EFAULT;
         }
     }
@@ -658,7 +722,8 @@ int set_usb_speaker(void)
 
     req.state = USB_STATE_SLAVE_CONNECT;
     err = server_request(__this->usb_slave, USB_REQ_SLAVE_MODE, &req);
-    if (err != 0) {
+    if(err != 0)
+    {
         puts("usb slave request err.\n");
         return -EFAULT;
     }
@@ -677,13 +742,16 @@ int set_usb_composite_device(void)
     struct usb_req req = {0};
     int err = 0;
 
-    if (__this->state == USB_STATE_DEVICE_MOUNT) {
+    if(__this->state == USB_STATE_DEVICE_MOUNT)
+    {
         return 0;
     }
 
-    if (!__this->usb_slave) {
+    if(!__this->usb_slave)
+    {
         __this->usb_slave = server_open("usb_server", "slave");
-        if (!__this->usb_slave) {
+        if(!__this->usb_slave)
+        {
             return -EFAULT;
         }
     }
@@ -699,9 +767,11 @@ int set_usb_composite_device(void)
      */
     req.type = (USB_CAMERA | USB_ISP_TOOL);
     req.camera[0].name = "video0.0";
-    if (!__this->buf) {
+    if(!__this->buf)
+    {
         __this->buf = (u8 *)malloc(USB_CAMERA_BUF_SIZE);
-        if (!__this->buf) {
+        if(!__this->buf)
+        {
             return -ENOMEM;
         }
     }
@@ -717,7 +787,8 @@ int set_usb_composite_device(void)
 
     req.state = USB_STATE_SLAVE_CONNECT;
     err = server_request(__this->usb_slave, USB_REQ_SLAVE_MODE, &req);
-    if (err != 0) {
+    if(err != 0)
+    {
         puts("usb slave request err.\n");
         return -EFAULT;
     }
@@ -738,7 +809,8 @@ int set_usb_composite_device(void)
 
     req.state = USB_STATE_SLAVE_CONNECT;
     err = server_request(__this->usb_slave, USB_REQ_SLAVE_MODE, &req);
-    if (err != 0) {
+    if(err != 0)
+    {
         puts("usb slave request err.\n");
         return -EFAULT;
     }
@@ -761,7 +833,8 @@ int set_usb_composite_device(void)
 #endif
     req.state = USB_STATE_SLAVE_CONNECT;
     err = server_request(__this->usb_slave, USB_REQ_SLAVE_MODE, &req);
-    if (err != 0) {
+    if(err != 0)
+    {
         puts("usb slave request err.\n");
         return -EFAULT;
     }
@@ -780,20 +853,22 @@ int back_to_video_rec(void)
     struct intent it;
     struct application *app;
 
-    if (__this->state == USB_STATE_DEVICE_MOUNT) {
+    if(__this->state == USB_STATE_DEVICE_MOUNT)
+    {
         return 0;
     }
     init_intent(&it);
     app = get_current_app();
-    if (app) {
+    if(app)
+    {
         it.action = ACTION_BACK;
         start_app(&it);
 
 #ifdef PHOTO_STICKER_ENABLE
-        it.name	= "video_photo";
+        it.name = "video_photo";
         it.action = ACTION_PHOTO_TAKE_MAIN;
 #else
-        it.name	= "video_rec";
+        it.name = "video_rec";
         it.action = ACTION_VIDEO_REC_MAIN;
 #endif
         start_app(&it);
@@ -804,7 +879,8 @@ int back_to_video_rec(void)
 
 u8 get_usb_in_status()
 {
-    if (__this->state == USB_STATE_DEVICE_MOUNT) {
+    if(__this->state == USB_STATE_DEVICE_MOUNT)
+    {
         return 1;
     }
     return 0;
@@ -814,9 +890,9 @@ u8 get_usb_in_status()
 
 #if 0
 #define mbe32buf_to_cpu(x)   (((u32)(((u8 *)(x))[0]) << 24) | \
-                        	((u32)(((u8 *)(x))[1]) << 16) | \
-                        	((u32)(((u8 *)(x))[2]) << 8) | \
-                        	((u32)((u8 *)(x))[3]))
+                            ((u32)(((u8 *)(x))[1]) << 16) | \
+                            ((u32)(((u8 *)(x))[2]) << 8) | \
+                            ((u32)((u8 *)(x))[3]))
 #define mbe16buf_to_cpu(x)   (((u16)(((u8 *)(x))[0]) << 8) | (u16)(((u8 *)(x))[1]))
 
 int user_cmd_read(struct scsi_private_request *req)
@@ -828,15 +904,16 @@ int user_cmd_read(struct scsi_private_request *req)
     cmd = mbe32buf_to_cpu(req->cmd + 2);
     len = mbe16buf_to_cpu(req->cmd + 6);
 
-    switch (cmd) {
-    case 0x12345678:
-        //fill data to buf
-        strcpy((char *)buf, "demo");
-        //send data to pc
-        req->ops.send(req->dev, (void *)buf, len);
-        break;
-    default:
-        break;
+    switch(cmd)
+    {
+        case 0x12345678:
+            //fill data to buf
+            strcpy((char *)buf, "demo");
+            //send data to pc
+            req->ops.send(req->dev, (void *)buf, len);
+            break;
+        default:
+            break;
     }
     return 0;
 }
@@ -851,14 +928,15 @@ int user_cmd_write(struct scsi_private_request *req)
     cmd = mbe32buf_to_cpu(req->cmd + 2);
     len = mbe16buf_to_cpu(req->cmd + 6);
 
-    switch (cmd) {
-    case 0x12345678:
-        //get data form pc
-        req->ops.read(req->dev, (void *)buf, len);
-        /* printf("\n %s\n",buf); */
-        break;
-    default:
-        break;
+    switch(cmd)
+    {
+        case 0x12345678:
+            //get data form pc
+            req->ops.read(req->dev, (void *)buf, len);
+            /* printf("\n %s\n",buf); */
+            break;
+        default:
+            break;
     }
     return 0;
 }
@@ -866,7 +944,8 @@ int user_cmd_write(struct scsi_private_request *req)
 #endif
 
 #if 0
-static const u8 user_device_desc[] = { //<Device Descriptor
+static const u8 user_device_desc[] =   //<Device Descriptor
+{
     18,      // bLength: Size of descriptor
     1,       // bDescriptorType: Device
     0x00, 0x02,     // bcdUSB: USB 2.0
@@ -883,7 +962,8 @@ static const u8 user_device_desc[] = { //<Device Descriptor
     0x01        // bNumConfigurations: 1
 };
 
-static const u8 user_serial_number_desc[] = {
+static const u8 user_serial_number_desc[] =
+{
     22,
     0x03,
     '1', 0,
@@ -921,52 +1001,57 @@ int user_setup_handler(const u8 *setup_pkt, u8 *buf, u32 *len)
     wlength = ((u16)setup_pkt[7] << 8) | ((u16)setup_pkt[6]);
     u32 cur_len;
 
-    switch (request_type & 0x1f) {  //recip
-    case 0:  //device
-        switch (request_type & 0x60) {  //type
-        case 0x00:  //standard request
-            switch (request) {
-            case 0x06:  //USB_REQ_GET_DESCRIPTOR
-                switch ((wvalue >> 8) & 0xff) {
-                case 1:  //USB_DT_DEVICE
-                    printf(">>> GET_DEVICE_DESCRIPTOR <<<\n");
-                    cur_len = wlength > sizeof(user_device_desc) ? sizeof(user_device_desc) : wlength;
-                    memcpy(buf, (u8 *)user_device_desc, cur_len);
-                    //默认serial number index是0（关闭），需要填3让主机发请求下来
-                    buf[16] = 3;
-                    //填写实际要发送的长度
-                    *len = cur_len;
-                    retval = true;
-                    break;
-                case 3:  //USB_DT_STRING
-                    switch ((wvalue & 0xff)) {
-                    case 1:  //Manufacturer String
-                        break;
-                    case 2:  //Product String
-                        break;
-                    case 3:  //Serial Number String
-                        printf(">>> GET_STRING_DESCRIPTOR: SERIAL_NUMBER <<<\n");
-                        cur_len = wlength > sizeof(user_serial_number_desc) ? sizeof(user_serial_number_desc) : wlength;
-                        memcpy(buf, user_serial_number_desc, cur_len);
-                        *len = cur_len;
-                        retval = true;
-                        break;
+    switch(request_type & 0x1f)     //recip
+    {
+        case 0:  //device
+            switch(request_type & 0x60)     //type
+            {
+                case 0x00:  //standard request
+                    switch(request)
+                    {
+                        case 0x06:  //USB_REQ_GET_DESCRIPTOR
+                            switch((wvalue >> 8) & 0xff)
+                            {
+                                case 1:  //USB_DT_DEVICE
+                                    printf(">>> GET_DEVICE_DESCRIPTOR <<<\n");
+                                    cur_len = wlength > sizeof(user_device_desc) ? sizeof(user_device_desc) : wlength;
+                                    memcpy(buf, (u8 *)user_device_desc, cur_len);
+                                    //默认serial number index是0（关闭），需要填3让主机发请求下来
+                                    buf[16] = 3;
+                                    //填写实际要发送的长度
+                                    *len = cur_len;
+                                    retval = true;
+                                    break;
+                                case 3:  //USB_DT_STRING
+                                    switch((wvalue & 0xff))
+                                    {
+                                        case 1:  //Manufacturer String
+                                            break;
+                                        case 2:  //Product String
+                                            break;
+                                        case 3:  //Serial Number String
+                                            printf(">>> GET_STRING_DESCRIPTOR: SERIAL_NUMBER <<<\n");
+                                            cur_len = wlength > sizeof(user_serial_number_desc) ? sizeof(user_serial_number_desc) : wlength;
+                                            memcpy(buf, user_serial_number_desc, cur_len);
+                                            *len = cur_len;
+                                            retval = true;
+                                            break;
+                                    }
+                                    break;
+                            }
+                            break;
                     }
                     break;
-                }
-                break;
+                case 0x20:  //class-specified request
+                    break;
+                case 0x40:  //vendor-specified request
+                    break;
             }
             break;
-        case 0x20:  //class-specified request
+        case 1:  //interface
             break;
-        case 0x40:  //vendor-specified request
+        case 2:  //endpoint
             break;
-        }
-        break;
-    case 1:  //interface
-        break;
-    case 2:  //endpoint
-        break;
     }
     return retval;
 }

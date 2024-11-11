@@ -15,7 +15,8 @@ static int _app_version_check()
     char *version;
 
     printf("================= SDK Version %s ==============\n", sdk_version());
-    for (version = __VERSION_BEGIN; version < __VERSION_END;) {
+    for(version = __VERSION_BEGIN; version < __VERSION_END;)
+    {
         printf("%s\n", version);
         version += strlen(version) + 1;
     }

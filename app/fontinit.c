@@ -4,10 +4,11 @@
 extern void platform_putchar(struct font_info *info, u8 *pixel, u16 width, u16 height, u16 x, u16 y);
 /* 语言字库配置 */
 #define LANGUAGE  BIT(Chinese_Simplified)|\
-	              BIT(English)
+                  BIT(English)
 
 #if LANGUAGE&BIT(Chinese_Simplified)
-REGISTER_LANGUAGE_BEGIN(Chinese_Simplified) = {
+REGISTER_LANGUAGE_BEGIN(Chinese_Simplified) =
+{
     .language_id = Chinese_Simplified,
     .flags = FONT_SHOW_PIXEL | FONT_SHOW_MULTI_LINE,
     .pixel.file.name = (char *)"mnt/spiflash/res/F_GB2312.PIX",
@@ -28,7 +29,8 @@ REGISTER_LANGUAGE_BEGIN(Chinese_Simplified) = {
 #endif
 
 #if LANGUAGE&BIT(Chinese_Traditional)
-REGISTER_LANGUAGE_BEGIN(Chinese_Traditional) = {
+REGISTER_LANGUAGE_BEGIN(Chinese_Traditional) =
+{
     .language_id = Chinese_Traditional,
     .flags = FONT_SHOW_PIXEL,
     .pixel.file.name = (char *)"mnt/spiflash/res/F_BIG5.PIX",
@@ -40,7 +42,8 @@ REGISTER_LANGUAGE_BEGIN(Chinese_Traditional) = {
 #endif
 
 #if LANGUAGE&BIT(Japanese)
-REGISTER_LANGUAGE_BEGIN(Japanese) = {
+REGISTER_LANGUAGE_BEGIN(Japanese) =
+{
     .language_id = Japanese,
     .flags = FONT_SHOW_PIXEL,
     .pixel.file.name = (char *)"mnt/spiflash/res/F_SJIS.PIX",
@@ -52,7 +55,8 @@ REGISTER_LANGUAGE_BEGIN(Japanese) = {
 #endif
 
 #if LANGUAGE&BIT(Korean)
-REGISTER_LANGUAGE_BEGIN(Korean) = {
+REGISTER_LANGUAGE_BEGIN(Korean) =
+{
     .language_id = Korean,
     .flags = FONT_SHOW_PIXEL,
     .pixel.file.name = (char *)"mnt/spiflash/res/F_KSC.PIX",
@@ -64,7 +68,8 @@ REGISTER_LANGUAGE_BEGIN(Korean) = {
 #endif
 
 #if LANGUAGE&BIT(English)
-REGISTER_LANGUAGE_BEGIN(English) = {
+REGISTER_LANGUAGE_BEGIN(English) =
+{
     .language_id = English,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1252.PIX",
@@ -75,7 +80,8 @@ REGISTER_LANGUAGE_BEGIN(English) = {
 #endif
 
 #if LANGUAGE&BIT(French)
-REGISTER_LANGUAGE_BEGIN(French) = {
+REGISTER_LANGUAGE_BEGIN(French) =
+{
     .language_id = French,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1252.PIX",
@@ -86,7 +92,8 @@ REGISTER_LANGUAGE_BEGIN(French) = {
 #endif
 
 #if LANGUAGE&BIT(German)
-REGISTER_LANGUAGE_BEGIN(German) = {
+REGISTER_LANGUAGE_BEGIN(German) =
+{
     .language_id = German,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1252.PIX",
@@ -97,7 +104,8 @@ REGISTER_LANGUAGE_BEGIN(German) = {
 #endif
 
 #if LANGUAGE&BIT(Italian)
-REGISTER_LANGUAGE_BEGIN(Italian) = {
+REGISTER_LANGUAGE_BEGIN(Italian) =
+{
     .language_id = Italian,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1252.PIX",
@@ -108,7 +116,8 @@ REGISTER_LANGUAGE_BEGIN(Italian) = {
 #endif
 
 #if LANGUAGE&BIT(Dutch)
-REGISTER_LANGUAGE_BEGIN(Dutch) = {
+REGISTER_LANGUAGE_BEGIN(Dutch) =
+{
     .language_id = Dutch,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1252.PIX",
@@ -119,7 +128,8 @@ REGISTER_LANGUAGE_BEGIN(Dutch) = {
 #endif
 
 #if LANGUAGE&BIT(Portuguese)
-REGISTER_LANGUAGE_BEGIN(Portuguese) = {
+REGISTER_LANGUAGE_BEGIN(Portuguese) =
+{
     .language_id = Portuguese,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1252.PIX",
@@ -130,7 +140,8 @@ REGISTER_LANGUAGE_BEGIN(Portuguese) = {
 #endif
 
 #if LANGUAGE&BIT(Spanish)
-REGISTER_LANGUAGE_BEGIN(Spanish) = {
+REGISTER_LANGUAGE_BEGIN(Spanish) =
+{
     .language_id = Spanish,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1252.PIX",
@@ -141,7 +152,8 @@ REGISTER_LANGUAGE_BEGIN(Spanish) = {
 #endif
 
 #if LANGUAGE&BIT(Swedish)
-REGISTER_LANGUAGE_BEGIN(Swedish) = {
+REGISTER_LANGUAGE_BEGIN(Swedish) =
+{
     .language_id = Swedish,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1252.PIX",
@@ -152,7 +164,8 @@ REGISTER_LANGUAGE_BEGIN(Swedish) = {
 #endif
 
 #if LANGUAGE&BIT(Czech)
-REGISTER_LANGUAGE_BEGIN(Czech) = {
+REGISTER_LANGUAGE_BEGIN(Czech) =
+{
     .language_id = Czech,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1250.PIX",
@@ -163,7 +176,8 @@ REGISTER_LANGUAGE_BEGIN(Czech) = {
 #endif
 
 #if LANGUAGE&BIT(Danish)
-REGISTER_LANGUAGE_BEGIN(Danish) = {
+REGISTER_LANGUAGE_BEGIN(Danish) =
+{
     .language_id = Danish,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1252.PIX",
@@ -174,7 +188,8 @@ REGISTER_LANGUAGE_BEGIN(Danish) = {
 #endif
 
 #if LANGUAGE&BIT(Polish)
-REGISTER_LANGUAGE_BEGIN(Polish) = {
+REGISTER_LANGUAGE_BEGIN(Polish) =
+{
     .language_id = Polish,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1250.PIX",
@@ -185,7 +200,8 @@ REGISTER_LANGUAGE_BEGIN(Polish) = {
 #endif
 
 #if LANGUAGE&BIT(Russian)
-REGISTER_LANGUAGE_BEGIN(Russian) = {
+REGISTER_LANGUAGE_BEGIN(Russian) =
+{
     .language_id = Russian,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1251.PIX",
@@ -196,7 +212,8 @@ REGISTER_LANGUAGE_BEGIN(Russian) = {
 #endif
 
 #if LANGUAGE&BIT(Turkey)
-REGISTER_LANGUAGE_BEGIN(Turkey) = {
+REGISTER_LANGUAGE_BEGIN(Turkey) =
+{
     .language_id = Turkey,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1254.PIX",
@@ -207,7 +224,8 @@ REGISTER_LANGUAGE_BEGIN(Turkey) = {
 #endif
 
 #if LANGUAGE&BIT(Hebrew)
-REGISTER_LANGUAGE_BEGIN(Hebrew) = {
+REGISTER_LANGUAGE_BEGIN(Hebrew) =
+{
     .language_id = Hebrew,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1255.PIX",
@@ -218,7 +236,8 @@ REGISTER_LANGUAGE_BEGIN(Hebrew) = {
 #endif
 
 #if LANGUAGE&BIT(Thai)
-REGISTER_LANGUAGE_BEGIN(Thai) = {
+REGISTER_LANGUAGE_BEGIN(Thai) =
+{
     .language_id = Thai,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP874.PIX",
@@ -229,7 +248,8 @@ REGISTER_LANGUAGE_BEGIN(Thai) = {
 #endif
 
 #if LANGUAGE&BIT(Hungarian)
-REGISTER_LANGUAGE_BEGIN(Hungarian) = {
+REGISTER_LANGUAGE_BEGIN(Hungarian) =
+{
     .language_id = Hungarian,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1250.PIX",
@@ -240,7 +260,8 @@ REGISTER_LANGUAGE_BEGIN(Hungarian) = {
 #endif
 
 #if LANGUAGE&BIT(Romanian)
-REGISTER_LANGUAGE_BEGIN(Romanian) = {
+REGISTER_LANGUAGE_BEGIN(Romanian) =
+{
     .language_id = Romanian,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1250.PIX",
@@ -251,7 +272,8 @@ REGISTER_LANGUAGE_BEGIN(Romanian) = {
 #endif
 
 #if LANGUAGE&BIT(Arabic)
-REGISTER_LANGUAGE_BEGIN(Arabic) = {
+REGISTER_LANGUAGE_BEGIN(Arabic) =
+{
     .language_id = Arabic,
     .flags = FONT_SHOW_PIXEL,
     .ascpixel.file.name = (char *)"mnt/spiflash/res/F_CP1256.PIX",

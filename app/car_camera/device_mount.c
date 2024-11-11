@@ -4,13 +4,15 @@
 
 #include "app_config.h"
 
-enum {
+enum
+{
     SD_UNMOUNT,
     SD_MOUNT_SUSS,
     SD_MOUNT_FAILD,
 };
 
-static char *const sd_list[] = {
+static char *const sd_list[] =
+{
     "sd0",
     "sd1",
     "sd2",
@@ -35,41 +37,52 @@ int mount_sd_to_fs(const char *name)
     const char *dev  = sd_list[id];
 
     err = os_mutex_pend(&sd_mutex, 0);
-    if (err) {
+    if(err)
+    {
         return -EFAULT;
     }
 
 
-    if (fs_mount == SD_MOUNT_SUSS) {
+    if(fs_mount == SD_MOUNT_SUSS)
+    {
         goto __exit;
     }
-    if (fs_mount == SD_MOUNT_FAILD) {
+    if(fs_mount == SD_MOUNT_FAILD)
+    {
         err = -EFAULT;
         goto __exit;
     }
-    if (!dev_online(dev)) {
+    if(!dev_online(dev))
+    {
         err = -EFAULT;
         goto __exit;
     }
 
     void *fd = dev_open(dev, 0);
-    if (!fd) {
+    if(!fd)
+    {
         err = -EFAULT;
         goto __err;
     }
     dev_ioctl(fd, SD_IOCTL_GET_CLASS, (u32)&class);
-    if (class == SD_CLASS_10) {
+    if(class == SD_CLASS_10)
+    {
         puts("sd card class: 10\n");
-    } else {
+    }
+    else
+    {
         log_w("sd card class: %d\n", class * 2);
     }
     dev_close(fd);
 
     mt = mount(dev, CONFIG_STORAGE_PATH, "fat", FAT_CACHE_NUM, NULL);
-    if (!mt) {
+    if(!mt)
+    {
         puts("mount fail\n");
         err = -EFAULT;
-    } else {
+    }
+    else
+    {
         puts("mount sd suss\n");
     }
 
@@ -93,10 +106,12 @@ void unmount_sd_to_fs(const char *path)
 
 int storage_device_ready()
 {
-    if (!dev_online(SDX_DEV)) {
+    if(!dev_online(SDX_DEV))
+    {
         return false;
     }
-    if (fs_mount == SD_UNMOUNT) {
+    if(fs_mount == SD_UNMOUNT)
+    {
         mount_sd_to_fs(SDX_DEV);
     }
 
@@ -110,7 +125,8 @@ int storage_device_format()
     unmount_sd_to_fs(CONFIG_STORAGE_PATH);
 
     err = f_format(SDX_DEV, "fat", 32 * 1024);
-    if (err == 0) {
+    if(err == 0)
+    {
         mount_sd_to_fs(SDX_DEV);
     }
 
@@ -129,7 +145,8 @@ int storage_device_format2()
     fatfs_set_device(SDX_DEV);
     mt = mount(SDX_DEV, CONFIG_STORAGE_PATH, "flashfs", 0, NULL);
     err = f_format(SDX_DEV, "flashfs", 32 * 1024);
-    if (err == 0) {
+    if(err == 0)
+    {
         /* unmount(CONFIG_STORAGE_PATH); */
         /* mount_sd_to_fs(SDX_DEV); */
         //TODO
@@ -146,23 +163,27 @@ static void sd_event_handler(struct sys_event *event)
     int id = ((char *)event->arg)[2] - '0';
     const char *dev  = sd_list[id];
 
-    switch (event->u.dev.event) {
-    case DEVICE_EVENT_IN:
-        mount_sd_to_fs(event->arg);
-        break;
-    case DEVICE_EVENT_OUT:
-        printf("%s: out\n", dev);
-        unmount_sd_to_fs(CONFIG_STORAGE_PATH);
-        break;
+    switch(event->u.dev.event)
+    {
+        case DEVICE_EVENT_IN:
+            mount_sd_to_fs(event->arg);
+            break;
+        case DEVICE_EVENT_OUT:
+            printf("%s: out\n", dev);
+            unmount_sd_to_fs(CONFIG_STORAGE_PATH);
+            break;
     }
 }
 
 
 static void device_event_handler(struct sys_event *event)
 {
-    if (!ASCII_StrCmp(event->arg, "sd*", 4)) {
+    if(!ASCII_StrCmp(event->arg, "sd*", 4))
+    {
         sd_event_handler(event);
-    } else if (!ASCII_StrCmp(event->arg, "usb", 4)) {
+    }
+    else if(!ASCII_StrCmp(event->arg, "usb", 4))
+    {
 
     }
 }

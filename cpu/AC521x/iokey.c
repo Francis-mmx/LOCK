@@ -12,8 +12,10 @@ static u16 io_get_key_value(struct key_driver *_key)
 {
     int i;
 
-    for (i = 0; i < __this->num; i++) {
-        if (gpio_read(__this->port[i].port) == __this->port[i].press_value) {
+    for(i = 0; i < __this->num; i++)
+    {
+        if(gpio_read(__this->port[i].port) == __this->port[i].press_value)
+        {
             return __this->port[i].key_value;
         }
     }
@@ -26,11 +28,13 @@ static int iokey_init(struct key_driver *_key, void *arg)
     int i;
 
     __this = (struct iokey_platform_data *)arg;
-    if (__this == NULL) {
+    if(__this == NULL)
+    {
         return -EINVAL;
     }
 
-    for (i = 0; i < __this->num; i++) {
+    for(i = 0; i < __this->num; i++)
+    {
         int v = __this->port[i].press_value;
         gpio_set_die(__this->port[i].port, 1);
         gpio_direction_input(__this->port[i].port);
@@ -41,12 +45,14 @@ static int iokey_init(struct key_driver *_key, void *arg)
     return 0;
 }
 
-static const struct key_driver_ops io_key_ops = {
+static const struct key_driver_ops io_key_ops =
+{
     .init = iokey_init,
     .get_value = io_get_key_value,
 };
 
-REGISTER_KEY_DRIVER(iokey) = {
+REGISTER_KEY_DRIVER(iokey) =
+{
     .name = "iokey",
     .prev_value = 0,
     .last_key   = NO_KEY,

@@ -15,7 +15,8 @@ static s8 onkey_sel = 0;
 /*
  * USB菜单
  */
-static const char *table_usb_menu[] = {
+static const char *table_usb_menu[] =
+{
     "usb:msd",
     "usb:uvc",
     "usb:rec",
@@ -29,22 +30,23 @@ static int usb_page_onchange(void *ctr, enum element_change_event e, void *arg)
     int err, item, id;
     struct intent it;
     int ret;
-    switch (e) {
-    case ON_CHANGE_INIT:
-        sys_key_event_takeover(true, false);
-        /*
-         * USB页面打开后，UI任务接管key事件，APP不接收key事件
-         */
-        break;
-    case ON_CHANGE_RELEASE:
-        sys_key_event_takeover(false, false);
-        /*
-         * USB页面关闭后，恢复APP接收下一个key事件
-         */
-        ui_hide(ID_WINDOW_MAIN_PAGE);
-        break;
-    default:
-        return false;
+    switch(e)
+    {
+        case ON_CHANGE_INIT:
+            sys_key_event_takeover(true, false);
+            /*
+             * USB页面打开后，UI任务接管key事件，APP不接收key事件
+             */
+            break;
+        case ON_CHANGE_RELEASE:
+            sys_key_event_takeover(false, false);
+            /*
+             * USB页面关闭后，恢复APP接收下一个key事件
+             */
+            ui_hide(ID_WINDOW_MAIN_PAGE);
+            break;
+        default:
+            return false;
     }
     return false;
 }
@@ -58,54 +60,56 @@ static int menu_usb_onkey(void *ctr, struct element_key_event *e)
     struct intent it;
     int sel_item = 0;
 
-    switch (e->value) {
-    case KEY_OK:
-        sel_item = ui_grid_cur_item(grid);
-        switch (sel_item) {
-        case 0:
-            /*
-             * U盘模式
-             */
-            ui_hide(VLIST_USB);
-            ui_show(PIC_MSD_USB);
+    switch(e->value)
+    {
+        case KEY_OK:
+            sel_item = ui_grid_cur_item(grid);
+            switch(sel_item)
+            {
+                case 0:
+                    /*
+                     * U盘模式
+                     */
+                    ui_hide(VLIST_USB);
+                    ui_show(PIC_MSD_USB);
+                    break;
+                case 1:
+                    /*
+                     * USB摄像头模式
+                     */
+                    ui_hide(VLIST_USB);
+                    ui_show(PIC_UVC_USB);
+                    break;
+                case 2:
+                    /*
+                     * 回到录像模式
+                     */
+                    break;
+                default:
+                    break;
+            }
+
+            init_intent(&it);
+            it.name = "usb_app";
+            it.action = ACTION_USB_SLAVE_SET_CONFIG;
+            it.data = table_usb_menu[sel_item];
+            start_app_async(&it, NULL, NULL);
             break;
-        case 1:
-            /*
-             * USB摄像头模式
-             */
-            ui_hide(VLIST_USB);
-            ui_show(PIC_UVC_USB);
+        case KEY_DOWN:
+            return false;
+
             break;
-        case 2:
-            /*
-             * 回到录像模式
-             */
+        case KEY_UP:
+            return false;
+
+            break;
+        case KEY_MENU:
+
+            break;
+        case KEY_MODE:
             break;
         default:
             break;
-        }
-
-        init_intent(&it);
-        it.name	= "usb_app";
-        it.action = ACTION_USB_SLAVE_SET_CONFIG;
-        it.data = table_usb_menu[sel_item];
-        start_app_async(&it, NULL, NULL);
-        break;
-    case KEY_DOWN:
-        return false;
-
-        break;
-    case KEY_UP:
-        return false;
-
-        break;
-    case KEY_MENU:
-
-        break;
-    case KEY_MODE:
-        break;
-    default:
-        break;
     }
 
     return true;
@@ -114,7 +118,7 @@ static int menu_usb_onkey(void *ctr, struct element_key_event *e)
 
 REGISTER_UI_EVENT_HANDLER(VLIST_USB)
 .onkey = menu_usb_onkey,
- .ontouch = NULL,
+.ontouch = NULL,
 };
 
 
@@ -124,26 +128,27 @@ static int usb_goto_usb_ontouch(void *ctr, struct element_touch_event *e)
     struct intent it;
     struct application *app;
     u8 sel_item;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        ui_hide(VLIST_USB);
-        ui_show(PIC_MSD_USB);
-        init_intent(&it);
-        it.name	= "usb_app";
-        it.action = ACTION_USB_SLAVE_SET_CONFIG;
-        it.data = table_usb_menu[0];
-        start_app_async(&it, NULL, NULL);
-        break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            ui_hide(VLIST_USB);
+            ui_show(PIC_MSD_USB);
+            init_intent(&it);
+            it.name = "usb_app";
+            it.action = ACTION_USB_SLAVE_SET_CONFIG;
+            it.data = table_usb_menu[0];
+            start_app_async(&it, NULL, NULL);
+            break;
     }
     return false;
 }
@@ -158,24 +163,25 @@ static int usb_goto_rec_ontouch(void *ctr, struct element_touch_event *e)
     struct intent it;
     struct application *app;
     u8 sel_item;
-    switch (e->event) {
-    case ELM_EVENT_TOUCH_DOWN:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
-        break;
-    case ELM_EVENT_TOUCH_HOLD:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
-        break;
-    case ELM_EVENT_TOUCH_MOVE:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
-        break;
-    case ELM_EVENT_TOUCH_UP:
-        UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
-        init_intent(&it);
-        it.name	= "usb_app";
-        it.action = ACTION_USB_SLAVE_SET_CONFIG;
-        it.data = table_usb_menu[2];
-        start_app_async(&it, NULL, NULL);
-        break;
+    switch(e->event)
+    {
+        case ELM_EVENT_TOUCH_DOWN:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_DOWN\n");
+            break;
+        case ELM_EVENT_TOUCH_HOLD:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_HOLD\n");
+            break;
+        case ELM_EVENT_TOUCH_MOVE:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_MOVE\n");
+            break;
+        case ELM_EVENT_TOUCH_UP:
+            UI_ONTOUCH_DEBUG("ELM_EVENT_TOUCH_UP\n");
+            init_intent(&it);
+            it.name = "usb_app";
+            it.action = ACTION_USB_SLAVE_SET_CONFIG;
+            it.data = table_usb_menu[2];
+            start_app_async(&it, NULL, NULL);
+            break;
     }
     return false;
 }

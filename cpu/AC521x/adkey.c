@@ -18,7 +18,8 @@ REGISTER_ADC_SCAN(adkey_scan)
 static int adkey_init(struct key_driver *key, void *arg)
 {
     __this = (struct adkey_platform_data *)arg;
-    if (!__this) {
+    if(!__this)
+    {
         return -EINVAL;
     }
 
@@ -46,11 +47,14 @@ static u16 adkey_get_value(struct key_driver *key)
 
     /* printf("adkey: %x\n", adkey_scan.value); */
 
-    for (i = 0; i < ADKEY_MAX_NUM; i++) {
-        if (adkey_scan.value >= table->ad_value[i]) {
+    for(i = 0; i < ADKEY_MAX_NUM; i++)
+    {
+        if(adkey_scan.value >= table->ad_value[i])
+        {
             return table->key_value[i];
         }
-        if (table->ad_value[i] == 0) {
+        if(table->ad_value[i] == 0)
+        {
             break;
         }
     }
@@ -58,12 +62,14 @@ static u16 adkey_get_value(struct key_driver *key)
     return NO_KEY;
 }
 
-static const struct key_driver_ops adkey_driver_ops = {
-    .init 		= adkey_init,
-    .get_value 	= adkey_get_value,
+static const struct key_driver_ops adkey_driver_ops =
+{
+    .init       = adkey_init,
+    .get_value  = adkey_get_value,
 };
 
-REGISTER_KEY_DRIVER(adkey_driver) = {
+REGISTER_KEY_DRIVER(adkey_driver) =
+{
     .name = "adkey",
     .ops = &adkey_driver_ops,
 };

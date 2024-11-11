@@ -13,16 +13,16 @@
         <Page id="1">
             <ColorList>
                 <Color id="0">55AAA5</Color>
-                <Color id="1">949494</Color>
-                <Color id="2">54AAA4</Color>
-                <Color id="3">DFDFDF</Color>
-                <Color id="4">00FF00</Color>
-                <Color id="5">FFFFFF</Color>
-                <Color id="6">FF0000</Color>
-                <Color id="7">535353</Color>
-                <Color id="8">2EE79B</Color>
-                <Color id="9">00AAFF</Color>
-                <Color id="10">000000</Color>
+                <Color id="1">00FF00</Color>
+                <Color id="2">535353</Color>
+                <Color id="3">2EE79B</Color>
+                <Color id="4">DFDFDF</Color>
+                <Color id="5">00AAFF</Color>
+                <Color id="6">000000</Color>
+                <Color id="7">FFFFFF</Color>
+                <Color id="8">FF0000</Color>
+                <Color id="9">949494</Color>
+                <Color id="10">54AAA4</Color>
                 <Color id="11">E9E9E9</Color>
                 <Color id="12">0E1632</Color>
                 <Color id="13">1D211C</Color>
@@ -376,8 +376,8 @@
                 <Picture fmt="OSD8" id="104">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\on_bottom.png</Picture>
                 <Picture fmt="OSD8" id="105">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\user\password.png</Picture>
                 <Picture fmt="OSD8" id="106">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\password.png</Picture>
-                <Picture fmt="OSD8" id="107">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\return.png</Picture>
-                <Picture fmt="OSD8A" id="108">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\return.png</Picture>
+                <Picture fmt="OSD8A" id="107">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\return.png</Picture>
+                <Picture fmt="OSD8" id="108">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\paw_ui\return.png</Picture>
                 <Picture fmt="OSD8" id="109">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set1.png</Picture>
                 <Picture fmt="OSD8" id="110">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set2.png</Picture>
                 <Picture fmt="OSD8" id="111">C:\Users\Administrator\Desktop\temp_lock\LOCK_NO_SLIDER\SGL-LOCK\UI工程\ui_1280x480_touch_screen\模式界面\project\config\UI_1280_480\new ui\set\set3.png</Picture>
@@ -547,10 +547,10 @@
         <Page id="2">
             <ColorList>
                 <Color id="0">55AAA5</Color>
-                <Color id="1">FFC046</Color>
+                <Color id="1">FFFFFF</Color>
                 <Color id="2">000000</Color>
                 <Color id="3">353535</Color>
-                <Color id="4">FFFFFF</Color>
+                <Color id="4">FFC046</Color>
             </ColorList>
             <PictureList/>
             <CellList>
@@ -631,9 +631,9 @@
         <Page id="4">
             <ColorList>
                 <Color id="0">55AAA5</Color>
-                <Color id="1">212121</Color>
-                <Color id="2">000000</Color>
-                <Color id="3">FFFFFF</Color>
+                <Color id="1">FFFFFF</Color>
+                <Color id="2">212121</Color>
+                <Color id="3">000000</Color>
                 <Color id="4">020202</Color>
                 <Color id="5">040404</Color>
                 <Color id="6">060606</Color>
@@ -902,13 +902,13 @@
         <Page id="5">
             <ColorList>
                 <Color id="0">55AAA5</Color>
-                <Color id="1">353535</Color>
-                <Color id="2">FFC046</Color>
-                <Color id="3">AAAAAA</Color>
+                <Color id="1">B3B3B3</Color>
+                <Color id="2">FFFFFF</Color>
+                <Color id="3">AEAEAE</Color>
                 <Color id="4">000000</Color>
-                <Color id="5">B3B3B3</Color>
-                <Color id="6">FFFFFF</Color>
-                <Color id="7">AEAEAE</Color>
+                <Color id="5">FFC046</Color>
+                <Color id="6">AAAAAA</Color>
+                <Color id="7">353535</Color>
             </ColorList>
             <PictureList/>
             <CellList>
@@ -985,10 +985,10 @@
         <Page id="7">
             <ColorList>
                 <Color id="0">55AAA5</Color>
-                <Color id="1">FFF795</Color>
+                <Color id="1">353535</Color>
                 <Color id="2">000000</Color>
                 <Color id="3">00C4FF</Color>
-                <Color id="4">353535</Color>
+                <Color id="4">FFF795</Color>
             </ColorList>
             <PictureList/>
             <CellList>

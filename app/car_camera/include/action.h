@@ -2,13 +2,14 @@
 #define APP_ACTION_H
 #include "app_config.h"
 
+
+/*************************************Changed by liumenghui*************************************/
+
 #define BUFFER_SIZE 128  // 缓冲区大小
 extern  u8 recv_buffer[BUFFER_SIZE];  // 环形缓冲区
 extern  u8 write_index;  // 写指针
 extern  u8 read_index;   // 读指针
 extern  u8 data_count;     //缓冲区内数量
-
-
 
 #define SECTOR_SIZE       0x1000          //4K
 #define BASE_ADDRESS      0x7EF000        //用户数据基地址
@@ -84,6 +85,7 @@ typedef struct {
     
 extern  user_infor *user_data;
 extern user_visit now_user;
+/*************************************Changed by liumenghui*************************************/
 
 
 
@@ -100,6 +102,7 @@ extern user_visit now_user;
 #define ACTION_VIDEO_REC_SWITCH_WIN     0x00002006
 #define ACTION_VIDEO_REC_LOCK_FILE      0x00002007
 #define ACTION_VIDEO_REC_SWITCH_WIN_OFF 0x00002008
+
 #define ACTION_VIDEO_REC_UART_RETRANSMIT 0x00002009  //新增串口重发
 #define ACTION_VIDEO_REC_SEARCH_USER    0x0000200A   //新增用户查找
 

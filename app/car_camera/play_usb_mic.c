@@ -16,12 +16,14 @@ static void usb_mic_recv_handler(u8 *buf, u32 len)
 {
     u32 wlen;
     running++;
-    if (!state) {
+    if(!state)
+    {
         running--;
         return;
     }
     wlen = cbuf_write(&cbuf, buf, len);
-    if (wlen != len) {
+    if(wlen != len)
+    {
         putchar('+');
     }
     running--;
@@ -32,25 +34,32 @@ static void usb_mic_dec_irq_handler(void *priv, void *data, int len)
     u32 rlen;
     static u32 ot;
     running++;
-    if (!state) {
+    if(!state)
+    {
         running--;
         return;
     }
-    if (restart) {
-        if (cbuf_get_data_size(&cbuf) < CBUFFER_START_LEVEL) {
+    if(restart)
+    {
+        if(cbuf_get_data_size(&cbuf) < CBUFFER_START_LEVEL)
+        {
             putchar('-');
             memset(data, 0, len);
-            if (time_after(jiffies, ot)) {
+            if(time_after(jiffies, ot))
+            {
                 usb_host_force_reset_module();
             }
             running--;
             return;
-        } else {
+        }
+        else
+        {
             restart = 0;
         }
     }
     rlen = cbuf_read(&cbuf, data, len);
-    if (rlen != len) {
+    if(rlen != len)
+    {
         restart = 1;
         memset(data, 0, len);
         ot = jiffies + msecs_to_jiffies(1000);
@@ -66,18 +75,21 @@ int play_usb_mic_start()
     struct host_mic_ops mic_ops = {0};
     u32 arg[2];
 
-    if (state) {
+    if(state)
+    {
         return 0;
     }
     bindex = 0xff;
     restart = 0;
     cbuf_space = malloc(CBUFFER_SIZE);
-    if (!cbuf_space) {
+    if(!cbuf_space)
+    {
         return -1;
     }
     cbuf_init(&cbuf, cbuf_space, CBUFFER_SIZE);
     dev = dev_open("audio", (void *)AUDIO_TYPE_DEC);
-    if (!dev) {
+    if(!dev)
+    {
         ret = -2;
         goto __exit_fail;
     }
@@ -101,7 +113,8 @@ int play_usb_mic_start()
     dev_ioctl(dev, IOCTL_REGISTER_IRQ_HANDLER, (u32)arg);
 
     ret = usb_host_mic_open();
-    if (ret < 0) {
+    if(ret < 0)
+    {
         ret = -3;
         goto __exit_fail;
     }
@@ -113,12 +126,14 @@ int play_usb_mic_start()
 
 __exit_fail:
     usb_host_mic_close();
-    if (dev) {
+    if(dev)
+    {
         dev_ioctl(dev, AUDIOC_STREAM_OFF, (u32)bindex);
         dev_close(dev);
         dev = NULL;
     }
-    if (cbuf_space) {
+    if(cbuf_space)
+    {
         free(cbuf_space);
         cbuf_space = NULL;
     }
@@ -131,11 +146,14 @@ int play_usb_mic_stop()
     struct host_mic_ops mic_ops = {0};
     u32 ot = jiffies + msecs_to_jiffies(100);
 
-    if (!state) {
+    if(!state)
+    {
         return 0;
     }
-    while (running) {
-        if (time_after(jiffies, ot)) {
+    while(running)
+    {
+        if(time_after(jiffies, ot))
+        {
             printf("wait usb mic exit running timeout!\n");
             return -1;
         }

@@ -13,7 +13,8 @@ static u32 get_num_from_str(char *str);
 /**
 ** Ö¸Áî½âÎöºóµÄÁ´±í±íÍ·
 */
-struct auto_test_st {
+struct auto_test_st
+{
 
     struct list_head root;
 
@@ -22,7 +23,8 @@ struct auto_test_st {
 /**
 ** Ö¸ÁîÀàÐÍ
 */
-enum cmd_type {
+enum cmd_type
+{
 
     TYPE_SINGLE,
     TYPE_LOOP,
@@ -31,7 +33,8 @@ enum cmd_type {
 /**
 ** Ö¸Áî½Úµã
 */
-struct at_func_node {
+struct at_func_node
+{
 
     enum cmd_type type;
     char *name;
@@ -46,7 +49,8 @@ struct at_func_node {
 /**
 ** Ö¸Áî¼¯
 */
-struct at_func_array {
+struct at_func_array
+{
     char *name;
     u8(*func)(void *parm);
     void *(*get_parm_func)(char *str);  // ´Ó×Ö·û´®»ñÈ¡²ÎÊý
@@ -215,14 +219,16 @@ static void *at_echo_get_parm(char *str)
     char *end, *buf;
     u16 len;
 
-    while (*str == ' ') {
+    while(*str == ' ')
+    {
         str++;
     }
     end = strchr(str, ';');
     len = end - str;
 
     buf = (char *)malloc(len + 1);
-    if (!buf) {
+    if(!buf)
+    {
         return NULL;
     }
     memset(buf, 0, len + 1);
@@ -349,25 +355,29 @@ static void *at_touch_get_parm(char *str)
     struct position *pos;
     char *end;
 
-    while (*str == ' ') {
+    while(*str == ' ')
+    {
         str++;
     }
     end = strchr(str, ';');
 
     pos = (struct position *)malloc(sizeof(struct position));
-    if (!pos) {
+    if(!pos)
+    {
         puts("pos malloc fail.\n");
         return NULL;
     }
 
     pos->x = get_num_from_str(str);
     str = strchr(str, ' ');
-    if (str >= end) {
+    if(str >= end)
+    {
         puts("pos get err.\n");
         free(pos);
         return NULL;
     }
-    while (*str == ' ') {
+    while(*str == ' ')
+    {
         str++;
     }
 
@@ -391,7 +401,7 @@ static u8 at_func_reboot(void *parm)
 
     puts("at_func_reboot.\n");
     cpu_reset();
-    while (1);
+    while(1);
     return 0;
 }
 static u8 at_func_upgrade(void *parm)
@@ -402,10 +412,12 @@ static u8 at_func_upgrade(void *parm)
     FILE *fp_b = NULL;
     fp_a = fopen(CONFIG_ROOT_PATH"upgrade/a.bfu", "r");
 
-    if (fp_a) {
+    if(fp_a)
+    {
         puts("bfu copy");
         fp_b = fopen(CONFIG_ROOT_PATH"b.bfu", "r");
-        if (fp_b) {
+        if(fp_b)
+        {
             fmove(fp_b, "upgrade/", NULL, 0);
             fmove(fp_a, "/", NULL, 0);
         }
@@ -413,10 +425,12 @@ static u8 at_func_upgrade(void *parm)
     }
 
     fp_b = fopen(CONFIG_ROOT_PATH"upgrade/b.bfu", "r");
-    if (fp_b) {
+    if(fp_b)
+    {
         puts("bfu copy111");
         fp_a = fopen(CONFIG_ROOT_PATH"a.bfu", "r");
-        if (fp_a) {
+        if(fp_a)
+        {
             fmove(fp_a, "upgrade/", NULL, 0);
             fmove(fp_b, "/", NULL, 0);
         }
@@ -446,19 +460,24 @@ static void at_task(void *p)
     puts("enter at_task...\n");
 
 
-    list_for_each_entry(pos, &__this->root, entry) {
+    list_for_each_entry(pos, &__this->root, entry)
+    {
 
-        if (pos->type == TYPE_LOOP) {
+        if(pos->type == TYPE_LOOP)
+        {
             struct at_func_node *p;
             printf("---loop: %d\n", pos->loop);
             loop = pos->loop;
 
             // loopÑ­»·µ÷ÓÃ
-            while (loop--) {
+            while(loop--)
+            {
 
-                list_for_each_entry(p, &pos->child, entry) {
+                list_for_each_entry(p, &pos->child, entry)
+                {
                     printf("---%s: %d\n", p->name, (int)p->parm);
-                    if (p->func) {
+                    if(p->func)
+                    {
                         p->func(p->parm);
                         os_time_dly(1);
                     }
@@ -467,9 +486,12 @@ static void at_task(void *p)
             }
 
             puts("---loop done.\n");
-        } else {
+        }
+        else
+        {
             printf("---%s: %d\n", pos->name, (int)pos->parm);
-            if (pos->func) {
+            if(pos->func)
+            {
                 pos->func(pos->parm);
                 os_time_dly(1);
             }
@@ -477,7 +499,8 @@ static void at_task(void *p)
 
     }
 
-    while (1) {
+    while(1)
+    {
         os_time_dly(500);
     }
 
@@ -488,7 +511,8 @@ static void at_task(void *p)
 /**
 ** º¯ÊýÓëÖ¸Áî×Ö·ûtable
 */
-struct at_func_array func_table[] = {
+struct at_func_array func_table[] =
+{
 
     {"key up", at_func_key_up, NULL},
     {"key down", at_func_key_down, NULL},
@@ -522,12 +546,14 @@ static u8 reg_at_func_tail(void *func, void *parm)
     u8(*p)(void *) = (u8(*)(void *))func;
     struct at_func_node *node_p;
 
-    if (!p) {
+    if(!p)
+    {
 
         return -1;
     }
     node_p = malloc(sizeof(struct at_func_node));
-    if (!node_p) {
+    if(!node_p)
+    {
         return -1;
     }
     memset(node_p, 0, sizeof(struct at_func_node));
@@ -554,12 +580,15 @@ static u32 get_num_from_str(char *str)
     u32 sum = 0;
     u8 s_flag = 0;
 
-    while (*p) {
-        if (s_flag == 0 && *p == ' ') { // Ìø¹ý¿Õ¸ñ
+    while(*p)
+    {
+        if(s_flag == 0 && *p == ' ')    // Ìø¹ý¿Õ¸ñ
+        {
             p++;
             continue;
         }
-        if (*p < '0' || *p > '9') {
+        if(*p < '0' || *p > '9')
+        {
             break;
         }
         s_flag = 1;
@@ -585,7 +614,8 @@ struct at_func_node *make_a_node(char *name, enum cmd_type type,
     struct at_func_node *node;
 
     node = malloc(sizeof(struct at_func_node));
-    if (!node) {
+    if(!node)
+    {
         printf("make a node fail!!!\n");
         return NULL;
     }
@@ -593,12 +623,15 @@ struct at_func_node *make_a_node(char *name, enum cmd_type type,
     node->type = type;
 
 
-    if (type == TYPE_LOOP) {
+    if(type == TYPE_LOOP)
+    {
         node->loop = loop;
         node->name = "loop";
         INIT_LIST_HEAD(&node->child);
         printf("make a loop_node \"%s\" sucess.\n", node->name);
-    } else if (type == TYPE_SINGLE) {
+    }
+    else if(type == TYPE_SINGLE)
+    {
         node->func = func;
         node->parm = parm;
         node->name = name;
@@ -626,18 +659,22 @@ struct at_func_node *analysis_a_cmd(const char *str)
     end = strchr(str, ';');
 
     // ½ØÈ¡Ò»¸öÖ¸Áî
-    for (i = 0;; i++) {
-        if (func_table[i].name == NULL) {
+    for(i = 0;; i++)
+    {
+        if(func_table[i].name == NULL)
+        {
             break;
         }
 
         // Ñ°ÕÒÖ¸Áî²¢´´½¨
-        if (strstr(start, func_table[i].name)
-            && strstr(start, func_table[i].name) < end) {
+        if(strstr(start, func_table[i].name)
+                && strstr(start, func_table[i].name) < end)
+        {
             void *parm = NULL;
 
             p = strstr(start, func_table[i].name) + strlen(func_table[i].name);
-            if (func_table[i].get_parm_func) {
+            if(func_table[i].get_parm_func)
+            {
                 parm = func_table[i].get_parm_func(p);
             }
             node = make_a_node(func_table[i].name, TYPE_SINGLE, 0, func_table[i].func, (void *)parm);
@@ -676,22 +713,27 @@ struct at_func_node *analysis_a_loop(const char *str)
     next = strchr(point, ';');
 
     // ¿ªÊ¼½âÎö loop ÄÚ²¿µÄÖ¸Áî£¬Ìí¼Óµ½child
-    while (point < end) {
+    while(point < end)
+    {
 
         // ½ØÈ¡Ò»¸öÖ¸Áî
-        for (i = 0;; i++) {
-            if (func_table[i].name == NULL) {
+        for(i = 0;; i++)
+        {
+            if(func_table[i].name == NULL)
+            {
                 break;
             }
 
             // Ñ°ÕÒÖ¸Áî²¢´´½¨
-            if (strstr(point, func_table[i].name)
-                && strstr(point, func_table[i].name) < next) {
+            if(strstr(point, func_table[i].name)
+                    && strstr(point, func_table[i].name) < next)
+            {
                 struct at_func_node *node;
                 void *parm = NULL;
 
                 p = strstr(point, func_table[i].name) + strlen(func_table[i].name);
-                if (func_table[i].get_parm_func) {
+                if(func_table[i].get_parm_func)
+                {
                     parm = func_table[i].get_parm_func(p);
                 }
                 node = make_a_node(func_table[i].name, TYPE_SINGLE, 0, func_table[i].func, parm);
@@ -721,7 +763,8 @@ static u8 update_version_control_str(char *str)
 {
 
     /// ¹Ø±ÕÉý¼¶°æ±¾¿ØÖÆ
-    if (strstr(str, "update version control disable")) {
+    if(strstr(str, "update version control disable"))
+    {
 
         puts("update version control disable!\n");
     }
@@ -758,38 +801,45 @@ static u8 analysis_start(char *str, u32 len)
     /* printf("str:%s, len:%d\n", str, len); */
 
     //·Ö¶Î½âÎöÈ«²¿Ö¸Áî
-    while (point < end) {
+    while(point < end)
+    {
 
         /*printf("point= 0x%x, end= 0x%x\n", point, end);*/
 
         // ÕÒµ½Ò»¸öloopÑ­»·Ö¸Áî
-        if (strstr(point, "loop") && strstr(point, "loop") < next) {
+        if(strstr(point, "loop") && strstr(point, "loop") < next)
+        {
             struct at_func_node *node_loop;
 
             node_loop = analysis_a_loop(strstr(point, "loop"));
-            if (node_loop) {
+            if(node_loop)
+            {
                 list_add_tail(&node_loop->entry, &__this->root);
             }
             point = strstr(point, "done"); // Ö¸Ïòdone£¬Ìø¹ýÕû¸öloop
         }
         // µ¥Ò»Ö¸Áî
-        else {
+        else
+        {
             struct at_func_node *node;
 
             node = analysis_a_cmd(point);
-            if (node) {
+            if(node)
+            {
                 list_add_tail(&node->entry, &__this->root);
             }
         }
 
         // Ñ°ÕÒÏÂÒ»¶Î
         point = strchr(point, ';');
-        if (point == NULL) {
+        if(point == NULL)
+        {
             break;  // ÕÒ²»µ½ÏÂÒ»¸ö ; ºÅ£¬½áÊø
         }
         point += 1; // Ö¸Ïò·ÖºÅºóÃæ
         next = strchr(point, ';');
-        if (next == NULL) {
+        if(next == NULL)
+        {
             break;  // ÕÒ²»µ½ÏÂÏÂÒ»¸ö ; ºÅ£¬½áÊø
         }
     }
@@ -814,19 +864,24 @@ static void analysis_list_puts(void)
     struct at_func_node *pos;
     puts("====== auto_list debug ======\n");
 
-    list_for_each_entry(pos, &__this->root, entry) {
+    list_for_each_entry(pos, &__this->root, entry)
+    {
 
-        if (pos->type == TYPE_LOOP) {
+        if(pos->type == TYPE_LOOP)
+        {
             struct at_func_node *p;
             printf("---loop: %d\n", pos->loop);
 
-            list_for_each_entry(p, &pos->child, entry) {
+            list_for_each_entry(p, &pos->child, entry)
+            {
                 printf("---%s: %d\n", p->name, (int)p->parm);
 
             }
 
             puts("---loop done.\n");
-        } else {
+        }
+        else
+        {
             printf("---%s: %d\n", pos->name, (int)pos->parm);
         }
 
@@ -852,7 +907,8 @@ static u8 analysis_script(void)
     u32 rlen;
 
     file = fopen(SCRIPT_FILE_NAME, "r");
-    if (!file) {
+    if(!file)
+    {
         return -1;
     }
     rlen = fread(file, buf, 1024);
@@ -876,7 +932,8 @@ static u8 analysis_script(void)
 u8 auto_test_open(void)
 {
     int err = analysis_script();
-    if (err) {
+    if(err)
+    {
         return -1;
     }
 

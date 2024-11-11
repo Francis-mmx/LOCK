@@ -11,10 +11,11 @@ extern void dv15_dac_early_init(u8 ldo_sel, u8 pwr_sel, u32 dly_msecs);
 
 
 #ifdef CONFIG_DEBUG_ENABLE
-extern void debug_uart_init();
+    extern void debug_uart_init();
 #endif
 
-static char *debug_msg[32] = {
+static char *debug_msg[32] =
+{
     /*0---7*/
     "reserved",
     "reserved",
@@ -83,10 +84,13 @@ void exception_irq_handler(void)
     }*/
 
 #if 1
-    if (current_cpu_id() == 0) {
+    if(current_cpu_id() == 0)
+    {
         printf("!!!!! cpu 0 %s: rets_addr = 0x%x, reti_addr = 0x%x\n DEBUG_MSG = 0x%x, DEBUG_PRP_NUM = 0x%x DSPCON=%x\n",
                __func__, rets_addr, reti_addr, DEBUG_MSG, DEBUG_WRNUM, DSPCON);
-    } else {
+    }
+    else
+    {
         /*printf("\n\n\n!!!!! cpu 1 %s: rets_addr = 0x%x, reti_addr = 0x%x\n DEBUG_MSG = 0x%x, DEBUG_PRP_NUM = 0x%x DSPCON=%x\n",*/
         /*__func__, rets_addr, reti_addr, DEBUG_MSG, DEBUG_PRP_NUM, C1_CON);*/
     }
@@ -95,15 +99,17 @@ void exception_irq_handler(void)
 
     printf("\nWR_LIM4H : 0x%x, WR_LIM4L : 0x%x, SDRDBG : 0x%x\n", WR_LIM4H, WR_LIM4L, SDRDBG);
 
-    for (i = 0; i < 32; i++) {
-        if (BIT(i)&DEBUG_MSG) {
+    for(i = 0; i < 32; i++)
+    {
+        if(BIT(i)&DEBUG_MSG)
+        {
             puts(debug_msg[i]);
         }
     }
 #endif
 
     log_flush();
-    while (1);
+    while(1);
 }
 
 static void cpu_xbus_init()
@@ -155,7 +161,8 @@ void cpu1_main()
 
     local_irq_enable();
 
-    while (1) {
+    while(1)
+    {
         __asm__ volatile("idle");
     }
 }
@@ -201,21 +208,24 @@ u32 sdfile_init(u32 cmd_zone_addr, u32 *head_addr, int num);
 #if 0
 static void early_putchar(char a)
 {
-    if (a == '\n') {
+    if(a == '\n')
+    {
         UT2_BUF = '\r';
         __asm_csync();
-        while ((UT2_CON & BIT(15)) == 0);
+        while((UT2_CON & BIT(15)) == 0);
     }
     UT2_BUF = a;
     __asm_csync();
-    while ((UT2_CON & BIT(15)) == 0);
+    while((UT2_CON & BIT(15)) == 0);
 }
 
 void early_puts(char *s)
 {
-    do {
+    do
+    {
         early_putchar(*s);
-    } while (*(++s));
+    }
+    while(*(++s));
 }
 #endif
 
